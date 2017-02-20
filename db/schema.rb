@@ -10,10 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220144625) do
+ActiveRecord::Schema.define(version: 20170220170435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "price"
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_order_items_on_product_id", using: :btree
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "total_price"
+    t.date     "delivery_date"
+    t.string   "address"
+    t.string   "status"
+    t.json     "payment"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "brand"
+    t.string   "name"
+    t.integer  "price"
+    t.text     "description"
+    t.string   "description_short"
+    t.string   "image"
+    t.string   "tag_one"
+    t.string   "tag_two"
+    t.integer  "sell_priority"
+    t.string   "gender"
+    t.boolean  "online_supplied"
+    t.integer  "stock"
+    t.boolean  "availability"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -32,4 +73,6 @@ ActiveRecord::Schema.define(version: 20170220144625) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
 end
