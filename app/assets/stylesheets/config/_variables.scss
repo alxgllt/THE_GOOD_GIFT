@@ -8,13 +8,44 @@ $header-font: "Raleway", "Helvetica", "sans-serif";
 
 // Local fonts (uncomment following lines)
 // @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
+//   font-family: "Kollektif";
+//   src: font-url('Kollektif-Bold.ttf') format('bold'),
+//        font-url('Kollektif-Italic.ttf') format('italic'),
+//        font-url('Kollektif.ttf') format('truetype')
 // }
-// $my-font: "Font Name";
+@font-face {
+	font-family: "Kollektif";
+	src: font-url('Kollektif.eot');
+	src: font-url('Kollektif.eot?#iefix') format('embedded-opentype'),
+	// font-url('Kollektif.woff') format('woff'),
+	font-url('Kollektif.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Kollektif";
+	src: font-url('Kollektif.eot');
+	src: font-url('Kollektif.eot?#iefix') format('embedded-opentype'),
+	// font-url('Kollektif.woff') format('woff'),
+	font-url('Kollektif-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Kollektif";
+	src: font-url('Kollektif.eot');
+	src: font-url('Kollektif.eot?#iefix') format('embedded-opentype'),
+	// font-url('Kollektif.woff') format('woff'),
+	font-url('Kollektif-Italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+@font-face {
+	font-family: "Gidole";
+	src: font-url('Gidole-Regular.ttf') format('truetype')
+}
+$gidole: "Gidole";
+$kollektif: "Kollektif";
 
 // Font-size and line-height
 $base-size: 16px;
