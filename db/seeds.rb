@@ -6,6 +6,8 @@ csv.each do |row|
   Product.create!(row.to_hash)
 end
 
+
+
 # csv.each do |row|
 #   Product.create!
 #     name: row['name']
