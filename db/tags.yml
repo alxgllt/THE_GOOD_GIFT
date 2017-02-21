@@ -1,0 +1,32 @@
+- title: "Tech"
+  description: "Tech description"
+  image_file_name: "Tech.jpg"
+
+- title: "Food & Drinks"
+  description: "Food & Drinks description"
+  image_file_name: "Food&drinks.jpg"
+
+- title: "Bien être"
+  description: "Bien être description"
+  image_file_name: "Bienetre.jpg"
+
+- title: "Style"
+  description: "Style description"
+  image_file_name: "Syle.jpg"
+
+- title: "Outdoor"
+  description: "Outdoor description"
+  image_file_name: "Outdoor.jpeg"
+
+- title: "Voyage"
+  description: "Voyage description"
+  image_file_name: "Voyage.jpg"
+
+- title: "Arts & Culture"
+  description: "Arts & Culture description"
+  image_file_name: "Arts&culture.jpg"
+
+- title: "Musique"
+  description: "Musique description"
+  image_file_name: "Musique.jpg"
+
