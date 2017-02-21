@@ -1,6 +1,7 @@
 require "yaml"
 
 class Tag
+  attr_reader :title, :description, :image_file_name
 
   def initialize(attributes = {})
     @title = attributes[:title]
