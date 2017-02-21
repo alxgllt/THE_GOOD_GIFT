@@ -1,9 +1,16 @@
 require 'csv'
+require 'open-uri'
 
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'products.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
-  Product.create!(row.to_hash)
+  attributes = row.to_hash
+  url = attributes["remote_images_urls"]
+  puts url
+  attributes.delete("remote_images_urls")
+  product = Product.new(attributes)
+  product.remote_image_url = url
+  product.save!
 end
 
 User.create!(email:"alex@tgg.com", password:"123456", admin:true)
