@@ -4,6 +4,17 @@
 	<div class="banner-content text-center">
 		<h1>Trouvez le cadeau parfait</h1>
 		<p>Offrir un cadeau commun n’a jamais été aussi simple</p>
+
+    <div class="">
+      <%= form_tag(select_tags_path, :method => "get") do %>
+      <%= text_field_tag :search_name, params[:search_name], placeholder: "Prenom", class: "form-control"%>
+      <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Sexe", class: "form-control" %>
+      <%= text_field_tag :search_price, params[:search_price], placeholder: "Montant cagnotte (€)", class: "form-control"%>
+      <%= text_field_tag :search_date, params[:search_date], placeholder: "Date de la remise du cadeay (€)", class: "form-control", id: "datepicker"%>
+      <% end %>
+    </div>
+
+
 		<%= link_to "Je lui fais plaisir", select_tags_path, {class: "btn btn-primary"} %>
 	</div>
 </div>
@@ -40,10 +51,10 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-6">
-			
+
 		</div>
 		<div class="col-xs-12 col-sm-6">
-			
+
 		</div>
 	</div>
 </div>
