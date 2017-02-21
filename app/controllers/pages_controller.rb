@@ -10,4 +10,5 @@ class PagesController < ApplicationController
 
   def select_tags
   end
+
 end

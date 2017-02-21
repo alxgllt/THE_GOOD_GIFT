@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   devise_for :users
   root to: 'pages#home'
 
@@ -9,6 +10,5 @@ Rails.application.routes.draw do
 
   #Selecttag page flow n°2
   get '/select_tags', to: 'pages#select_tags'
-
 
 end
