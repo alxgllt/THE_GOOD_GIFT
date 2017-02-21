@@ -13,6 +13,9 @@ gem 'redis'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
+gem 'cloudinary', github: 'cloudinary/cloudinary_gem'
+gem 'carrierwave'#, github: 'carrierwaveuploader/carrierwave'
+
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'

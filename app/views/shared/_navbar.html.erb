@@ -1,4 +1,4 @@
-  <div class="navbar-wagon fixed-nav-bar">
+  <div class="navbar-wagon <%= yield(:navbar_class) %>">
     <!-- Logo -->
     <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "tgg1.png" %>
@@ -40,11 +40,13 @@
     <% else %>
 
     <!-- Login text link -->
-    <%= link_to t(".sign_in", default: "CONCEPT"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t("#", default: "Comment ça marche?"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-    <%= link_to t(".sign_in", default: "BOUTIQUE"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t("#", default: "Nos idées"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-    <%= link_to t(".sign_in", default: "S'ABONNER"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t("#", default: "Nos derniers cadeaux"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+    <%= link_to t("#", default: "Témoignages"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <% end %>
 
