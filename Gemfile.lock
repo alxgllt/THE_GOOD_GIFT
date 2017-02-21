@@ -1,13 +1,4 @@
 GIT
-<<<<<<< HEAD
-  remote: git://github.com/carrierwaveuploader/carrierwave.git
-  revision: 74d8eba391da2ae5f4c0f89ce34e0542218af8d6
-  specs:
-    carrierwave (1.0.0)
-      activemodel (>= 4.0.0)
-      activesupport (>= 4.0.0)
-      mime-types (>= 1.16)
-=======
   remote: git://github.com/activeadmin/activeadmin.git
   revision: e9c65ab9c00345ddca4677ff81ca2082f18c2462
   specs:
@@ -35,7 +26,15 @@ GIT
       has_scope (~> 0.6)
       railties (>= 3.2, < 5.1)
       responders
->>>>>>> master
+
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: 74d8eba391da2ae5f4c0f89ce34e0542218af8d6
+  specs:
+    carrierwave (1.0.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
 
 GEM
   remote: https://rubygems.org/
@@ -131,14 +130,11 @@ GEM
     formtastic_i18n (0.6.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-<<<<<<< HEAD
-    http-cookie (1.0.3)
-      domain_name (~> 0.5)
-=======
     has_scope (0.7.0)
       actionpack (>= 4.1, < 5.1)
       activesupport (>= 4.1, < 5.1)
->>>>>>> master
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (0.8.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
