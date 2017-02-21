@@ -3,3 +3,21 @@
 
 <h1> Bundle pages </h1>
 
+
+<div class="wrapper-bundle">
+  <div class="container">
+    <div class="row">
+      <div class="bundle">
+        <% @products.each do |product| %>
+          <div class="col-xs-6 col-md-4 col-sm-3 ">
+            <div class="product">
+              <ul><%= product.name %></ul>
+              <ul><%= product.brand %></ul>
+              <ul><%= cl_image_tag product.image, height: 70, crop: :fill %></ul>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
