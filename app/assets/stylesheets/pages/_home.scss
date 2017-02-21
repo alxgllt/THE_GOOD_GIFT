@@ -2,3 +2,60 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.big-title {
+    position: relative;
+    text-align: center;
+    padding: 1.5em 0 2em;
+    color: #222222;
+}
+
+.big-title > div {
+    font-size: 30px;
+    line-height: 1em;
+    margin: 0 !important;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.big-title:before, .big-title:after {
+    content: '';
+    display: inline-block;
+    width: 120px;
+    height: 1px;
+    background-color: $mint;
+    vertical-align: middle;
+    margin: 0 1.5em;
+}
+
+#how-it-works img {
+	width: 100px;
+	margin-bottom: 7px;
+}
+
+.title-description {
+	display: flex;
+  align-items: center;
+  justify-content: center;	
+	>div {
+		max-width: 500px;
+	}
+}
+
+#temoignages img {
+	margin-bottom: 15px;
+}
+
+#reassurance {
+	p {
+		font-size: 14px;
+		margin: 0;
+	}
+	.text-small {
+		font-size: 12px;
+	}
+	img {
+	width: 50px;
+	margin-bottom: 5px;
+}
+}
