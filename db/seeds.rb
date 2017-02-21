@@ -7,7 +7,7 @@ csv.each do |row|
 end
 
 # csv.each do |row|
-#   Product.create! \
+#   Product.create!
 #     name: row['name']
 #     brand: row['brand']
 #     image: row['image']

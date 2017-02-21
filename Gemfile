@@ -10,6 +10,9 @@ gem 'devise'
 gem 'redis'
 gem 'pundit'
 
+gem 'cloudinary'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
