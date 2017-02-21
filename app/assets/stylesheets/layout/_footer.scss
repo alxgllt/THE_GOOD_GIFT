@@ -2,3 +2,68 @@
 #footer-down {
 	height: calc(100vh - 70px);
 }
+
+#footer {
+	border-top: solid 1px $mint;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  margin-top: 30px;
+}
+#logo-footer {
+  width: 70px;
+  margin-top: 30px;
+}
+#footer-content {
+  background: $white;
+  color: $darkgrey;
+  position: absolute;
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 15px;
+}
+#footer-content p {
+  margin-top: 12px;
+}
+#footer-content ul {
+  margin-top: 10px;
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0; 
+	a {
+		color: $darkgrey;
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+	li {
+		opacity: 0.6;
+	}
+}
+.social a {
+  color: $darkgrey;
+  font-size: 30px;
+  text-decoration: none;
+  transition: color 0.5s ease;
+}
+#footer-content a:hover{
+  color: $mint;
+}
+
+#footer-content .social {
+	margin-top: 30px;
+}
+
+#footer-content i {
+  text-align: center;
+  padding: 0 14px;
+}
+
+#footer .title {
+	font-size: 18px;
+	opacity: 0.9;
+}
+
+.screen-footer {
+  min-height: calc(100vh - 70px);
+}
