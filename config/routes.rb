@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   #Selecttag page flow n°2
   get '/select_tags', to: 'pages#select_tags'
 
-
 end
