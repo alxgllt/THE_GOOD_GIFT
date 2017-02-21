@@ -8,3 +8,15 @@
   <%= render 'form_select_tags' %>
 </div>
 
+
+
+<!-- Search bar à mettre dans la HOME -->
+
+<div class="search-home">
+  <%= form_tag(select_tags_path, :method => "get", class: "form-inline") do %>
+  <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Sexe", class: "" %>
+  <%= text_field_tag :search_price, params[:search_price], placeholder: "Montant cagnotte (€)", class: ""%>
+  <%= text_field_tag :search_date, params[:search_date], placeholder: "Date de la remise du cadeay (€)", class: "datepicker"%>
+  <%= submit_tag "Trouver un Good Gift !", :name => nil, class: "" %>
+  <% end %>
+</div>

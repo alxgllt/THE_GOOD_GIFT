@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.3'
 
+
 gem 'rails', '5.0.1'
 gem 'puma'
 gem 'pg'
@@ -19,6 +20,9 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
+source "https://rails-assets.org" do
+  gem 'rails-assets-bootstrap-datepicker'
+end
 
 group :development, :test do
   gem 'binding_of_caller'
