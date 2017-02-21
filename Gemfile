@@ -8,7 +8,12 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
-gem 'pundit'
+
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
+gem 'cloudinary', github: 'cloudinary/cloudinary_gem'
+gem 'carrierwave'#, github: 'carrierwaveuploader/carrierwave'
 
 gem 'sass-rails'
 gem 'jquery-rails'

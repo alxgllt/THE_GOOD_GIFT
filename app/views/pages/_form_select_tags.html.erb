@@ -1,0 +1,31 @@
+<% @tags_as_objects.each do |tag| %>
+  <div class="select-tag" data-tag-title="<%= tag.title %>">
+    <%= tag.title %>
+  </div>
+<% end %>
+
+
+<%= form_tag products_path, method: :get do %>
+  <%= text_field_tag :tag_one_title %>
+  <%= text_field_tag :tag_two_title %>
+  <%= text_field_tag :tag_three_title %>
+  <%= submit_tag %>
+<% end %>
+
+<% content_for :after_js do %>
+  <script>
+    $(document).ready(function() {
+      $('.select-tag').on('click', function() {
+        var tagTitle = $(this).data('tag-title');
+        if ($('#tag_one_title').val() === "") {
+          $('#tag_one_title').val(tagTitle);
+        } else if ($('#tag_two_title').val() === "") {
+          $('#tag_two_title').val(tagTitle);
+        } else if ($('#tag_three_title').val() === "") {
+          $('#tag_three_title').val(tagTitle);
+        }
+      })
+    })
+  </script>
+<% end %>
+
