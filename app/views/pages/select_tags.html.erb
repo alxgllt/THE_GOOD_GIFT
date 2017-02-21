@@ -1,10 +1,64 @@
-
-<h1>  select tags page </h1>
-
- <%= link_to 'Suivant', products_path, {class: "btn btn primary"} %>
-
-
-<div class="wrapper">
-  <%= render 'form_select_tags' %>
+<div class="text-center">
+  <h1>  Selectionnez les univers qui correspondent à :params[first_name] </h1>
 </div>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <% @tags_as_objects.each do |tag| %>
+      <div class=" col-xs-6 col-sm-3 select-tag padded" data-tag-title="<%= tag.title %>">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('../../assets/images/<%=tag.image_file_name%>');">
+          <div class="card-category">
+          </div>
+          <div class="card-description">
+            <h2><%= tag.description %> </h2>
+          </div>
+          <%= tag.title %>
+        </div>
+      </div>
+      <% end %>
 
+      <div class="submit-form">
+
+        <%= form_tag products_path, method: :get do %>
+        <%= text_field_tag :tag_one_title %>
+        <%= text_field_tag :tag_two_title %>
+        <%= text_field_tag :tag_three_title %>
+        <%= submit_tag :submit %>
+        <% end %>
+
+      </div>
+
+      <div class="test">
+
+      </div>
+
+      <% content_for :after_js do %>
+      <script>
+        $(document).ready(function() {
+          $('.select-tag').on('click', function() {
+            var tagTitle = $(this).data('tag-title');
+            if ($('#tag_one_title').val() === "") {
+              $('#tag_one_title').val(tagTitle);
+            } else if ($('#tag_two_title').val() === "") {
+              $('#tag_two_title').val(tagTitle);
+            } else if ($('#tag_three_title').val() === "") {
+              $('#tag_three_title').val(tagTitle);
+            } else if ($('#tag_three_title').val() !== "")  {
+              var warning = $('<p>').text("Uniquement 3!");
+              $('#test').append(warning);
+            } else if ($('#tag_three_title').val() === tagTitle) {
+              $('#tag_three_title').val("");
+            }
+          })
+        })
+      </script>
+      #pour chaque tag_numero_title iterer si tagTitle = tag_numero_title.val
+      si oui > prendre tag_numero_title, le mettre à val("")
+      <% end %>
+
+
+
+    </div>
+
+
+    <%= link_to 'Suivant', products_path, {class: "btn btn primary"} %>
