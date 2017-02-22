@@ -40,13 +40,13 @@
     <% else %>
 
     <!-- Login text link -->
-    <%= link_to t("#", default: "Comment ça marche?"), new_user_session_path, class: "navbar-wagon-item navbar-white-link" %>
+    <%= link_to t("#", default: "Comment ça marche?"), new_user_session_path, class: "navbar-wagon-item navbar-white-link", id: "how" %>
 
-    <%= link_to t("#", default: "Nos idées"), new_user_session_path, class: "navbar-wagon-item navbar-white-link" %>
+    <%= link_to t("#", default: "Nos idées"), new_user_session_path, class: "navbar-wagon-item navbar-white-link", id: "ideas" %>
 
-    <%= link_to t("#", default: "Nos derniers cadeaux"), new_user_session_path, class: "navbar-wagon-item navbar-white-link" %>
+    <%= link_to t("#", default: "Nos derniers cadeaux"), new_user_session_path, class: "navbar-wagon-item navbar-white-link", id: "last" %>
 
-    <%= link_to t("#", default: "Témoignages"), new_user_session_path, class: "navbar-wagon-item navbar-white-link" %>
+    <%= link_to t("#", default: "Témoignages"), new_user_session_path, class: "navbar-wagon-item navbar-white-link", id: "reviews" %>
 
     <% end %>
 
