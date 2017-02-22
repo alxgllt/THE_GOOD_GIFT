@@ -5,6 +5,13 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    #raise
+    # search-bar product
+    if params[:search_gender] != nil
+      @products = @products.where(gender: [params[:search_gender].chars.first.capitalize, "U"])
+    else
+      @products = Product.all
+    end
     # business intelligence
     @order = Order.new()
   end

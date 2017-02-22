@@ -1,12 +1,12 @@
 
  <div class="search-product form-inline">
    <%= form_tag products_path, method: :get do %>
-   <%= select_tag "Gender", options_for_select(["Homme", "Femme"], params[:search_gender]), class: "form-control" %>
-    <%= text_field_tag "Date", params[:search_date], id: "datepicker", class: "form-control"%>
-    <%= text_field_tag "Prenom", params[:search_name], class: "form-control"%>
-    <%= text_field_tag "Price", params[:search_price], class: "form-control"%>
+   <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), placeholder: "Sexe", class: "form-control" %>
+    <%= text_field_tag :search_date, params[:search_date], id: "datepicker", class: "form-control"%>
+    <%= text_field_tag :search_name, params[:search_name], placeholder: "Prénom", class: "form-control"%>
+    <%= text_field_tag :search_price, params[:search_price], placeholder: "Prix", class: "form-control"%>
    <br>
     <br>
-    <%= submit_tag :submit %>
+    <%= submit_tag :submit, class: "btn btn-primary" %>
   <% end %>
 </div>
