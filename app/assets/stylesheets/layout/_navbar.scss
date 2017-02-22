@@ -9,15 +9,16 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .navbar-home {
-  box-shadow: none;
   background: transparent;
   position: absolute;
   width: 100%;
-  .navbar-wagon-link {
-    color: white;
-    font-weight: bold;
-  }
+  display: flex;
+  height: 70px;
+  padding: 0px 30px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Optional class to fix the navbar on top */
@@ -31,7 +32,7 @@
 
 /* Navbar logo */
 .navbar-wagon-brand img {
-  width: 100px;
+  width: 150px;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -51,16 +52,45 @@
 
 /* Navbar standard link */
 .navbar-wagon-link {
+  margin-right: 100px;
+  letter-spacing: 0.05em;
+  color: $black;
+  opacity: 0.8;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  &:hover {
+    color: $mint;
+    text-decoration: none;
+  }
+}
+
+// Navbar home link
+.navbar-white-link {
   margin-right: 60px;
   letter-spacing: 0.05em;
   color: white;
+  font-weight: bold;
   font-size: 16px;
   transition: all 0.2s ease;
+  &:hover {
+    color: $mint;
+    text-decoration: none;
+  }
 }
-.navbar-wagon-link:hover {
-  color: $mint;
-  text-decoration: none;
+.navbar-black-link {
+  margin-right: 60px;
+  letter-spacing: 0.05em;
+  color: $black;
+  opacity: 0.8;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  &:hover {
+    color: $mint;
+    text-decoration: none;
+  }
 }
+
 
 /* Navbar dropdown menu */
 .navbar-wagon-dropdown-menu {
