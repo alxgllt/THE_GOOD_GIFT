@@ -1,32 +1,32 @@
 - title: "Tech"
   description: "Tech description"
-  image_file_name: "Tech.jpg"
+  image_file_name: "Tech-min.jpg"
 
 - title: "Food & Drinks"
   description: "Food & Drinks description"
-  image_file_name: "Food&drinks.jpg"
+  image_file_name: "Food&drinks-min.jpg"
 
 - title: "Bien être"
   description: "Bien être description"
-  image_file_name: "Bienetre.jpg"
+  image_file_name: "Bienetre-min.jpg"
 
 - title: "Style"
   description: "Style description"
-  image_file_name: "Syle.jpg"
+  image_file_name: "Syle-min.jpg"
 
 - title: "Outdoor"
   description: "Outdoor description"
-  image_file_name: "Outdoor.jpeg"
+  image_file_name: "Outdoor-min.jpeg"
 
 - title: "Voyage"
   description: "Voyage description"
-  image_file_name: "Voyage.jpg"
+  image_file_name: "Voyage-min.jpg"
 
 - title: "Arts & Culture"
   description: "Arts & Culture description"
-  image_file_name: "Arts&culture.jpg"
+  image_file_name: "Arts&culture-min.jpg"
 
 - title: "Musique"
   description: "Musique description"
-  image_file_name: "Musique.jpg"
+  image_file_name: "Musique-min.jpg"
 
