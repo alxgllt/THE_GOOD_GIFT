@@ -1,11 +1,8 @@
-require 'gift_selection_algo'
-
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :admin ]
 
   def index
     @products = Product.all
-    #raise
     # search-bar product
     if params[:search_gender] != nil
       @products = @products.where(gender: [params[:search_gender].chars.first.capitalize, "U"])
@@ -47,4 +44,8 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to root_path
   end
+
+  private
+
+
 end
