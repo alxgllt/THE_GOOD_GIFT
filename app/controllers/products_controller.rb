@@ -5,12 +5,16 @@ class ProductsController < ApplicationController
     tags_as_hashes = YAML.load_file(File.join(File.dirname(__FILE__), "../../db/tags.yml"))
     @tags_as_objects = tags_as_hashes.map { |tag| Tag.new(tag.symbolize_keys) }
     @products = Product.all
+
     # search-bar product
-    if params[:search_gender] != nil
-      @products = @products.where(gender: [params[:search_gender].chars.first.capitalize, "U"])
-    else
-      @products = Product.all
+    if params[:tags] != nil
+      @products = @products.where("tag_one IN (?) OR tag_two IN (?)", params[:tags], params[:tags])
     end
+
+    if params[:search_gender] != nil
+      @products = @products.where(gender: [(params[:search_gender] == "Homme" ? "M" : "F"), "U"])
+    end
+
     # business intelligence
     @order = Order.new()
   end
