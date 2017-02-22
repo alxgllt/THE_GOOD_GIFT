@@ -9,4 +9,8 @@ class Tag
     @image_file_name = attributes[:image_file_name]
   end
 
+  def identifier
+    @title.underscore.gsub(/\s/, "_")
+  end
+
 end

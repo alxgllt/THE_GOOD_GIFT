@@ -4,33 +4,29 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
+     <%= form_tag products_path, method: :get do %>
       <% @tags_as_objects.each do |tag| %>
-      <div class=" col-xs-6 col-sm-3 select-tag padded" data-tag-title="<%= tag.title %>">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('../../assets/images/<%=tag.image_file_name%>');">
-          <div class="card-category">
+        <label class="select-tag-container" for="<%= tag.identifier %>">
+          <%= check_box_tag "tags[]", tag.title, false, id: tag.identifier, style: "display: none;" %>
+          <div class=" col-xs-6 col-sm-3 select-tag padeeed" data-tag-title="<%= tag.title %>">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path(tag.image_file_name) %>);">
+              <div class="card-category">
+              </div>
+              <div class="card-description">
+                <h2><%= tag.description %> </h2>
+              </div>
+              <%= tag.title %>
+            </div>
           </div>
-          <div class="card-description">
-            <h2><%= tag.description %> </h2>
-          </div>
-          <%= tag.title %>
-        </div>
-      </div>
+        </label>
       <% end %>
-
-      <div class="submit-form">
-
-        <%= form_tag products_path, method: :get do %>
-          <%= text_field_tag :tag_one_title %>
-          <%= text_field_tag :tag_two_title %>
-          <%= text_field_tag :tag_three_title %>
           <%= hidden_field_tag "search_name", params[:search_name]%>
           <%= hidden_field_tag "search_gender", params[:search_gender]%>
           <%= hidden_field_tag "search_price", params[:search_price]%>
           <%= hidden_field_tag "search_date", params[:search_date]%>
-          <%= submit_tag :submit %>
-        <% end %>
+        <%= submit_tag :submit, class: "btn btn primary " %>
+      <% end %>
 
-      </div>
 
       <div class="test">
 
@@ -41,16 +37,19 @@
         $(document).ready(function() {
           $('.select-tag').on('click', function() {
             var tagTitle = $(this).data('tag-title');
+            if ($('#tag_one_title').val() === tagTitle.toString()) {
+              $('#tag_one_title').val("") ;
+            }
             if ($('#tag_one_title').val() === "") {
               $('#tag_one_title').val(tagTitle);
             } else if ($('#tag_two_title').val() === "") {
-              $('#tag_two_title').val(tagTitle);
+              $('#tag_two_title').val(tagTitle)
             } else if ($('#tag_three_title').val() === "") {
               $('#tag_three_title').val(tagTitle);
             } else if ($('#tag_three_title').val() !== "")  {
               var warning = $('<p>').text("Uniquement 3!");
               $('#test').append(warning);
-            } else if ($('#tag_three_title').val() === tagTitle) {
+            } else if ($('#tag_three_title').val() === tagTitle)  {
               $('#tag_three_title').val("");
             }
           })
@@ -64,6 +63,3 @@
 
     </div>
 
-
-
-    <%= link_to 'Suivant', products_path, {class: "btn btn primary"} %>
