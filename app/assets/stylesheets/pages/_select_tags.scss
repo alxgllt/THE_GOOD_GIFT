@@ -1,5 +1,5 @@
 .card {
-  height: 175px;
+  height: 230px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;
@@ -32,6 +32,17 @@
 .card-description p {
   font-size: 13px;
   }
-.padded {
-  margin-bottom: 5px;
+.padeeed {
+  margin-bottom: 10px;
+}
+
+.select-tag-container  {
+  display: block;
+
+  input:checked ~ .select-tag .card {
+     background-size: 250 px;
+     border-color: $mint;
+     border-style: solid;
+
+  }
 }
