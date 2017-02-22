@@ -1,0 +1,15 @@
+
+ <div class="search-product form-inline">
+   <%= form_tag products_path, method: :get do %>
+   <%= select_tag "Gender", options_for_select(["Homme", "Femme"], params[:search_gender]), class: "form-control" %>
+    <%= text_field_tag "Date", params[:search_date], id: "datepicker", class: "form-control"%>
+    <%= text_field_tag "Prenom", params[:search_name], class: "form-control"%>
+    <%= text_field_tag "Price", params[:search_price], class: "form-control"%>
+   <br>
+   <%= select_tag "tag_one", options_for_select(["Tech", "Musique", "Bien être", "Voyage", "Outdoor", "Food & wine" , "Arts & Culture", "Style"], params[:tag_one_title]), class: "form-control" %>
+    <%= select_tag "tag_one", options_for_select(["Tech", "Musique", "Bien être", "Voyage", "Outdoor", "Food & wine" , "Arts & Culture", "Style"], params[:tag_two_title]), class: "form-control" %>
+    <%= select_tag "tag_one", options_for_select(["Tech", "Musique", "Bien être", "Voyage", "Outdoor", "Food & wine" , "Arts & Culture", "Style"], params[:tag_three_title]), class: "form-control" %>
+    <br>
+    <%= submit_tag :submit %>
+  <% end %>
+</div>
