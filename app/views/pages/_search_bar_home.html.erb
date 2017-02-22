@@ -1,4 +1,4 @@
-    <div class="">
+    <div class="form-inline">
       <%= form_tag(select_tags_path, :method => "get") do %>
       <%= text_field_tag :search_name, params[:search_name], placeholder: "Prenom", class: "form-control"%>
       <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Sexe", class: "form-control" %>
