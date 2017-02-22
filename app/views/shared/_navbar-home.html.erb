@@ -1,4 +1,4 @@
-  <div class="navbar-wagon">
+  <div class="navbar-home navbar-wagon-fixed">
     <!-- Logo -->
     <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
@@ -40,11 +40,13 @@
     <% else %>
 
     <!-- Login text link -->
-    <%= link_to t("#", default: "Concept"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t("#", default: "Comment ça marche?"), new_user_session_path, class: "navbar-wagon-item navbar-white-link" %>
 
-    <%= link_to t("#", default: "Nos promesses"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t("#", default: "Nos idées"), new_user_session_path, class: "navbar-wagon-item navbar-white-link" %>
 
-    <%= link_to t("#", default: "Nous contacter"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t("#", default: "Nos derniers cadeaux"), new_user_session_path, class: "navbar-wagon-item navbar-white-link" %>
+
+    <%= link_to t("#", default: "Témoignages"), new_user_session_path, class: "navbar-wagon-item navbar-white-link" %>
 
     <% end %>
 
@@ -64,19 +66,34 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-    (function($){
-        $(document).ready(function(){
-            var offset = $(".navbar-wagon").offset().top;
-            $(document).scroll(function(){
-                var scrollTop = $(document).scrollTop();
-                if(scrollTop > offset){
-                    $(".navbar").css("position", "fixed");
-                }
-                else {
-                    $(".navbar").css("position", "static");
-                }
-            });
-        });
-    })(jQuery);
+  $(document).ready(function() {
+    // navbar transition jQuery script
+    $(window).scroll(function(e){
+      if ($(this).scrollTop() > 10) {
+        // $(".navbar-home").css({
+        //   "background": "white"
+        // });
+        // $(".navbar-white-link").css({
+        //   "color": "#222222", "opacity": 0.65
+        // });
+        $('.navbar-home').addClass('navbar-wagon');
+        $('.navbar-wagon').removeClass('navbar-home');
+        $('.navbar-white-link').addClass('navbar-black-link');
+        $('.navbar-black-link').removeClass('navbar-white-link');
+      }
+      else {
+        // $(".navbar-home").css({
+        //   background: "transparent",
+        // });
+        // $(".navbar-home .navbar-white-link").css({
+        //   "color": "white"
+        // });
+        $('.navbar-wagon').addClass('navbar-home');
+        $('.navbar-home').removeClass('navbar-wagon');
+        $('.navbar-black-link').addClass('navbar-white-link');
+        $('.navbar-white-link').removeClass('navbar-black-link');
+      }
+    });
+  });
   <% end %>
 <% end %>
