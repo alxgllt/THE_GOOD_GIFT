@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    #raise
     # search-bar product
     if params[:search_gender] != nil
       @products = @products.where(gender: [params[:search_gender].chars.first.capitalize, "U"])
@@ -48,6 +47,27 @@ class ProductsController < ApplicationController
   end
 
   private
+  def list_format(products)
+    product_list = {
+      big: [],
+      medium: [],
+      small: []
+    }
+    products.each do |product|
+      if product.price < 50
+        product_list[:small] << product
+      elsif product.price < 150
+        product_list[:medium] << product
+      else
+        product_list[:big] << product
+      end
+    end
+    return product_list
+  end
+
+  def calc_available_cash(price)
+    price * 0.85
+  end
 
   def default_bundle_configuration(available_cash)
     default_bundle_config = {
