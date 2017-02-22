@@ -4,9 +4,6 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     # business intelligence
-  end
-
-
     @order = Order.new()
   end
 
