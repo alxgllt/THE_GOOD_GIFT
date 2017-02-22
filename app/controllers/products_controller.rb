@@ -1,11 +1,8 @@
-require 'gift_selection_algo'
-
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :admin ]
 
   def index
     @products = Product.all
-    # business intelligence
     @order = Order.new()
   end
 
@@ -40,4 +37,8 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to root_path
   end
+
+  private
+
+
 end
