@@ -1,0 +1,10 @@
+    <div class="">
+      <%= form_tag(select_tags_path, :method => "get") do %>
+      <%= text_field_tag :search_name, params[:search_name], placeholder: "Prenom", class: "form-control"%>
+      <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Sexe", class: "form-control" %>
+      <%= text_field_tag :search_price, params[:search_price], placeholder: "Montant cagnotte (€)", class: "form-control"%>
+      <%= text_field_tag :search_date, params[:search_date], placeholder: "Date de la remise du cadeay (€)", class: "form-control", id: "datepicker"%>
+      <%= submit_tag "Je lui fais plaisir", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+

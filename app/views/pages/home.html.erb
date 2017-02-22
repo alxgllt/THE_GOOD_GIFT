@@ -5,21 +5,10 @@
 		<h1>Trouvez le cadeau parfait</h1>
 		<p>Offrir un cadeau commun n’a jamais été aussi simple</p>
 
-    <div class="">
-      <%= form_tag(select_tags_path, :method => "get") do %>
-      <%= text_field_tag :search_name, params[:search_name], placeholder: "Prenom", class: "form-control"%>
-      <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Sexe", class: "form-control" %>
-      <%= text_field_tag :search_price, params[:search_price], placeholder: "Montant cagnotte (€)", class: "form-control"%>
-      <%= text_field_tag :search_date, params[:search_date], placeholder: "Date de la remise du cadeay (€)", class: "form-control", id: "datepicker"%>
-      <% end %>
-    </div>
+    <%= render 'pages/search_bar' %>
 
-
-		<%= link_to "Je lui fais plaisir", select_tags_path, {class: "btn btn-primary"} %>
 	</div>
 </div>
-
-
 
 <div class="container text-center" id="how-it-works">
 	<div class="big-title">
