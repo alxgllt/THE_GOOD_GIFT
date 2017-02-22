@@ -1,3 +1,5 @@
+require 'gift_selection_algo'
+
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :admin ]
 
@@ -38,5 +40,4 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to root_path
   end
-
 end
