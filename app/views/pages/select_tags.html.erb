@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1>  Selectionnez les univers qui correspondent à :params[first_name] </h1>
+  <h1>  Selectionnez les univers qui correspondent à <strong> <%= params[:search_name] %> </strong> </h1>
 </div>
 <div class="wrapper">
   <div class="container">
@@ -28,10 +28,14 @@
      <!--  <div class="submit-form">
 
         <%= form_tag products_path, method: :get do %>
-        <%= text_field_tag :tag_one_title %>
-        <%= text_field_tag :tag_two_title %>
-        <%= text_field_tag :tag_three_title %>
-        <%= submit_tag :submit %>
+          <%= text_field_tag :tag_one_title %>
+          <%= text_field_tag :tag_two_title %>
+          <%= text_field_tag :tag_three_title %>
+          <%= hidden_field_tag "search_name", params[:search_name]%>
+          <%= hidden_field_tag "search_gender", params[:search_gender]%>
+          <%= hidden_field_tag "search_price", params[:search_price]%>
+          <%= hidden_field_tag "search_date", params[:search_date]%>
+          <%= submit_tag :submit %>
         <% end %>
 
       </div>
@@ -51,7 +55,7 @@
             if ($('#tag_one_title').val() === "") {
               $('#tag_one_title').val(tagTitle);
             } else if ($('#tag_two_title').val() === "") {
-              $('#tag_two_title').val(tagTitle);
+              $('#tag_two_title').val(tagTitle)
             } else if ($('#tag_three_title').val() === "") {
               $('#tag_three_title').val(tagTitle);
             } else if ($('#tag_three_title').val() !== "")  {
@@ -71,5 +75,3 @@
 
     </div>
 
-
-    <%= link_to 'Suivant', products_path, {class: "btn btn primary"} %> -->

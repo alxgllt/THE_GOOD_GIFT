@@ -1,5 +1,114 @@
-<h1>Pages#home</h1>
+<% content_for(:navbar_class, "navbar-home") %>
 
+<div class="banner">
+	<div class="banner-content text-center">
+		<h1>Trouvez le cadeau parfait</h1>
+		<p>Offrir un cadeau commun n’a jamais été aussi simple</p>
 
-<%= link_to "Decris nous l'univers de ton ami", select_tags_path, {class: "btn btn primary"} %>
+    <%= render 'pages/search_bar_home' %>
 
+	</div>
+</div>
+
+<div class="container text-center" id="how-it-works">
+	<div class="big-title">
+		<div><span class="">THE GOOD GIFT, C'EST</span></div>
+	</div>
+	<div class="title-description">
+		<div>Proposer la meilleure expérience d’achat de cadeau commun pour que vos farewell parties soient toujours des moment de plaisir partagé</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+			<%= image_tag "enveloppe.png" %>
+			<p>Indiquez le montant de votre cagnotte</p>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<%= image_tag "pick_gift.png" %>
+			<p>Choisissez des cadeaux parmi nos options personnalisées</p>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<%= image_tag "delivery.png" %>
+			<p>Recevez vos achats au bureau dans les 3 heures, joliment emballés, avec une carte</p>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="big-title">
+		<div><span class="">TROUVER L'INSPIRATION</span></div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6">
+
+		</div>
+		<div class="col-xs-12 col-sm-6">
+
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="big-title">
+		<div><span class="">NOS DERNIERS CADEAUX</span></div>
+	</div>
+	<div class="row">
+
+	</div>
+</div>
+
+<div class="container text-center" id="temoignages">
+	<div class="big-title">
+		<div><span class="">VOS TÉMOIGNAGES</span></div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+			<%= image_tag "philibert.jpg", class: "avatar-large" %>
+			<p>“Avant The Good Gift, le "chargé de cadeau” perdait systématiquement 2 heures dans l’après-midi pour aller faire le tour des boutiques du quartier. Maintenant, c’est réglé en 2 minutes. Et le résultat est top.”</p>
+			<p><strong>Philibert L.</strong></p>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<%= image_tag "julie.jpg", class: "avatar-large" %>
+			<p>“À chaque farewell, on achète des cadeaux vraiment sympas sans avoir à sortir nos calculatrices pour rester dans la cagnotte. Nos neuronnes disent merci.”</p>
+			<p><strong>Julie E.</strong></p>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<%= image_tag "nicolas.jpg", class: "avatar-large" %>
+			<p>“Avant j'aimais bien mes collègues, mais pas leur dire au revoir. Maintenant j’ai plus aucun problème à m’occuper de leur départ. Sans rancune et bon vent les gars !"</p>
+			<p><strong>Nicolas F.</strong></p>
+		</div>
+	</div>
+</div>
+
+<div class="container text-center" id="reassurance">
+	<div class="big-title">
+		<div><span class="">NOUS SUIVRE</span></div>
+	</div>
+	<div class="row">
+
+	</div>
+
+	<div class="row">
+		<div class="col-xs-6 col-sm-3">
+			<%= image_tag "lock.png" %>
+			<p>PAIEMENT SÉCURISÉ</p>
+			<span class="text-small">Payez en toute sécurité par Stripe</span>
+		</div>
+		<div class="col-xs-6 col-sm-3">
+			<%= image_tag "delivery.png" %>
+			<p>LIVRAISONS OFFERTES</p>
+			<span class="text-small">Livraison par coursier en 3 heures sur Paris</span>
+		</div>
+		<div class="col-xs-6 col-sm-3">
+			<%= image_tag "exchange.png" %>
+			<p>ÉCHANGES GRATUITS</p>
+			<span class="text-small">L’heureux destinataire peut échanger ses cadeaux sous 14 jours</span>
+		</div>
+		<div class="col-xs-6 col-sm-3">
+			<%= image_tag "customer_service.png" %>
+			<p>SERVICE CLIENT</p>
+			<span class="text-small">À votre écoute toute la journée au 01 30 15 19 78 ou par email.
+</span>
+		</div>
+	</div>
+</div>
