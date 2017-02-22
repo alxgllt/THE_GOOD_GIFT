@@ -1,5 +1,3 @@
-<% content_for(:navbar_class, "navbar-home") %>
-
 <div class="banner">
 	<div class="banner-content text-center">
 		<h1>Trouvez le cadeau parfait</h1>
@@ -34,7 +32,7 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="container" id="our-ideas">
 	<div class="big-title">
 		<div><span class="">TROUVER L'INSPIRATION</span></div>
 	</div>
@@ -48,7 +46,7 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="container" id="last-gifts">
 	<div class="big-title">
 		<div><span class="">NOS DERNIERS CADEAUX</span></div>
 	</div>
@@ -112,3 +110,24 @@
 		</div>
 	</div>
 </div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    document.querySelector('#how').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('#how-it-works').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.querySelector('#ideas').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('#our-ideas').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.querySelector('#last').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('#last-gifts').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.querySelector('#reviews').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('#temoignages').scrollIntoView({ behavior: 'smooth' });
+    });
+  <% end %>
+<% end %>
