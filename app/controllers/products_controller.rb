@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :admin ]
 
   def index
+    raise
     @products = Product.all
     # business intelligence
     @order = Order.new()
