@@ -47,5 +47,26 @@ class ProductsController < ApplicationController
 
   private
 
+  def list_format(products)
+    product_list = {
+      big: [],
+      medium: [],
+      small: []
+    }
+    products.each do |product|
+      if product.price < 50
+        product_list[:small] << product
+      elsif product.price < 150
+        product_list[:medium] << product
+      else
+        product_list[:big] << product
+      end
+    end
+    return product_list
+  end
+
+  def calc_available_cash(price)
+    price * 0.85
+  end
 
 end
