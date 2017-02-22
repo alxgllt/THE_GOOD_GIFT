@@ -15,6 +15,10 @@ class ProductsController < ApplicationController
       @products = @products.where(gender: [(params[:search_gender] == "Homme" ? "M" : "F"), "U"])
     end
 
+    #affichage bundle
+
+    @matching_list = algo_matching(@products, params[:search_price].to_i)
+
     # business intelligence
     @order = Order.new()
   end
@@ -144,6 +148,7 @@ class ProductsController < ApplicationController
       default_bundle_config[:proportion][:medium_proportion] = 0.25
       default_bundle_config[:proportion][:small_proportion] = 0.06
     end
+    default_bundle_config
   end
 
   def price_matching(available_cash, default_bundle_config, product_list)
@@ -189,6 +194,7 @@ class ProductsController < ApplicationController
     matching_list[:big].sort_by! { |product| product[:sell_priority] }
     matching_list[:medium].sort_by! { |product| product[:sell_priority] }
     matching_list[:small].sort_by! { |product| product[:sell_priority] }
+    matching_list
   end
 
 end
