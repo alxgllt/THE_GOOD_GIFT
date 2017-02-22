@@ -1,5 +1,3 @@
-require 'gift_selection_algo'
-
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :admin ]
 
@@ -13,6 +11,7 @@ class ProductsController < ApplicationController
       @products = Product.all
     end
     # business intelligence
+    raise
     @order = Order.new()
   end
 
@@ -46,5 +45,56 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.destroy
     redirect_to root_path
+  end
+
+  private
+
+  def default_bundle_configuration(available_cash)
+    default_bundle_config = {
+      big: 0,
+      medium: 0,
+      small: 0,
+      proportion: {
+        big_proportion: 0.5,
+        medium_proportion: 0.3,
+        small_proportion: 0.2
+      }
+    }
+    if available_cash =< 100 && available_cash < 150
+      default_bundle_config[:big] = 0
+      default_bundle_config[:medium] = 1
+      default_bundle_config[:small] = 1
+      default_bundle_config[:proportion][:big_proportion] = 0
+      default_bundle_config[:proportion][:medium_proportion] = 2.fdiv(3)
+      default_bundle_config[:proportion][:small_proportion] = 1.fdiv(3)
+    elsif available_cash =< 150 && available_cash < 250
+      default_bundle_config[:big] = 0
+      default_bundle_config[:medium] = 2
+      default_bundle_config[:small] = 1
+      default_bundle_config[:proportion][:big_proportion] = 0
+      default_bundle_config[:proportion][:medium_proportion] = 0.4
+      default_bundle_config[:proportion][:small_proportion] = 0.2
+    elsif available_cash =< 250 && available_cash < 400
+      default_bundle_config[:big] = 1
+      default_bundle_config[:medium] = 1
+      default_bundle_config[:small] = 1
+      default_bundle_config[:proportion][:big_proportion] = 0.5
+      default_bundle_config[:proportion][:medium_proportion] = 0.3
+      default_bundle_config[:proportion][:small_proportion] = 0.2
+    elsif available_cash =< 400 && available_cash < 600
+      default_bundle_config[:big] = 1
+      default_bundle_config[:medium] = 1
+      default_bundle_config[:small] = 1
+      default_bundle_config[:proportion][:big_proportion] = 0.5
+      default_bundle_config[:proportion][:medium_proportion] = 0.3
+      default_bundle_config[:proportion][:small_proportion] = 0.2
+     else
+      default_bundle_config[:big] = 2
+      default_bundle_config[:medium] = 1
+      default_bundle_config[:small] = 1
+      default_bundle_config[:proportion][:big_proportion] = 0.3
+      default_bundle_config[:proportion][:medium_proportion] = 0.25
+      default_bundle_config[:proportion][:small_proportion] = 0.15
+    end
   end
 end
