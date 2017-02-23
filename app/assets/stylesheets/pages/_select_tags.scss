@@ -40,7 +40,7 @@
 }
 .error-messages {
   color : red ;
-  font-size: 10px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -52,7 +52,7 @@
 
   input:checked ~ .select-tag .card {
     background-size: 250 px;
-    box-shadow: -2px 5px 18px #000100;
+    box-shadow: -2px 1px 13px #000100;
     border-color: #F9F9F9;
     border-style: ridge;
 

@@ -1,13 +1,17 @@
 
 <% #bundle page flow view : n°3 %>
-
-<h1> Bundle pages </h1>
+<div class="text-center">
+  <h1> Notre selection de Gifts </h1>
+</div>
 
 <%= render 'products/search_bar_products' %>
 
-<p> big : <%= @matching_list[:big].first.name %> </p>
-<p> medium : <%= @matching_list[:medium].first.name %></p>
-<p> small <%= @matching_list[:small].first.name %></p>
+<br>
+<br>
+
+<p> big : <%= @matching_list[:big] %> </p>
+<p> medium : <%= @matching_list[:medium]%></p>
+<p> small <%= @matching_list[:small]%></p>
 
     <div class="wrapper-bundle">
       <div class="container">
