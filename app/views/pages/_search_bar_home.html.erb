@@ -21,7 +21,7 @@
     return true;
   } else {
     $("#sexe").toggleClass('red-message-error');
-    $('.error-messages').html(paragraph);
+    $('.error-messages').append(paragraph);
     return false; // prevent it from being submitted (errors, etc.)
   }
 });
