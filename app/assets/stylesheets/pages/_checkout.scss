@@ -22,10 +22,18 @@
 
 .cart-card {
   width: 300px;
+  margin-bottom: 20px;
 }
 
 .form-card {
   width: 570px;
+}
+
+.bag-header {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .bag-item-list {
@@ -38,3 +46,16 @@
   height: 110px;
   width: 85px;
 }
+
+.bag-total {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.bag-item-wrapper {
+  display: flex;
+  padding: 0;
+}
+

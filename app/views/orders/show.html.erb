@@ -16,16 +16,21 @@
         <div class="checkout-card cart-card">
           <div class="bag">
             <div class="bag-header">
-              <h3>
-                <%=  %>  X CADEAUX
-              </h3>
+              <p>
+                <%= @order.products.size %> CADEAUX
+              </p>
               <%= link_to "Modifier", :back %>
             </div>
 
             <hr>
 
             <div class="bag-item-list">
-              <img src="https://unsplash.com/search/gadget?photo=2-1wvS-jZZQ" alt="product">
+              <%= @order.products.each do |product| %>
+                <div class="bag-item-wrapper">
+
+
+                </div>
+              <% end %>
             </div>
 
             <hr>
@@ -35,8 +40,7 @@
                 TOTAL À RÉGLER
               </p>
               <p id="total-price">
-                total price <%= @order.total_price %>
-                order cost <%= @order.cost %>
+                <%= @order.total_price %> €
               </p>
             </div>
           </div>
