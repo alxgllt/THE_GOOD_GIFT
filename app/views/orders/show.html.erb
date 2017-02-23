@@ -25,12 +25,18 @@
             <hr>
 
             <div class="bag-item-list">
-              <%= @order.products.each do |product| %>
                 <div class="bag-item-wrapper">
-
-
+                  <ul class="items">
+                    <li class="item">
+                      <img src="https://unsplash.com/?photo=zKAc297gc24" alt="">
+                      <div>
+                        <span class="item-name">Name</span>
+                        <span class="item-name">Brand</span>
+                        <span class="item-name">Desc</span>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
-              <% end %>
             </div>
 
             <hr>
