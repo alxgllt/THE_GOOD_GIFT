@@ -1,0 +1,40 @@
+.main-body {
+  background: #F2F2F2;
+}
+
+.checkout-header {
+  width: 940px;
+}
+
+.checkout-header h1 {
+  text-align: center;
+}
+
+.checkout-body {
+  width: 940px;
+  border: black;
+}
+
+.checkout-card {
+  background: #FFF;
+  padding: 20px 20px;
+}
+
+.cart-card {
+  width: 300px;
+}
+
+.form-card {
+  width: 570px;
+}
+
+.bag-item-list {
+  display: flex;
+  padding: 0;
+}
+
+.bag-item-list img {
+  display: 0 0 85px;
+  height: 110px;
+  width: 85px;
+}

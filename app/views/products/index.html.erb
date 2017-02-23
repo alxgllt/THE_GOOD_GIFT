@@ -5,9 +5,24 @@
 
 <%= render 'products/search_bar_products' %>
 
-<p> big : <%= @matching_list[:big].first.name %> </p>
-<p> medium : <%= @matching_list[:medium].first.name %></p>
-<p> small <%= @matching_list[:small].first.name %></p>
+<div class="wrapper-bundle">
+  <div class="container">
+
+    <p> big : <%= @matching_list[:big].first&.name %> </p>
+    <p> medium : <%= @matching_list[:medium].first&.name %></p>
+    <p> small <%= @matching_list[:small].first&.name %></p>
+
+   <%= form_tag orders_path do %>
+    <%= hidden_field_tag 'product_id', @matching_list[:big].first&.id %>
+    <%= hidden_field_tag 'product_id', @matching_list[:medium].first&.id %>
+    <%= hidden_field_tag 'product_id', @matching_list[:small].first&.id %>
+    <%= submit_tag 'Passer commande', class: 'btn btn-primary' %>
+   <% end %>
+
+  </div>
+</div>
+
+
 
     <div class="wrapper-bundle">
       <div class="container">
