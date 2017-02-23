@@ -2,7 +2,6 @@
   <div class="text-center">
     <h1> Notre selection de Gifts </h1>
   </div>
-
   <br>
   <%= render 'products/search_bar_products' %>
   <h1> Selectionnez vos cadeaux :</h1>
@@ -11,15 +10,50 @@
     <%= render "matching_list", matching_list: @matching_list %>
   </div>
 
-</div>
+  <%= form_tag orders_path do %>
+    <% if @matching_list[:small] != [] %>
+      <%= hidden_field_tag :small, @matching_list[:small].first.id %>
+    <% end %>
+    <% if @matching_list[:medium] != [] %>
+      <%= hidden_field_tag :medium, @matching_list[:medium].first.id %>
+    <% end %>
+    <% if @matching_list[:big] != [] %>
+      <%= hidden_field_tag :big, @matching_list[:big].first.id %>
+    <% end %>
+    <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button' %>
+  <% end %>
 
+</div>
 
 
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
       initCarousel();
+      var owly = $(".owl-carousel").owlCarousel({
+        items: 1,
+        nav: true,
+        loop: true,
+        smartSpeed: 550,
+        mouseDrag: true,
+        navText: ["Précedent","Suivant"],
+      });
+
+
+      owly.on('changed.owl.carousel', function(event) {
+        $(".order-button").attr("disabled", true);
+        setTimeout(function() {
+          var product_1 = $('.owl-carousel.owl-big .owl-item.active').children().data('id');
+          var product_2 = $('.owl-carousel.owl-medium .owl-item.active').children().data('id');
+          var product_3 = $('.owl-carousel.owl-small .owl-item.active').children().data('id');
+          $("#big").val(product_1);
+          $("#medium").val(product_2);
+          $("#small").val(product_3);
+          $(".order-button").removeAttr("disabled");
+        }, 800);
+      });
     });
-    </script>
+  </script>
 <% end %>
+
 
