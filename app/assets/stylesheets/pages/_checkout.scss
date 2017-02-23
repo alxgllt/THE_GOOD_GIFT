@@ -1,3 +1,4 @@
+
 .main-body {
   background: #F2F2F2;
 }
@@ -63,5 +64,12 @@
   display: block;
   list-style-type: none;
   padding: 0;
+}
+
+.item>div {
+  color: #666;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+
 }
 
