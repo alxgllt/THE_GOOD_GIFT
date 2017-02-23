@@ -20,6 +20,7 @@
     <% if @matching_list[:big] != [] %>
       <%= hidden_field_tag :big, @matching_list[:big].first.id %>
     <% end %>
+    <%= hidden_field_tag :total_price, params[:search_price] %>
     <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button' %>
   <% end %>
 

@@ -1,4 +1,3 @@
-<% raise %>
 <div class="main-body">
   <div class="container checkout-header">
     <h1>
@@ -17,16 +16,27 @@
         <div class="checkout-card cart-card">
           <div class="bag">
             <div class="bag-header">
-              <h3>
-                <%=  %>  X CADEAUX
-              </h3>
+              <p>
+                <%= @order.products.size %> CADEAUX
+              </p>
               <%= link_to "Modifier", :back %>
             </div>
 
             <hr>
 
             <div class="bag-item-list">
-              <img src="https://unsplash.com/search/gadget?photo=2-1wvS-jZZQ" alt="product">
+                <div class="bag-item-wrapper">
+                  <ul class="items">
+                    <li class="item">
+                      <img src="https://unsplash.com/?photo=zKAc297gc24" alt="">
+                      <div>
+                        <span class="item-name">Name</span>
+                        <span class="item-name">Brand</span>
+                        <span class="item-name">Desc</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
             </div>
 
             <hr>
@@ -36,7 +46,7 @@
                 TOTAL À RÉGLER
               </p>
               <p id="total-price">
-                300 €
+                <%= @order.total_price %> €
               </p>
             </div>
           </div>

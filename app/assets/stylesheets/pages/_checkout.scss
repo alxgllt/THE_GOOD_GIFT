@@ -1,3 +1,4 @@
+
 .main-body {
   background: #F2F2F2;
 }
@@ -22,10 +23,18 @@
 
 .cart-card {
   width: 300px;
+  margin-bottom: 20px;
 }
 
 .form-card {
   width: 570px;
+}
+
+.bag-header {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .bag-item-list {
@@ -38,3 +47,29 @@
   height: 110px;
   width: 85px;
 }
+
+.bag-total {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.bag-item-wrapper {
+  display: flex;
+  padding: 0;
+}
+
+.bag-item-wrapper ul {
+  display: block;
+  list-style-type: none;
+  padding: 0;
+}
+
+.item>div {
+  color: #666;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+
+}
+

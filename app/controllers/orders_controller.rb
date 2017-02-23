@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.create(status: "pending")
+    @order = Order.create(status: "pending", total_price: params[:total_price])
 
     if params[:big] != nil
       order_item_big = OrderItem.new()
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
       order_item_small.save
     end
 
-    @order.total_price = @order.products.inject(0) { |sum, product| sum + product.price }
+    @order.cost = @order.products.inject(0) { |sum, product| sum + product.price }
     @order.save
     redirect_to order_path(@order)
   end
