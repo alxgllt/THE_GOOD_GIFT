@@ -1,84 +1,15 @@
 <div class="product-index">
-<div class="text-center">
-  <h1> Notre selection de Gifts </h1>
-</div>
-
-<br>
-<%= render 'products/search_bar_products' %>
-<h1> Selectionnez vos cadeaux :</h1>
-
-<div class="wrapper-bundle">
-  <div class="container">
-    <div class="row">
-      <div class="bundle">
-        <div class="owl-carousel">
-          <% @matching_list[:big].each do |product| %>
-            <div>
-              <div class="product-name">
-                <%= product.name %>
-              </div>
-              <div class="product-brand">
-                <%= product.brand %>
-              </div>
-              <div class="product-image">
-                <%= cl_image_tag product.image, height: 100, crop: :fill %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+  <div class="text-center">
+    <h1> Notre selection de Gifts </h1>
   </div>
-</div>
 
+  <br>
+  <%= render 'products/search_bar_products' %>
+  <h1> Selectionnez vos cadeaux :</h1>
 
-<div class="wrapper-bundle">
-  <div class="container">
-    <div class="row">
-      <div class="bundle">
-        <div class="owl-carousel">
-          <% @matching_list[:medium].each do |product| %>
-            <div>
-              <div class="product-name">
-                <%= product.name %>
-              </div>
-              <div class="product-brand">
-                <%= product.brand %>
-              </div>
-              <div class="product-image">
-                <%= cl_image_tag product.image, height: 100, crop: :fill %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+  <div id="matching-list-container">
+    <%= render "matching_list", matching_list: @matching_list %>
   </div>
-  </div>
-  
-<div class="wrapper-bundle">
-  <div class="container">
-    <div class="row">
-      <div class="bundle">
-        <div class="owl-carousel">
-          <% @matching_list[:small].each do |product| %>
-            <div>
-              <div class="product-name">
-                <%= product.name %>
-              </div>
-              <div class="product-brand">
-                <%= product.brand %>
-              </div>
-              <div class="product-image">
-                <%= cl_image_tag product.image, height: 100, crop: :fill %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 </div>
 
@@ -87,18 +18,8 @@
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
-      $(".owl-carousel").owlCarousel({
-        items: 1,
-        nav: true,
-        loop: true,
-        smartSpeed: 550,
-        mouseDrag: true,
-        navText: ["Précedent","Suivant"],
-      });
+      initCarousel();
     });
     </script>
 <% end %>
-
-
-
 
