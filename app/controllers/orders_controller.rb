@@ -3,22 +3,42 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.order_items.build
   end
 
   def create
-    raise
-    @total_price = params[:search_price]
-    @delivery_date = params[:search_date]
-    order = Order.create!(total_price: @total_price, delivery_date: @delivery_date, address: "TBD", first_name: "John", last_name: "Doe" , email: "john@doe.com", status: "pending")
-    redirect_to order_path(order)
+    @order = Order.create(status: "pending")
+
+    if params[:big] != nil
+      order_item_big = OrderItem.new()
+      order_item_big.product = Product.find(params[:big])
+      order_item_big.price = Product.find(params[:big]).price
+      order_item_big.order = @order
+      order_item_big.save
+    end
+
+    if params[:medium] != nil
+      order_item_medium = OrderItem.new()
+      order_item_medium.product = Product.find(params[:medium])
+      order_item_medium.price = Product.find(params[:medium]).price
+      order_item_medium.order = @order
+      order_item_medium.save
+    end
+
+    if params[:small] != nil
+      order_item_small = OrderItem.new()
+      order_item_small.product = Product.find(params[:small])
+      order_item_small.price = Product.find(params[:small]).price
+      order_item_small.order = @order
+      order_item_small.save
+    end
+
+    @order.total_price = @order.products.inject(0) { |sum, product| sum + product.price }
+    @order.save
+    redirect_to order_path(@order)
   end
 
   def show
     @order = Order.find(params[:id])
   end
-
-  # private
-  # def order_params
-  #   params.require(:order).permit(:total_price, :delivery_date, :adress, :status, :payment, :first_name, :last_name, :email )
-  # end
 end

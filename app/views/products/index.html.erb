@@ -7,13 +7,14 @@
 <%= render 'products/search_bar_products' %>
 <h1> Selectionnez vos cadeaux :</h1>
 
+
 <div class="wrapper-bundle">
   <div class="container">
     <div class="row">
       <div class="bundle">
-        <div class="owl-carousel">
+        <div class="owl-carousel owl-big">
           <% @matching_list[:big].each do |product| %>
-            <div>
+            <div data-id="<%= product.id %>">
               <div class="product-name">
                 <%= product.name %>
               </div>
@@ -31,15 +32,14 @@
   </div>
 </div>
 
-
 <div class="wrapper-bundle">
   <div class="container">
 
     <div class="row">
       <div class="bundle">
-        <div class="owl-carousel">
+        <div class="owl-carousel owl-medium">
           <% @matching_list[:medium].each do |product| %>
-            <div>
+            <div data-id="<%= product.id %>">
               <div class="product-name">
                 <%= product.name %>
               </div>
@@ -61,9 +61,9 @@
   <div class="container">
     <div class="row">
       <div class="bundle">
-        <div class="owl-carousel">
+        <div class="owl-carousel owl-small">
           <% @matching_list[:small].each do |product| %>
-            <div>
+            <div data-id="<%= product.id %>">
               <div class="product-name">
                 <%= product.name %>
               </div>
@@ -72,7 +72,6 @@
               </div>
               <div class="product-image">
                 <%= cl_image_tag product.image, height: 100, crop: :fill %>
-
               </div>
             </div>
           <% end %>
@@ -83,20 +82,25 @@
 </div>
 
   <%= form_tag orders_path do %>
-  <%= hidden_field_tag 'product_id', @matching_list[:big].first&.id %>
-  <%= hidden_field_tag 'product_id', @matching_list[:medium].first&.id %>
-  <%= hidden_field_tag 'product_id', @matching_list[:small].first&.id %>
-  <%= submit_tag 'Passer commande', class: 'btn btn-primary' %>
+    <% if @matching_list[:small] != [] %>
+      <%= hidden_field_tag :small, @matching_list[:small].first.id %>
+    <% end %>
+    <% if @matching_list[:medium] != [] %>
+      <%= hidden_field_tag :medium, @matching_list[:medium].first.id %>
+    <% end %>
+    <% if @matching_list[:big] != [] %>
+      <%= hidden_field_tag :big, @matching_list[:big].first.id %>
+    <% end %>
+    <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button' %>
   <% end %>
 
 </div>
 
 
-
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
-      $(".owl-carousel").owlCarousel({
+      var owly = $(".owl-carousel").owlCarousel({
         items: 1,
         nav: true,
         loop: true,
@@ -104,10 +108,23 @@
         mouseDrag: true,
         navText: ["Précedent","Suivant"],
       });
-    });
-    </script>
-<% end %>
 
+
+      owly.on('changed.owl.carousel', function(event) {
+        $(".order-button").attr("disabled", true);
+        setTimeout(function() {
+          var product_1 = $('.owl-carousel.owl-big .owl-item.active').children().data('id');
+          var product_2 = $('.owl-carousel.owl-medium .owl-item.active').children().data('id');
+          var product_3 = $('.owl-carousel.owl-small .owl-item.active').children().data('id');
+          $("#small").val(product_1);
+          $("#medium").val(product_2);
+          $("#big").val(product_3);
+          $(".order-button").removeAttr("disabled");
+        }, 800);
+      });
+    });
+  </script>
+<% end %>
 
 
 
