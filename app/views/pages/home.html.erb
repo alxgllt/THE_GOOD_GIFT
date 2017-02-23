@@ -9,7 +9,7 @@
 </div>
 
 <div class="container text-center" id="how-it-works">
-	<div class="big-title">
+	<div class="big-title padded">
 		<div><span class="">COMMENT ÇA MARCHE?</span></div>
 	</div>
 	<div class="title-description">
@@ -33,7 +33,7 @@
 </div>
 
 <div class="container" id="our-ideas">
-	<div class="big-title">
+	<div class="big-title padded">
 		<div><span class="">TROUVEZ L'INSPIRATION</span></div>
 	</div>
 	<div class="row">
@@ -81,7 +81,7 @@
 
 <div id="last-gifts">
   <div class="container">
-    <div class="big-title">
+    <div class="big-title padded">
       <div><span class="">CE QUE VOUS RECEVREZ</span></div>
     </div>
   </div>
@@ -105,8 +105,8 @@
   </div>
 </div>
 
-  <div class="container text-center" id="temoignages">
-   <div class="big-title">
+<div class="container text-center" id="temoignages">
+ <div class="big-title padded">
     <div><span class="">VOS TÉMOIGNAGES</span></div>
   </div>
   <div class="row">
@@ -121,36 +121,36 @@
       </p>
      <p>“Avant The Good Gift, le "chargé de cadeau” perdait systématiquement 2 heures dans l’après-midi pour aller faire le tour des boutiques du quartier. Maintenant, c’est réglé en 2 minutes. Et le résultat est top.”</p>
      <p><strong>Philibert L.</strong></p>
-   </div>
-   <div class="col-xs-12 col-sm-4">
-     <%= image_tag "julie.jpg", class: "avatar-large" %>
-     <p>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      </p>
-     <p>“À chaque farewell, on achète des cadeaux vraiment sympas sans avoir à sortir nos calculatrices pour rester dans la cagnotte. Nos neuronnes disent merci.”</p>
-     <p><strong>Julie E.</strong></p>
-   </div>
-   <div class="col-xs-12 col-sm-4">
-     <%= image_tag "nicolas.jpg", class: "avatar-large" %>
-     <p>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      </p>
-     <p>“Avant j'aimais bien mes collègues, mais pas leur dire au revoir. Maintenant j’ai plus aucun problème à m’occuper de leur départ. Sans rancune et bon vent les gars !"</p>
-     <p><strong>Nicolas F.</strong></p>
-   </div>
- </div>
+     </div>
+     <div class="col-xs-12 col-sm-4">
+       <%= image_tag "julie.jpg", class: "avatar-large" %>
+       <p>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        </p>
+       <p>“À chaque farewell, on achète des cadeaux vraiment sympas sans avoir à sortir nos calculatrices pour rester dans la cagnotte. Nos neuronnes disent merci.”</p>
+       <p><strong>Julie E.</strong></p>
+     </div>
+     <div class="col-xs-12 col-sm-4">
+       <%= image_tag "nicolas.jpg", class: "avatar-large" %>
+       <p>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        </p>
+       <p>“Avant j'aimais bien mes collègues, mais pas leur dire au revoir. Maintenant j’ai plus aucun problème à m’occuper de leur départ. Sans rancune et bon vent les gars !"</p>
+       <p><strong>Nicolas F.</strong></p>
+     </div>
+  </div>
 </div>
 
 <div class="container text-center" id="reassurance">
-	<div class="big-title">
+	<div class="big-title padded">
 		<div><span class="">NOUS SUIVRE</span></div>
 	</div>
 	<div class="row">
@@ -183,22 +183,14 @@
 </div>
 
 <% content_for(:after_js) do %>
-<%= javascript_tag do %>
-document.querySelector('#how').addEventListener('click', function(e) {
-e.preventDefault();
-document.querySelector('#how-it-works').scrollIntoView({ behavior: 'smooth' });
-});
-document.querySelector('#ideas').addEventListener('click', function(e) {
-e.preventDefault();
-document.querySelector('#our-ideas').scrollIntoView({ behavior: 'smooth' });
-});
-document.querySelector('#last').addEventListener('click', function(e) {
-e.preventDefault();
-document.querySelector('#last-gifts').scrollIntoView({ behavior: 'smooth' });
-});
-document.querySelector('#reviews').addEventListener('click', function(e) {
-e.preventDefault();
-document.querySelector('#temoignages').scrollIntoView({ behavior: 'smooth' });
-});
-<% end %>
+<script>
+ // smooth scroll on nav link click
+  $('.navbar-home a').on('click', function(event) {
+    event.preventDefault();
+    $('html, body').animate({
+      scrollTop: $( $.attr(this, 'href') ).offset().top - 30
+    }, 500);
+  });
+</script>
+
 <% end %>
