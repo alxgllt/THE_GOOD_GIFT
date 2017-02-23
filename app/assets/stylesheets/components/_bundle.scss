@@ -1,10 +1,25 @@
 .wrapper-bundle {
-  border: 1px black solid;
-  margin: 50px auto;
-  padding: 50px
+  margin: 30px auto;
+  padding: 10px
 }
 
+.product-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  width: 100px;
+}
 
-.product {
-  border: 1px black solid;
+.product-index {
+  padding: 30px;
+  text-align: center;
+}
+
+.fa-arrow-left:hover{
+  color: $mint;
+}
+
+.fa-arrow-right:hover{
+  color: $mint;
 }

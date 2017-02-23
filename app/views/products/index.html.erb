@@ -1,29 +1,104 @@
+<div class="product-index">
+<div class="text-center">
+  <h1> Notre selection de Gifts </h1>
+</div>
 
-<% #bundle page flow view : n°3 %>
-
-<h1> Bundle pages </h1>
-
+<br>
 <%= render 'products/search_bar_products' %>
+<h1> Selectionnez vos cadeaux :</h1>
 
-<p> big : <%= @matching_list[:big].first.name %> </p>
-<p> medium : <%= @matching_list[:medium].first.name %></p>
-<p> small <%= @matching_list[:small].first.name %></p>
-
-    <div class="wrapper-bundle">
-      <div class="container">
-        <div class="row">
-          <div class="bundle">
-            <% @products.each do |product| %>
-            <div class="col-xs-6 col-md-4 col-sm-4 ">
-              <div class="product">
-                <ul><%= product.name %></ul>
-                <ul><%= product.brand %></ul>
-                <ul>genre: <%= product.gender %></ul>
-                <ul><%= cl_image_tag product.image, height: 70, crop: :fill %></ul>
+<div class="wrapper-bundle">
+  <div class="container">
+    <div class="row">
+      <div class="bundle">
+        <div class="owl-carousel">
+          <% @matching_list[:big].each do |product| %>
+            <div>
+              <div class="product-name">
+                <%= product.name %>
+              </div>
+              <div class="product-brand">
+                <%= product.brand %>
+              </div>
+              <div class="product-image">
+                <%= cl_image_tag product.image, height: 100, crop: :fill %>
               </div>
             </div>
-            <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+
+<div class="wrapper-bundle">
+  <div class="container">
+    <div class="row">
+      <div class="bundle">
+        <div class="owl-carousel">
+          <% @matching_list[:medium].each do |product| %>
+            <div>
+              <div class="product-name">
+                <%= product.name %>
+              </div>
+              <div class="product-brand">
+                <%= product.brand %>
+              </div>
+              <div class="product-image">
+                <%= cl_image_tag product.image, height: 100, crop: :fill %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+<div class="wrapper-bundle">
+  <div class="container">
+    <div class="row">
+      <div class="bundle">
+        <div class="owl-carousel">
+          <% @matching_list[:small].each do |product| %>
+            <div>
+              <div class="product-name">
+                <%= product.name %>
+              </div>
+              <div class="product-brand">
+                <%= product.brand %>
+              </div>
+              <div class="product-image">
+                <%= cl_image_tag product.image, height: 100, crop: :fill %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      $(".owl-carousel").owlCarousel({
+        items: 1,
+        nav: true,
+        loop: true,
+        smartSpeed: 550,
+        mouseDrag: true,
+        navText: ["Précedent","Suivant"],
+      });
+    });
+    </script>
+<% end %>
+
+
+
+
