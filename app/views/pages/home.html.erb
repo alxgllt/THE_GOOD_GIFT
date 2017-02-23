@@ -1,16 +1,16 @@
 <div class="banner">
 	<div class="banner-content text-center">
 		<h1>Trouvez le cadeau parfait</h1>
-		<p>Offrir un cadeau commun n’a jamais été aussi simple.</p>
+		<p>Offrir un cadeau à plusieurs n’a jamais été aussi simple.</p>
 
     <%= render 'pages/search_bar_home' %>
 
-	</div>
+  </div>
 </div>
 
 <div class="container text-center" id="how-it-works">
 	<div class="big-title">
-		<div><span class="">THE GOOD GIFT, C'EST</span></div>
+		<div><span class="">COMMENT ÇA MARCHE?</span></div>
 	</div>
 	<div class="title-description">
 		<div>Proposer la meilleure expérience d’achat de cadeaux communs pour que vos farewell parties soient toujours des moments de plaisir partagé.</div>
@@ -34,48 +34,119 @@
 
 <div class="container" id="our-ideas">
 	<div class="big-title">
-		<div><span class="">TROUVER L'INSPIRATION</span></div>
+		<div><span class="">TROUVEZ L'INSPIRATION</span></div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12 col-sm-6">
+		<div class="col-xs-12 col-sm-offset-1 col-sm-5">
+      <h2 class="title-alternate">LES MEILLEURS CADEAUX</h2>
+      <p>Nos experts sélectionnent les meilleures marques aux quatre coins du monde : salons, labels et concept stores sont passés au peigne fin pour vous dénicher les meilleurs produits.</p>
+      <p>Ces derniers sont ensuite validés à l’unanimité par notre comité d'évaluation avant de vous en faire profiter.</p>
+    </div>
+    <div class="col-xs-12 col-sm-5">
+      <%= image_tag "produits_sans_risque.jpg" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-5">
+      <%= image_tag "produits_sans_risque.jpg" %>
+    </div>
+    <div class="col-xs-12 col-sm-5">
+      <h2 class="title-alternate">DES CADEAUX PENSÉS POUR ELLE</h2>
+      <p>Nous vous proposons les meilleures marques et les meilleurs produits
+        pour surprendre et ravir vos amies, sans jamais manquer les dernières nouveautés. Vous n'avez qu'à nous indiquer leurs préférences, nous nous occupons du reste!</p>
+        <p>Par exemple, pour une amatrice de Food &#38; Wine, Bien-être et Style:</p>
+        <ul>
+          <li>>> Un diner pour 2 chez Cyril Lignac</li>
+          <li>>> Un massage chez Nuxe</li>
+          <li>>> La bougie et le spray La Note Parisienne</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-offset-1 col-sm-5">
+        <h2 class="title-alternate">ET POUR LUI</h2>
+        <p>Il est souvent difficile de trouver des idées originales et efficaces pour lui. Nous vous proposons ce qu'il se fait de mieux, sans vous faire perdre de temps. Surprenez-le, faites-lui plaisir!</p>
+        <p>Pour un adepte de travel, de tech et d’outdoor:</p>
+        <ul>
+          <li>>> Une montre Garmin Tactix</li>
+          <li>>> Un chargeur téléphone solaire</li>
+          <li>>> Une boussone design</li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-5">
+        <%= image_tag "produits_sans_risque.jpg" %>
+      </div>
+    </div>
+  </div>
 
-		</div>
-		<div class="col-xs-12 col-sm-6">
-
-		</div>
-	</div>
+<div id="last-gifts">
+  <div class="container">
+    <div class="big-title">
+      <div><span class="">CE QUE VOUS RECEVREZ</span></div>
+    </div>
+  </div>
+  <div class="wrapper-wood">
+    <div class="container">
+      <div class="row">
+      <div class="col-xs-6 col-sm-3">
+          <div class="box">
+            <h3 class="title-box">LES CADEAUX</h3>
+            <p>Recevez les cadeaux joliment emballés, prêts à être offerts.</p>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-offset-6 col-sm-3">
+          <div class="box">
+            <h3 class="title-box">LA GIFT-CARD</h3>
+            <p>Recevez les cadeaux joliment emballés, prêts à être offerts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="container" id="last-gifts">
-	<div class="big-title">
-		<div><span class="">NOS DERNIERS CADEAUX</span></div>
-	</div>
-	<div class="row">
-
-	</div>
-</div>
-
-<div class="container text-center" id="temoignages">
-	<div class="big-title">
-		<div><span class="">VOS TÉMOIGNAGES</span></div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 col-sm-4">
-			<%= image_tag "philibert.jpg", class: "avatar-large" %>
-			<p>“Avant The Good Gift, le "chargé de cadeau” perdait systématiquement 2 heures dans l’après-midi pour aller faire le tour des boutiques du quartier. Maintenant, c’est réglé en 2 minutes. Et le résultat est top.”</p>
-			<p><strong>Philibert L.</strong></p>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			<%= image_tag "julie.jpg", class: "avatar-large" %>
-			<p>“À chaque farewell, on achète des cadeaux vraiment sympas sans avoir à sortir nos calculatrices pour rester dans la cagnotte. Nos neuronnes disent merci.”</p>
-			<p><strong>Julie E.</strong></p>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			<%= image_tag "nicolas.jpg", class: "avatar-large" %>
-			<p>“Avant j'aimais bien mes collègues, mais pas leur dire au revoir. Maintenant j’ai plus aucun problème à m’occuper de leur départ. Sans rancune et bon vent les gars !"</p>
-			<p><strong>Nicolas F.</strong></p>
-		</div>
-	</div>
+  <div class="container text-center" id="temoignages">
+   <div class="big-title">
+    <div><span class="">VOS TÉMOIGNAGES</span></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+     <%= image_tag "philibert.jpg", class: "avatar-large" %>
+     <p>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      </p>
+     <p>“Avant The Good Gift, le "chargé de cadeau” perdait systématiquement 2 heures dans l’après-midi pour aller faire le tour des boutiques du quartier. Maintenant, c’est réglé en 2 minutes. Et le résultat est top.”</p>
+     <p><strong>Philibert L.</strong></p>
+   </div>
+   <div class="col-xs-12 col-sm-4">
+     <%= image_tag "julie.jpg", class: "avatar-large" %>
+     <p>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      </p>
+     <p>“À chaque farewell, on achète des cadeaux vraiment sympas sans avoir à sortir nos calculatrices pour rester dans la cagnotte. Nos neuronnes disent merci.”</p>
+     <p><strong>Julie E.</strong></p>
+   </div>
+   <div class="col-xs-12 col-sm-4">
+     <%= image_tag "nicolas.jpg", class: "avatar-large" %>
+     <p>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      </p>
+     <p>“Avant j'aimais bien mes collègues, mais pas leur dire au revoir. Maintenant j’ai plus aucun problème à m’occuper de leur départ. Sans rancune et bon vent les gars !"</p>
+     <p><strong>Nicolas F.</strong></p>
+   </div>
+ </div>
 </div>
 
 <div class="container text-center" id="reassurance">
@@ -106,28 +177,28 @@
 			<%= image_tag "customer_service.png" %>
 			<p>SERVICE CLIENT</p>
 			<span class="text-small">À votre écoute toute la journée au 01 30 15 19 78 ou par email.
-</span>
-		</div>
-	</div>
+      </span>
+    </div>
+  </div>
 </div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    document.querySelector('#how').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('#how-it-works').scrollIntoView({ behavior: 'smooth' });
-    });
-    document.querySelector('#ideas').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('#our-ideas').scrollIntoView({ behavior: 'smooth' });
-    });
-    document.querySelector('#last').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('#last-gifts').scrollIntoView({ behavior: 'smooth' });
-    });
-    document.querySelector('#reviews').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('#temoignages').scrollIntoView({ behavior: 'smooth' });
-    });
-  <% end %>
+<%= javascript_tag do %>
+document.querySelector('#how').addEventListener('click', function(e) {
+e.preventDefault();
+document.querySelector('#how-it-works').scrollIntoView({ behavior: 'smooth' });
+});
+document.querySelector('#ideas').addEventListener('click', function(e) {
+e.preventDefault();
+document.querySelector('#our-ideas').scrollIntoView({ behavior: 'smooth' });
+});
+document.querySelector('#last').addEventListener('click', function(e) {
+e.preventDefault();
+document.querySelector('#last-gifts').scrollIntoView({ behavior: 'smooth' });
+});
+document.querySelector('#reviews').addEventListener('click', function(e) {
+e.preventDefault();
+document.querySelector('#temoignages').scrollIntoView({ behavior: 'smooth' });
+});
+<% end %>
 <% end %>
