@@ -1,7 +1,7 @@
 <div class="banner">
 	<div class="banner-content text-center">
 		<h1>Trouvez le cadeau parfait</h1>
-		<p>Offrir un cadeau commun n’a jamais été aussi simple.</p>
+		<p>Offrir un cadeau à plusieurs n’a jamais été aussi simple.</p>
 
     <%= render 'pages/search_bar_home' %>
 
@@ -34,7 +34,7 @@
 
 <div class="container" id="our-ideas">
 	<div class="big-title">
-		<div><span class="">TROUVER L'INSPIRATION</span></div>
+		<div><span class="">TROUVEZ L'INSPIRATION</span></div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-offset-1 col-sm-5">
@@ -79,51 +79,74 @@
     </div>
   </div>
 
-  <div>
-    <div class="container" id="last-gifts">
-     <div class="big-title">
+<div id="last-gifts">
+  <div class="container">
+    <div class="big-title">
       <div><span class="">CE QUE VOUS RECEVREZ</span></div>
     </div>
   </div>
   <div class="wrapper-wood">
     <div class="container">
       <div class="row">
-      <div class="col-xs-6 col-sm-3 col-sm-offset-6">
-        <div class="box">
-          <h3 class="title-box">LES CADEAUX</h2>
-          <p>Recevez les cadeaux joliment emballés, prêts à être offerts.</p>
+      <div class="col-xs-6 col-sm-3">
+          <div class="box">
+            <h3 class="title-box">LES CADEAUX</h3>
+            <p>Recevez les cadeaux joliment emballés, prêts à être offerts.</p>
+          </div>
         </div>
-        <div class="col-xs-6 col-sm-3">
-        <div class="box">
-
+        <div class="col-xs-6 col-sm-offset-6 col-sm-3">
+          <div class="box">
+            <h3 class="title-box">LA GIFT-CARD</h3>
+            <p>Recevez les cadeaux joliment emballés, prêts à être offerts.</p>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container text-center" id="temoignages">
-	<div class="big-title">
-		<div><span class="">VOS TÉMOIGNAGES</span></div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 col-sm-4">
-			<%= image_tag "philibert.jpg", class: "avatar-large" %>
-			<p>“Avant The Good Gift, le "chargé de cadeau” perdait systématiquement 2 heures dans l’après-midi pour aller faire le tour des boutiques du quartier. Maintenant, c’est réglé en 2 minutes. Et le résultat est top.”</p>
-			<p><strong>Philibert L.</strong></p>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			<%= image_tag "julie.jpg", class: "avatar-large" %>
-			<p>“À chaque farewell, on achète des cadeaux vraiment sympas sans avoir à sortir nos calculatrices pour rester dans la cagnotte. Nos neuronnes disent merci.”</p>
-			<p><strong>Julie E.</strong></p>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			<%= image_tag "nicolas.jpg", class: "avatar-large" %>
-			<p>“Avant j'aimais bien mes collègues, mais pas leur dire au revoir. Maintenant j’ai plus aucun problème à m’occuper de leur départ. Sans rancune et bon vent les gars !"</p>
-			<p><strong>Nicolas F.</strong></p>
-		</div>
-	</div>
+  <div class="container text-center" id="temoignages">
+   <div class="big-title">
+    <div><span class="">VOS TÉMOIGNAGES</span></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+     <%= image_tag "philibert.jpg", class: "avatar-large" %>
+     <p>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      </p>
+     <p>“Avant The Good Gift, le "chargé de cadeau” perdait systématiquement 2 heures dans l’après-midi pour aller faire le tour des boutiques du quartier. Maintenant, c’est réglé en 2 minutes. Et le résultat est top.”</p>
+     <p><strong>Philibert L.</strong></p>
+   </div>
+   <div class="col-xs-12 col-sm-4">
+     <%= image_tag "julie.jpg", class: "avatar-large" %>
+     <p>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      </p>
+     <p>“À chaque farewell, on achète des cadeaux vraiment sympas sans avoir à sortir nos calculatrices pour rester dans la cagnotte. Nos neuronnes disent merci.”</p>
+     <p><strong>Julie E.</strong></p>
+   </div>
+   <div class="col-xs-12 col-sm-4">
+     <%= image_tag "nicolas.jpg", class: "avatar-large" %>
+     <p>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      </p>
+     <p>“Avant j'aimais bien mes collègues, mais pas leur dire au revoir. Maintenant j’ai plus aucun problème à m’occuper de leur départ. Sans rancune et bon vent les gars !"</p>
+     <p><strong>Nicolas F.</strong></p>
+   </div>
+ </div>
 </div>
 
 <div class="container text-center" id="reassurance">

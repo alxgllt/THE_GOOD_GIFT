@@ -43,7 +43,7 @@
 }
 
 #temoignages img {
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 #reassurance {
@@ -75,6 +75,32 @@
     background: $black;
   }
 }
+.box {
+  background: white;
+  opacity: 0.8;
+  padding: 15px 10px;
+  border-radius: 5px;
+  text-align: center;
+  h3 {
+    margin-top: 0;
+  }
+}
+.title-box {
+  text-align: center;
+  color: $black;
+  font-weight: normal;
+  font-size: 24px;
+  font-family: $gidole;
+  letter-spacing: 1px;
+  &:after {
+    content: '';
+    display: block;
+    width: 150px;
+    height: 2px;
+    margin: 20px auto 0;
+    background: $peach;
+  }
+}
 #our-ideas {
   h2 {
     margin-top: 18px;
@@ -95,5 +121,10 @@
 .wrapper-wood {
   background-image: image-url('planche.jpg');
   background-size: cover !important;
-  height: 240px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+}
+.fa-star {
+  color: #FFDF42;
 }
