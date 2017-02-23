@@ -51,6 +51,10 @@
 }
 
 /* Navbar standard link */
+
+a:focus {
+  text-decoration: none;
+}
 .navbar-wagon-link {
   margin-right: 100px;
   letter-spacing: 0.05em;
