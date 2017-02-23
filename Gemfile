@@ -24,6 +24,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+
 source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
 end
