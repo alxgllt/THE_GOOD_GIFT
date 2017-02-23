@@ -26,11 +26,3 @@
     </div>
   </div>
 </div>
-
-<% content_for(:after_js) do %>
-  <script>
-$("#form").submit(function() {
-    var CriteriaToSubmit = $(this).serialize();
-  });
- </script>
-<% end %>
