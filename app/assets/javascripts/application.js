@@ -4,5 +4,4 @@
 //= require bootstrap-datepicker
 //= require ./owl-carousel.min
 //= require ./init_datepicker
-//= require ./smoothscroll
 
