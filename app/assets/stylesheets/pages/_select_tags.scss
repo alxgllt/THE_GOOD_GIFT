@@ -6,10 +6,10 @@
   position: relative;
   margin-bottom: 20px;
   transition: all 0.5s ease;
-}
-.card:hover {
-  background-color: black;
-  transition: 0,8s ;
+  &:hover {
+    background-color: black;
+    cursor: pointer;
+  }
 }
 .card-user {
   position: absolute;
@@ -46,9 +46,6 @@
   font-weight: bold;
 }
 
-.btn-restylised {
-  font-size: 19px;
-}
 .checked-sym {
   font-size: 33px;
   position: absolute;
