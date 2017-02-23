@@ -46,7 +46,7 @@
   if ($(".select-tag-container input[type=checkbox]:checked").length >= 3) {
     return true;
   } else {
-    $('.error-messages').append(paragraph);
+    $('.error-messages').html(paragraph);
     return false; // prevent it from being submitted (errors, etc.)
     $('.error-messages').remove();
   }
