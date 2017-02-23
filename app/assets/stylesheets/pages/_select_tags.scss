@@ -34,14 +34,27 @@
   font-size: 13px;
   }
 
+.placed{
+  font-size: 20px;
+  padding-top: 60px;
+}
+.error-messages {
+  color : red ;
+  font-size: 10px;
+  font-weight: bold;
+}
 
+.btn-restylised {
+  font-size: 19px;
+}
 .select-tag-container  {
   display: block;
 
   input:checked ~ .select-tag .card {
-     background-size: 250 px;
-     border-color: $mint;
-     border-style: solid;
+    background-size: 250 px;
+    box-shadow: -2px 5px 18px #000100;
+    border-color: #F9F9F9;
+    border-style: ridge;
 
   }
 }

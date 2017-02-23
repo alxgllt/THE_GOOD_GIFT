@@ -1,65 +1,58 @@
 <div class="text-center">
-  <h1>  Selectionnez les univers qui correspondent à <strong> <%= params[:search_name] %> </strong> </h1>
+  <h1>  Selectionne les univers qui correspondent à <strong> <%= params[:search_name] %> </strong> </h1>
 </div>
 <div class="wrapper">
   <div class="container">
     <div class="row">
-     <%= form_tag products_path, method: :get do %>
-      <% @tags_as_objects.each do |tag| %>
-        <label class="select-tag-container" for="<%= tag.identifier %>">
-          <%= check_box_tag "tags[]", tag.title, false, id: tag.identifier, style: "display: none;" %>
-          <div class=" col-xs-6 col-sm-3 select-tag padeeed" data-tag-title="<%= tag.title %>">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path(tag.image_file_name) %>);">
-              <div class="card-category">
-              </div>
-              <div class="card-description">
-                <h2><%= tag.description %> </h2>
-              </div>
-              <%= tag.title %>
-            </div>
+     <%= form_tag products_path, method: :get, id: "select-universe" do %>
+     <% @tags_as_objects.each do |tag| %>
+     <label class="select-tag-container" for="<%= tag.identifier %>">
+      <%= check_box_tag "tags[]", tag.title, false, id: tag.identifier, style: "display: none;" %>
+      <div class=" col-xs-6 col-sm-3 select-tag margined" data-tag-title="<%= tag.title %>">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path(tag.image_file_name) %>);">
+          <div class="card-category text-center placed">
+            <%= tag.title %>
           </div>
-        </label>
-      <% end %>
-          <%= hidden_field_tag "search_name", params[:search_name]%>
-          <%= hidden_field_tag "search_gender", params[:search_gender]%>
-          <%= hidden_field_tag "search_price", params[:search_price]%>
-          <%= hidden_field_tag "search_date", params[:search_date]%>
-        <%= submit_tag :submit, class: "btn btn-primary " %>
-      <% end %>
-
-
-      <div class="test">
-
+        </div>
+        <div class="text-center">
+          <h4><%= tag.description %> </h4>
+        </div>
       </div>
-
-      <% content_for :after_js do %>
-      <script>
-        $(document).ready(function() {
-          $('.select-tag').on('click', function() {
-            var tagTitle = $(this).data('tag-title');
-            if ($('#tag_one_title').val() === tagTitle.toString()) {
-              $('#tag_one_title').val("") ;
-            }
-            if ($('#tag_one_title').val() === "") {
-              $('#tag_one_title').val(tagTitle);
-            } else if ($('#tag_two_title').val() === "") {
-              $('#tag_two_title').val(tagTitle)
-            } else if ($('#tag_three_title').val() === "") {
-              $('#tag_three_title').val(tagTitle);
-            } else if ($('#tag_three_title').val() !== "")  {
-              var warning = $('<p>').text("Uniquement 3!");
-              $('#test').append(warning);
-            } else if ($('#tag_three_title').val() === tagTitle)  {
-              $('#tag_three_title').val("");
-            }
-          })
-        })
-      </script>
-      #pour chaque tag_numero_title iterer si tagTitle = tag_numero_title.val
-      si oui > prendre tag_numero_title, le mettre à val("")
-      <% end %>
-
-
-
+    </label>
+    <% end %>
+    <%= hidden_field_tag "search_name", params[:search_name]%>
+    <%= hidden_field_tag "search_gender", params[:search_gender]%>
+    <%= hidden_field_tag "search_price", params[:search_price]%>
+    <%= hidden_field_tag "search_date", params[:search_date]%>
+    <div class="text-center">
+      <%= submit_tag :Suivant, class: "btn btn-primary btn-restylised" %>
     </div>
+    <% end %>
+  </div>
+</div>
+</div>
+
+<div class="error-messages text-center">
+
+</div>
+
+
+
+
+<% content_for :after_js do %>
+<script>
+ $("#select-universe").on("submit", function() {
+  var paragraph = $('<p>').text("Selectionnez au moins 3 univers")
+  if ($(".select-tag-container input[type=checkbox]:checked").length >= 3) {
+    return true;
+  } else {
+    $('.error-messages').append(paragraph);
+    return false; // prevent it from being submitted (errors, etc.)
+    $('.error-messages').remove();
+  }
+});
+</script>
+<% end %>
+
+
 
