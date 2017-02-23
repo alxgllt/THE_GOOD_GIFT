@@ -1,10 +1,27 @@
+    <div class="error-messages">
+    </div>
     <div class="form-inline">
-      <%= form_tag(select_tags_path, :method => "get") do %>
+      <%= form_tag(select_tags_path, :method => "get", id: "select-sexe") do %>
       <%= text_field_tag :search_name, params[:search_name], placeholder: "Prenom", class: "form-control"%>
-      <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Sexe", class: "form-control" %>
+      <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Sexe", class: "form-control", id: "sexe" %>
       <%= text_field_tag :search_price, params[:search_price], placeholder: "Montant cagnotte (€)", class: "form-control"%>
       <%= text_field_tag :search_date, params[:search_date], placeholder: "Date de la remise du cadeay (€)", class: "form-control", id: "datepicker"%>
       <%= submit_tag "Je lui fais plaisir", class: "btn btn-primary" %>
       <% end %>
     </div>
 
+
+<% content_for :after_js do %>
+<script>
+ $("#select-sexe").on("submit", function() {
+  var paragraph = $('<p>').text("Votre ami(e) est il un homme ou une femme ?");
+  if ($( "#sexe option:selected" ).text() !== "Sexe") {
+    return true;
+  } else {
+    $("#sexe").toggleClass('red-message-error');
+    $('.error-messages').append(paragraph);
+    return false; // prevent it from being submitted (errors, etc.)
+  }
+});
+</script>
+<% end %>

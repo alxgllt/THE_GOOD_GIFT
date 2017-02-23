@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
     tags_as_hashes = YAML.load_file(File.join(File.dirname(__FILE__), "../../db/tags.yml"))
     @tags_as_objects = tags_as_hashes.map { |tag| Tag.new(tag.symbolize_keys) }
     @products = Product.all
-
     # search-bar product
     if params[:tags] != nil
       @products = @products.where("tag_one IN (?) OR tag_two IN (?)", params[:tags], params[:tags])
@@ -41,7 +40,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
+      @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to root_path
     else
