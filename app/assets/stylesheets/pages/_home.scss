@@ -2,30 +2,30 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
-.big-title {
-    position: relative;
-    text-align: center;
-    padding: 1.5em 0 2em;
-    color: #222222;
+ .big-title {
+  position: relative;
+  text-align: center;
+  padding: 1.5em 0 2em;
+  color: #222222;
 }
 
 .big-title > div {
-    font-size: 30px;
-    line-height: 1em;
-    margin: 0 !important;
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
+  font-size: 30px;
+  line-height: 1em;
+  margin: 0 !important;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .big-title:before, .big-title:after {
-    content: '';
-    display: inline-block;
-    width: 120px;
-    height: 1px;
-    background-color: $mint;
-    vertical-align: middle;
-    margin: 0 1.5em;
+  content: '';
+  display: inline-block;
+  width: 120px;
+  height: 1px;
+  background-color: $mint;
+  vertical-align: middle;
+  margin: 0 1.5em;
 }
 
 #how-it-works img {
@@ -36,10 +36,10 @@
 .title-description {
 	display: flex;
   align-items: center;
-  justify-content: center;	
-	>div {
-		max-width: 500px;
-	}
+  justify-content: center;
+  >div {
+    max-width: 500px;
+  }
 }
 
 #temoignages img {
@@ -55,7 +55,45 @@
 		font-size: 12px;
 	}
 	img {
-	width: 50px;
-	margin-bottom: 5px;
+   width: 50px;
+   margin-bottom: 5px;
+ }
 }
+.title-alternate {
+  text-align: center;
+  color: $black;
+  font-weight: normal;
+  font-size: 24px;
+  font-family: $gidole;
+  letter-spacing: 1px;
+  &:after {
+    content: '';
+    display: block;
+    width: 150px;
+    height: 2px;
+    margin: 10px auto 0;
+    background: $black;
+  }
+}
+#our-ideas {
+  h2 {
+    margin-top: 18px;
+  }
+  img {
+    width: 100%;
+  }
+  .row {
+    margin-bottom: 25px;
+  }
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+    text-indent: -1em;
+  }
+}
+.wrapper-wood {
+  background-image: image-url('planche.jpg');
+  background-size: cover !important;
+  height: 240px;
 }
