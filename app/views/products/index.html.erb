@@ -1,8 +1,39 @@
-<div class="product-index">
-  <div class="text-center">
-    <h1> Notre selection de Gifts </h1>
+<div class="padded bar-container">
+  <div class="progression-bar">
+    <div class="circle-1">
+      <i class="fa fa-circle" aria-hidden="true"></i>
+    </div>
+    <div class="circle-2">
+      <i class="fa fa-circle" aria-hidden="true"></i>
+    </div>
+    <div class="circle-3">
+      <span class="fa-stack fa-4x">
+        <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+        <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+      </span>
+    </div>
+    <div class="circle-4">
+      <i class="fa fa-circle" aria-hidden="true"></i>
+    </div>
   </div>
-  <br>
+
+  <div class="progression-bar-text">
+    <div class="circle-1">
+      <span>Welcome</span>
+    </div>
+    <div class="circle-2">
+      <span>Sélection des univers</span>
+    </div>
+    <div class="circle-3">
+      <span><strong>Sélection des cadeaux</strong></span>
+    </div>
+    <div class="circle-4">
+      <span>Checkout</span>
+    </div>
+  </div>
+</div>
+
+<div class="product-index">
   <%= render 'products/search_bar_products' %>
   <h1> Selectionnez vos cadeaux :</h1>
 
@@ -11,29 +42,29 @@
   </div>
 
   <%= form_tag orders_path do %>
-    <% if @matching_list[:small] != [] %>
-      <%= hidden_field_tag :small, @matching_list[:small].first.id %>
-    <% end %>
-    <% if @matching_list[:medium] != [] %>
-      <%= hidden_field_tag :medium, @matching_list[:medium].first.id %>
-    <% end %>
-    <% if @matching_list[:big] != [] %>
-      <%= hidden_field_tag :big, @matching_list[:big].first.id %>
-    <% end %>
-    <%= hidden_field_tag :total_price, params[:search_price] %>
-    <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button' %>
+  <% if @matching_list[:small] != [] %>
+  <%= hidden_field_tag :small, @matching_list[:small].first.id %>
+  <% end %>
+  <% if @matching_list[:medium] != [] %>
+  <%= hidden_field_tag :medium, @matching_list[:medium].first.id %>
+  <% end %>
+  <% if @matching_list[:big] != [] %>
+  <%= hidden_field_tag :big, @matching_list[:big].first.id %>
+  <% end %>
+  <%= hidden_field_tag :total_price, params[:search_price] %>
+  <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button' %>
   <% end %>
 
 </div>
 
 
 <% content_for(:after_js) do %>
-  <script>
-    $(document).ready(function() {
-      initCarousel();
-      Ordercount ();
-    });
-  </script>
+<script>
+  $(document).ready(function() {
+    initCarousel();
+    Ordercount ();
+  });
+</script>
 <% end %>
 
 
