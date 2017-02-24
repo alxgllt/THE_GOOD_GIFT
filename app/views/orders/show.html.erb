@@ -24,10 +24,14 @@
 
             <hr>
 
+
+
             <div class="bag-item-list fixed">
                 <div class="bag-item-wrapper">
                   <ul class="items">
-                    <% @order.products.each do |product| %>
+                    <% order = @order.products.sort_by {|product| product.price}.reverse %>
+
+                    <% order.each do |product| %>
                       <li class="item">
                         <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
                         <div>
