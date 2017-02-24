@@ -2,16 +2,16 @@
     </div>
     <div class="form-inline">
       <%= form_tag(select_tags_path, :method => "get", id: "select-genre") do %>
-      <%= text_field_tag :search_name, params[:search_name], placeholder: "Prénom", class: "form-control"%>
+      <%= text_field_tag :search_name, params[:search_name], placeholder: "Prénom", class: "form-control input-lg"%>
       <!-- <span class="input-symbol-euro"> -->
       <div class="input-group">
-        <%= text_field_tag :search_price, params[:search_price], placeholder: "Budget", class: "form-control"%>
-        <div class="input-group-addon">€</div>
+        <%= text_field_tag :search_price, params[:search_price], placeholder: "Budget", class: "form-control input-lg"%>
+        <div class="input-group-addon input-lg">€</div>
       </div>
       <!-- </span> -->
-      <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Genre", class: "form-control", id: "sexe" %>
-      <%= text_field_tag :search_date, params[:search_date], placeholder: "Date de la remise du cadeau", class: "form-control hidden", id: "datepicker"%>
-      <%= submit_tag "Je lui fais plaisir", class: "btn btn-primary" %>
+      <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Genre", class: "form-control input-lg", id: "sexe" %>
+      <%= text_field_tag :search_date, params[:search_date], placeholder: "Date de la remise du cadeau", class: "form-control input-lg hidden", id: "datepicker"%>
+      <%= submit_tag "Je lui fais plaisir", class: "btn btn-primary btn-home input-lg" %>
       <% end %>
     </div>
 
