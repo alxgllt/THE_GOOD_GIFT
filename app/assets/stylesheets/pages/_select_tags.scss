@@ -4,39 +4,44 @@
   background-size: cover !important;
   color: white;
   position: relative;
-}
-.card:hover {
-  background-color: black;
-  transition: 0,8s ;
-}
-.card-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-.card-category {
-  position: absolute;
-  top: 40px;
-  left: 22px;
-  right: 23px;
-  font-size: 10px;
-  text-transform: uppercase;
-}
-.card-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
-.card-description h2 {
-  font-size: 24px;
-}
-.card-description p {
-  font-size: 13px;
+  margin-bottom: 20px;
+  transition: all 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  .card-description {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(250, 250, 250, 0.2);
+    color: white;
+    opacity: 0;
+    transition: all 0.5s ease;
   }
-
-.placed{
-  font-size: 20px;
-  padding-top: 60px;
+  .card-category {
+    font-size: 22px;
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+  }
+  &:hover {
+    background-color: black;
+    cursor: pointer;
+  }
+  &:hover .card-description {
+    opacity: 1;
+  }
+  &:hover .card-category {
+    opacity: 0;
+  }
 }
 .error-messages {
   color : red ;
@@ -44,17 +49,28 @@
   font-weight: bold;
 }
 
-.btn-restylised {
-  font-size: 19px;
+.checked-sym {
+  z-index: 1000;
+  font-size: 33px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  opacity: 0;
+  transition: all 0.5s ease;
 }
 .select-tag-container  {
   display: block;
-
   input:checked ~ .select-tag .card {
     background-size: 250 px;
-    box-shadow: -2px 1px 13px #000100;
-    border-color: #F9F9F9;
-    border-style: ridge;
-
+    box-shadow: -2px 2px 14px #222222;
+    transform: scale(1.05);
+    .checked-sym {
+      font-size: 33px;
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      opacity: 0.8;
+    }
   }
 }
+
