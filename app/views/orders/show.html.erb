@@ -24,17 +24,19 @@
 
             <hr>
 
-            <div class="bag-item-list">
+            <div class="bag-item-list fixed">
                 <div class="bag-item-wrapper">
                   <ul class="items">
-                    <li class="item">
-                      <img src="https://unsplash.com/?photo=zKAc297gc24" alt="">
-                      <div>
-                        <span class="item-name">Name</span>
-                        <span class="item-name">Brand</span>
-                        <span class="item-name">Desc</span>
-                      </div>
-                    </li>
+                    <% @order.products.each do |product| %>
+                      <li class="item">
+                        <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
+                        <div>
+                          <span class="item-name"> <%= product.name %> </span>
+                          <span class="item-brand"> <%= product.brand %>  </span>
+                          <span class="item-desc"></span>
+                        </div>
+                      </li>
+                    <% end %>
                   </ul>
                 </div>
             </div>
