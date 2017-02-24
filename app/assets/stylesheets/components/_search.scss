@@ -1,14 +1,10 @@
-// .input-symbol-euro {
-//      position: relative;
-//      display: inline-block;
-//  }
-//  .input-symbol-euro input {
-//      width: 100%;
-//  }
-//  .input-symbol-euro:after {
-//          position: absolute;
-//     color: #222222;
-//     content: "€";
-//     right: 10px;
-//     top: 24%;
-//  }
+.input-group-addon {
+  background-color: white;
+  border-left: 0;
+}
+.form-control {
+  box-shadow: none;
+}
+#search_price {
+  border-right: 0;
+}
