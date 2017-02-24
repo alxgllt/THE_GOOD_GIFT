@@ -7,10 +7,51 @@
   <div class="container checkout-body">
     <div class="row">
       <div class="col-xs-1 col-sm-8" id="forms">
+
+        <div class="checkout-card form-card city-delivery">
+          <h3>Ville de livraison:</h3>
+          <div class="field-city">
+            <div class="select">
+              <div>
+                <div class="input-field">
+                  <div class="city-image">
+                    <%= cl_image_tag("eiffel-tower_cwdq2n",
+                          width: 30, height: 45) %>
+                  </div>
+                  <%= select_tag "city", "<option>Paris</option><option>Lyon (bientôt dispo !)</option>".html_safe %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="checkout-card form-card">
+          <h3>Mon adresse e-mail</h3>
+
+
 
         </div>
+
+        <div class="checkout-card form-card">
+          <h3>Adresse de livraison</h3>
+
+
+        </div>
+
+        <div class="checkout-card form-card">
+          <h3>Paiement</h3>
+
+        </div>
+
+        <div class="place-order text-center">
+          <button class="order-btn">
+            Commander
+          </button>
+
+        </div>
+
       </div>
+
 
       <div class="col-xs-1 col-sm-4" id="forms">
         <div class="checkout-card cart-card">
@@ -23,8 +64,6 @@
             </div>
 
             <hr>
-
-
 
             <div class="bag-item-list fixed">
                 <div class="bag-item-wrapper">

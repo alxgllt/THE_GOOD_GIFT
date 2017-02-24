@@ -18,7 +18,8 @@
 
 .checkout-card {
   background: #FFF;
-  padding: 20px 20px;
+  padding: 1.25rem 20px;
+  margin: 1rem 0;
 }
 
 .cart-card {
@@ -27,7 +28,7 @@
 }
 
 .form-card {
-  width: 570px;
+  width: 615px;
 }
 
 .bag-header {
@@ -84,6 +85,7 @@
   flex: 0 0 85px;
   height: 110px;
   width: 100px;
+  padding: 10px;
 }
 
 
@@ -104,6 +106,66 @@
   font-size: 12px;
 }
 
-.fixed {
+.field-city {
+  display: flex;
+  justify-content: space-between;
+  margin-top: .813rem;
+}
+
+.delivery-country .input-field {
+  align-items: center;
+  display: flex;
+}
+
+
+.city-image {
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin-right: 25px;
+  background-repeat: no-repeat;
+  background-size: 30px;
+}
+
+.city-delivery select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: 1px solid #999;
+    background-color: #fff;
+    display: block;
+    outline: 0;
+    margin: 0;
+    padding: 11.008px 11px;
+    padding: .688rem 11px;
+    height: 4.8rem;
+    padding-left: 15px;
+    box-sizing: inherit
+}
+
+
+.order-btn {
+  background-color: #aaddc5;
+  border: none;
+  color: #cceede;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  outline: 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color .15s linear;
+  vertical-align: middle;
+  font-family: futura-pt-n7,futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  padding: 5.008px 5%;
+  padding: .313rem 5%;
+  padding: 12px 12px;
+  padding: .75rem 12px;
+  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
+  cursor: default;
 }
 
