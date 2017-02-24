@@ -35,7 +35,7 @@
 
 <div class="product-index">
   <%= render 'products/search_bar_products' %>
-  <h1> Selectionnez vos cadeaux :</h1>
+  <h1 style='margin-top: 0;'> Sélectionnez vos cadeaux:</h1>
 
   <div id="matching-list-container">
     <%= render "matching_list", matching_list: @matching_list %>
@@ -52,7 +52,7 @@
   <%= hidden_field_tag :big, @matching_list[:big].first.id %>
   <% end %>
   <%= hidden_field_tag :total_price, params[:search_price] %>
-  <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button' %>
+  <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
   <% end %>
 
 </div>
