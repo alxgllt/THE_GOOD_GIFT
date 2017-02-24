@@ -17,7 +17,7 @@
                 <div class="input-field">
                   <div class="city-image">
                     <%= cl_image_tag("eiffel-tower_cwdq2n",
-                          width: 30, height: 45) %>
+                    width: 30, height: 45) %>
                   </div>
                   <%= select_tag "city", "<option>Paris</option><option>Lyon (bientôt dispo !)</option>".html_safe %>
                 </div>
@@ -30,8 +30,8 @@
           <h3>Mon adresse e-mail</h3>
           <div class="flex-form">
             <%= simple_form_for(@order, html: {class: 'form-inline'}) do |f| %>
-              <%= f.input :email, label: false %>
-              <%= f.submit "Ajouter mon email", class: "btn btn-tertiary" %>
+            <%= f.input :email, label: false %>
+            <%= f.submit "Ajouter mon email", class: "btn btn-tertiary" %>
             <% end %>
           </div>
         </div>
@@ -40,44 +40,33 @@
           <h3>Adresse de livraison</h3>
           <form>
 
-            <input type="Prénom" class="form">
+            <input type="Prénom" class="form" placeholder="Prénom">
             <br>
-            <input type="Nom" class="form">
+            <input type="Nom" class="form" placeholder="Nom">
             <br>
-            <input type="Adresse" class="form">
+            <input type="Adresse" class="form" placeholder="Adresse">
             <br>
-            <input type="Ville" class="form">
+            <input type="Code postal" class="form" placeholder="Code postal">
             <br>
-            <input type="Code postal" class="form">
+            <input type="Ville" class="form" placeholder="Ville">
             <br>
-            <input type="Téléphone" class="form">
+            <input type="Téléphone" class="form" placeholder="Téléphone">
             <br>
-            <input type="submit" value="Valider mon adresse">
           </form>
         </div>
-
-
-        <form>
-          <div class="form-inputs">
-            <label for="exampleInputEmail1">Prénom</label>
-            <input type="email" class="form-control" id="prénom" aria-describedby="emailHelp" placeholder="Enter email">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          </div>
-
 
         <div class="checkout-card form-card">
           <h3>Paiement</h3>
 
         </div>
 
-        <div class="place-order text-center">
-          <button class="order-btn">
-            Commander
-          </button>
-          <span class="tandc">En passant votre commande, vous accéptez nos conditions générales d'utilisation ainsi que notre politique de confidentialité. Vous consentez à ce que certaines de vos données soient enregistrées par The Good Gift©.
+        <div class="place-order">
+          <div class="text-center" style="margin-bottom: 20px;">
+          <button class="btn btn-primary btn-rounded">
+              Commander
+            </button>
+          </div>
+          <span class="tandc">En passant votre commande, vous acceptez nos conditions générales d'utilisation ainsi que notre politique de confidentialité. Vous consentez à ce que certaines de vos données soient enregistrées par The Good Gift©.
           </span>
         </div>
       </div>
@@ -96,22 +85,22 @@
             <hr>
 
             <div class="bag-item-list">
-                <div class="bag-item-wrapper">
-                  <ul class="items">
-                    <% order = @order.products.sort_by {|product| product.price}.reverse %>
+              <div class="bag-item-wrapper">
+                <ul class="items">
+                  <% order = @order.products.sort_by {|product| product.price}.reverse %>
 
-                    <% order.each do |product| %>
-                      <li class="item">
-                        <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
-                        <div>
-                          <span class="item-name"> <%= product.name %> </span>
-                          <span class="item-brand"> <%= product.brand %>  </span>
-                          <span class="item-desc"></span>
-                        </div>
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
+                  <% order.each do |product| %>
+                  <li class="item">
+                    <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
+                    <div>
+                      <span class="item-name"> <%= product.name %> </span>
+                      <span class="item-brand"> <%= product.brand %>  </span>
+                      <span class="item-desc"></span>
+                    </div>
+                  </li>
+                  <% end %>
+                </ul>
+              </div>
             </div>
 
             <hr>

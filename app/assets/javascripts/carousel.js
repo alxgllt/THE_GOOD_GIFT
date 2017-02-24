@@ -5,7 +5,7 @@ function initCarousel() {
     loop: true,
     smartSpeed: 550,
     mouseDrag: true,
-    navText: ["Précedent","Suivant"],
+    navText: ["Précedent","Suivant"]
   });
 }
 

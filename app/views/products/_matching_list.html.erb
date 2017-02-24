@@ -4,7 +4,7 @@
     <div class="bundle">
       <div class="owl-carousel owl-big">
         <% @matching_list[:big].each do |product| %>
-        <div data-id="<%= product.id %>">
+        <div class="caroucard" data-id="<%= product.id %>">
           <div class="product-name">
             <%= product.name %>
           </div>
