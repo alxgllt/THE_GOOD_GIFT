@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :show, :create, :admin ]
+  skip_before_action :authenticate_user!, only: [ :show, :create, :update, :admin ]
 
   def new
     @order = Order.new
@@ -40,5 +40,18 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    @order.email = params[:email]
+    @order.update(order_params)
+    redirect_to order_path(@order)
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:email)
   end
 end
