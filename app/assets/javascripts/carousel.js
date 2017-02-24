@@ -9,8 +9,8 @@ function initCarousel() {
   });
 }
 
-function Ordercount () {
-  owly.on('changed.owl.carousel', function(event) {
+function Ordercount() {
+  $(".owl-carousel").on('changed.owl.carousel', function(event) {
         $(".order-button").attr("disabled", true);
         setTimeout(function() {
           var product_1 = $('.owl-carousel.owl-big .owl-item.active').children().data('id');

@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="bundle">
-        <div class="owl-carousel">
-          <% matching_list[:big].each do |product| %>
-            <div>
+        <div class="owl-carousel owl-big">
+          <% @matching_list[:big].each do |product| %>
+            <div data-id="<%= product.id %>">
               <div class="product-name">
                 <%= product.name %>
               </div>
@@ -24,11 +24,12 @@
 
 <div class="wrapper-bundle">
   <div class="container">
+
     <div class="row">
       <div class="bundle">
-        <div class="owl-carousel">
-          <% matching_list[:medium].each do |product| %>
-            <div>
+        <div class="owl-carousel owl-medium">
+          <% @matching_list[:medium].each do |product| %>
+            <div data-id="<%= product.id %>">
               <div class="product-name">
                 <%= product.name %>
               </div>
@@ -44,15 +45,15 @@
       </div>
     </div>
   </div>
-</div>
+  </div>
 
 <div class="wrapper-bundle">
   <div class="container">
     <div class="row">
       <div class="bundle">
-        <div class="owl-carousel">
-          <% matching_list[:small].each do |product| %>
-            <div>
+        <div class="owl-carousel owl-small">
+          <% @matching_list[:small].each do |product| %>
+            <div data-id="<%= product.id %>">
               <div class="product-name">
                 <%= product.name %>
               </div>
@@ -69,20 +70,3 @@
     </div>
   </div>
 </div>
-
-<% content_for(:after_js) do %>
-  <script>
- owly.on('changed.owl.carousel', function(event) {
-        $(".order-button").attr("disabled", true);
-        setTimeout(function() {
-          var product_1 = $('.owl-carousel.owl-big .owl-item.active').children().data('id');
-          var product_2 = $('.owl-carousel.owl-medium .owl-item.active').children().data('id');
-          var product_3 = $('.owl-carousel.owl-small .owl-item.active').children().data('id');
-          $("#big").val(product_1);
-          $("#medium").val(product_2);
-          $("#small").val(product_3);
-          $(".order-button").removeAttr("disabled");
-        }, 800);
-      });
-</script>
-<% end %>
