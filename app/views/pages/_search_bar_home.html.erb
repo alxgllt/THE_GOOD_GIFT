@@ -9,7 +9,7 @@
         <div class="input-group-addon input-lg">€</div>
       </div>
       <!-- </span> -->
-      <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Genre", class: "form-control input-lg", id: "sexe" %>
+      <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), placeholder: "Genre", class: "form-control input-lg", id: "sexe" %>
       <%= text_field_tag :search_date, params[:search_date], placeholder: "Date de la remise du cadeau", class: "form-control input-lg hidden", id: "datepicker"%>
       <%= submit_tag "Je lui fais plaisir", class: "btn btn-primary btn-home input-lg" %>
       <% end %>
