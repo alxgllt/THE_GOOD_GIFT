@@ -1,5 +1,40 @@
-<div class="padded text-center">
-  <h1>  Sélectionne les univers qui correspondent à <strong class="minted"> <%= params[:search_name] %> </strong> </h1>
+<div class="padded bar-container">
+  <div class="progression-bar">
+    <div class="circle-1">
+      <i class="fa fa-circle" aria-hidden="true"></i>
+    </div>
+    <div class="circle-2">
+      <span class="fa-stack fa-4x">
+        <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+        <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+      </span>
+    </div>
+    <div class="circle-3">
+      <i class="fa fa-circle" aria-hidden="true"></i>
+    </div>
+    <div class="circle-4">
+      <i class="fa fa-circle" aria-hidden="true"></i>
+    </div>
+  </div>
+
+  <div class="progression-bar-text">
+    <div class="circle-1">
+      <span>Welcome</span>
+    </div>
+    <div class="circle-2">
+      <span><strong>Sélection des univers</strong></span>
+    </div>
+    <div class="circle-3">
+    <span>Sélection des cadeaux</span>
+    </div>
+    <div class="circle-4">
+      <span>Checkout</span>
+    </div>
+  </div>
+</div>
+
+<div class="lil-padded text-center">
+  <h1>Les passions de <strong class="minted"> <%= params[:search_name] %></strong>: </h1>
 </div>
 <div class="wrapper">
   <div class="container">
@@ -10,36 +45,34 @@
       <%= check_box_tag "tags[]", tag.title, false, id: tag.identifier, style: "display: none;" %>
       <div class=" col-xs-6 col-sm-3 select-tag margined" data-tag-title="<%= tag.title %>">
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path(tag.image_file_name) %>);">
-          <div class="card-category text-center placed">
+          <div class="card-category text-center">
             <%= tag.title %>
           </div>
           <div class="checked-sym">
             <i class="fa fa-check" aria-hidden="true"></i>
           </div>
+          <div class="card-description">
+            <p>Pour les adeptes de l'outdoor, nous proposons des cadeaux d'exception: montres GPS, boussoles design, superbes manteaux de fourrures...</p>
+          </div>
         </div>
-        <!-- <div class="text-center">
-          <h4><#%= tag.description %> </h4>
-        </div> -->
       </div>
     </label>
     <% end %>
+  </div>
     <%= hidden_field_tag "search_name", params[:search_name]%>
     <%= hidden_field_tag "search_gender", params[:search_gender]%>
     <%= hidden_field_tag "search_price", params[:search_price]%>
     <%= hidden_field_tag "search_date", params[:search_date]%>
-    <div class="text-center">
-      <%= submit_tag :Suivant, class: "btn btn-primary btn-rounded" %>
+    <div class="lil-padded text-center">
+      <%= submit_tag (value = "Compose ton package"), class: "btn btn-primary btn-rounded" %>
     </div>
     <% end %>
-  </div>
 </div>
 </div>
 
 <div class="error-messages text-center">
 
 </div>
-
-
 
 
 <% content_for :after_js do %>
