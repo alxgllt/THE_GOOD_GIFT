@@ -1,28 +1,28 @@
 
 <div class="search-product form-inline" >
- <div class="wrapper padded-top">
-  <div class="row">
-   <%= form_tag products_path, method: :get do %>
-   <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), placeholder: "Sexe", class: "form-control" %>
-   <%= text_field_tag :search_date, params[:search_date], id: "datepicker", class: "form-control"%>
-   <%= text_field_tag :search_name, params[:search_name], placeholder: "Prénom", class: "form-control"%>
-   <%= text_field_tag :search_price, params[:search_price], placeholder: "Prix", class: "form-control"%>
-   <% @tags_as_objects.each do |tag| %>
-   <label class="select-tag-container" for="<%= tag.identifier %>">
-     <%= check_box_tag "tags[]",tag.title, params[:tags].include?(tag.title), id: tag.identifier, style: "display: none;" %>
-     <div class=" col-xs-6 col-sm-3 select-tag" data-tag-title="<%= tag.title %>">
-      <div class="card resized" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path(tag.image_file_name) %>);">
-        <div class="card-category text-center">
-          <%= tag.title %>
-        </div>
-      </div>
+  <div class="wrapper padded-top">
+    <div class="row">
+      <%= form_tag products_path, method: :get, id: "form", remote: true do %>
+        <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), placeholder: "Sexe", class: "form-control" %>
+        <%= text_field_tag :search_date, params[:search_date], id: "datepicker", class: "form-control"%>
+        <%= text_field_tag :search_name, params[:search_name], placeholder: "Prénom", class: "form-control"%>
+        <%= text_field_tag :search_price, params[:search_price], placeholder: "Prix", class: "form-control"%>
+        <% @tags_as_objects.each do |tag| %>
+          <label class="select-tag-container" for="<%= tag.identifier %>">
+            <%= check_box_tag "tags[]",tag.title, params[:tags].include?(tag.title), id: tag.identifier, style: "display: none;" %>
+          <div class=" col-xs-6 col-sm-3 select-tag" data-tag-title="<%= tag.title %>">
+            <div class="card resized" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path(tag.image_file_name) %>);">
+              <div class="card-category text-center">
+                <%= tag.title %>
+              </div>
+            </div>
+          </div>
+        </label>
+        <% end %>
+        <br>
+        <br>
+        <%= submit_tag :Changer, class: "btn btn-primary margined" %>
+      <% end %>
     </div>
-  </label>
-  <% end %>
-  <br>
-  <br>
-  <%= submit_tag :Changer, class: "btn btn-primary margined" %>
-  <% end %>
-</div>
-</div>
+  </div>
 </div>

@@ -1,0 +1,72 @@
+<div class="wrapper-bundle">
+  <div class="container">
+    <div class="row">
+      <div class="bundle">
+        <div class="owl-carousel owl-big">
+          <% @matching_list[:big].each do |product| %>
+            <div data-id="<%= product.id %>">
+              <div class="product-name">
+                <%= product.name %>
+              </div>
+              <div class="product-brand">
+                <%= product.brand %>
+              </div>
+              <div class="product-image">
+                <%= cl_image_tag product.image, height: 100, crop: :fill %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper-bundle">
+  <div class="container">
+
+    <div class="row">
+      <div class="bundle">
+        <div class="owl-carousel owl-medium">
+          <% @matching_list[:medium].each do |product| %>
+            <div data-id="<%= product.id %>">
+              <div class="product-name">
+                <%= product.name %>
+              </div>
+              <div class="product-brand">
+                <%= product.brand %>
+              </div>
+              <div class="product-image">
+                <%= cl_image_tag product.image, height: 100, crop: :fill %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<div class="wrapper-bundle">
+  <div class="container">
+    <div class="row">
+      <div class="bundle">
+        <div class="owl-carousel owl-small">
+          <% @matching_list[:small].each do |product| %>
+            <div data-id="<%= product.id %>">
+              <div class="product-name">
+                <%= product.name %>
+              </div>
+              <div class="product-brand">
+                <%= product.brand %>
+              </div>
+              <div class="product-image">
+                <%= cl_image_tag product.image, height: 100, crop: :fill %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

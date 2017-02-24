@@ -1,3 +1,67 @@
-<h1>
-  Order show et page checkout
-</h1>
+<div class="main-body">
+  <div class="container checkout-header">
+    <h1>
+      Paiement
+    </h1>
+  </div>
+  <div class="container checkout-body">
+    <div class="row">
+      <div class="col-xs-1 col-sm-8" id="forms">
+        <div class="checkout-card form-card">
+
+        </div>
+      </div>
+
+      <div class="col-xs-1 col-sm-4" id="forms">
+        <div class="checkout-card cart-card">
+          <div class="bag">
+            <div class="bag-header">
+              <p>
+                <%= @order.products.size %> CADEAUX
+              </p>
+              <%= link_to "Modifier", :back %>
+            </div>
+
+            <hr>
+
+
+
+            <div class="bag-item-list fixed">
+                <div class="bag-item-wrapper">
+                  <ul class="items">
+                    <% order = @order.products.sort_by {|product| product.price}.reverse %>
+
+                    <% order.each do |product| %>
+                      <li class="item">
+                        <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
+                        <div>
+                          <span class="item-name"> <%= product.name %> </span>
+                          <span class="item-brand"> <%= product.brand %>  </span>
+                          <span class="item-desc"></span>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="bag-total">
+              <p id="total-content">
+                TOTAL À RÉGLER
+              </p>
+              <p id="total-price">
+                <%= @order.total_price %> €
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
