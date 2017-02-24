@@ -38,8 +38,15 @@
     opacity: 1;
     color: white;
     background: #93E1D8;
+    i {
+      visibility: visible;
+    }
   }
 }
 .margined {
   margin-bottom: 10px;
+}
+
+.check-title i {
+  visibility: hidden;
 }
