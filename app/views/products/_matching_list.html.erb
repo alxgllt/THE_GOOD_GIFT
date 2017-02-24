@@ -1,74 +1,58 @@
-<div class="wrapper-bundle">
-  <div class="container">
-    <div class="row">
-      <div class="bundle">
-        <div class="owl-carousel">
-          <% matching_list[:big].each do |product| %>
-            <div>
-              <div class="product-name">
-                <%= product.name %>
-              </div>
-              <div class="product-brand">
-                <%= product.brand %>
-              </div>
-              <div class="product-image">
-                <%= cl_image_tag product.image, height: 100, crop: :fill %>
-              </div>
-            </div>
-          <% end %>
+<div class="bundle">
+  <div class="owl-carousel">
+    <% matching_list[:big].each do |product| %>
+      <div>
+        <div class="product-name">
+          <%= product.name %>
+        </div>
+        <div class="product-brand">
+          <%= product.brand %>
+        </div>
+        <div class="product-image">
+          <%= cl_image_tag product.image, height: 100, crop: :fill %>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
 
-<div class="wrapper-bundle">
-  <div class="container">
-    <div class="row">
-      <div class="bundle">
-        <div class="owl-carousel">
-          <% matching_list[:medium].each do |product| %>
-            <div>
-              <div class="product-name">
-                <%= product.name %>
-              </div>
-              <div class="product-brand">
-                <%= product.brand %>
-              </div>
-              <div class="product-image">
-                <%= cl_image_tag product.image, height: 100, crop: :fill %>
-              </div>
-            </div>
-          <% end %>
+<div class="bundle">
+  <div class="owl-carousel">
+    <% matching_list[:medium].each do |product| %>
+      <div>
+        <div class="product-name">
+          <%= product.name %>
+        </div>
+        <div class="product-brand">
+          <%= product.brand %>
+        </div>
+        <div class="product-image">
+          <%= cl_image_tag product.image, height: 100, crop: :fill %>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
 
-<div class="wrapper-bundle">
-  <div class="container">
-    <div class="row">
-      <div class="bundle">
-        <div class="owl-carousel">
-          <% matching_list[:small].each do |product| %>
-            <div>
-              <div class="product-name">
-                <%= product.name %>
-              </div>
-              <div class="product-brand">
-                <%= product.brand %>
-              </div>
-              <div class="product-image">
-                <%= cl_image_tag product.image, height: 100, crop: :fill %>
-              </div>
-            </div>
-          <% end %>
+<div class="bundle">
+  <div class="owl-carousel">
+    <% matching_list[:small].each do |product| %>
+      <div>
+        <div class="product-name">
+          <%= product.name %>
+        </div>
+        <div class="product-brand">
+          <%= product.brand %>
+        </div>
+        <div class="product-image">
+          <%= cl_image_tag product.image, height: 100, crop: :fill %>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
+
+
 
 <% content_for(:after_js) do %>
   <script>

@@ -1,6 +1,5 @@
 .wrapper-bundle {
-  margin: 30px auto;
-  padding: 10px
+  margin: 10px auto;
 }
 
 .product-image {
@@ -12,7 +11,7 @@
 }
 
 .product-index {
-  padding: 30px;
+  padding: 10px;
   text-align: center;
 }
 
@@ -22,4 +21,22 @@
 
 .fa-arrow-right:hover{
   color: $mint;
+}
+
+.search-left {
+
+  height: 80vh;
+
+}
+
+.product-right {
+  display: flex;
+  margin-bottom: 50px;
+  height: 80vh;
+  align-items: center;
+}
+
+.bundle {
+  display: flex;
+  align-items: center;
 }

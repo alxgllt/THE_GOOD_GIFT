@@ -1,31 +1,91 @@
+<h2>placeholder tunnel map</h2>
+
 <div class="product-index">
-  <div class="text-center">
-    <h1> Notre selection de Gifts </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="search-left">
+        <%= render 'products/search_bar_products' %>
+        </div>
+      </div>
+      <div class="col-xs-8">
+        <div class="product-right" id="matching-list-container">
+          <div class="col-xs-5">
+            <div class="bundle bundle-left">
+              <div class="owl-carousel">
+                <% @matching_list[:big].each do |product| %>
+                  <div>
+                    <div class="product-name">
+                      <%= product.name %>
+                    </div>
+                    <div class="product-brand">
+                      <%= product.brand %>
+                    </div>
+                    <div class="product-image">
+                      <%= cl_image_tag product.image, height: 100, crop: :fill %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-7">
+            <div class="bundle">
+              <div class="owl-carousel">
+                <% @matching_list[:medium].each do |product| %>
+                  <div>
+                    <div class="product-name">
+                      <%= product.name %>
+                    </div>
+                    <div class="product-brand">
+                      <%= product.brand %>
+                    </div>
+                    <div class="product-image">
+                      <%= cl_image_tag product.image, height: 100, crop: :fill %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="bundle">
+              <div class="owl-carousel">
+                <% @matching_list[:small].each do |product| %>
+                  <div>
+                    <div class="product-name">
+                      <%= product.name %>
+                    </div>
+                    <div class="product-brand">
+                      <%= product.brand %>
+                    </div>
+                    <div class="product-image">
+                      <%= cl_image_tag product.image, height: 100, crop: :fill %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <%= form_tag orders_path do %>
+        <% if @matching_list[:small] != [] %>
+          <%= hidden_field_tag :small, @matching_list[:small].first.id %>
+        <% end %>
+        <% if @matching_list[:medium] != [] %>
+          <%= hidden_field_tag :medium, @matching_list[:medium].first.id %>
+        <% end %>
+        <% if @matching_list[:big] != [] %>
+          <%= hidden_field_tag :big, @matching_list[:big].first.id %>
+        <% end %>
+        <%= hidden_field_tag :total_price, params[:search_price] %>
+        <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button' %>
+      <% end %>
+    </div>
   </div>
-  <br>
-  <%= render 'products/search_bar_products' %>
-  <h1> Selectionnez vos cadeaux :</h1>
-
-  <div id="matching-list-container">
-    <%= render "matching_list", matching_list: @matching_list %>
-  </div>
-
-  <%= form_tag orders_path do %>
-    <% if @matching_list[:small] != [] %>
-      <%= hidden_field_tag :small, @matching_list[:small].first.id %>
-    <% end %>
-    <% if @matching_list[:medium] != [] %>
-      <%= hidden_field_tag :medium, @matching_list[:medium].first.id %>
-    <% end %>
-    <% if @matching_list[:big] != [] %>
-      <%= hidden_field_tag :big, @matching_list[:big].first.id %>
-    <% end %>
-    <%= hidden_field_tag :total_price, params[:search_price] %>
-    <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button' %>
-  <% end %>
-
 </div>
-
 
 <% content_for(:after_js) do %>
   <script>
