@@ -112,7 +112,7 @@
   margin-top: .813rem;
 }
 
-.delivery-country .input-field {
+.delivery-country.input-field {
   align-items: center;
   display: flex;
 }
@@ -167,5 +167,75 @@
   margin: 0 0 24px;
   margin: 0 0 1.5rem;
   cursor: default;
+}
+
+.email-card {
+  height: 140px;
+}
+
+#order_email {
+  background-color: #fff;
+  float: left;
+  width: 330px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  border: 1px solid #999;
+  background-color: #fff;
+  display: block;
+  outline: 0;
+  margin: 0;
+  padding: 11.008px 11px;
+  padding: .688rem 11px;
+  height: 4.8rem;
+  padding-left: 15px;
+  box-sizing: inherit
+}
+
+.btn.btn-tertiary {
+  background-color: #eee;
+  margin-left: 15px;
+  margin-top: 3px;
+  height: 32px;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  outline: 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color .15s linear;
+  vertical-align: middle;
+  font-family: futura-pt-n7,futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  font-size: .75rem;
+  letter-spacing: .119rem;
+  font-size: 1.5rem;
+}
+
+.btn.btn-tertiary:hover {
+  text-decoration: none;
+  transition: background-color .15s linear;
+}
+
+.delivery-card {
+  height: 1000px;
+}
+
+.tandc {
+  color: #999;
+  display: block;
+  letter-spacing: .025rem;
+  line-height: 1.5rem;
+  margin-bottom: 1.875rem;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
 }
 

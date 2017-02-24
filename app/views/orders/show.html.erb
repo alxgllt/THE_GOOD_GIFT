@@ -8,8 +8,9 @@
     <div class="row">
       <div class="col-xs-1 col-sm-8" id="forms">
 
+
         <div class="checkout-card form-card city-delivery">
-          <h3>Ville de livraison:</h3>
+          <h3>Ville de livraison</h3>
           <div class="field-city">
             <div class="select">
               <div>
@@ -25,14 +26,17 @@
           </div>
         </div>
 
-        <div class="checkout-card form-card">
+        <div class="checkout-card form-card email-card">
           <h3>Mon adresse e-mail</h3>
-
-
-
+          <div class="flex-form">
+            <%= simple_form_for(@order, html: {class: 'form-inline'}) do |f| %>
+              <%= f.input :email, label: false %>
+              <%= f.submit "Ajouter mon email", class: "btn btn-tertiary" %>
+            <% end %>
+          </div>
         </div>
 
-        <div class="checkout-card form-card">
+        <div class="checkout-card form-card delivery-card">
           <h3>Adresse de livraison</h3>
 
 
@@ -47,9 +51,9 @@
           <button class="order-btn">
             Commander
           </button>
-
+          <span class="tandc">En passant votre commande, vous accéptez nos conditions générales d'utilisation ainsi que notre politique de confidentialité. Vous consentez à ce que certaines de vos données soient enregistrées par The Good Gift©.
+          </span>
         </div>
-
       </div>
 
 
@@ -65,7 +69,7 @@
 
             <hr>
 
-            <div class="bag-item-list fixed">
+            <div class="bag-item-list">
                 <div class="bag-item-wrapper">
                   <ul class="items">
                     <% order = @order.products.sort_by {|product| product.price}.reverse %>
