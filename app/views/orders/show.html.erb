@@ -73,6 +73,7 @@
 
 
       <div class="col-xs-1 col-sm-4" id="forms">
+        <div id="sticky-anchor"></div>
         <div class="checkout-card cart-card">
           <div class="bag">
             <div class="bag-header">
@@ -119,6 +120,27 @@
     </div>
   </div>
 </div>
+
+
+
+<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    function sticky_relocate() {
+      var window_top = $(window).scrollTop();
+      var div_top = $('#sticky-anchor').offset().top;
+
+      if (window_top > div_top)
+          $('.cart-card').addClass('sticky');
+      else
+          $('.cart-card').removeClass('sticky');
+    }
+    $(function(){
+        $(window).scroll(sticky_relocate);
+        sticky_relocate();
+    });
+  });
+</script>
 
 
 
