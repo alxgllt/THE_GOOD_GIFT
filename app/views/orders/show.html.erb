@@ -54,7 +54,7 @@
 
         <div class="place-order">
           <div class="text-center" style="margin-bottom: 20px;">
-          <button class="btn btn-primary btn-rounded">
+          <button class="btn btn-primary btn-rounded" id="payment-btn">
               Commander
             </button>
           </div>
@@ -63,18 +63,16 @@
         </div>
       </div>
 
-
           <%= form_tag order_payments_path(@order) do %>
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button btn btn-primary btn-rounded" style="display: none;"
          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-name="My Order"
           data-email="<%= @order.email %>"
           data-total_price="<%= @order.total_price_cents %>"
           data-currency="<%= @order.total_price.currency %>">
+          data-description="Payez <%= @order.total_price%> "
         </script>
         <% end %>
-
-
 
     <div class="col-xs-1 col-sm-4" id="forms">
         <div id="sticky-anchor"></div>
@@ -156,5 +154,16 @@
       });
     <% end %>
   <% end %>
+
 </script>
+
+<script>
+<% content_for(:after_js) do %>
+$(document).ready(function() {
+  $('#payment-btn').click( function () {
+      $('stripe-button-el').submit();
+  })
+  <% end %>
+  </script>
+
 
