@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :show, :create, :update, :admin ]
+  respond_to :js, :json, :html
 
   def new
     @order = Order.new
@@ -45,8 +46,17 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.email = params[:email]
-    @order.update(order_params)
-    redirect_to order_path(@order)
+    if @order.update(order_params)
+    respond_to do |format|
+        format.html { redirect_to order_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render order_path }
+        format.js
+      end
+    end
   end
 
   private
@@ -54,4 +64,5 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:email)
   end
+
 end
