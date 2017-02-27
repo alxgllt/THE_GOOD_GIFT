@@ -1,6 +1,23 @@
-<h1>Order</h1>
-<ul>
-  <li>Status: <%= @order.status %></li>
-  <li>Item: <%= @order.id %></li>
-  <li>Amount: <%= humanized_money_with_symbol(@order.total_price) %></li>
-<ul>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path('wood.png') %>);">
+  <div class="banner-content">
+    <h1>Votre commande s'est bien deroulée!</h1>
+    <p> Merci d'avoir choisi The Good Gift.</p>
+  </div>
+</div>
+
+<div class="container margined">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <h4>Rappel de votre commande : </h4>
+        Status : <%=  @order.status %> <br>
+         Price : <%= @order.total_price %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <p>Vous allez recevoir un email de confirmation sous peu.</p>
+        Decouvrez encore plus de gifts sur https://www.thegoodgift.co/
+    </div>
+  </div>
+</div>
+
+
+
