@@ -23,6 +23,9 @@ gem 'carrierwave'#, github: 'carrierwaveuploader/carrierwave'
 # Payment
 
 
+# Address
+gem 'geocoder'
+
 
 gem 'sass-rails'
 gem 'jquery-rails'
