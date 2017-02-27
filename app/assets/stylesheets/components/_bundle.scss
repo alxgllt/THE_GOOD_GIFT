@@ -4,6 +4,7 @@
 }
 
 .product-image {
+  margin-left: 65px;
   }
 
 .product-index {
@@ -23,3 +24,17 @@
   font-size: 22px;
 }
 
+.bundle {
+  position: relative
+}
+
+.owl-prev {
+  position: absolute;
+  top: 95px;
+}
+
+.owl-next {
+  position: absolute;
+  top: 95px;
+  right: 0px;
+}
