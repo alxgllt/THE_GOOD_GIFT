@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170227125958) do
 
   # These are extensions that must be enabled in order to support this database
@@ -40,17 +41,17 @@ ActiveRecord::Schema.define(version: 20170227125958) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "total_price"
     t.date     "delivery_date"
     t.string   "address"
     t.string   "status"
     t.json     "payment"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.integer  "cost"
+    t.integer  "total_price_cents", default: 0, null: false
     t.string   "phone"
   end
 
@@ -64,7 +65,6 @@ ActiveRecord::Schema.define(version: 20170227125958) do
   create_table "products", force: :cascade do |t|
     t.string   "brand"
     t.string   "name"
-    t.integer  "price"
     t.text     "description"
     t.string   "description_short"
     t.string   "image"
@@ -75,9 +75,10 @@ ActiveRecord::Schema.define(version: 20170227125958) do
     t.boolean  "online_supplied"
     t.integer  "stock"
     t.boolean  "availability"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "supplier_name"
+    t.integer  "price_cents",       default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|

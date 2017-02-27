@@ -8,6 +8,7 @@ csv.each do |row|
   url = attributes["remote_images_urls"]
   puts url
   attributes.delete("remote_images_urls")
+  # p attributes
   product = Product.new(attributes)
   product.remote_image_url = url
   product.save!
