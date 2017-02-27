@@ -40,12 +40,15 @@
 
         <div class="checkout-card form-card address-card">
           <h3>Adresse de livraison</h3>
-          <span class="phone-replay-data hidden" id="phone-data" data-bind="phone"></span>
-          <button class="btn btn-tertiary hidden" id='edit-phone-btn'>MODIFIER</button>
+          <span class="-replay-data hidden" id="phone-data" data-bind="phone"></span>
+          <br>
+          <span class="-replay-data hidden" id="address-data" data-bind="address"></span>
+          <br>
+          <button class="btn btn-tertiary hidden" id='edit-address-btn'>MODIFIER</button>
 
           <%= simple_form_for(@order, html: { class: "form-horizontal"}, remote: true) do |f| %>
             <%= f.input :phone, placeholder: 'Téléphone portable', label: false, id: 'phone-field' %>
-            <%= f.input :address, placeholder: 'Addresse', label: false, id: 'address-field' %>
+            <%= f.input :address, label: "Adresse", label: false, required: true, placeholder: "Adresse" %>
             <%= f.submit "Valider", class: "btn btn-primary", id: 'btn-address' %>
           <% end %>
 
@@ -123,21 +126,21 @@
   </div>
 </div>
 
-<script>
-  <% content_for(:after_js) do %>
-    <%= javascript_tag do %>
-      $(document).ready(function() {
-        function sticky_relocate() {
-          var window_top = $(window).scrollTop();
-          var div_top = $('#sticky-anchor').offset().top;
-          if (window_top > div_top)
-              $('.cart-card').addClass('sticky');
-          else
-              $('.cart-card').removeClass('sticky');
-        }
-        $(function(){
-            $(window).scroll(sticky_relocate);
-            sticky_relocate();
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      initializeAutocomplete('order_address');
+      function sticky_relocate() {
+        var window_top = $(window).scrollTop();
+        var div_top = $('#sticky-anchor').offset().top;
+        if (window_top > div_top)
+            $('.cart-card').addClass('sticky');
+        else
+            $('.cart-card').removeClass('sticky');
+      }
+      $(function(){
+          $(window).scroll(sticky_relocate);
+          sticky_relocate();
         });
         document.getElementById("edit-email-btn").onclick = function fun() {
           $('#email-data').text('<%= @order.email %>');
@@ -152,9 +155,36 @@
           $('#edit-phone-btn').addClass('hidden');
         }
       });
+<<<<<<< HEAD
     <% end %>
   <% end %>
 
+=======
+      document.getElementById("edit-email-btn").onclick = function fun() {
+        $('#email-data').text('<%= @order.email %>');
+        $('#email-data').addClass('hidden');
+        $('#email-input-field').removeClass('hidden');
+        $('#edit-email-btn').addClass('hidden');
+      }
+      document.getElementById("edit-address-btn").onclick = function fun() {
+        $('#phone-data').text('<%= @order.phone %>');
+        $('#address-data').text('<%= @order.address %>');
+        $('#phone-data').addClass('hidden');
+        $('#address-data').addClass('hidden');
+        $('#order_phone').removeClass('hidden');
+        $('#order_address').removeClass('hidden');
+        $('#edit-address-btn').addClass('hidden');
+        $('#btn-address').removeClass('hidden');
+      }
+    });
+  </script>
+<% end %>
+
+
+<!-- Include Google Maps JS API -->
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDiHOA5gVSDnau__WqzMAwWOIXmwDTVfII">
+>>>>>>> master
 </script>
 
 <script>
