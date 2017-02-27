@@ -183,7 +183,42 @@
   float: left;
   width: 330px;
   -moz-appearance: none;
-  -webkit-appearance: none;
+  border-radius: 0;
+  border: 1px solid #999;
+  background-color: #fff;
+  display: block;
+  outline: 0;
+  padding: 11.008px 11px;
+  padding: .688rem 11px;
+  height: 4.8rem;
+  padding-left: 15px;
+  box-sizing: inherit
+}
+
+#order_phone {
+  background-color: #fff;
+  float: left;
+  margin-bottom: 10px;
+  width: 330px;
+  -moz-appearance: none;
+  border-radius: 0;
+  border: 1px solid #999;
+  background-color: #fff;
+  display: block;
+  outline: 0;
+  padding: 11.008px 11px;
+  padding: .688rem 11px;
+  height: 4.8rem;
+  padding-left: 15px;
+  box-sizing: inherit
+}
+
+#order_address {
+  background-color: #fff;
+  float: left;
+  margin-bottom: 10px;
+  width: 330px;
+  -moz-appearance: none;
   border-radius: 0;
   border: 1px solid #999;
   background-color: #fff;
@@ -235,8 +270,8 @@
   margin-top: 10px;
 }
 
-.delivery-card {
-  height: 470px;
+.address-card {
+  height: 270px;
 }
 
 .tandc {
@@ -268,5 +303,18 @@
   height: 4.8rem;
   padding-left: 15px;
   box-sizing: inherit;
+}
+
+.form-horizontal {
+  margin-left: 15px;
+}
+
+#btn-address {
+  text-align: center;
+  display: block;
+  margin-top: 20px;
+  margin-left: -15px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 

@@ -35,8 +35,11 @@ class OrdersController < ApplicationController
     end
 
     @order.cost = @order.products.inject(0) { |sum, product| sum + product.price }
-    @order.save
-    redirect_to order_path(@order)
+    if @order.save
+      redirect_to order_path(@order)
+    else
+      redirect_to root_path
+    end
   end
 
   def show
@@ -45,9 +48,11 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.email = params[:email]
+
     if @order.update(order_params)
-    respond_to do |format|
+      @email_changed = order_params[:email]
+      @phone_changed = order_params[:phone]
+      respond_to do |format|
         format.html { redirect_to order_path }
         format.js
       end
@@ -57,12 +62,13 @@ class OrdersController < ApplicationController
         format.js
       end
     end
+
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:email)
+    params.require(:order).permit(:email, :address, :phone)
   end
 
 end

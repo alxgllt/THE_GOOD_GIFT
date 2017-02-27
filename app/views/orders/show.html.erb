@@ -30,7 +30,7 @@
           <h3>Mon adresse e-mail</h3>
           <div class="flex-form">
             <span class="email-replay-data hidden" id="email-data" data-bind="email"></span>
-            <button class="btn btn-tertiary hidden" id='edit-btn'>MODIFIER</button>
+            <button class="btn btn-tertiary hidden" id='edit-email-btn'>MODIFIER</button>
             <%= simple_form_for(@order, html: {class: 'form-inline', id: 'email-input-field'}, remote: true) do |f| %>
               <%= f.input :email, label: false, id: 'email-field' %>
               <%= f.submit "Ajouter mon email", class: "btn btn-tertiary" %>
@@ -38,28 +38,16 @@
           </div>
         </div>
 
-        <div class="checkout-card form-card delivery-card">
+        <div class="checkout-card form-card address-card">
           <h3>Adresse de livraison</h3>
-          <form>
-            <input type="Prénom" class="form" placeholder="Prénom">
-            <br>
-            <input type="Nom" class="form" placeholder="Nom">
-            <br>
-            <input type="Adresse" class="form" placeholder="Adresse">
-            <br>
-            <input type="Code postal" class="form" placeholder="Code postal">
-            <br>
-            <input type="Ville" class="form" placeholder="Ville">
-            <br>
-            <input type="Téléphone" class="form" placeholder="Téléphone">
-            <br>
-          </form>
-          <button class="btn-primary">LIVRER À CETTE ADRESSE</button>
+          <span class="phone-replay-data hidden" id="phone-data" data-bind="phone"></span>
+          <button class="btn btn-tertiary hidden" id='edit-phone-btn'>MODIFIER</button>
 
-        </div>
-
-        <div class="checkout-card form-card">
-          <h3>Paiement</h3>
+          <%= simple_form_for(@order, html: { class: "form-horizontal"}, remote: true) do |f| %>
+            <%= f.input :phone, placeholder: 'Téléphone portable', label: false, id: 'phone-field' %>
+            <%= f.input :address, placeholder: 'Addresse', label: false, id: 'address-field' %>
+            <%= f.submit "Valider", class: "btn btn-primary", id: 'btn-address' %>
+          <% end %>
 
         </div>
 
@@ -142,11 +130,17 @@
             $(window).scroll(sticky_relocate);
             sticky_relocate();
         });
-        document.getElementById("edit-btn").onclick = function fun() {
+        document.getElementById("edit-email-btn").onclick = function fun() {
           $('#email-data').text('<%= @order.email %>');
           $('#email-data').addClass('hidden');
           $('#email-input-field').removeClass('hidden');
-          $('#edit-btn').addClass('hidden');
+          $('#edit-email-btn').addClass('hidden');
+        }
+        document.getElementById("edit-phone-btn").onclick = function fun() {
+          $('#phone-data').text('<%= @order.phone %>');
+          $('#phone-data').addClass('hidden');
+          $('#phone-input-field').removeClass('hidden');
+          $('#edit-phone-btn').addClass('hidden');
         }
       });
     <% end %>
