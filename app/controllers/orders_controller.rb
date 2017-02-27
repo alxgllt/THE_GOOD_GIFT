@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :show, :create, :update, :admin ]
+
+  skip_before_action :authenticate_user!, only: [ :show, :create, :update, :admin, :confirmation ]
   respond_to :js, :json, :html
 
   def new
-    @order = Order.new
-    @order.order_items.build
+        @order = Order.find(params[:id])
   end
 
   def create
@@ -63,6 +63,10 @@ class OrdersController < ApplicationController
       end
     end
 
+  end
+
+  def confirmation
+    @order = Order.where(status: 'paid').find(params[:id])
   end
 
   private
