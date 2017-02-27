@@ -13,7 +13,7 @@
           <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), placeholder: "Sexe", class: "form-control" %>
           <%= submit_tag :Actualiser, class: "btn btn-primary" %>
       </div>
-
+<br>
       <div class="container-checkbox">
         <% @tags_as_objects.each do |tag| %>
         <label class="checkboxes" for="<%= tag.identifier %>">
