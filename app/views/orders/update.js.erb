@@ -5,9 +5,13 @@
   $('#edit-email-btn').removeClass('hidden');
 <% end %>
 
-<% if @phone_changed %>
+<% if @phone_changed || @address_changed %>
   $('#phone-data').text('<%= @order.phone %>');
+  $('#address-data').text('<%= @order.address %>');
+  $('#order_phone').addClass('hidden');
   $('#phone-data').removeClass('hidden');
-  $('#phone-input-field').addClass('hidden');
-  $('#edit-phone-btn').removeClass('hidden');
+  $('#order_address').addClass('hidden');
+  $('#address-data').removeClass('hidden');
+  $('#edit-address-btn').removeClass('hidden');
+  $('#btn-address').addClass('hidden');
 <% end %>

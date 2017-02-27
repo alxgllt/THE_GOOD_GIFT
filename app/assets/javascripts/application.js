@@ -4,4 +4,5 @@
 //= require bootstrap-datepicker
 //= require_tree ./vendor
 //= require_tree ./app
+//= require_tree .
 
