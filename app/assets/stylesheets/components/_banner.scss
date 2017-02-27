@@ -3,21 +3,21 @@
   text-align: center;
   height: 100vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), image-url('banner/dave-lastovskiy-127581.jpg');
+  background-image: linear-gradient(-225deg, rgba(0,10,-17,0.5) 24%, rgba(0,10,-17,0.5) 11%), image-url('banner/test1.jpg');
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
   h1 {
-    font-size: 45px;
+    font-size: 40px;
     font-weight: bold;
-    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
     margin-bottom: 15px;
   }
   p {
     font-size: 30px;
     font-weight: lighter;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 30px;
+    margin-bottom: 35px;
   }
 }

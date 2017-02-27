@@ -34,8 +34,8 @@
 }
 
 #how-it-works img {
-	width: 100px;
-	margin-bottom: 7px;
+	width: 125px;
+	margin-bottom: 20px;
 }
 
 .title-description {
@@ -111,10 +111,11 @@
     margin-top: 18px;
   }
   img {
-    width: 100%;
+    width: 70%;
+    text-align: center;
   }
   .row {
-    margin-bottom: 25px;
+    margin-bottom: 45px;
   }
   ul {
     list-style: none;
@@ -135,4 +136,10 @@
 }
 .padded {
   padding: 50px 0;
+}
+
+.package-home {
+  display: flex;
+  text-align: center;
+  align-items: center;
 }

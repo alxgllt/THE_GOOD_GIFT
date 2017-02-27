@@ -1,0 +1,13 @@
+<% if @email_changed %>
+  $('#email-data').text('<%= @order.email %>');
+  $('#email-data').removeClass('hidden');
+  $('#email-input-field').addClass('hidden');
+  $('#edit-email-btn').removeClass('hidden');
+<% end %>
+
+<% if @phone_changed %>
+  $('#phone-data').text('<%= @order.phone %>');
+  $('#phone-data').removeClass('hidden');
+  $('#phone-input-field').addClass('hidden');
+  $('#edit-phone-btn').removeClass('hidden');
+<% end %>

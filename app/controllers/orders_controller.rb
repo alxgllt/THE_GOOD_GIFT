@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
+
   skip_before_action :authenticate_user!, only: [ :show, :create, :update, :admin, :confirmation ]
+  respond_to :js, :json, :html
 
   def new
         @order = Order.find(params[:id])
@@ -33,8 +35,11 @@ class OrdersController < ApplicationController
     end
 
     @order.cost = @order.products.inject(0) { |sum, product| sum + product.price }
-    @order.save
-    redirect_to order_path(@order)
+    if @order.save
+      redirect_to order_path(@order)
+    else
+      redirect_to root_path
+    end
   end
 
   def show
@@ -43,9 +48,21 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.email = params[:email]
-    @order.update(order_params)
-    redirect_to order_path(@order)
+
+    if @order.update(order_params)
+      @email_changed = order_params[:email]
+      @phone_changed = order_params[:phone]
+      respond_to do |format|
+        format.html { redirect_to order_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render order_path }
+        format.js
+      end
+    end
+
   end
 
   def confirmation
@@ -55,6 +72,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:email)
+    params.require(:order).permit(:email, :address, :phone)
   end
+
 end
