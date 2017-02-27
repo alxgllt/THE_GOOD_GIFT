@@ -3,9 +3,11 @@ function initCarousel() {
     items: 1,
     nav: true,
     loop: true,
-    smartSpeed: 550,
+    smartSpeed: 580,
     mouseDrag: true,
-    navText: ["Précedent","Suivant"]
+    navText: ['<i class="fa arrow fa-arrow-left" aria-hidden="true"></i>','<i class="fa arrow fa-arrow-right" aria-hidden="true"></i>'],
+    margin:10,
+    autoHeight:true
   });
 }
 
