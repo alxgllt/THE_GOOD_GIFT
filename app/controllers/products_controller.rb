@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
 
     #affichage bundle
 
-    @matching_list = algo_matching(@products, params[:search_price].to_i)
+    @matching_list = algo_matching(@products, params[:search_price].to_i * 100)
 
     # business intelligence
     @order = Order.new()
@@ -76,9 +76,9 @@ class ProductsController < ApplicationController
       small: []
     }
     products.each do |product|
-      if product.price < 50
+      if product.price_cents < 5000
         product_list[:small] << product
-      elsif product.price < 150
+      elsif product.price_cents < 15000
         product_list[:medium] << product
       else
         product_list[:big] << product
@@ -102,42 +102,42 @@ class ProductsController < ApplicationController
         small_proportion: 0
       }
     }
-    if available_cash >= 85 && available_cash < 150
+    if available_cash >= 8500 && available_cash < 15000
       default_bundle_config[:big] = 0
       default_bundle_config[:medium] = 1
       default_bundle_config[:small] = 1
       default_bundle_config[:proportion][:big_proportion] = 0
       default_bundle_config[:proportion][:medium_proportion] = 2.fdiv(3)
       default_bundle_config[:proportion][:small_proportion] = 1.fdiv(3)
-    elsif available_cash <= 150 && available_cash < 250
+    elsif available_cash <= 15000 && available_cash < 25000
       default_bundle_config[:big] = 0
       default_bundle_config[:medium] = 2
       default_bundle_config[:small] = 1
       default_bundle_config[:proportion][:big_proportion] = 0
       default_bundle_config[:proportion][:medium_proportion] = 0.4
       default_bundle_config[:proportion][:small_proportion] = 0.2
-    elsif available_cash <= 250 && available_cash < 325
+    elsif available_cash <= 25000 && available_cash < 32500
       default_bundle_config[:big] = 1
       default_bundle_config[:medium] = 1
       default_bundle_config[:small] = 1
       default_bundle_config[:proportion][:big_proportion] = 0.6
       default_bundle_config[:proportion][:medium_proportion] = 0.275
       default_bundle_config[:proportion][:small_proportion] = 0.125
-    elsif available_cash <= 325 && available_cash < 400
+    elsif available_cash <= 32500 && available_cash < 40000
       default_bundle_config[:big] = 1
       default_bundle_config[:medium] = 1
       default_bundle_config[:small] = 1
       default_bundle_config[:proportion][:big_proportion] = 0.5
       default_bundle_config[:proportion][:medium_proportion] = 0.375
       default_bundle_config[:proportion][:small_proportion] = 0.125
-    elsif available_cash <= 400 && available_cash < 500
+    elsif available_cash <= 40000 && available_cash < 50000
       default_bundle_config[:big] = 1
       default_bundle_config[:medium] = 1
       default_bundle_config[:small] = 2
       default_bundle_config[:proportion][:big_proportion] = 0.5
       default_bundle_config[:proportion][:medium_proportion] = 0.3
       default_bundle_config[:proportion][:small_proportion] = 0.1
-    elsif available_cash <= 500 && available_cash < 600
+    elsif available_cash <= 50000 && available_cash < 60000
       default_bundle_config[:big] = 1
       default_bundle_config[:medium] = 1
       default_bundle_config[:small] = 1
@@ -165,8 +165,8 @@ class ProductsController < ApplicationController
     unless default_bundle_config[:big] == 0
       # on itère sur les big
       product_list[:big].each do |product|
-        if product.price <= available_cash * default_bundle_config[:proportion][:big_proportion] &&
-            product.price >= available_cash * default_bundle_config[:proportion][:big_proportion] * 0.85
+        if product.price_cents <= available_cash * default_bundle_config[:proportion][:big_proportion] &&
+            product.price_cents >= available_cash * default_bundle_config[:proportion][:big_proportion] * 0.85
           matching_list[:big] << product
         end
       end
@@ -175,8 +175,8 @@ class ProductsController < ApplicationController
     unless default_bundle_config[:medium] == 0
       # on itère sur les medium
       product_list[:medium].each do |product|
-        if product.price <= available_cash * default_bundle_config[:proportion][:medium_proportion] &&
-            product.price >= available_cash * default_bundle_config[:proportion][:medium_proportion] * 0.85
+        if product.price_cents <= available_cash * default_bundle_config[:proportion][:medium_proportion] &&
+            product.price_cents >= available_cash * default_bundle_config[:proportion][:medium_proportion] * 0.85
           matching_list[:medium] << product
         end
       end
@@ -185,8 +185,8 @@ class ProductsController < ApplicationController
     unless default_bundle_config[:small] == 0
       # on itère sur les small
       product_list[:small].each do |product|
-        if product.price <= available_cash * default_bundle_config[:proportion][:small_proportion] &&
-            product.price >= available_cash * default_bundle_config[:proportion][:small_proportion] * 0.75
+        if product.price_cents <= available_cash * default_bundle_config[:proportion][:small_proportion] &&
+            product.price_cents >= available_cash * default_bundle_config[:proportion][:small_proportion] * 0.75
           matching_list[:small] << product
         end
       end
