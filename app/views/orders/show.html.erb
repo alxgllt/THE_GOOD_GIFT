@@ -54,6 +54,7 @@
 
         </div>
 
+
         <div class="place-order">
           <div class="text-center" style="margin-bottom: 20px;">
           <button class="btn btn-primary btn-rounded">
@@ -66,7 +67,19 @@
       </div>
 
 
-      <div class="col-xs-1 col-sm-4" id="forms">
+          <%= form_tag order_payments_path(@order) do %>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-name="My Order"
+          data-email="<%= @order.email %>"
+          data-total_price="<%= @order.total_price_cents %>"
+          data-currency="<%= @order.total_price.currency %>">
+        </script>
+        <% end %>
+
+
+
+    <div class="col-xs-1 col-sm-4" id="forms">
         <div id="sticky-anchor"></div>
         <div class="checkout-card cart-card">
           <div class="bag">
@@ -115,8 +128,6 @@
   </div>
 </div>
 
-
-
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
@@ -132,6 +143,19 @@
       $(function(){
           $(window).scroll(sticky_relocate);
           sticky_relocate();
+        });
+        document.getElementById("edit-email-btn").onclick = function fun() {
+          $('#email-data').text('<%= @order.email %>');
+          $('#email-data').addClass('hidden');
+          $('#email-input-field').removeClass('hidden');
+          $('#edit-email-btn').addClass('hidden');
+        }
+        document.getElementById("edit-phone-btn").onclick = function fun() {
+          $('#phone-data').text('<%= @order.phone %>');
+          $('#phone-data').addClass('hidden');
+          $('#phone-input-field').removeClass('hidden');
+          $('#edit-phone-btn').addClass('hidden');
+        }
       });
       document.getElementById("edit-email-btn").onclick = function fun() {
         $('#email-data').text('<%= @order.email %>');
