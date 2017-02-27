@@ -52,6 +52,7 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       @email_changed = order_params[:email]
       @phone_changed = order_params[:phone]
+      @address_changed = order_params[:address]
       respond_to do |format|
         format.html { redirect_to order_path }
         format.js
