@@ -16,15 +16,12 @@
   border: black;
 }
 
+// Cards
+
 .checkout-card {
   background: #FFF;
   padding: 1.25rem 20px;
   margin: 1rem 0;
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
 }
 
 .cart-card {
@@ -32,9 +29,52 @@
   margin-bottom: 20px;
 }
 
+.address-card {
+  height: 460px;
+  position: relative;
+}
+
+.email-card {
+  height: 140px;
+  position: relative;
+}
+
 .form-card {
   width: 615px;
 }
+
+.sticky {
+  position: fixed;
+  top: 0;
+}
+
+  // handle masking effects
+
+#city-card-mask, #email-card-mask, #address-card-mask {
+  position: absolute;
+  background: white;
+  opacity: 0.9;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.is-disabled {
+    background: 0 0;
+    border: 1px solid #ddd;
+    box-sizing: inherit;
+    margin-bottom: 20px;
+}
+
+.is-disabled h3 {
+  color: #ddd;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+// Shopping bag
 
 .bag-header {
   display: flex;
@@ -85,14 +125,13 @@
 }
 
 .item>img {
-  -webkit-flex: 0 0 85px;
-  -ms-flex: 0 0 85px;
+  flex: 0 0 85px;
+  flex: 0 0 85px;
   flex: 0 0 85px;
   height: 110px;
   width: 100px;
   padding: 10px;
 }
-
 
 .item-name {
   margin-top: 5px;
@@ -111,109 +150,30 @@
   font-size: 12px;
 }
 
-.field-city {
-  display: flex;
-  justify-content: space-between;
-  margin-top: .813rem;
-}
+// Forms
 
-.delivery-country.input-field {
-  align-items: center;
-  display: flex;
-}
-
-
-.city-image {
-  float: left;
-  width: 30px;
-  height: 30px;
-  margin-right: 25px;
-  background-repeat: no-repeat;
-  background-size: 30px;
-}
-
-.city-delivery select {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    border-radius: 0;
-    border: 1px solid #999;
-    background-color: #fff;
-    display: block;
-    outline: 0;
-    margin: 0;
-    padding: 11.008px 11px;
-    padding: .688rem 11px;
-    height: 4.8rem;
-    padding-left: 15px;
-    box-sizing: inherit
-}
-
-
-.order-btn {
-  background-color: #aaddc5;
-  border: none;
-  color: #cceede;
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  outline: 0;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: background-color .15s linear;
-  vertical-align: middle;
-  font-family: futura-pt-n7,futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  padding: 5.008px 5%;
-  padding: .313rem 5%;
-  padding: 12px 12px;
-  padding: .75rem 12px;
-  margin: 0 0 24px;
-  margin: 0 0 1.5rem;
-  cursor: default;
-}
-
-.email-card {
-  height: 140px;
-}
-
-#order_email {
-  background-color: #fff;
+.form {
+   background-color: #fff;
   float: left;
   width: 330px;
-  -moz-appearance: none;
   border-radius: 0;
   border: 1px solid #999;
   background-color: #fff;
   display: block;
   outline: 0;
+  margin-bottom: 15px;
   padding: 11.008px 11px;
   padding: .688rem 11px;
   height: 4.8rem;
   padding-left: 15px;
-  box-sizing: inherit
+  box-sizing: inherit;
 }
 
-#order_phone {
-  background-color: #fff;
-  float: left;
-  margin-bottom: 10px;
-  width: 330px;
-  -moz-appearance: none;
-  border-radius: 0;
-  border: 1px solid #999;
-  background-color: #fff;
-  display: block;
-  outline: 0;
-  padding: 11.008px 11px;
-  padding: .688rem 11px;
-  height: 4.8rem;
-  padding-left: 15px;
-  box-sizing: inherit
+.form-horizontal {
+  margin-left: 15px;
 }
 
-#order_address {
+#order_address, #order_email, #order_phone, #order_first_name, #order_last_name, #order_company {
   background-color: #fff;
   float: left;
   margin-bottom: 10px;
@@ -231,6 +191,46 @@
   padding-left: 15px;
   box-sizing: inherit
 }
+
+.field-city {
+  display: flex;
+  justify-content: space-between;
+  margin-top: .813rem;
+}
+
+.delivery-country.input-field {
+  align-items: center;
+  display: flex;
+}
+
+.city-image {
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin-right: 25px;
+  background-repeat: no-repeat;
+  background-size: 30px;
+}
+
+.city-delivery {
+  position: relative;
+}
+
+.city-delivery select {
+  border-radius: 0;
+  border: 1px solid #999;
+  background-color: #fff;
+  display: block;
+  outline: 0;
+  margin: 0;
+  padding: 11.008px 11px;
+  padding: .688rem 11px;
+  height: 4.8rem;
+  padding-left: 15px;
+  box-sizing: inherit
+}
+
+// Buttons
 
 .btn.btn-tertiary {
   background-color: #eee;
@@ -262,22 +262,75 @@
   transition: background-color .15s linear;
 }
 
-#edit-btn {
-  margin-left: 250px;
+.btn.submit {
+  float: right;
+  margin-top: inherit;
+  min-width: inherit;
+  font-size: 15px;
+  width: 225px;
+  height: 48px;
 }
 
-#email-data {
-  margin-top: 10px;
+.btn.secondary {
+  background-color: #2d2d2d;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  outline: 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color .15s linear;
+  vertical-align: middle;
+  font-style: normal;
+  font-weight: bolder;
+  padding: 5.008px 5%;
+  padding: .313rem 5%;
+  padding: 12px 20px;
+  padding: .75rem 20px;
+  letter-spacing: .125rem;
+  white-space: nowrap;
 }
 
-.address-card {
-  height: 320px;
+.btn.tertiary {
+  float: right;
+  background-color: #eee;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  outline: 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color .15s linear;
+  vertical-align: middle;
+  font-style: normal;
+  font-weight: bolder;
+  padding: 5.008px 5%;
+  padding: .313rem 5%;
+  font-size: 15px;
+  letter-spacing: .119rem;
 }
 
-
-#edit-address-btn {
-  margin-top: 25px;
+#btn-address {
+  float: left;
+  margin-left: -15px;
+  width: 182px;
 }
+
+#payment-btn {
+  width: 350px;
+  margin-top: 20px;
+}
+
+#payment-btn[disabled] {
+  opacity: 0.35;
+}
+
+// Other
 
 .tandc {
   color: #999;
@@ -287,41 +340,9 @@
   margin-bottom: 1.875rem;
 }
 
-.fixed {
-  position: fixed;
-  top: 0;
-}
 
+// Stripe btn
 
-.form {
-   background-color: #fff;
-  float: left;
-  width: 330px;
-  border-radius: 0;
-  border: 1px solid #999;
-  background-color: #fff;
-  display: block;
-  outline: 0;
-  margin-bottom: 15px;
-  padding: 11.008px 11px;
-  padding: .688rem 11px;
-  height: 4.8rem;
-  padding-left: 15px;
-  box-sizing: inherit;
-}
-
-.form-horizontal {
-  margin-left: 15px;
-}
-
-#btn-address {
-  text-align: center;
-  display: block;
-  margin-top: 20px;
-  margin-left: -15px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
 .stripe-button-el span {
 
  // display:none !important;
