@@ -5,17 +5,17 @@
 
 
         <div class="form-item-home">
-          <p>Votre collègue ?</p>
+          <h3>Votre collègue ?</h3> <br>
           <%= form_tag(select_tags_path, :method => "get", id: "select-genre") do %>
           <%= text_field_tag :search_name, params[:search_name], :required => true, placeholder: "Son prénom", class: "form-control input-lg input-group"%>
             <div class="radio_div">
               <%= radio_button_tag :search_gender, 'Homme', label: "Homme"%>
               <%= label_tag "search_gender_Homme" do %>
-                <i class="fa fa-mars icon-home" aria-hidden="true"></i>
+              <p class="icon-home">H</p>
               <% end %>
               <%= radio_button_tag :search_gender, 'Femme', label: "Femme"%>
               <%= label_tag "search_gender_Femme" do %>
-                <i class="fa fa-venus icon-home" aria-hidden="true"></i>
+              <p class="icon-home">F</p>
               <% end %>
             </div>
           <%#= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Genre", class: "form-control input-lg", id: "sexe" %>
@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-item-home">
-          <p>Votre budget ?</p>
+          <h3>Votre budget ?</h3> <br>
           <div class="input-group">
             <%= text_field_tag :search_price, params[:search_price], :required => true, placeholder: "Montant  ", class: "form-control input-lg"%>
             <div class="input-group-addon input-lg">€</div>
