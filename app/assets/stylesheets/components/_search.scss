@@ -12,7 +12,6 @@
 
 .container-checkbox {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   margin: 15px 0;
 }
@@ -21,7 +20,12 @@
   color: $black;
   background: #b7b7b7;
   padding: 20px 10px;
-  border-radius: 5px;
+  // &:first-child {
+  //   border-radius: 10px 0 0 10px;
+  // }
+  // &:last-child {
+  //   border-radius: 0 10px 10px 0;
+  // }
   opacity: 0.4;
   &:hover {
     opacity: 1;
@@ -30,10 +34,10 @@
 }
 
 .checkboxes  {
-  display: block;
-  flex: 0 0 21%;
-  margin-bottom: 15px;
+  flex: 0 0 50%;
   text-align: center;
+  display: block;
+  font-size: 13px;
   input:checked ~ .check-card {
     opacity: 1;
     color: white;
