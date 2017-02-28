@@ -142,24 +142,6 @@
           $(window).scroll(sticky_relocate);
           sticky_relocate();
         });
-        document.getElementById("edit-email-btn").onclick = function fun() {
-          $('#email-data').text('<%= @order.email %>');
-          $('#email-data').addClass('hidden');
-          $('#email-input-field').removeClass('hidden');
-          $('#edit-email-btn').addClass('hidden');
-        }
-        document.getElementById("edit-phone-btn").onclick = function fun() {
-          $('#phone-data').text('<%= @order.phone %>');
-          $('#phone-data').addClass('hidden');
-          $('#phone-input-field').removeClass('hidden');
-          $('#edit-phone-btn').addClass('hidden');
-        }
-      });
-<<<<<<< HEAD
-    <% end %>
-  <% end %>
-
-=======
       document.getElementById("edit-email-btn").onclick = function fun() {
         $('#email-data').text('<%= @order.email %>');
         $('#email-data').addClass('hidden');
@@ -185,7 +167,6 @@
 <!-- Include Google Maps JS API -->
 <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDiHOA5gVSDnau__WqzMAwWOIXmwDTVfII">
->>>>>>> master
 </script>
 
 <script>
