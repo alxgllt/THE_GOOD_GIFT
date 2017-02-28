@@ -97,9 +97,9 @@
         var window_top = $(window).scrollTop();
         var div_top = $('#sticky-anchor').offset().top;
         if (window_top > div_top)
-            $('.sidebar-filters').addClass('sticky');
+            $('.sidebar-filters').addClass('sticking');
         else
-            $('.sidebar-filters').removeClass('sticky');
+            $('.sidebar-filters').removeClass('sticking');
       }
       $(function(){
           $(window).scroll(sticky_relocate);

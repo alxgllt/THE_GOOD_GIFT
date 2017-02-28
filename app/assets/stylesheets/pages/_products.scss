@@ -1,10 +1,5 @@
 .search-product {
-  margin: auto;
-}
-.resized{
-  height: 95px;
-  padding-top: 14px;
-  margin-bottom: 5px;
+  // margin: auto;
 }
 .padded-top{
   padding-top : 20px;
@@ -43,4 +38,8 @@
   background-color: $mint;
   vertical-align: middle;
   margin: 0 5px;
+}
+.sticking {
+  position: fixed;
+  top: 0;
 }
