@@ -1,20 +1,42 @@
     <div class="error-messages">
     </div>
     <div class="form-inline text-search-home">
-      <%= form_tag(select_tags_path, :method => "get", id: "select-genre") do %>
-      <%= text_field_tag :search_name, params[:search_name], placeholder: "Prénom", class: "form-control input-lg"%>
-      <!-- <span class="input-symbol-euro"> -->
-      <div class="input-group">
-        <%= text_field_tag :search_price, params[:search_price], placeholder: "Budget", class: "form-control input-lg"%>
-        <div class="input-group-addon input-lg">€</div>
-      </div>
-      <!-- </span> -->
-      <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Genre", class: "form-control input-lg", id: "sexe" %>
-      <%= text_field_tag :search_date, params[:search_date], placeholder: "Date de la remise du cadeau", class: "form-control input-lg hidden", id: "datepicker"%>
-      <%= submit_tag "Je lui fais plaisir", class: "btn btn-primary btn-home input-lg" %>
+      <div class="form-search">
+
+
+        <div class="form-item-home">
+          <p>Votre collègue ?</p>
+          <%= form_tag(select_tags_path, :method => "get", id: "select-genre") do %>
+          <%= text_field_tag :search_name, params[:search_name], :required => true, placeholder: "Son prénom", class: "form-control input-lg input-group"%>
+            <div class="radio_div">
+              <%= radio_button_tag :search_gender, 'Homme', label: "Homme"%>
+              <%= label_tag "search_gender_Homme" do %>
+                <i class="fa fa-mars icon-home" aria-hidden="true"></i>
+              <% end %>
+              <%= radio_button_tag :search_gender, 'Femme', label: "Femme"%>
+              <%= label_tag "search_gender_Femme" do %>
+                <i class="fa fa-venus icon-home" aria-hidden="true"></i>
+              <% end %>
+            </div>
+          <%#= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Genre", class: "form-control input-lg", id: "sexe" %>
+          <%= text_field_tag :search_date, params[:search_date], placeholder: "Date de la remise du cadeau", class: "form-control input-lg hidden", id: "datepicker"%>
+        </div>
+
+        <div class="form-item-home">
+          <p>Votre budget ?</p>
+          <div class="input-group">
+            <%= text_field_tag :search_price, params[:search_price], :required => true, placeholder: "Montant  ", class: "form-control input-lg"%>
+            <div class="input-group-addon input-lg">€</div>
+          </div>
+        </div>
+
+        <div class="form-item-home">
+          <%= submit_tag "Je lui fais plaisir", class: "btn btn-primary btn-home input-lg" %>
+        </div>
+
       <% end %>
     </div>
-
+  </div>
 
     <% content_for :after_js do %>
     <script>
@@ -30,3 +52,5 @@
 });
 </script>
 <% end %>
+
+
