@@ -40,11 +40,11 @@
     <% else %>
 
     <!-- Login text link -->
-    <%= link_to t("#", default: "Concept"), root_path(:anchor => "how-it-works"), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t("#", default: "Comment ça marche ?"), root_path(:anchor => "how-it-works"), class: "navbar-wagon-item navbar-wagon-link" %>
 
-    <%= link_to t("#", default: "Nos promesses"), root_path(:anchor => "our-ideas"), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t("#", default: "Nos derniers packages"), root_path(:anchor => "our-ideas"), class: "navbar-wagon-item navbar-wagon-link" %>
 
-    <%= link_to t("#", default: "Nous contacter"), root_path(:anchor => "reassurance"), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t("#", default: "Nous contacter"), "mailto:thegoodgift.info@gmail.com", class: "navbar-wagon-item navbar-wagon-link" %>
 
     <% end %>
 

@@ -4,12 +4,8 @@
 }
 
 .product-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 100px;
-  width: 100px;
-}
+  margin-left: 65px;
+  }
 
 .product-index {
   padding: 30px;
@@ -22,4 +18,23 @@
 
 .fa-arrow-right:hover{
   color: $mint;
+}
+
+.arrow {
+  font-size: 22px;
+}
+
+.bundle {
+  position: relative
+}
+
+.owl-prev {
+  position: absolute;
+  top: 95px;
+}
+
+.owl-next {
+  position: absolute;
+  top: 95px;
+  right: 0px;
 }
