@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   #Selecttag page flow n°2
   get '/select_tags', to: 'pages#select_tags'
 
+  # Path pour choix deuxieme cadeau
+  get '/gift_two', to: 'products#second_choice'
+
 end

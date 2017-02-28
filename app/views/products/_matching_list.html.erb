@@ -20,6 +20,22 @@
           </div>
           <% end %>
         </div>
+          <%= form_tag gift_two_path do %>
+            <%= hidden_field_tag :main_gift_id, @matching_list[:main].first.id %>
+
+
+            <%= hidden_field_tag :search_name, params[:search_name], placeholder: "Prénom", class: "form-control"%>
+            <%= hidden_field_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), placeholder: "Sexe", class: "form-control" %>
+            <%= text_field_tag :search_price, params[:search_price], placeholder: "Budget", class: "form-control"%>
+            <% @tags_as_objects.each do |tag| %>
+              <label class="checkboxes" for="<%= tag.identifier %>">
+                <%= check_box_tag "tags[]", tag.title, params[:tags].include?(tag.title), id: tag.identifier, style: "display: none;" %>
+              </label>
+            <% end %>
+            <%= submit_tag :Choisir, class: "btn btn-primary btn-rounded" %>
+
+
+          <% end %>
       </div>
     </div>
     <div class="col-xs-1">

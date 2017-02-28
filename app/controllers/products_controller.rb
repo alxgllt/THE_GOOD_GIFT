@@ -58,6 +58,12 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
 
+  def second_choice
+    raise
+    @main = Product.find(params[:main_gift_id])
+    redirect_to gift_two_path
+  end
+
   private
 
   def algo_matching(products, price)
