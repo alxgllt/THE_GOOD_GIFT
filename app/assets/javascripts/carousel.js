@@ -18,9 +18,9 @@ function Ordercount() {
           var product_1 = $('.owl-carousel.owl-big .owl-item.active').children().data('id');
           var product_2 = $('.owl-carousel.owl-medium .owl-item.active').children().data('id');
           var product_3 = $('.owl-carousel.owl-small .owl-item.active').children().data('id');
-          $("#big").val(product_1);
-          $("#medium").val(product_2);
-          $("#small").val(product_3);
+          $("#main").val(product_1);
+          $("#side_one").val(product_2);
+          $("#side_two").val(product_3);
           $(".order-button").removeAttr("disabled");
         }, 800);
       });

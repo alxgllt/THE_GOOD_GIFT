@@ -45,7 +45,7 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-     <%= form_tag products_path, method: :get, id: "select-universe" do %>
+     <%= form_tag carts_path, method: :post, id: "select-universe" do %>
      <% @tags_as_objects.each do |tag| %>
      <label class="select-tag-container" for="<%= tag.identifier %>">
       <%= check_box_tag "tags[]", tag.title, false, id: tag.identifier, style: "display: none;" %>
@@ -65,10 +65,10 @@
     </label>
     <% end %>
   </div>
-  <%= hidden_field_tag "search_name", params[:search_name]%>
-  <%= hidden_field_tag "search_gender", params[:search_gender]%>
-  <%= hidden_field_tag "search_price", params[:search_price]%>
-  <%= hidden_field_tag "search_date", params[:search_date]%>
+  <%= hidden_field_tag "name", params[:search_name]%>
+  <%= hidden_field_tag "gender", params[:search_gender]%>
+  <%= hidden_field_tag "price", params[:search_price]%>
+  <%#= hidden_field_tag "search_date", params[:search_date]%>
   <div class="lil-padded text-center">
     <%= submit_tag (value = "Je compose mon package"), class: "btn btn-primary btn-rounded" %>
   </div>
@@ -82,13 +82,13 @@
 
 
 <% content_for :after_js do %>
-  <script>
-    $("#select-universe").on("submit", function() {
-      var paragraph = $('<p>').text("Selectionnez au moins 3 univers")
-      if ($(".select-tag-container input[type=checkbox]:checked").length >= 3) {
-        return true;
-      } else {
-        $('.error-messages').html(paragraph);
+<script>
+  $("#select-universe").on("submit", function() {
+    var paragraph = $('<p>').text("Selectionnez au moins 3 univers")
+    if ($(".select-tag-container input[type=checkbox]:checked").length >= 3) {
+      return true;
+    } else {
+      $('.error-messages').html(paragraph);
         return false; // prevent it from being submitted (errors, etc.)
         $('.error-messages').remove();
       }
@@ -107,7 +107,7 @@
     // });
 
   </script>
-<% end %>
+  <% end %>
 
 
 
