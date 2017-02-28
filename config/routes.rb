@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   end
 
   resources :order_items, only: [:create]
-  resources :carts
+  resources :carts, only: [:new, :create, :edit, :update, :show] do
+    resources :cart_products, only: [:new, :create]
+  end
 
   #Selecttag page flow n°2
   get '/select_tags', to: 'pages#select_tags'

@@ -23,3 +23,14 @@ function Ordercount() {
         }, 800);
       });
 }
+
+function ProductChoice() {
+  $(".owl-carousel").on('changed.owl.carousel', function(event) {
+        $(".choice-button").attr("disabled", true);
+        setTimeout(function() {
+          var selection_1 = $('.owl-carousel.owl-big .owl-item.active').children().data('id');
+          $("#main_id").val(selection_1);
+          $(".choice-button").removeAttr("disabled");
+        }, 800);
+      });
+}

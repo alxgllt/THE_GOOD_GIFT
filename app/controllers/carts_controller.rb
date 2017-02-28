@@ -33,11 +33,22 @@ class CartsController < ApplicationController
     end
 
     #affichage bundle
-    @matching_list = algo_matching(@products, params[:price].to_i * 100)
+    @matching_list = algo_matching(@products, @cart.price * 100)
+  end
+
+  def edit
+    @cart = Cart.find(params[:id])
   end
 
   def update
 
+    @cart = Cart.find(params[:id])
+    @cart.tags = params[:tags]
+    @cart.name = params[:name]
+    @cart.price = params[:price]
+    @cart.gender = params[:gender]
+    @cart.save
+    redirect_to cart_path(@cart)
   end
 
   private
