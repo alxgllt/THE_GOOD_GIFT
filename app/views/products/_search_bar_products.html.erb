@@ -23,7 +23,7 @@
       <div class="container-checkbox">
         <% @tags_as_objects.each do |tag| %>
         <label class="checkboxes" for="<%= tag.identifier %>">
-          <%= check_box_tag "tags[]", tag.title, params[:tags].include?(tag.title), id: tag.identifier, style: "display: none;" %>
+          <%= check_box_tag "tags[]", tag.title, @cart[:tags].include?(tag.title), id: tag.identifier, style: "display: none;" %>
           <div class="check-card" data-tag-title="<%= tag.title %>">
             <div class="check-title">
               <%= tag.title %>

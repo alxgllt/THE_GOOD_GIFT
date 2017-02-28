@@ -9,6 +9,7 @@ class PagesController < ApplicationController
   end
 
   def select_tags
+    @cart = Cart.new
     @tag = Tag.new
     @product = Product.new
     tags_as_hashes = YAML.load_file(File.join(File.dirname(__FILE__), "../../db/tags.yml"))

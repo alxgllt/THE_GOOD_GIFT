@@ -1,64 +1,50 @@
-class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :admin ]
+class CartsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :show, :create, :update, :new, :admin ]
+  respond_to :js, :json, :html
 
-  def index
+  def new
+    @cart = Cart.find(params[:id])
+  end
+
+  def create
+    @cart = Cart.new(cart_params)
+    @cart.tags = params[:tags]
+    if @cart.save
+      redirect_to cart_path(@cart)
+    else
+      redirect_to select_tags_path
+    end
+  end
+
+
+  def show
+    @cart = Cart.find(params[:id])
+    # on récupère les tags
     tags_as_hashes = YAML.load_file(File.join(File.dirname(__FILE__), "../../db/tags.yml"))
     @tags_as_objects = tags_as_hashes.map { |tag| Tag.new(tag.symbolize_keys) }
-    @products = Product.all
-    # search-bar product
-    if params[:tags] != nil
-      @products = @products.where("tag_one IN (?) OR tag_two IN (?)", params[:tags], params[:tags])
-    end
-
-    if params[:search_gender] != nil
-      @products = @products.where(gender: [(params[:search_gender] == "Homme" ? "M" : "F"), "U"])
-    end
-
-    #affichage bundle
-    @matching_list = algo_matching(@products, params[:search_price].to_i * 100)
 
     # business intelligence
     @order = Order.new()
 
-    respond_to do |format|
-      format.html
-      format.js
+    # on trie les produits
+    @products = Product.all
+    if params[:tags] != nil
+      @products = @products.where("tag_one IN (?) OR tag_two IN (?)", params[:tags], params[:tags])
     end
-  end
 
-  def new
-    @product = Product.new
-  end
-
-  def create
-    @product = Product.new(product_params)
-    if @product.save
-      redirect_to root_path
-    else
-      render :new
-    end
-  end
-
-  def edit
-    @product = Product.find(params[:id])
+    #affichage bundle
+    @matching_list = algo_matching(@products, params[:price].to_i * 100)
   end
 
   def update
-      @product = Product.find(params[:id])
-    if @product.update(product_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
-  end
 
-  def destroy
-    @product = Product.find(params[:id])
-    @product.destroy
-    redirect_to root_path
   end
 
   private
+
+  def cart_params
+    params.permit(:name, :price, :gender, :tags)
+  end
 
   def algo_matching(products, price)
     available_cash = calc_available_cash(price)
@@ -99,7 +85,7 @@ class ProductsController < ApplicationController
   end
 
   def sorting_matching_list(product_list)
-    product_list[:main].sort_by! { |product| product[:sell_priority] }
+    product_list[:main].sort_by! { |product| product[:sell_priority].to_i }
     product_list[:side_one].sort_by! { |product| product[:sell_priority] }
     product_list[:side_two].sort_by! { |product| product[:sell_priority] }
     product_list
