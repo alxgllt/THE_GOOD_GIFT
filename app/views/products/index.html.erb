@@ -38,85 +38,45 @@
     </div>
   </div>
 </div>
-
-<div id="wrapper">
-
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-          <li class="sidebar-brand">
-              <a href="#">
-                  Start Bootstrap
-              </a>
-          </li>
-          <li>
-              <a href="#">Dashboard</a>
-          </li>
-          <li>
-              <a href="#">Shortcuts</a>
-          </li>
-          <li>
-              <a href="#">Overview</a>
-          </li>
-          <li>
-              <a href="#">Events</a>
-          </li>
-          <li>
-              <a href="#">About</a>
-          </li>
-          <li>
-              <a href="#">Services</a>
-          </li>
-          <li>
-              <a href="#">Contact</a>
-          </li>
-      </ul>
-  </div>
-  <!-- /#sidebar-wrapper -->
-
-  <!-- Page Content -->
-  <div id="page-content-wrapper">
-      <div class="container-fluid">
-          <div class="row">
-              <div class="col-lg-12">
-                  <h1>Simple Sidebar</h1>
-                  <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                  <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                  <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-              </div>
-          </div>
+<div class="container" id="choice-page">
+  <div class="row">
+    <div class="col-xs-1 col-sm-3" id="forms">
+      <div id="sticky-anchor"></div>
+      <div class="sidebar-filters">
+        <%= render 'products/search_bar_products' %>
       </div>
-  </div>
-  <!-- /#page-content-wrapper -->
+    </div>
+    <div class="col-xs-11 col-sm-9" id="forms">
+      <div class="product-index">
 
+        <br>
+        <h1 style='margin-top: 0;'> Sélectionnez votre ensemble de cadeaux :</h1>
+        <br>
+      <br>
+        <div id="matching-list-container">
+          <%= render "matching_list", matching_list: @matching_list %>
+        </div>
+
+        <%= form_tag orders_path do %>
+          <% if @matching_list[:small] != [] %>
+            <%= hidden_field_tag :small, @matching_list[:small].first.id %>
+          <% end %>
+          <% if @matching_list[:medium] != [] %>
+            <%= hidden_field_tag :medium, @matching_list[:medium].first.id %>
+          <% end %>
+          <% if @matching_list[:big] != [] %>
+            <%= hidden_field_tag :big, @matching_list[:big].first.id %>
+          <% end %>
+          <%= hidden_field_tag :total_price, params[:search_price] %>
+          <br>
+          <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="product-index">
-  <%= render 'products/search_bar_products' %>
-  <br>
-  <h1 style='margin-top: 0;'> Sélectionnez votre ensemble de cadeaux :</h1>
-  <br>
-<br>
-  <div id="matching-list-container">
-    <%= render "matching_list", matching_list: @matching_list %>
-  </div>
-
-  <%= form_tag orders_path do %>
-  <% if @matching_list[:small] != [] %>
-  <%= hidden_field_tag :small, @matching_list[:small].first.id %>
-  <% end %>
-  <% if @matching_list[:medium] != [] %>
-  <%= hidden_field_tag :medium, @matching_list[:medium].first.id %>
-  <% end %>
-  <% if @matching_list[:big] != [] %>
-  <%= hidden_field_tag :big, @matching_list[:big].first.id %>
-  <% end %>
-  <%= hidden_field_tag :total_price, params[:search_price] %>
-  <br>
-  <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
-  <% end %>
-
-</div>
 
 
 <% content_for(:after_js) do %>
@@ -131,6 +91,21 @@
         $("#wrapper").toggleClass("toggled");
     });
 
+    $(document).ready(function() {
+      initializeAutocomplete('order_address');
+      function sticky_relocate() {
+        var window_top = $(window).scrollTop();
+        var div_top = $('#sticky-anchor').offset().top;
+        if (window_top > div_top)
+            $('.sidebar-filters').addClass('sticky');
+        else
+            $('.sidebar-filters').removeClass('sticky');
+      }
+      $(function(){
+          $(window).scroll(sticky_relocate);
+          sticky_relocate();
+        });
+    });
     // $(document).ready(function() {
     //   $(window).scroll(function(e){
     //     if ($(this).scrollTop() > 70) {
