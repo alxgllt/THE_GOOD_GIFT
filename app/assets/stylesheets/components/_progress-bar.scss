@@ -1,6 +1,7 @@
 .bar-container {
   display: flex;
   justify-content: center;
+  width: 100%;
   position: relative;
   .progression-bar {
     width: 60%;
@@ -33,4 +34,13 @@
     align-items: center;
     width: 25px;
   }
+}
+
+.progress-bar-fixed {
+  position: fixed;
+  z-index: 1000;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background: white;
 }
