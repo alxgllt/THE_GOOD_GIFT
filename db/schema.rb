@@ -70,10 +70,6 @@ ActiveRecord::Schema.define(version: 20170228173110) do
     t.integer  "cost"
     t.integer  "total_price_cents", default: 0, null: false
     t.string   "phone"
-<<<<<<< HEAD
-    t.integer  "total_price_cents", default: 0, null: false
-=======
->>>>>>> master
     t.string   "company"
   end
 
