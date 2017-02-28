@@ -1,23 +1,93 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path('wood.png') %>);">
   <div class="banner-content">
+    <h1><i class="fa fa-check" aria-hidden="true"></i> </h1>
     <h1>Votre commande s'est bien deroulée!</h1>
-    <p> Merci d'avoir choisi The Good Gift.</p>
+    <p> Merci d'avoir choisi The Good Gift. Vous devriez recevoir un email de confirmation rapidement.</p>
   </div>
 </div>
 
 <div class="container margined">
   <div class="row">
-    <div class="col-xs-12 col-sm-6">
-        <h4>Rappel de votre commande : </h4>
-        Status : <%=  @order.status %> <br>
-         Price : <%= @order.total_price %>
+      <div class="col-xs-12 col-sm-6 ">
+      <div class="padded-right">
+        <h4>Rappel de votre commande numéro : <%=  @order.id %></h4>
+      </div>
+
+      <div id="sticky-anchor"></div>
+      <div class="checkout-card cart-card">
+        <div class="bag">
+        </div>
+        <hr>
+        <div class="bag-item-list">
+          <div class="bag-item-wrapper">
+            <ul class="items">
+              <% order = @order.products.sort_by {|product| product.price}.reverse %>
+
+              <% order.each do |product| %>
+              <li class="item">
+                <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
+                <div>
+                  <span class="item-name"> <%= product.name %> </span>
+                  <span class="item-brand"> <%= product.brand %>  </span>
+                  <span class="item-desc"></span>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="bag-total">
+          <p id="total-content">
+            TOTAL
+          </p>
+          <p id="total-price">
+            <%= @order.total_price %> €
+          </p>
+        </div>
+      </div>
+      <div class="padded-right">
+        <%= link_to "Un problème? Contactez nous! " %><br />
+      </div>
     </div>
     <div class="col-xs-12 col-sm-6">
-        <p>Vous allez recevoir un email de confirmation sous peu.</p>
-        Decouvrez encore plus de gifts sur https://www.thegoodgift.co/
+    <div class="padded-right">
+     <h4>Vous aimerez aussi ces produits: </h4>
+      </div>
+
+      <div id="sticky-anchor"></div>
+      <div class="checkout-card cart-card">
+        <div class="bag">
+        </div>
+        <hr>
+        <div class="bag-item-list">
+          <div class="bag-item-wrapper">
+            <ul class="items">
+              <% @final_prodcuts[0,3].each do |product| %>
+              <li class="item">
+                <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
+                <div>
+                  <span class="item-name"> <%= product.name %> </span>
+                  <span class="item-brand"> <%= product.brand %>  </span>
+                  <span class="item-desc"></span>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <hr>
+      </div>
+            <div class="padded-right marigned-top">
+               <%= link_to "Decouvrez de nouveaux produits!", root_path %>
+               </div>
     </div>
   </div>
-</div>
+  </div>
+
 
 
 

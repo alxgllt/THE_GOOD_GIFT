@@ -68,6 +68,13 @@ class OrdersController < ApplicationController
 
   def confirmation
     @order = Order.where(status: 'paid').find(params[:id])
+    @similar_products_tags = @order.products.map do |product|
+          product.tag_one
+        end
+        @similar_products_tags.uniq.each do |tag|
+        @products = Product.where(tag_one: "#{tag}")
+        @final_prodcuts = @products - @order.products
+      end
   end
 
   private
