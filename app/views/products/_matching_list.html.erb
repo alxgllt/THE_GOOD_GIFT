@@ -4,10 +4,12 @@
     <div class="col-xs-3">
       <div class="bundle">
         <div class="owl-carousel owl-big">
-          <% @matching_list[:big].each do |product| %>
+          <% @matching_list[:main].each do |product| %>
           <div class="caroucard" data-id="<%= product.id %>">
             <div class="product-brand">
-              <%= product.brand %>
+              <%#= product.brand %>
+              <p>price: <%= product.price %></p>
+              <p>id :<%= product.id %></p>
             </div>
             <div class="product-image">
               <%= cl_image_tag product.image, width: 150, crop: :fill %>
@@ -27,21 +29,21 @@
     </div>
     <div class="col-xs-4">
       <div class="bundle">
-        <div class="owl-carousel owl-medium">
-          <% @matching_list[:medium].each do |product| %>
-            <div data-id="<%= product.id %>">
+        <!-- <div class="owl-carousel owl-medium">
+          <%# @matching_list[:side_one].each do |product| %>
+            <div data-id="<%#= product.id %>">
               <div class="product-brand">
-                <%= product.brand %>
+                <%#= product.brand %>
               </div>
               <div class="product-image">
-                <%= cl_image_tag product.image, width: 150, crop: :fill %>
+                <%#= cl_image_tag product.image, width: 150, crop: :fill %>
               </div>
               <div class="product-name">
-                <%= product.name %>
+                <%#= product.name %>
               </div>
             </div>
-          <% end %>
-        </div>
+          <%# end %>
+        </div> -->
       </div>
     </div>
     <div class="col-xs-1">
@@ -51,21 +53,21 @@
     </div>
     <div class="col-xs-3">
       <div class="bundle">
-        <div class="owl-carousel owl-small">
-          <% @matching_list[:small].each do |product| %>
-            <div data-id="<%= product.id %>">
+        <!-- <div class="owl-carousel owl-small">
+          <%# @matching_list[:side_two].each do |product| %>
+            <div data-id="<%#= product.id %>">
               <div class="product-brand">
-                <%= product.brand %>
+                <%#= product.brand %>
               </div>
               <div class="product-image">
-                <%= cl_image_tag product.image, width: 150, crop: :fill %>
+                <%#= cl_image_tag product.image, width: 150, crop: :fill %>
               </div>
               <div class="product-name">
-                <%= product.name %>
+                <%#= product.name %>
               </div>
             </div>
-          <% end %>
-        </div>
+          <%# end %>
+        </div> -->
       </div>
     </div>
   </div>

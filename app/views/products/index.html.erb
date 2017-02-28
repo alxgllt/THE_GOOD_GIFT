@@ -50,7 +50,7 @@
       <div class="product-index">
 
         <br>
-        <h1 style='margin-top: 0;'> Sélectionnez votre ensemble de cadeaux :</h1>
+        <h1 style='margin-top: 0;'> Sélectionnez votre ensemble de cadeaux : <span class="price-display"></span></h1>
         <br>
       <br>
         <div id="matching-list-container">
@@ -58,14 +58,14 @@
         </div>
 
         <%= form_tag orders_path do %>
-          <% if @matching_list[:small] != [] %>
-            <%= hidden_field_tag :small, @matching_list[:small].first.id %>
+          <% if @matching_list[:main] != [] %>
+            <%= hidden_field_tag :main, @matching_list[:main].first.id %>
           <% end %>
-          <% if @matching_list[:medium] != [] %>
-            <%= hidden_field_tag :medium, @matching_list[:medium].first.id %>
+          <% if @matching_list[:side_one] != [] %>
+            <%= hidden_field_tag :side_one, @matching_list[:side_one].first.id %>
           <% end %>
-          <% if @matching_list[:big] != [] %>
-            <%= hidden_field_tag :big, @matching_list[:big].first.id %>
+          <% if @matching_list[:side_two] != [] %>
+            <%= hidden_field_tag :side_two, @matching_list[:side_two].first.id %>
           <% end %>
           <%= hidden_field_tag :total_price, params[:search_price] %>
           <br>
