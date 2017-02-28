@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170227125958) do
     t.string   "email"
     t.integer  "cost"
     t.string   "phone"
+    t.string   "company"
     t.integer  "total_price_cents", default: 0, null: false
   end
 
