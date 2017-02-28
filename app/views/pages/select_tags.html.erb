@@ -1,19 +1,25 @@
 <div class="padded bar-container">
   <div class="progression-bar">
     <div class="circle-1">
-      <i class="fa fa-circle" aria-hidden="true"></i>
-    </div>
-    <div class="circle-2">
       <span class="fa-stack fa-4x">
         <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
         <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
       </span>
     </div>
-    <div class="circle-3">
+    <div class="circle-2">
       <i class="fa fa-circle" aria-hidden="true"></i>
     </div>
+    <div class="circle-3">
+      <span class="fa-stack fa-4x">
+        <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+        <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+      </span>
+    </div>
     <div class="circle-4">
-      <i class="fa fa-circle" aria-hidden="true"></i>
+      <span class="fa-stack fa-4x">
+        <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+        <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+      </span>
     </div>
   </div>
 
@@ -25,7 +31,7 @@
       <span><strong>Sélection des univers</strong></span>
     </div>
     <div class="circle-3">
-    <span>Sélection des cadeaux</span>
+      <span>Sélection des cadeaux</span>
     </div>
     <div class="circle-4">
       <span>Checkout</span>
@@ -59,14 +65,14 @@
     </label>
     <% end %>
   </div>
-    <%= hidden_field_tag "search_name", params[:search_name]%>
-    <%= hidden_field_tag "search_gender", params[:search_gender]%>
-    <%= hidden_field_tag "search_price", params[:search_price]%>
-    <%= hidden_field_tag "search_date", params[:search_date]%>
-    <div class="lil-padded text-center">
-      <%= submit_tag (value = "Je compose mon package"), class: "btn btn-primary btn-rounded" %>
-    </div>
-    <% end %>
+  <%= hidden_field_tag "search_name", params[:search_name]%>
+  <%= hidden_field_tag "search_gender", params[:search_gender]%>
+  <%= hidden_field_tag "search_price", params[:search_price]%>
+  <%= hidden_field_tag "search_date", params[:search_date]%>
+  <div class="lil-padded text-center">
+    <%= submit_tag (value = "Je compose mon package"), class: "btn btn-primary btn-rounded" %>
+  </div>
+  <% end %>
 </div>
 </div>
 
@@ -76,18 +82,31 @@
 
 
 <% content_for :after_js do %>
-<script>
- $("#select-universe").on("submit", function() {
-  var paragraph = $('<p>').text("Selectionnez au moins 3 univers")
-  if ($(".select-tag-container input[type=checkbox]:checked").length >= 3) {
-    return true;
-  } else {
-    $('.error-messages').html(paragraph);
-    return false; // prevent it from being submitted (errors, etc.)
-    $('.error-messages').remove();
-  }
-});
-</script>
+  <script>
+    $("#select-universe").on("submit", function() {
+      var paragraph = $('<p>').text("Selectionnez au moins 3 univers")
+      if ($(".select-tag-container input[type=checkbox]:checked").length >= 3) {
+        return true;
+      } else {
+        $('.error-messages').html(paragraph);
+        return false; // prevent it from being submitted (errors, etc.)
+        $('.error-messages').remove();
+      }
+    });
+
+    // $(document).ready(function() {
+    //   $(window).scroll(function(e){
+    //     if ($(this).scrollTop() > 70) {
+    //       $('.bar-container').addClass('progress-bar-fixed');
+    //       $('.wrapper').css('margin-top', '100px');
+    //     }
+    //     else {
+    //       $('.bar-container').removeClass('progress-bar-fixed');
+    //     }
+    //   });
+    // });
+
+  </script>
 <% end %>
 
 
