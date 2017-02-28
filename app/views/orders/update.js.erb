@@ -3,10 +3,13 @@
   $('#email-data').removeClass('hidden');
   $('#email-input-field').addClass('hidden');
   $('#edit-email-btn').removeClass('hidden');
+  $('#address-card-inactive').addClass('hidden');
   $('#address-card-active').removeClass('hidden');
   $('#city-card-mask').addClass('hidden');
   $('#address-card-mask').addClass('hidden');
-  $('#payment-btn').prop("disabled", false);
+  if ($('#order_email').val() !== "" && $('#order_first_name').val() !== "" && $('#order_last_name').val() !== "" && $('#order_address').val() !== "" && $('#order_phone').val() !== "" && $('#order_company').val() !== "") {
+    $('#payment-btn').prop("disabled", false);
+  };
 <% end %>
 
 <% if @phone_changed || @address_changed %>
@@ -20,5 +23,14 @@
   $('.address-card').css('height','250px');
   $('#city-card-mask').addClass('hidden');
   $('#email-card-mask').addClass('hidden');
-  $('#payment-btn').prop("disabled", false);
+  if ($('#order_email').val() !== "" && $('#order_first_name').val() !== "" && $('#order_last_name').val() !== "" && $('#order_address').val() !== "" && $('#order_phone').val() !== "" && $('#order_company').val() !== "") {
+    $('#payment-btn').prop("disabled", false);
+  };
 <% end %>
+
+
+// Drier way to check if fields are filled (not working)
+
+// function checkForms () {
+//   $('#order_email').val() !== "" && $('#order_first_name').val() !== "" && $('#order_last_name').val() !== "" && $('#order_address').val() !== "" && $('#order_phone').val() !== "" && $('#order_company').val() !== ""
+// }

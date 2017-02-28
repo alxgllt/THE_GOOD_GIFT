@@ -40,6 +40,10 @@
           </div>
         </div>
 
+        <div class="checkout-card form-card address-card" id="address-card-inactive">
+          <h3>Adresse de livraison</h3>
+        </div>
+
 
         <div class="checkout-card form-card address-card hidden" id="address-card-active">
           <div class='hidden' id="address-card-mask"></div>
@@ -77,9 +81,9 @@
                 Commander
             </button>
           </div>
-          <div class="text-center">
+          <div class="text-center hidden">
             <%= form_tag order_payments_path(@order) do %>
-              <script src="https://checkout.stripe.com/checkout.js" id="btn-stripe" class="stripe-button btn btn-primary btn-rounded" style="display: none;"
+              <script src="https://checkout.stripe.com/checkout.js" id="btn-stripe" class="stripe-button btn btn-primary btn-rounded"
                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                 data-name="My Order"
                 data-email="<%= @order.email %>"
@@ -183,7 +187,7 @@
         $('#payment-btn').prop("disabled", true);
       }
       document.getElementById("payment-btn").onclick = function fun() {
-        $('#btn-stripe').click();
+        $('.stripe-button-el' ).trigger( "click" )
       }
     });
   </script>
