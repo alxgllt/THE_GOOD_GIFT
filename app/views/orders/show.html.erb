@@ -134,10 +134,21 @@
             <hr>
 
             <div class="bag-gift_card-selection">
-              <span></span>
-              <p>Inclure une carte</p>
-
-
+                <p>Inclure une carte</p>
+                <input type="checkbox" class="checkbox" id="checkbox-card">
+            </div>
+            <div class="hidden" id="giftcard-list">
+              <%= simple_form_for @order, url: "select_gift_card", method: 'patch' do |f| %>
+                <%= f.input :card,
+                 as: :radio_buttons,
+                 checked: @order[:card],
+                 label: false,
+                 collection: [ [@cards_as_objects[0].to_hash[:image_file_name]], [@cards_as_objects[1].to_hash[:image_file_name]], [@cards_as_objects[2].to_hash[:image_file_name]] ] %>
+                <%= f.submit class: "btn hidden" %>
+              <% end %>
+              <input type="radio" id="f-option" name="carte 1">
+              <input type="radio" id="f-option" name="carte 2">
+              <input type="radio" id="f-option" name="carte 3">
             </div>
 
             <hr>
@@ -196,8 +207,16 @@
         $('#payment-btn').prop("disabled", true);
       }
       document.getElementById("payment-btn").onclick = function fun() {
-        $('.stripe-button-el' ).trigger( "click" )
+        $('.stripe-button-el').trigger('click')
       }
+      $(document).on('change', '#checkbox-card', function() {
+          if(this.checked) {
+            $('#giftcard-list').removeClass('hidden')
+          }
+          else {
+           $('#giftcard-list').addClass('hidden')
+          }
+      });
     });
   </script>
 <% end %>

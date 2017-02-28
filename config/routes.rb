@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :orders do
     get 'confirmation', on: :member
     resources :payments, only: [:new, :create]
+    patch :select_gift_card
   end
 
   resources :order_items, only: [:create]

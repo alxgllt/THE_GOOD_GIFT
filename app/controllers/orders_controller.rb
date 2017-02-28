@@ -44,6 +44,15 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    cards_as_hashes = YAML.load_file(File.join(File.dirname(__FILE__), "../../db/cards.yml"))
+    @cards_as_objects = cards_as_hashes.map { |card| Card.new(card.symbolize_keys) }
+  end
+
+  def select_gift_card
+    @order = Order.find(params[:order_id])
+    @order.card = params[:id]
+    @order.save
+    redirect_to order_path(@order)
   end
 
   def update

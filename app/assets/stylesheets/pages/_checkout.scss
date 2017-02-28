@@ -55,6 +55,11 @@
   top: 0;
 }
 
+.cards {
+  display: flex;
+  margin-top: 10px;
+}
+
   // handle masking effects
 
 #city-card-mask, #email-card-mask, #address-card-mask {
@@ -155,6 +160,29 @@
   margin-top: 5px;
   display: block;
   font-size: 12px;
+}
+
+.bag-gift_card-selection {
+  display: flex;
+  justify-content: space-between;
+}
+
+#giftcard-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.icon-giftcard {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  height: 15px;
+  width: 15px;
+  background-image: "../assets/images/card_icon.png";
+}
+
+.checkbox {
+  float: right;
 }
 
 // Forms
