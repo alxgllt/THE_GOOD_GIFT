@@ -38,33 +38,45 @@
     </div>
   </div>
 </div>
+<div class="container" id="choice-page">
+  <div class="row">
+    <div class="col-xs-1 col-sm-3" id="forms">
+      <div id="sticky-anchor"></div>
+      <div class="sidebar-filters">
+        <%= render 'products/search_bar_products' %>
+      </div>
+    </div>
+    <div class="col-xs-11 col-sm-9" id="forms">
+      <div class="product-index">
 
-<div class="product-index">
-  <%= render 'products/search_bar_products' %>
-  <br>
-  <h1 style='margin-top: 0;'> Sélectionnez votre ensemble de cadeaux :</h1>
-  <br>
-<br>
-  <div id="matching-list-container">
-    <%= render "matching_list", matching_list: @matching_list %>
+        <br>
+        <h1 style='margin-top: 0;'> Sélectionnez votre ensemble de cadeaux :</h1>
+        <br>
+      <br>
+        <div id="matching-list-container">
+          <%= render "matching_list", matching_list: @matching_list %>
+        </div>
+
+        <%= form_tag orders_path do %>
+          <% if @matching_list[:small] != [] %>
+            <%= hidden_field_tag :small, @matching_list[:small].first.id %>
+          <% end %>
+          <% if @matching_list[:medium] != [] %>
+            <%= hidden_field_tag :medium, @matching_list[:medium].first.id %>
+          <% end %>
+          <% if @matching_list[:big] != [] %>
+            <%= hidden_field_tag :big, @matching_list[:big].first.id %>
+          <% end %>
+          <%= hidden_field_tag :total_price, params[:search_price] %>
+          <br>
+          <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
+        <% end %>
+
+      </div>
+    </div>
   </div>
-
-  <%= form_tag orders_path do %>
-  <% if @matching_list[:small] != [] %>
-  <%= hidden_field_tag :small, @matching_list[:small].first.id %>
-  <% end %>
-  <% if @matching_list[:medium] != [] %>
-  <%= hidden_field_tag :medium, @matching_list[:medium].first.id %>
-  <% end %>
-  <% if @matching_list[:big] != [] %>
-  <%= hidden_field_tag :big, @matching_list[:big].first.id %>
-  <% end %>
-  <%= hidden_field_tag :total_price, params[:search_price] %>
-  <br>
-  <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
-  <% end %>
-
 </div>
+
 
 
 <% content_for(:after_js) do %>
@@ -74,6 +86,26 @@
       Ordercount ();
     });
 
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+    // $(document).ready(function() {
+    //   initializeAutocomplete('order_address');
+    //   function sticky_relocate() {
+    //     var window_top = $(window).scrollTop();
+    //     var div_top = $('#sticky-anchor').offset().top;
+    //     if (window_top > div_top)
+    //         $('.sidebar-filters').addClass('sticking');
+    //     else
+    //         $('.sidebar-filters').removeClass('sticking');
+    //   }
+    //   $(function(){
+    //       $(window).scroll(sticky_relocate);
+    //       sticky_relocate();
+    //     });
+    // });
     // $(document).ready(function() {
     //   $(window).scroll(function(e){
     //     if ($(this).scrollTop() > 70) {
