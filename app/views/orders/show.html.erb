@@ -10,6 +10,7 @@
 
 
         <div class="checkout-card form-card city-delivery">
+          <div class='hidden' id="city-card-mask"></div>
           <h3>Ville de livraison</h3>
           <div class="field-city">
             <div class="select">
@@ -27,55 +28,72 @@
         </div>
 
         <div class="checkout-card form-card email-card">
+          <div class='hidden' id="email-card-mask"></div>
           <h3>Mon adresse e-mail</h3>
           <div class="flex-form">
             <span class="email-replay-data hidden" id="email-data" data-bind="email"></span>
-            <button class="btn btn-tertiary hidden" id='edit-email-btn'>MODIFIER</button>
+            <button class="btn tertiary hidden" id='edit-email-btn'>MODIFIER</button>
             <%= simple_form_for(@order, html: {class: 'form-inline', id: 'email-input-field'}, remote: true) do |f| %>
               <%= f.input :email, label: false, id: 'email-field' %>
-              <%= f.submit "Ajouter mon email", class: "btn btn-tertiary" %>
+              <%= f.submit "Ajouter mon email", class: "btn secondary submit" %>
             <% end %>
           </div>
         </div>
 
-        <div class="checkout-card form-card address-card">
+
+        <div class="checkout-card form-card address-card hidden" id="address-card-active">
+          <div class='hidden' id="address-card-mask"></div>
           <h3>Adresse de livraison</h3>
-          <span class="-replay-data hidden" id="phone-data" data-bind="phone"></span>
-          <br>
-          <span class="-replay-data hidden" id="address-data" data-bind="address"></span>
-          <br>
-          <button class="btn btn-tertiary hidden" id='edit-address-btn'>MODIFIER</button>
+          <div class="replay-address-data hidden" id="address-data-div">
+            <span class="replay-data" id="first_name-data" data-bind="first_name"></span>
+            <br>
+            <span class="replay-data" id="last_name-data" data-bind="last_name"></span>
+            <br>
+            <span class="replay-data" id="company-data" data-bind="company"></span>
+            <br>
+            <span class="replay-data" id="address-data" data-bind="address"></span>
+            <br>
+            <span class="-replay-data" id="phone-data" data-bind="phone"></span>
+            <br>
+            <button class="btn tertiary" id='edit-address-btn'>MODIFIER</button>
+          </div>
 
-          <%= simple_form_for(@order, html: { class: "form-horizontal"}, remote: true) do |f| %>
-            <%= f.input :phone, placeholder: 'Téléphone portable', label: false, id: 'phone-field' %>
-            <%= f.input :address, label: "Adresse", label: false, required: true, placeholder: "Adresse" %>
-            <%= f.submit "Valider", class: "btn btn-primary", id: 'btn-address' %>
-          <% end %>
-
+          <div id="address-form-fields">
+            <%= simple_form_for(@order, html: { class: "form-horizontal"}, remote: true) do |f| %>
+              <%= f.input :first_name, label: "Votre prénom", label: false, required: true, placeholder: "Votre prénom" %>
+              <%= f.input :last_name, label: "Votre nom", label: false, required: true, placeholder: "Votre nom" %>
+              <%= f.input :company, label: "Société", label: false, required: true, placeholder: "Société" %>
+              <%= f.input :address, label: "Adresse", label: false, required: true, placeholder: "Adresse" %>
+              <%= f.input :phone, placeholder: 'Téléphone portable', label: false, id: 'phone-field' %>
+              <%= f.submit "Valider l'adresse", class: "btn secondary submit", id: 'btn-address' %>
+            <% end %>
+          </div>
         </div>
 
 
         <div class="place-order">
           <div class="text-center" style="margin-bottom: 20px;">
-          <button class="btn btn-primary btn-rounded" id="payment-btn">
-              Commander
+            <button class="btn btn-primary btn-rounded" disabled id="payment-btn">
+                Commander
             </button>
+          </div>
+          <div class="text-center">
+            <%= form_tag order_payments_path(@order) do %>
+              <script src="https://checkout.stripe.com/checkout.js" id="btn-stripe" class="stripe-button btn btn-primary btn-rounded" style="display: none;"
+               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-name="My Order"
+                data-email="<%= @order.email %>"
+                data-total_price="<%= @order.total_price_cents %>"
+                data-currency="<%= @order.total_price.currency %>">
+                data-description="Payez <%= @order.total_price%> "
+              </script>
+            <% end %>
           </div>
           <span class="tandc">En passant votre commande, vous acceptez nos conditions générales d'utilisation ainsi que notre politique de confidentialité. Vous consentez à ce que certaines de vos données soient enregistrées par The Good Gift©.
           </span>
         </div>
       </div>
 
-          <%= form_tag order_payments_path(@order) do %>
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button btn btn-primary btn-rounded" style="display: none;"
-         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-name="My Order"
-          data-email="<%= @order.email %>"
-          data-total_price="<%= @order.total_price_cents %>"
-          data-currency="<%= @order.total_price.currency %>">
-          data-description="Payez <%= @order.total_price%> "
-        </script>
-        <% end %>
 
     <div class="col-xs-1 col-sm-4" id="forms">
         <div id="sticky-anchor"></div>
@@ -145,18 +163,27 @@
       document.getElementById("edit-email-btn").onclick = function fun() {
         $('#email-data').text('<%= @order.email %>');
         $('#email-data').addClass('hidden');
-        $('#email-input-field').removeClass('hidden');
         $('#edit-email-btn').addClass('hidden');
+        $('#email-input-field').removeClass('hidden');
+        $('#address-card-mask').removeClass('hidden');
+        $('#city-card-mask').removeClass('hidden');
+        $('#payment-btn').prop("disabled", true);
       }
       document.getElementById("edit-address-btn").onclick = function fun() {
-        $('#phone-data').text('<%= @order.phone %>');
+        $('.address-card').css('height','460px');
+        $('#first_name-data').text('<%= @order.first_name %>');
+        $('#last_name-data').text('<%= @order.last_name %>');
+        $('#company-data').text('<%= @order.company %>');
         $('#address-data').text('<%= @order.address %>');
-        $('#phone-data').addClass('hidden');
-        $('#address-data').addClass('hidden');
-        $('#order_phone').removeClass('hidden');
-        $('#order_address').removeClass('hidden');
-        $('#edit-address-btn').addClass('hidden');
-        $('#btn-address').removeClass('hidden');
+        $('#phone-data').text('<%= @order.phone %>');
+        $('#address-data-div').addClass('hidden');
+        $('#address-form-fields').removeClass('hidden');
+        $('#city-card-mask').removeClass('hidden');
+        $('#email-card-mask').removeClass('hidden');
+        $('#payment-btn').prop("disabled", true);
+      }
+      document.getElementById("payment-btn").onclick = function fun() {
+        $('#btn-stripe').click();
       }
     });
   </script>
@@ -168,14 +195,5 @@
 <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDiHOA5gVSDnau__WqzMAwWOIXmwDTVfII">
 </script>
-
-<script>
-<% content_for(:after_js) do %>
-$(document).ready(function() {
-  $('#payment-btn').click( function () {
-      $('stripe-button-el').submit();
-  })
-  <% end %>
-  </script>
 
 

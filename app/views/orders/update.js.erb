@@ -3,15 +3,22 @@
   $('#email-data').removeClass('hidden');
   $('#email-input-field').addClass('hidden');
   $('#edit-email-btn').removeClass('hidden');
+  $('#address-card-active').removeClass('hidden');
+  $('#city-card-mask').addClass('hidden');
+  $('#address-card-mask').addClass('hidden');
+  $('#payment-btn').prop("disabled", false);
 <% end %>
 
 <% if @phone_changed || @address_changed %>
-  $('#phone-data').text('<%= @order.phone %>');
+  $('#first_name-data').text('<%= @order.first_name %>');
+  $('#last_name-data').text('<%= @order.last_name %>');
+  $('#company-data').text('<%= @order.company %>');
   $('#address-data').text('<%= @order.address %>');
-  $('#order_phone').addClass('hidden');
-  $('#phone-data').removeClass('hidden');
-  $('#order_address').addClass('hidden');
-  $('#address-data').removeClass('hidden');
-  $('#edit-address-btn').removeClass('hidden');
-  $('#btn-address').addClass('hidden');
+  $('#phone-data').text('<%= @order.phone %>');
+  $('#address-form-fields').addClass('hidden');
+  $('#address-data-div').removeClass('hidden');
+  $('.address-card').css('height','250px');
+  $('#city-card-mask').addClass('hidden');
+  $('#email-card-mask').addClass('hidden');
+  $('#payment-btn').prop("disabled", false);
 <% end %>
