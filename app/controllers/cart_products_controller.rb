@@ -8,9 +8,10 @@ class CartProductsController < ApplicationController
   end
 
   def create
+    @cart = Cart.find(params[:cart_id])
     @cart_product = CartProduct.new()
-    raise
-    @cart_product = Product.find(params[:main_id])
+    @cart_product.cart = @cart
+    @cart_product.product = Product.find(params[:main_id])
     # @cart_product.product = Product.find
     @cart_product.save
     redirect_to cart_path(@cart)
