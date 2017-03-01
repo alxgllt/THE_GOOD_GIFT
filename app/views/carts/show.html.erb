@@ -184,27 +184,27 @@
       // CHANGE GIFT NUMBER
         // retirer un cadeau
         $(document).ready(function() {
-            $(".fa-minus").click(function(e) {
-              e.preventDefault();
-              var actual_nb_gifts = parseInt($("#gift-number").val());
-              if (actual_nb_gifts > 2) {
-                new_nb_gifts = actual_nb_gifts - 1;
-                $(".cadeau-display").html((new_nb_gifts));
-                $("#gift-number").val(new_nb_gifts);
-              }
+          var max_nb_gifts = <%= @cart.gift_number_range.last %>;
+          $(".fa-minus").click(function(e) {
+            e.preventDefault();
+            var actual_nb_gifts = parseInt($("#gift_number").val());
+            if (actual_nb_gifts > 2) {
+              new_nb_gifts = actual_nb_gifts - 1;
+              $(".cadeau-display").html((new_nb_gifts));
+              $("#gift_number").val(new_nb_gifts);
+            }
 
-            });
-            $(".fa-plus").click(function(e) {
-              e.preventDefault();
-              var actual_nb_gifts = parseInt($("#gift-number").val());
-              var max_nb_gifts = <%= @cart.gift_number_range.last %>;
-              if (actual_nb_gifts < max_nb_gifts) {
-                new_nb_gifts = actual_nb_gifts + 1;
-                $(".cadeau-display").html(new_nb_gifts);
-                $("#gift-number").html(new_nb_gifts);
-              }
+          });
+          $(".fa-plus").click(function(e) {
+            e.preventDefault();
+            var actual_nb_gifts = parseInt($("#gift_number").val());
+            if (actual_nb_gifts < max_nb_gifts) {
+              new_nb_gifts = actual_nb_gifts + 1;
+              $(".cadeau-display").html(new_nb_gifts);
+              $("#gift_number").val(new_nb_gifts);
+            }
 
-            });
+          });
         });
 
 

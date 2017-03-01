@@ -51,7 +51,11 @@ class CartsController < ApplicationController
     @cart.name = params[:name]
     @cart.price = params[:price]
     @cart.gender = params[:gender]
-    @cart.gift_number = params[:gift_number]
+    if params[:gift_number].to_i > @cart.gift_number_range.last
+      @cart.gift_number = @cart.gift_number_range.last
+    else
+      @cart.gift_number = params[:gift_number].to_i
+    end
     @cart.save
     redirect_to cart_path(@cart)
   end
