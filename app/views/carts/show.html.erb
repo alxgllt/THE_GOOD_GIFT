@@ -36,15 +36,6 @@
             </span>
           </div>
         </div>
-        <!-- bar price -->
-        <div class="bar-price">
-          <br>
-          <h4 class="text-center">Utilisation du budget :</h4>
-          <div class="progress-wrap progress" data-progress-percent="<%= @cart.total %>" data-total='<%= @cart.total %>'>
-            <div class="progress-bar progress"></div>
-          </div>
-        </div>
-
 
         <div class="progression-bar-text">
           <div class="circle-1">
@@ -61,6 +52,15 @@
           </div>
         </div>
       </div>
+
+        <!-- bar price -->
+        <div class="bar-price">
+          <br>
+          <h4 class="text-center">Utilisation du budget :</h4>
+          <div class="progress-wrap progress" data-progress-percent="<%= @cart.total %>" data-total='<%= @cart.total %>'>
+            <div class="progress-bar progress"></div>
+          </div>
+        </div>
 
 
       <div class="container-fluid">
@@ -180,6 +180,33 @@
           left: progressTotal
         }, animationLength);
       }
+
+      // CHANGE GIFT NUMBER
+        // retirer un cadeau
+        $(document).ready(function() {
+            $(".fa-minus").click(function(e) {
+              e.preventDefault();
+              var actual_nb_gifts = parseInt($("#gift-number").val());
+              if (actual_nb_gifts > 2) {
+                new_nb_gifts = actual_nb_gifts - 1;
+                $(".cadeau-display").html((new_nb_gifts));
+                $("#gift-number").val(new_nb_gifts);
+              }
+
+            });
+            $(".fa-plus").click(function(e) {
+              e.preventDefault();
+              var actual_nb_gifts = parseInt($("#gift-number").val());
+              var max_nb_gifts = <%= @cart.gift_number_range.last %>;
+              if (actual_nb_gifts < max_nb_gifts) {
+                new_nb_gifts = actual_nb_gifts + 1;
+                $(".cadeau-display").html(new_nb_gifts);
+                $("#gift-number").html(new_nb_gifts);
+              }
+
+            });
+        });
+
 
   // $(document).ready(function() {
     //   initializeAutocomplete('order_address');

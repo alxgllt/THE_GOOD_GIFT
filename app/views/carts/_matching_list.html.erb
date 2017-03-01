@@ -7,7 +7,8 @@
 
   <!-- <div class="bundle"> -->
   <% product = @matching_list.first%>
-  <div class="caroucard" data-id="<%= product.id %>">
+  <div class="caroucard" data-id="<%= product.id %>" data-price="<%= product.price %>">
+
     <div class="product-image">
       <%= cl_image_tag product.image %>
     </div>
