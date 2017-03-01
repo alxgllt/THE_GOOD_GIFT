@@ -81,9 +81,8 @@
                         <div class="bag-item-list">
                           <div class="bag-item-wrapper">
                             <ul class="items">
-                              <% @cart.products.reverse.each do |product| %>
+                              <% @cart.products.each do |product| %>
                               <% unless product == @cart.products.last %>
-                              <hr>
                               <% end %>
                               <li class="item">
                                 <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
@@ -93,6 +92,7 @@
                                   <span class="item-modal" data-toggle="modal" data-target="#modal-<%= product.id %>">> voir détails produit <</span>
                                 </div>
                               </li>
+                              <hr>
                               <% end %>
                             </ul>
                           </div>
