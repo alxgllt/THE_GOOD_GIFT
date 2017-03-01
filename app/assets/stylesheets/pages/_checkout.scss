@@ -103,8 +103,8 @@
 
 .bag-item-list img {
   display: 0 0 85px;
-  height: 110px;
-  width: 85px;
+  max-height: 110px;
+  max-width: 85px;
 }
 
 .bag-total {
@@ -149,12 +149,14 @@
 .item-name {
   margin-top: 5px;
   display: block;
+  font-size: 16px;
 }
 
 .item-brand {
   margin-top: 5px;
   display: block;
   font-size: 14px;
+  font-style: italic;
 }
 
 .item-desc {

@@ -1,0 +1,39 @@
+.cart-content {
+  border-radius: 2px;
+  background: white;
+  box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+
+  img {
+    width: 85px;
+  }
+}
+
+
+
+
+
+ // animation de la fleche options
+ @-webkit-keyframes arrow-bouncing {
+  0% { top: 0; left: 0; }
+  100%  { top: 5px; left: 5px; }
+}
+@-moz-keyframes arrow-bouncing {
+  0% { top: 0; left: 0; }
+  100%  { top: 0px; left: 5px; }
+}
+@-o-keyframes arrow-bouncing {
+  0% { top: 0; left: 0; }
+  100%  { top: 0px; left: 5px; }
+}
+@keyframes arrow-bouncing {
+  0% { top: 0; left: 0; }
+  100%  { top: 0px; left: 5px; }
+}
+
+
+.arrow-bounce {
+  -webkit-animation: arrow-bouncing 10s steps(10) infinite alternate;
+  -moz-animation:    arrow-bouncing 10s steps(10) infinite alternate;
+  -o-animation:      arrow-bouncing 10s steps(10) infinite alternate;
+  animation: arrow-bouncing 1s infinite alternate;
+}

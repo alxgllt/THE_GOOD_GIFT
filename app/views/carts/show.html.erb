@@ -1,90 +1,125 @@
-<div class="padded bar-container">
-  <div class="progression-bar">
-    <div class="circle-1">
-      <span class="fa-stack fa-4x">
-        <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
-        <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-      </span>
-    </div>
-    <div class="circle-2">
-      <span class="fa-stack fa-4x">
-        <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
-        <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-      </span>
-    </div>
-    <div class="circle-3">
-      <i class="fa fa-circle" aria-hidden="true"></i>
-    </div>
-    <div class="circle-4">
-      <span class="fa-stack fa-4x">
-        <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
-        <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-      </span>
-    </div>
+<div id="wrapper" class="toggled">
+
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper" class="sidebar-unfixed">
+    <%= render 'products/search_bar_products' %>
   </div>
+  <!-- /#sidebar-wrapper -->
 
-  <div class="progression-bar-text">
-    <div class="circle-1">
-      <span>Welcome</span>
-    </div>
-    <div class="circle-2">
-      <span>Sélection des univers</span>
-    </div>
-    <div class="circle-3">
-      <span><strong>Sélection des cadeaux</strong></span>
-    </div>
-    <div class="circle-4">
-      <span>Checkout</span>
-    </div>
-  </div>
-</div>
-
-<div class="bar-price">
-<br>
-  <h4 class="text-center">Utilisation du budget :</h4>
-  <div class="progress-wrap progress" data-progress-percent="<%= @cart.total %>" data-total='<%= @cart.total %>'>
-    <div class="progress-bar progress"></div>
-  </div>
-</div>
-
-<div class="container" id="choice-page">
-  <div class="row">
-    <div class="col-xs-1 col-sm-3" id="forms">
-      <div id="sticky-anchor"></div>
-      <div class="sidebar-filters">
-        <%= render 'products/search_bar_products' %>
-      </div>
-    </div>
-
-    <div class="col-xs-11 col-sm-9" id="forms">
-        <div class="row">
-          <div class="col-xs-12">
-            <h1 style='margin-top: 0;'> Sélectionnez vos <%= @cart.gift_number %> cadeaux: <span class="price-display"></span></h1>
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <a href="#menu-toggle" class="btn btn-options" id="menu-toggle">
+      <span class="arrow-bounce"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
+      &nbsp;&nbsp;&nbsp;options</a>
+      <!-- Checkout progress bar -->
+      <div class="bar-container">
+        <div class="progression-bar">
+          <div class="circle-1">
+            <span class="fa-stack fa-4x">
+              <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+              <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+            </span>
+          </div>
+          <div class="circle-2">
+            <span class="fa-stack fa-4x">
+              <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+              <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+            </span>
+          </div>
+          <div class="circle-3">
+            <i class="fa fa-circle" aria-hidden="true"></i>
+          </div>
+          <div class="circle-4">
+            <span class="fa-stack fa-4x">
+              <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+              <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+            </span>
           </div>
         </div>
-        <div class="row">
-          <%= render "matching_list", matching_list: @matching_list %>
+        <!-- bar price -->
+        <div class="bar-price">
+          <br>
+          <h4 class="text-center">Utilisation du budget :</h4>
+          <div class="progress-wrap progress" data-progress-percent="<%= @cart.total %>" data-total='<%= @cart.total %>'>
+            <div class="progress-bar progress"></div>
+          </div>
         </div>
-        <%= form_tag orders_path do %>
-          <%# if @matching_list != [] %>
-            <%#= hidden_field_tag :main, @matching_list.first.id %>
-          <%# end %>
-          <%# if @matching_list[:side_one] != [] %>
-            <%#= hidden_field_tag :side_one, @matching_list[:side_one].first.id %>
-          <%# end %>
-          <%# if @matching_list[:side_two] != [] %>
-            <%#= hidden_field_tag :side_two, @matching_list[:side_two].first.id %>
-          <%# end %>
-          <%#= hidden_field_tag :total_price, params[:search_price] %>
+
+
+        <div class="progression-bar-text">
+          <div class="circle-1">
+            <span>Welcome</span>
+          </div>
+          <div class="circle-2">
+            <span>Sélection des univers</span>
+          </div>
+          <div class="circle-3">
+            <span><strong>Sélection des cadeaux</strong></span>
+          </div>
+          <div class="circle-4">
+            <span>Checkout</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="flex-bundle">
+                <div class="col-xs-9 text-center">
+                  <%= render "matching_list", matching_list: @matching_list %>
+                </div>
+                <!-- On affiche le panier -->
+                <div class="col-xs-3">
+                  <div class="cart-content">
+                    <div class="checkout-card cart-card">
+                      <div class="bag">
+                        <div class="filter-title">
+                          <div><span class="">Vos <%= @cart.gift_number %> cadeaux</span></div>
+                        </div>
+                        <div class="bag-item-list">
+                          <div class="bag-item-wrapper">
+                            <ul class="items">
+                              <% @cart.products.reverse.each do |product| %>
+                              <% unless product == @cart.products.last %>
+                              <hr>
+                              <% end %>
+                              <li class="item">
+                                <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
+                                <div>
+                                  <span class="item-name"> <%= product.name %> </span>
+                                  <span class="item-brand"> <%= product.brand %>  </span>
+                                  <span class="item-desc"></span>
+                                </div>
+                              </li>
+                              <% end %>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% if @cart.gift_number == @cart.cart_products.count %>
+          <%= form_tag orders_path do %>
           <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
-        <% end %>
+          <% end %>
+          <% end %>
+        </div>
+
+      </div>
     </div>
+    <!-- /#page-content-wrapper -->
+
   </div>
-</div>
 
 
-
-<% content_for(:after_js) do %>
+  <% content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
       initCarousel();
@@ -93,7 +128,7 @@
       moveProgressBar();
       // on browser resize...
       $(window).resize(function() {
-          moveProgressBar();
+        moveProgressBar();
       });
       $('.owl-nav > div').click(function(event){
         moveProgressBar();
@@ -101,8 +136,8 @@
     });
 
     $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
     });
 
     $("#refresh-options").on("submit", function() {
@@ -110,27 +145,42 @@
         return true;
       } else {
         $('.error-messages').html("Selectionnez au moins 3 univers");
-          return false;
+        return false;
+      }
+    });
+
+    $(document).ready(function() {
+      $(window).scroll(function(e){
+        if ($(this).scrollTop() > 70) {
+          $('#sidebar-wrapper').addClass('sidebar-fixed');
+          $('#sidebar-wrapper').removeClass('sidebar-unfixed');
+        }
+        else {
+          $('#sidebar-wrapper').addClass('sidebar-unfixed');
+          $('#sidebar-wrapper').removeClass('sidebar-fixed');
         }
       });
+      <<<<<<< HEAD
+    });
+    =======
 
     // SIGNATURE PROGRESS
     function moveProgressBar() {
-        var current_total = parseInt($('.progress-wrap').data('total'));
-        var current_product_price = parseInt($('.owl-item.active .caroucard').data('price'));
-        var new_total = current_total + current_product_price;
-        var getPercent = (new_total / <%= @cart.price * 0.95 %>);
-        var getProgressWrapWidth = $('.progress-wrap').width();
-        var progressTotal = getPercent * getProgressWrapWidth;
-        var animationLength = 900;
-        $('.progress-wrap').data('progress-percent', new_total);
-        console.log($('.progress-wrap').data('progress-percent'));
+      var current_total = parseInt($('.progress-wrap').data('total'));
+      var current_product_price = parseInt($('.owl-item.active .caroucard').data('price'));
+      var new_total = current_total + current_product_price;
+      var getPercent = (new_total / <%= @cart.price * 0.95 %>);
+      var getProgressWrapWidth = $('.progress-wrap').width();
+      var progressTotal = getPercent * getProgressWrapWidth;
+      var animationLength = 900;
+      $('.progress-wrap').data('progress-percent', new_total);
+      console.log($('.progress-wrap').data('progress-percent'));
         // on page load, animate percentage bar to data percentage length
         // .stop() used to prevent animation queueing
         $('.progress-bar').stop().animate({
-            left: progressTotal
+          left: progressTotal
         }, animationLength);
-    }
+      }
 
   // $(document).ready(function() {
     //   initializeAutocomplete('order_address');
@@ -157,8 +207,9 @@
     //     }
     //   });
     // });
+    >>>>>>> master
   </script>
-<% end %>
+  <% end %>
 
 
 

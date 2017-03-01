@@ -5,11 +5,8 @@
       <div class="margined">
         <%= form_tag cart_path(@cart), method: :put, id: "refresh-options" do %>
           <%= text_field_tag :search_date, params[:search_date], id: "datepicker", class: "form-control hidden"%>
-          <div class="filter-title">
-            <div><span class="">Son prénom</span></div>
-          </div>
-          <%= text_field_tag :name, @cart.name, placeholder: "Prénom", :required => true, class: "form-control"%>
-          <%= select_tag :gender, options_for_select(["Homme", "Femme"], @cart.gender), placeholder: "Sexe", :required => true, class: "form-control" %>
+          <%= text_field_tag :name, @cart.name, placeholder: "Prénom", :required => true, class: "form-control hidden"%>
+          <%= select_tag :gender, options_for_select(["Homme", "Femme"], @cart.gender), placeholder: "Sexe", :required => true, class: "form-control hidden" %>
           <div class="filter-title">
             <div><span class="">Votre budget</span></div>
           </div>
@@ -35,7 +32,7 @@
         <% end %>
       </div>
        <div class="filter-title">
-          <div><span class="">Les cadeaux</span></div>
+          <div><span class="">Cadeaux</span></div>
         </div>
         <%= select_tag :gift_number, options_for_select(@cart.gift_number_range, @cart.gift_number), placeholder: "#{@cart.gift_number}", class: "form-control" %>
         <div class="error-messages text-center">
