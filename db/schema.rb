@@ -69,9 +69,10 @@ ActiveRecord::Schema.define(version: 20170301093737) do
     t.string   "last_name"
     t.string   "email"
     t.integer  "cost"
-    t.string   "phone"
     t.integer  "total_price_cents", default: 0, null: false
+    t.string   "phone"
     t.string   "company"
+    t.string   "card"
   end
 
   create_table "product_lists", force: :cascade do |t|

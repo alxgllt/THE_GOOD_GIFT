@@ -40,7 +40,8 @@
     opacity: 1;
   }
   &:hover .card-category {
-    opacity: 0;
+    opacity: 1;
+    margin-bottom: 170px;
   }
 }
 .error-messages {

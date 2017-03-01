@@ -34,6 +34,7 @@
             <span class="email-replay-data hidden" id="email-data" data-bind="email"></span>
             <button class="btn tertiary hidden" id='edit-email-btn'>MODIFIER</button>
             <%= simple_form_for(@order, html: {class: 'form-inline', id: 'email-input-field'}, remote: true) do |f| %>
+              <%= f.error_notification %>
               <%= f.input :email, label: false, id: 'email-field' %>
               <%= f.submit "Ajouter mon email", class: "btn secondary submit" %>
             <% end %>
@@ -130,6 +131,29 @@
                 </ul>
               </div>
             </div>
+            <hr>
+
+            <div class="bag-gift_card-selection">
+                <p>Inclure une carte</p>
+
+                <input type="checkbox" class="checkbox" id="checkbox-card">
+                <label for="checkbox-card"></label>
+            </div>
+            <div class="giftcard-form hidden" id="giftcard-list">
+              <%= simple_form_for @order, url: "/orders/#{@order[:id]}/select_gift_card", method: 'patch', remote: true do |f| %>
+                 <%= f.input :card,
+                  as: :radio_buttons,
+                  checked: @order[:card],
+                  label: false,
+                  collection: [
+                    ["#{ image_tag @cards_as_objects[0].to_hash[:image_file_name]}".html_safe, @cards_as_objects[0].id],
+                    ["#{ image_tag @cards_as_objects[1].to_hash[:image_file_name]}".html_safe, @cards_as_objects[1].id],
+                    ["#{ image_tag @cards_as_objects[2].to_hash[:image_file_name]}".html_safe, @cards_as_objects[2].id]
+                    ] %>
+                 <%= f.submit class: "btn hidden", id: "submit-giftcard" %>
+               <% end %>
+            </div>
+            <div id="giftcard-message"></div>
 
             <hr>
 
@@ -187,11 +211,29 @@
         $('#payment-btn').prop("disabled", true);
       }
       document.getElementById("payment-btn").onclick = function fun() {
-        $('.stripe-button-el' ).trigger( "click" )
+        $('.stripe-button-el').trigger('click')
       }
+      $(document).on('change', '#checkbox-card', function() {
+          if(this.checked) {
+            $('#giftcard-list').removeClass('hidden')
+          }
+          else {
+           $('#giftcard-list').addClass('hidden')
+          }
+      });
+      $(document).on('change', '.radio_buttons', function() {
+        $('.radio_buttons:not(checked)').parent().css('border', '0px');
+        $('.radio_buttons:checked').parent().css('border', '2px solid black');
+        $('#submit-giftcard').trigger('click');
+        setTimeout(function(){$('#giftcard-message').hide('slow')}, 2000);
+      });
+      $(document).on('change', '#checkbox-card', function() {
+        $('.giftcard-form').show();
+      });
     });
   </script>
 <% end %>
+
 
 
 

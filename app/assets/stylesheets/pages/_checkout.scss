@@ -1,6 +1,7 @@
 
 .main-body {
   background: #F2F2F2;
+  min-height: 100vh;
 }
 
 .checkout-header {
@@ -53,6 +54,11 @@
 .sticky {
   position: fixed;
   top: 0;
+}
+
+.cards {
+  display: flex;
+  margin-top: 10px;
 }
 
   // handle masking effects
@@ -157,6 +163,57 @@
   margin-top: 5px;
   display: block;
   font-size: 12px;
+}
+
+.bag-gift_card-selection {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+}
+
+.icon-giftcard {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  height: 15px;
+  width: 15px;
+  background-image: "../assets/images/card_icon.png";
+}
+
+.checkbox {
+  float: right;
+}
+
+.radio_buttons.order_card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio, .checkbox {
+  display: block;
+  margin-top: 10px !important;
+  margin-bottom: 10px;
+}
+
+.radio label {
+  display: block;
+  text-align: center;
+}
+
+.giftcard-form img {
+  height: 60px;
+  width: 60px;
+  margin-left: -20px;
+  background-size: cover;
+}
+
+.giftcard-form input {
+  display: none;
+}
+
+#giftcard-message p {
+  color: #93E1D8;
+
 }
 
 // Forms
@@ -333,6 +390,7 @@
 #payment-btn {
   width: 350px;
   margin-top: 20px;
+  border-radius: 1px;
 }
 
 #payment-btn[disabled] {
@@ -356,3 +414,38 @@
 
  // display:none !important;
   }
+
+
+
+
+#checkbox-card {
+  display: none;
+}
+
+#checkbox-card + label {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 2px;
+  position: relative;
+}
+
+// #checkbox-card + label:before {
+//   content: '';
+//   width: 18px;
+//   height: 18px;
+//   background-color: white;
+// }
+
+#checkbox-card:checked + label:after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background-color: black;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+
+}
+
+

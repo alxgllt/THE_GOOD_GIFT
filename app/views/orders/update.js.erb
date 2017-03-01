@@ -12,7 +12,7 @@
   };
 <% end %>
 
-<% if @phone_changed || @address_changed %>
+<% if @phone_changed || @address_changed || @first_name_changed || @last_name_changed || @company_changed %>
   $('#first_name-data').text('<%= @order.first_name %>');
   $('#last_name-data').text('<%= @order.last_name %>');
   $('#company-data').text('<%= @order.company %>');

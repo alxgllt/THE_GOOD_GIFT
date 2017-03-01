@@ -4,6 +4,7 @@
   <% elsif @matching_list.empty? %>
   <h3>Désolé, notre databse actuelle ne nous permet pas de satisfaire votre demande, merci d'élargir votre champ de recherche :)</h3>
   <% else %>
+
   <!-- <div class="bundle"> -->
   <% product = @matching_list.first%>
   <div class="caroucard" data-id="<%= product.id %>">
@@ -37,3 +38,5 @@
   <i class="fa fa-arrow-right" aria-hidden="true"></i>
   </div>
 </div>
+
+

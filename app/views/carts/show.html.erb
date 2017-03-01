@@ -36,6 +36,15 @@
             </span>
           </div>
         </div>
+        <!-- bar price -->
+        <div class="bar-price">
+          <br>
+          <h4 class="text-center">Utilisation du budget :</h4>
+          <div class="progress-wrap progress" data-progress-percent="<%= @cart.total %>" data-total='<%= @cart.total %>'>
+            <div class="progress-bar progress"></div>
+          </div>
+        </div>
+
 
         <div class="progression-bar-text">
           <div class="circle-1">
@@ -59,7 +68,7 @@
           <div class="col-lg-12">
             <div class="row">
               <div class="flex-bundle">
-              <div class="col-xs-9 text-center">
+                <div class="col-xs-9 text-center">
                   <%= render "matching_list", matching_list: @matching_list %>
                 </div>
                 <!-- On affiche le panier -->
@@ -116,6 +125,14 @@
       initCarousel();
       Ordercount ();
       ProductChoice ();
+      moveProgressBar();
+      // on browser resize...
+      $(window).resize(function() {
+        moveProgressBar();
+      });
+      $('.owl-nav > div').click(function(event){
+        moveProgressBar();
+      });
     });
 
     $("#menu-toggle").click(function(e) {
@@ -143,8 +160,67 @@
           $('#sidebar-wrapper').removeClass('sidebar-fixed');
         }
       });
+      <<<<<<< HEAD
     });
+    =======
+
+    // SIGNATURE PROGRESS
+    function moveProgressBar() {
+      var current_total = parseInt($('.progress-wrap').data('total'));
+      var current_product_price = parseInt($('.owl-item.active .caroucard').data('price'));
+      var new_total = current_total + current_product_price;
+      var getPercent = (new_total / <%= @cart.price * 0.95 %>);
+      var getProgressWrapWidth = $('.progress-wrap').width();
+      var progressTotal = getPercent * getProgressWrapWidth;
+      var animationLength = 900;
+      $('.progress-wrap').data('progress-percent', new_total);
+      console.log($('.progress-wrap').data('progress-percent'));
+        // on page load, animate percentage bar to data percentage length
+        // .stop() used to prevent animation queueing
+        $('.progress-bar').stop().animate({
+          left: progressTotal
+        }, animationLength);
+      }
+
+  // $(document).ready(function() {
+    //   initializeAutocomplete('order_address');
+    //   function sticky_relocate() {
+    //     var window_top = $(window).scrollTop();
+    //     var div_top = $('#sticky-anchor').offset().top;
+    //     if (window_top > div_top)
+    //         $('.sidebar-filters').addClass('sticking');
+    //     else
+    //         $('.sidebar-filters').removeClass('sticking');
+    //   }
+    //   $(function(){
+    //       $(window).scroll(sticky_relocate);
+    //       sticky_relocate();
+    //     });
+    // });
+    // $(document).ready(function() {
+    //   $(window).scroll(function(e){
+    //     if ($(this).scrollTop() > 70) {
+    //       $('.bar-container').addClass('progress-bar-fixed');
+    //     }
+    //     else {
+    //       $('.bar-container').removeClass('progress-bar-fixed');
+    //     }
+    //   });
+    // });
+    >>>>>>> master
   </script>
   <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
