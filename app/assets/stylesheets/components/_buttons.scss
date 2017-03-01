@@ -8,3 +8,20 @@
   font-size: 18px;
   margin-bottom: 5px;
 }
+.btn-options {
+  border: 1px solid $mint;
+  border-radius: 50px;
+  font-size: 18px;
+  padding: 10px 30px;
+  transition: all 0.3s ease;
+  &:hover {
+    background: $mint;
+    color: white;
+  }
+  &:focus {
+   color: $mint;
+  }
+  &:focus:hover {
+   color: white;
+  }
+}
