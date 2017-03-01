@@ -66,6 +66,10 @@
   align-item: flex-end;
 }
 
+.radio_div {
+  cursor: pointer;
+}
+
 .radio_div input + label {
   height: 49px;
   width: 60px;
@@ -95,9 +99,10 @@
 }
 
 .icon-home {
+  height: 50px;
   font-size: 35px;
   padding-top: 7px;
+  cursor: pointer;
 }
-
 
 

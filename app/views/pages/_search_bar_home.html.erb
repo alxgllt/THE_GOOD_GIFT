@@ -25,7 +25,7 @@
         <div class="form-item-home">
           <h3>Votre budget ?</h3> <br>
           <div class="input-group">
-            <%= text_field_tag :search_price, params[:search_price], :required => true, placeholder: "Montant  ", class: "form-control input-lg"%>
+            <%= text_field_tag :search_price, params[:search_price], :required => true, placeholder: "Montant  ", class: "form-control input-lg price-input"%>
             <div class="input-group-addon input-lg">€</div>
           </div>
         </div>
@@ -33,24 +33,23 @@
         <div class="form-item-home">
           <%= submit_tag "Je lui fais plaisir", class: "btn btn-primary btn-home input-lg" %>
         </div>
-
       <% end %>
     </div>
   </div>
 
-    <% content_for :after_js do %>
-    <script>
-     $("#select-genre").on("submit", function() {
-      var paragraph = $('<p>').text("Votre ami(e) est il un homme ou une femme ?");
-      if ($( "#sexe option:selected" ).text() !== "Genre") {
+<% content_for(:after_js) do %>
+  <script>
+    $("#select-genre").on("submit", function() {
+      if (parseInt($(".price-input").val()) >= 100) {
         return true;
       } else {
-        $("#sexe").toggleClass('red-message-error');
-        $('.error-messages').append(paragraph);
-    return false; // prevent it from being submitted (errors, etc.)
-  }
-});
-</script>
+        $('.error-messages').html("Votre budget doit dépasser 100 euros");
+          return false;
+        }
+      });
+  </script>
 <% end %>
+
+
 
 
