@@ -1,3 +1,39 @@
 .caroucard {
-  max-width: 300px;
+  background: white;
+  border-radius: 2px;
+  box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  height: 320px;
+  .product-image {
+    display: flex;
+    justify-content: center;
+    max-width: 60%;
+    img {
+      border-radius: 2px;
+      max-width: 100%;
+      max-height: 300px;
+    }
+  }
+}
+
+.product-infos {
+  height: 80%;
+  // flex-grow: 1;
+  max-width: 40%;
+  margin-left: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .product-name {
+    font-size: 24px;
+  }
+  .product-brand {
+    font-size: 18px;
+    font-style: italix;
+  }
 }

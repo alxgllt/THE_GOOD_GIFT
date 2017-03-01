@@ -20,8 +20,24 @@
   }
   &:focus {
    color: $mint;
-  }
-  &:focus:hover {
+ }
+ &:focus:hover {
    color: white;
+ }
+}
+
+.btn-show-bundle {
+  color: $black;
+  border: 1px solid $black;
+  border-radius: 2px;
+  font-size: 18px;
+  padding: 10px 30px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  &:hover {
+    background: $black;
+    color: white;
   }
 }

@@ -11,82 +11,83 @@
     <a href="#menu-toggle" class="btn btn-options" id="menu-toggle">
       <span class="arrow-bounce"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
       &nbsp;&nbsp;&nbsp;options</a>
-    <!-- Checkout progress bar -->
-    <div class="bar-container">
-      <div class="progression-bar">
-        <div class="circle-1">
-          <span class="fa-stack fa-4x">
-            <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
-            <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-          </span>
+      <!-- Checkout progress bar -->
+      <div class="bar-container">
+        <div class="progression-bar">
+          <div class="circle-1">
+            <span class="fa-stack fa-4x">
+              <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+              <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+            </span>
+          </div>
+          <div class="circle-2">
+            <span class="fa-stack fa-4x">
+              <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+              <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+            </span>
+          </div>
+          <div class="circle-3">
+            <i class="fa fa-circle" aria-hidden="true"></i>
+          </div>
+          <div class="circle-4">
+            <span class="fa-stack fa-4x">
+              <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+              <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+            </span>
+          </div>
         </div>
-        <div class="circle-2">
-          <span class="fa-stack fa-4x">
-            <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
-            <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-          </span>
-        </div>
-        <div class="circle-3">
-          <i class="fa fa-circle" aria-hidden="true"></i>
-        </div>
-        <div class="circle-4">
-          <span class="fa-stack fa-4x">
-            <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
-            <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-          </span>
-        </div>
-      </div>
 
-      <div class="progression-bar-text">
-        <div class="circle-1">
-          <span>Welcome</span>
-        </div>
-        <div class="circle-2">
-          <span>Sélection des univers</span>
-        </div>
-        <div class="circle-3">
-          <span><strong>Sélection des cadeaux</strong></span>
-        </div>
-        <div class="circle-4">
-          <span>Checkout</span>
+        <div class="progression-bar-text">
+          <div class="circle-1">
+            <span>Welcome</span>
+          </div>
+          <div class="circle-2">
+            <span>Sélection des univers</span>
+          </div>
+          <div class="circle-3">
+            <span><strong>Sélection des cadeaux</strong></span>
+          </div>
+          <div class="circle-4">
+            <span>Checkout</span>
+          </div>
         </div>
       </div>
-    </div>
 
 
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
             <div class="row">
-              <div class="col-xs-9">
-                <%= render "matching_list", matching_list: @matching_list %>
-
-              </div>
-              <!-- On affiche le panier -->
-              <div class="col-xs-3">
-                <div class="cart-content">
-                  <div class="checkout-card cart-card">
-                    <div class="bag">
-                      <div class="filter-title">
-                        <div><span class="">Vos <%= @cart.gift_number %> cadeaux</span></div>
-                      </div>
-                      <div class="bag-item-list">
-                        <div class="bag-item-wrapper">
-                          <ul class="items">
-                            <% @cart.products.reverse.each do |product| %>
-                            <li class="item">
-                              <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
-                              <div>
-                                <span class="item-name"> <%= product.name %> </span>
-                                <span class="item-brand"> <%= product.brand %>  </span>
-                                <span class="item-desc"></span>
-                              </div>
-                            </li>
-                            <% unless product == @cart.products.last %>
+              <div class="flex-bundle">
+              <div class="col-xs-9 text-center">
+                  <%= render "matching_list", matching_list: @matching_list %>
+                </div>
+                <!-- On affiche le panier -->
+                <div class="col-xs-3">
+                  <div class="cart-content">
+                    <div class="checkout-card cart-card">
+                      <div class="bag">
+                        <div class="filter-title">
+                          <div><span class="">Vos <%= @cart.gift_number %> cadeaux</span></div>
+                        </div>
+                        <div class="bag-item-list">
+                          <div class="bag-item-wrapper">
+                            <ul class="items">
+                              <% @cart.products.reverse.each do |product| %>
+                              <% unless product == @cart.products.last %>
                               <hr>
-                            <% end %>
-                            <% end %>
-                          </ul>
+                              <% end %>
+                              <li class="item">
+                                <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
+                                <div>
+                                  <span class="item-name"> <%= product.name %> </span>
+                                  <span class="item-brand"> <%= product.brand %>  </span>
+                                  <span class="item-desc"></span>
+                                </div>
+                              </li>
+                              <% end %>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>

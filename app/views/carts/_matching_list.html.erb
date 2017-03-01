@@ -1,33 +1,39 @@
-
-<% if @cart.gift_number == @cart.cart_products.count %>
-<h1>PANIER PLEIN</h1>
-<% elsif @matching_list.empty? %>
-<h3>Désolé, notre databse actuelle ne nous permet pas de satisfaire votre demande, merci d'élargir votre champ de recherche :)</h3>
-<% else %>
-<div class="bundle">
-  <div class="owl-carousel owl-big">
-    <% @matching_list.each do |product| %>
-    <div class="caroucard" data-id="<%= product.id %>">
-      <div class="product-brand">
-        <p>price: <%= product.price %></p>
-        <p>id :<%= product.id %></p>
-      </div>
-      <div class="product-image">
-        <%= cl_image_tag product.image, width: 150, crop: :fill %>
-      </div>
+<div class="bundle-flexing">
+  <% if @cart.gift_number == @cart.cart_products.count %>
+  <h1>PANIER PLEIN</h1>
+  <% elsif @matching_list.empty? %>
+  <h3>Désolé, notre databse actuelle ne nous permet pas de satisfaire votre demande, merci d'élargir votre champ de recherche :)</h3>
+  <% else %>
+  <!-- <div class="bundle"> -->
+  <% product = @matching_list.first%>
+  <div class="caroucard" data-id="<%= product.id %>">
+    <div class="product-image">
+      <%= cl_image_tag product.image %>
+    </div>
+    <div class="product-infos">
       <div class="product-name">
         <%= product.name %>
+        <div class="product-brand">
+          <%= product.brand %>
+        </div>
+      </div>
+      <div class="btn btn-show-bundle">
+        + DÉTAILS
       </div>
     </div>
-    <% end %>
+  </div>
+  <!-- </div> -->
+  <br>
+  <!-- On enregistre le produit dans le panier -->
+  <div class="flex-buttons">
+  <i class="fa fa-arrow-left" aria-hidden="true"></i>
+  <%= form_tag cart_cart_products_path(@cart), method: :post do %>
+  <% if @matching_list != [] %>
+  <%= hidden_field_tag :main_id, @matching_list.first.id %>
+  <% end %>
+  <%= submit_tag 'Choisir', class: 'btn btn-primary choice-button btn-rounded' %>
+  <% end %>
+  <% end %>
+  <i class="fa fa-arrow-right" aria-hidden="true"></i>
   </div>
 </div>
-
-<!-- On enregistre le produit dans le panier -->
-<%= form_tag cart_cart_products_path(@cart), method: :post do %>
-<% if @matching_list != [] %>
-<%= hidden_field_tag :main_id, @matching_list.first.id %>
-<% end %>
-<%= submit_tag 'Choisir', class: 'btn btn-primary choice-button btn-rounded' %>
-<% end %>
-<% end %>
