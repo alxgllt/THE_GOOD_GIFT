@@ -106,9 +106,10 @@
             </div>
           </div>
           <% if @cart.gift_number == @cart.cart_products.count %>
-          <%= form_tag orders_path do %>
-          <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
-          <% end %>
+            <%= form_tag orders_path, method: 'post' do%>
+              <%= hidden_field_tag "cart_id", params[:id] %>
+            <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
+            <% end %>
           <% end %>
         </div>
 
