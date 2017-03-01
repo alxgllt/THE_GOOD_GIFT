@@ -1,103 +1,154 @@
-<div class="padded bar-container">
-  <div class="progression-bar">
-    <div class="circle-1">
-      <span class="fa-stack fa-4x">
-        <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
-        <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-      </span>
-    </div>
-    <div class="circle-2">
-      <span class="fa-stack fa-4x">
-        <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
-        <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-      </span>
-    </div>
-    <div class="circle-3">
-      <i class="fa fa-circle" aria-hidden="true"></i>
-    </div>
-    <div class="circle-4">
-      <span class="fa-stack fa-4x">
-        <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
-        <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-      </span>
-    </div>
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="#">
+          Start Bootstrap
+        </a>
+      </li>
+      <li>
+        <a href="#">Dashboard</a>
+      </li>
+      <li>
+        <a href="#">Shortcuts</a>
+      </li>
+      <li>
+        <a href="#">Overview</a>
+      </li>
+      <li>
+        <a href="#">Events</a>
+      </li>
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Services</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
   </div>
+  <!-- /#sidebar-wrapper -->
 
-  <div class="progression-bar-text">
-    <div class="circle-1">
-      <span>Welcome</span>
-    </div>
-    <div class="circle-2">
-      <span>Sélection des univers</span>
-    </div>
-    <div class="circle-3">
-      <span><strong>Sélection des cadeaux</strong></span>
-    </div>
-    <div class="circle-4">
-      <span>Checkout</span>
-    </div>
-  </div>
-</div>
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- Checkout progress bar -->
+          <div class="padded bar-container">
+            <div class="progression-bar">
+              <div class="circle-1">
+                <span class="fa-stack fa-4x">
+                  <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+                  <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+                </span>
+              </div>
+              <div class="circle-2">
+                <span class="fa-stack fa-4x">
+                  <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+                  <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+                </span>
+              </div>
+              <div class="circle-3">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+              </div>
+              <div class="circle-4">
+                <span class="fa-stack fa-4x">
+                  <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
+                  <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="progression-bar-text">
+              <div class="circle-1">
+                <span>Welcome</span>
+              </div>
+              <div class="circle-2">
+                <span>Sélection des univers</span>
+              </div>
+              <div class="circle-3">
+                <span><strong>Sélection des cadeaux</strong></span>
+              </div>
+              <div class="circle-4">
+                <span>Checkout</span>
+              </div>
+            </div>
+          </div>
 
 
-<div class="container" id="choice-page">
-  <div class="row">
-    <div class="col-xs-1 col-sm-3" id="forms">
-      <div id="sticky-anchor"></div>
-      <div class="sidebar-filters">
-        <%= render 'products/search_bar_products' %>
+          <div class="container" id="choice-page">
+            <div class="row">
+              <div class="col-xs-1 col-sm-3" id="forms">
+                <div id="sticky-anchor"></div>
+                <div class="sidebar-filters">
+                  <%= render 'products/search_bar_products' %>
+                </div>
+              </div>
+
+              <div class="col-xs-11 col-sm-9" id="forms">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h1 style='margin-top: 0;'> Sélectionnez vos <%= @cart.gift_number %> cadeaux: <span class="price-display"></span></h1>
+                  </div>
+                </div>
+                <div class="row">
+                  <%= render "matching_list", matching_list: @matching_list %>
+                </div>
+                <%= form_tag orders_path do %>
+                <%# if @matching_list != [] %>
+                <%#= hidden_field_tag :main, @matching_list.first.id %>
+                <%# end %>
+                <%# if @matching_list[:side_one] != [] %>
+                <%#= hidden_field_tag :side_one, @matching_list[:side_one].first.id %>
+                <%# end %>
+                <%# if @matching_list[:side_two] != [] %>
+                <%#= hidden_field_tag :side_two, @matching_list[:side_two].first.id %>
+                <%# end %>
+                <%#= hidden_field_tag :total_price, params[:search_price] %>
+                <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+        </div>
       </div>
     </div>
-
-    <div class="col-xs-11 col-sm-9" id="forms">
-        <div class="row">
-          <div class="col-xs-12">
-            <h1 style='margin-top: 0;'> Sélectionnez vos <%= @cart.gift_number %> cadeaux: <span class="price-display"></span></h1>
-          </div>
-        </div>
-        <div class="row">
-          <%= render "matching_list", matching_list: @matching_list %>
-        </div>
-        <%= form_tag orders_path do %>
-          <%# if @matching_list != [] %>
-            <%#= hidden_field_tag :main, @matching_list.first.id %>
-          <%# end %>
-          <%# if @matching_list[:side_one] != [] %>
-            <%#= hidden_field_tag :side_one, @matching_list[:side_one].first.id %>
-          <%# end %>
-          <%# if @matching_list[:side_two] != [] %>
-            <%#= hidden_field_tag :side_two, @matching_list[:side_two].first.id %>
-          <%# end %>
-          <%#= hidden_field_tag :total_price, params[:search_price] %>
-          <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
-        <% end %>
-    </div>
   </div>
+  <!-- /#page-content-wrapper -->
+
 </div>
+
 
 
 
 <% content_for(:after_js) do %>
-  <script>
-    $(document).ready(function() {
-      initCarousel();
-      Ordercount ();
-      ProductChoice ();
-    });
+<script>
+  $(document).ready(function() {
+    initCarousel();
+    Ordercount ();
+    ProductChoice ();
+  });
 
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
 
-    $("#refresh-options").on("submit", function() {
-      if ($(".checkboxes input[type=checkbox]:checked").length >= 3) {
-        return true;
-      } else {
-        $('.error-messages').html("Selectionnez au moins 3 univers");
-          return false;
-        }
-      });
+  $("#refresh-options").on("submit", function() {
+    if ($(".checkboxes input[type=checkbox]:checked").length >= 3) {
+      return true;
+    } else {
+      $('.error-messages').html("Selectionnez au moins 3 univers");
+      return false;
+    }
+  });
 
   // $(document).ready(function() {
     //   initializeAutocomplete('order_address');
@@ -125,6 +176,6 @@
     //   });
     // });
   </script>
-<% end %>
+  <% end %>
 
 
