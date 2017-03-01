@@ -24,19 +24,25 @@
 
 #sidebar-wrapper {
     z-index: 1000;
-    position: fixed;
     left: 250px;
     width: 0;
     height: 100%;
+    position: fixed;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: white;
+    // border: 1px solid $mint;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
-
+.sidebar-unfixed {
+  // position: absolute;
+}
+.sidebar-fixed {
+  // position: fixed;
+}
 #wrapper.toggled #sidebar-wrapper {
     width: 250px;
 }
@@ -71,12 +77,12 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: $black;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
+    color: $mint;
     background: rgba(255,255,255,0.2);
 }
 
@@ -92,11 +98,11 @@
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: #999999;
+    color: $black;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
+    color: $mint;
     background: none;
 }
 

@@ -1,8 +1,11 @@
 <div id="wrapper">
 
   <!-- Sidebar -->
-  <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
+  <div id="sidebar-wrapper" class="sidebar-unfixed">
+    <div class="sidebar-filters">
+      <%= render 'products/search_bar_products' %>
+    </div>
+    <!-- <ul class="sidebar-nav">
       <li class="sidebar-brand">
         <a href="#">
           Start Bootstrap
@@ -29,7 +32,7 @@
       <li>
         <a href="#">Contact</a>
       </li>
-    </ul>
+    </ul> -->
   </div>
   <!-- /#sidebar-wrapper -->
 
@@ -81,50 +84,28 @@
           </div>
 
 
-          <div class="container" id="choice-page">
+          <div class="col-xs-11 col-sm-9" id="forms">
             <div class="row">
-              <div class="col-xs-1 col-sm-3" id="forms">
-                <div id="sticky-anchor"></div>
-                <div class="sidebar-filters">
-                  <%= render 'products/search_bar_products' %>
-                </div>
-              </div>
-
-              <div class="col-xs-11 col-sm-9" id="forms">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <h1 style='margin-top: 0;'> Sélectionnez vos <%= @cart.gift_number %> cadeaux: <span class="price-display"></span></h1>
-                  </div>
-                </div>
-                <div class="row">
-                  <%= render "matching_list", matching_list: @matching_list %>
-                </div>
-                <%= form_tag orders_path do %>
-                <%# if @matching_list != [] %>
-                <%#= hidden_field_tag :main, @matching_list.first.id %>
-                <%# end %>
-                <%# if @matching_list[:side_one] != [] %>
-                <%#= hidden_field_tag :side_one, @matching_list[:side_one].first.id %>
-                <%# end %>
-                <%# if @matching_list[:side_two] != [] %>
-                <%#= hidden_field_tag :side_two, @matching_list[:side_two].first.id %>
-                <%# end %>
-                <%#= hidden_field_tag :total_price, params[:search_price] %>
-                <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
-                <% end %>
+              <div class="col-xs-12">
+                <h1 style='margin-top: 0;'> Sélectionnez vos <%= @cart.gift_number %> cadeaux: <span class="price-display"></span></h1>
               </div>
             </div>
+            <div class="row">
+              <%= render "matching_list", matching_list: @matching_list %>
+            </div>
+            <%= form_tag orders_path do %>
+              <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
+            <% end %>
           </div>
-
-          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
         </div>
       </div>
+
+      <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
     </div>
   </div>
   <!-- /#page-content-wrapper -->
 
 </div>
-
 
 
 
@@ -150,32 +131,19 @@
     }
   });
 
-  // $(document).ready(function() {
-    //   initializeAutocomplete('order_address');
-    //   function sticky_relocate() {
-    //     var window_top = $(window).scrollTop();
-    //     var div_top = $('#sticky-anchor').offset().top;
-    //     if (window_top > div_top)
-    //         $('.sidebar-filters').addClass('sticking');
-    //     else
-    //         $('.sidebar-filters').removeClass('sticking');
-    //   }
-    //   $(function(){
-    //       $(window).scroll(sticky_relocate);
-    //       sticky_relocate();
-    //     });
-    // });
-    // $(document).ready(function() {
-    //   $(window).scroll(function(e){
-    //     if ($(this).scrollTop() > 70) {
-    //       $('.bar-container').addClass('progress-bar-fixed');
-    //     }
-    //     else {
-    //       $('.bar-container').removeClass('progress-bar-fixed');
-    //     }
-    //   });
-    // });
-  </script>
-  <% end %>
+  $(document).ready(function() {
+    $(window).scroll(function(e){
+      if ($(this).scrollTop() > 70) {
+        $('#sidebar-wrapper').addClass('sidebar-fixed');
+        $('#sidebar-wrapper').removeClass('sidebar-unfixed');
+      }
+      else {
+        $('#sidebar-wrapper').addClass('sidebar-unfixed');
+        $('#sidebar-wrapper').removeClass('sidebar-fixed');
+      }
+    });
+  });
+</script>
+<% end %>
 
 
