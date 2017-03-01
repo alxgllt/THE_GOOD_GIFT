@@ -4,11 +4,10 @@
 
 .flex-bundle {
   display: flex;
-  align-items: top;
+  align-items: flex-start;
   justify-content: center;
 }
 .bundle-flexing {
-  margin-top: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,6 +20,7 @@
   align-items: center;
   i {
     font-size: 25px;
+    color: $grey;
     margin: 0 10px;
     cursor: pointer;
     &:hover {

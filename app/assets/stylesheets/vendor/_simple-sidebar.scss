@@ -11,8 +11,8 @@
 /* Toggle Styles */
 
 #wrapper {
-  background: rgba(247, 247, 247, 0.65);
-  min-height: calc(100vh - 70px);
+  background: #FAFAFA;
+  min-height: 100vh;
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -105,5 +105,28 @@
   top: 15px;
 }
 .container-fluid {
-  margin-top: 50px;
+  margin-top: 20px;
+}
+.cadeaux {
+  padding: 0 27px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  i {
+    font-size: 22px;
+    color: $grey;
+    &:hover {
+      color: $mint;
+      cursor: pointer;
+    }
+  }
+  img {
+    width: 55px;
+  }
+}
+.cadeau-display {
+  display: flex;
+  justify-content: center;
+  color: $grey;
+  font-size: 23px;
 }
