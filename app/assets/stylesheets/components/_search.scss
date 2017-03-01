@@ -74,14 +74,18 @@
   height: 49px;
   width: 60px;
   background-color: $mint;
-  opacity: 0.3
+  opacity: 0.3;
+  &:hover {
+    background-color: $mint;
+    opacity: 0.8;
+  }
 }
 
 .radio_div input:checked + label {
   height: 49px;
   width: 60px;
   background-color: $mint;
-  opacity: 0.8
+  opacity: 0.8;
 }
 
 .radio_div input {
