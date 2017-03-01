@@ -21,6 +21,20 @@
           <% end %>
         </div>
 
+
+        <%= form_tag cart_cart_products_path(@cart), method: :post do %>
+          <% if @matching_list[:main] != [] %>
+            <%= hidden_field_tag :main_id, @matching_list[:main].first.id %>
+          <% end %>
+          <%= submit_tag 'Choisir', class: 'btn btn-primary choice-button btn-rounded' %>
+        <% end %>
+
+
+
+
+
+
+
       </div>
     </div>
     <div class="col-xs-1">

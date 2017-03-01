@@ -1,19 +1,20 @@
 
 <div class="search-product" >
+
   <div class="wrapper">
       <div class="margined">
-        <%= form_tag products_path, method: :get, id: "form", remote: true do %>
+        <%= form_tag cart_path(@cart), method: :put, id: "form" do %>
           <%= text_field_tag :search_date, params[:search_date], id: "datepicker", class: "form-control hidden"%>
           <div class="filter-title">
             <div><span class="">Son prénom</span></div>
           </div>
-          <%= text_field_tag :search_name, params[:search_name], placeholder: "Prénom", class: "form-control"%>
-          <%= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), placeholder: "Sexe", class: "form-control" %>
+          <%= text_field_tag :name, @cart.name, placeholder: "Prénom", class: "form-control"%>
+          <%= select_tag :gender, options_for_select(["Homme", "Femme"], @cart.gender), placeholder: "Sexe", class: "form-control" %>
           <div class="filter-title">
             <div><span class="">Votre budget</span></div>
           </div>
           <div class="input-group">
-            <%= text_field_tag :search_price, params[:search_price], placeholder: "Budget", class: "form-control"%>
+            <%= text_field_tag :price, @cart.price, placeholder: "Budget", class: "form-control"%>
             <div class="input-group-addon">€</div>
           </div>
           <div class="filter-title">
@@ -23,7 +24,7 @@
       <div class="container-checkbox">
         <% @tags_as_objects.each do |tag| %>
         <label class="checkboxes" for="<%= tag.identifier %>">
-          <%= check_box_tag "tags[]", tag.title, params[:tags].include?(tag.title), id: tag.identifier, style: "display: none;" %>
+          <%= check_box_tag "tags[]", tag.title, @cart[:tags].include?(tag.title), id: tag.identifier, style: "display: none;" %>
           <div class="check-card" data-tag-title="<%= tag.title %>">
             <div class="check-title">
               <%= tag.title %>
