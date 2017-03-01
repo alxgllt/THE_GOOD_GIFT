@@ -39,6 +39,13 @@
   </div>
 </div>
 
+<div class="bar-price">
+<br>
+  <h4 class="text-center">Utilisation du budget :</h4>
+  <div class="progress-wrap progress" data-progress-percent="<%= @cart.total %>" data-total='<%= @cart.total %>'>
+    <div class="progress-bar progress"></div>
+  </div>
+</div>
 
 <div class="container" id="choice-page">
   <div class="row">
@@ -83,6 +90,14 @@
       initCarousel();
       Ordercount ();
       ProductChoice ();
+      moveProgressBar();
+      // on browser resize...
+      $(window).resize(function() {
+          moveProgressBar();
+      });
+      $('.owl-nav > div').click(function(event){
+        moveProgressBar();
+      });
     });
 
     $("#menu-toggle").click(function(e) {
@@ -98,6 +113,24 @@
           return false;
         }
       });
+
+    // SIGNATURE PROGRESS
+    function moveProgressBar() {
+        var current_total = parseInt($('.progress-wrap').data('total'));
+        var current_product_price = parseInt($('.owl-item.active .caroucard').data('price'));
+        var new_total = current_total + current_product_price;
+        var getPercent = (new_total / <%= @cart.price * 0.95 %>);
+        var getProgressWrapWidth = $('.progress-wrap').width();
+        var progressTotal = getPercent * getProgressWrapWidth;
+        var animationLength = 1000;
+        $('.progress-wrap').data('progress-percent', new_total);
+        console.log($('.progress-wrap').data('progress-percent'));
+        // on page load, animate percentage bar to data percentage length
+        // .stop() used to prevent animation queueing
+        $('.progress-bar').stop().animate({
+            left: progressTotal
+        }, animationLength);
+    }
 
   // $(document).ready(function() {
     //   initializeAutocomplete('order_address');
@@ -126,5 +159,17 @@
     // });
   </script>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
 
 

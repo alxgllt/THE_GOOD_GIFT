@@ -16,4 +16,8 @@ class Cart < ApplicationRecord
       return [2, 3, 4]
     end
   end
+
+  def total
+    products.sum(:price_cents) / 100
+  end
 end

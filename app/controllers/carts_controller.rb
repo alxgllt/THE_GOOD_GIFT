@@ -78,7 +78,7 @@ class CartsController < ApplicationController
 
   def calc_available_cash(cart)
     if cart.products.empty?
-      cart.price * 100 * 0.99
+      cart.price * 100 * 0.95
     else
       cart.price * 100 - ( cart.products.inject(0) { |sum, product| sum + product.price_cents } )
     end
