@@ -97,8 +97,8 @@
 
 .bag-item-list img {
   display: 0 0 85px;
-  height: 110px;
-  width: 85px;
+  max-height: 110px;
+  max-width: 85px;
 }
 
 .bag-total {

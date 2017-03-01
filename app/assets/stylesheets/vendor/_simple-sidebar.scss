@@ -11,6 +11,8 @@
 /* Toggle Styles */
 
 #wrapper {
+  background: rgba(247, 247, 247, 0.65);
+  min-height: calc(100vh - 70px);
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -23,16 +25,15 @@
 }
 
 #sidebar-wrapper {
+  height: calc(100% - 70px);
   z-index: 1000;
   left: 250px;
   width: 270px;
-  height: 100%;
   position: absolute;
   margin-left: -250px;
   overflow-y: auto;
   background: white;
-  padding: 20px;
-  border-right: 1px solid $mint;
+  padding: 0 20px;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
