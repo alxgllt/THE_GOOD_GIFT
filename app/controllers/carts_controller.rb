@@ -9,6 +9,7 @@ class CartsController < ApplicationController
   def create
     @cart = Cart.new(cart_params)
     @cart.tags = params[:tags]
+    params[:price].to_i > 200 ? @cart.gift_number = 3 : @cart.gift_number = 2
     if @cart.save
       redirect_to cart_path(@cart)
     else
@@ -28,8 +29,11 @@ class CartsController < ApplicationController
 
     # on trie les produits
     @products = Product.all
-    if params[:tags] != nil
-      @products = @products.where("tag_one IN (?) OR tag_two IN (?)", params[:tags], params[:tags])
+    if @cart.tags != nil
+      @products = @products.where("tag_one IN (?) OR tag_two IN (?)", @cart.tags, @cart.tags)
+    end
+    if @cart.gender != nil
+      @products = @products.where(gender: [(@cart.gender == "Homme" ? "M" : "F"), "U"])
     end
 
     #affichage bundle
@@ -41,12 +45,13 @@ class CartsController < ApplicationController
   end
 
   def update
-
     @cart = Cart.find(params[:id])
+    @cart.cart_products.destroy_all
     @cart.tags = params[:tags]
     @cart.name = params[:name]
     @cart.price = params[:price]
     @cart.gender = params[:gender]
+    @cart.gift_number = params[:gift_number]
     @cart.save
     redirect_to cart_path(@cart)
   end
@@ -58,10 +63,17 @@ class CartsController < ApplicationController
   end
 
   def algo_matching(products, cart)
-    available_cash = calc_available_cash(cart)
-    default_bundle_config = default_bundle_configuration(available_cash, cart)
-    product_list = list_format(products, available_cash, default_bundle_config)
-    sorting_matching_list(product_list)
+    unless cart.gift_number == cart.cart_products.count
+      products_updated = remove_cart_products(products, cart)
+      available_cash = calc_available_cash(cart)
+      default_bundle_config = default_bundle_configuration(available_cash, cart)
+      product_list = list_format(products_updated, available_cash, default_bundle_config)
+      sorting_matching_list(product_list)
+    end
+  end
+
+  def remove_cart_products(products, cart)
+    products.select { |product| !cart.include?(product) }
   end
 
   def calc_available_cash(cart)
@@ -74,14 +86,11 @@ class CartsController < ApplicationController
 
   def default_bundle_configuration(available_cash, cart)
     default_bundle_config = {
-      gifts_number: 3,
+      gift_number: cart.gift_number,
       min_proportion: 0.4,
       max_proportion: 0.7
     }
-    if available_cash <= 20000
-      default_bundle_config[:gifts_number] = 2
-    end
-    if cart.products.count == 2
+    if cart.products.count == cart.gift_number - 1
       default_bundle_config[:min_proportion] = 0.8
       default_bundle_config[:max_proportion] = 1
     end
@@ -103,5 +112,4 @@ class CartsController < ApplicationController
     product_list.sort_by! { |product| product[:sell_priority].to_i }
     product_list
   end
-
 end

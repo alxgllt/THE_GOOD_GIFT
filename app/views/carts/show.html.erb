@@ -50,13 +50,12 @@
     </div>
 
     <div class="col-xs-11 col-sm-9" id="forms">
-      <div class="product-index">
-
-        <br>
-        <h1 style='margin-top: 0;'> Sélectionnez votre ensemble de cadeaux : <span class="price-display"></span></h1>
-        <br>
-      <br>
-        <div id="matching-list-container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1 style='margin-top: 0;'> Sélectionnez vos <%= @cart.gift_number %> cadeaux: <span class="price-display"></span></h1>
+          </div>
+        </div>
+        <div class="row">
           <%= render "matching_list", matching_list: @matching_list %>
         </div>
         <%= form_tag orders_path do %>
@@ -72,8 +71,6 @@
           <%#= hidden_field_tag :total_price, params[:search_price] %>
           <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
         <% end %>
-
-      </div>
     </div>
   </div>
 </div>
@@ -93,7 +90,16 @@
         $("#wrapper").toggleClass("toggled");
     });
 
-    // $(document).ready(function() {
+    $("#refresh-options").on("submit", function() {
+      if ($(".checkboxes input[type=checkbox]:checked").length >= 3) {
+        return true;
+      } else {
+        $('.error-messages').html("Selectionnez au moins 3 univers");
+          return false;
+        }
+      });
+
+  // $(document).ready(function() {
     //   initializeAutocomplete('order_address');
     //   function sticky_relocate() {
     //     var window_top = $(window).scrollTop();

@@ -3,18 +3,18 @@
 
   <div class="wrapper">
       <div class="margined">
-        <%= form_tag cart_path(@cart), method: :put, id: "form" do %>
+        <%= form_tag cart_path(@cart), method: :put, id: "refresh-options" do %>
           <%= text_field_tag :search_date, params[:search_date], id: "datepicker", class: "form-control hidden"%>
           <div class="filter-title">
             <div><span class="">Son prénom</span></div>
           </div>
-          <%= text_field_tag :name, @cart.name, placeholder: "Prénom", class: "form-control"%>
-          <%= select_tag :gender, options_for_select(["Homme", "Femme"], @cart.gender), placeholder: "Sexe", class: "form-control" %>
+          <%= text_field_tag :name, @cart.name, placeholder: "Prénom", :required => true, class: "form-control"%>
+          <%= select_tag :gender, options_for_select(["Homme", "Femme"], @cart.gender), placeholder: "Sexe", :required => true, class: "form-control" %>
           <div class="filter-title">
             <div><span class="">Votre budget</span></div>
           </div>
           <div class="input-group">
-            <%= text_field_tag :price, @cart.price, placeholder: "Budget", class: "form-control"%>
+            <%= text_field_tag :price, @cart.price, placeholder: "Budget", :required => true, class: "form-control"%>
             <div class="input-group-addon">€</div>
           </div>
           <div class="filter-title">
@@ -34,8 +34,14 @@
         </label>
         <% end %>
       </div>
+       <div class="filter-title">
+          <div><span class="">Les cadeaux</span></div>
+        </div>
+        <%= select_tag :gift_number, options_for_select(@cart.gift_number_range, @cart.gift_number), placeholder: "#{@cart.gift_number}", class: "form-control" %>
+        <div class="error-messages text-center">
+        </div>
         <div class="text-center">
-        <%= submit_tag :Actualiser, class: "btn btn-primary btn-rounded" %>
+        <%= submit_tag (value = "Actualiser"), class: "btn btn-primary btn-rounded" %>
 
         </div>
       <% end %>
