@@ -1,5 +1,13 @@
 <div class="col-xs-9">
-  <% unless @cart.gift_number == @cart.cart_products.count %>
+  <% if @cart.gift_number == @cart.cart_products.count %>
+
+    <h1>PANIER PLEIN</h1>
+
+  <% elsif @matching_list.empty? %>
+
+    <h3>Désolé, notre databse actuelle ne nous permet pas de satisfaire votre demande, merci d'élargir votre champ de recherche :)</h3>
+
+  <% else %>
 
     <div class="bundle">
       <div class="owl-carousel owl-big">
@@ -18,6 +26,7 @@
         </div>
         <% end %>
       </div>
+    </div>
 
       <!-- On enregistre le produit dans le panier -->
       <%= form_tag cart_cart_products_path(@cart), method: :post do %>
@@ -27,13 +36,8 @@
         <%= submit_tag 'Choisir', class: 'btn btn-primary choice-button btn-rounded' %>
       <% end %>
 
-    <% else %>
-
-      <h1>PANIER PLEIN</h1>
-
   <% end %>
 
-</div>
 <div class="col-xs-3">
   <div class="filter-title">
     <div><span class="">Votre sélection</span></div>
