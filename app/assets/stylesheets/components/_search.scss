@@ -18,7 +18,7 @@
 
 .check-card {
   color: $black;
-  background: #b7b7b7;
+  background: $grey;
   padding: 20px 10px;
   // &:first-child {
   //   border-radius: 10px 0 0 10px;
@@ -107,28 +107,4 @@
   font-size: 35px;
   padding-top: 7px;
   cursor: pointer;
-}
-
-.cadeaux {
-  padding: 0 27px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  i {
-    font-size: 22px;
-    color: #b7b7b7;
-    &:hover {
-      color: $mint;
-      cursor: pointer;
-    }
-  }
-  img {
-    width: 55px;
-  }
-}
-.cadeau-display {
-  display: flex;
-  justify-content: center;
-  color: #b7b7b7;
-  font-size: 23px;
 }
