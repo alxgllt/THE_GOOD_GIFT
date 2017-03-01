@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 20170228173110) do
     t.string   "last_name"
     t.string   "email"
     t.integer  "cost"
-    t.integer  "total_price_cents", default: 0, null: false
     t.string   "phone"
+    t.integer  "total_price_cents", default: 0, null: false
     t.string   "company"
   end
 

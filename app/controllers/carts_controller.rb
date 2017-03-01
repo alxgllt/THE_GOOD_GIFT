@@ -33,7 +33,7 @@ class CartsController < ApplicationController
     end
 
     #affichage bundle
-    @matching_list = algo_matching(@products, @cart.price * 100)
+    @matching_list = algo_matching(@products, @cart)
   end
 
   def edit
@@ -57,18 +57,22 @@ class CartsController < ApplicationController
     params.permit(:name, :price, :gender, :tags)
   end
 
-  def algo_matching(products, price)
-    available_cash = calc_available_cash(price)
-    default_bundle_config = default_bundle_configuration(available_cash)
+  def algo_matching(products, cart)
+    available_cash = calc_available_cash(cart)
+    default_bundle_config = default_bundle_configuration(available_cash, cart)
     product_list = list_format(products, available_cash, default_bundle_config)
     sorting_matching_list(product_list)
   end
 
-  def calc_available_cash(price)
-    price * 0.99
+  def calc_available_cash(cart)
+    if cart.products.empty?
+      cart.price * 100 * 0.99
+    else
+      cart.price * 100 - ( cart.products.inject(0) { |sum, product| sum + product.price_cents } )
+    end
   end
 
-  def default_bundle_configuration(available_cash)
+  def default_bundle_configuration(available_cash, cart)
     default_bundle_config = {
       gifts_number: 3,
       min_proportion: 0.4,
@@ -77,28 +81,26 @@ class CartsController < ApplicationController
     if available_cash <= 20000
       default_bundle_config[:gifts_number] = 2
     end
+    if cart.products.count == 2
+      default_bundle_config[:min_proportion] = 0.8
+      default_bundle_config[:max_proportion] = 1
+    end
     default_bundle_config
   end
 
   def list_format(products, available_cash, default_bundle_config)
-    product_list = {
-      main: [],
-      side_one: [],
-      side_two: []
-    }
+    product_list = []
     products.each do |product|
       if product.price_cents >= default_bundle_config[:min_proportion] * available_cash &&
-         product.price_cents <= default_bundle_config[:max_proportion] * available_cash
-        product_list[:main] << product
+          product.price_cents <= default_bundle_config[:max_proportion] * available_cash
+        product_list << product
       end
     end
     return product_list
   end
 
   def sorting_matching_list(product_list)
-    product_list[:main].sort_by! { |product| product[:sell_priority].to_i }
-    product_list[:side_one].sort_by! { |product| product[:sell_priority] }
-    product_list[:side_two].sort_by! { |product| product[:sell_priority] }
+    product_list.sort_by! { |product| product[:sell_priority].to_i }
     product_list
   end
 

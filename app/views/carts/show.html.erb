@@ -60,17 +60,16 @@
           <%= render "matching_list", matching_list: @matching_list %>
         </div>
         <%= form_tag orders_path do %>
-          <% if @matching_list[:main] != [] %>
-            <%= hidden_field_tag :main, @matching_list[:main].first.id %>
-          <% end %>
-          <% if @matching_list[:side_one] != [] %>
-            <%= hidden_field_tag :side_one, @matching_list[:side_one].first.id %>
-          <% end %>
-          <% if @matching_list[:side_two] != [] %>
-            <%= hidden_field_tag :side_two, @matching_list[:side_two].first.id %>
-          <% end %>
-          <%= hidden_field_tag :total_price, params[:search_price] %>
-          <br>
+          <%# if @matching_list != [] %>
+            <%#= hidden_field_tag :main, @matching_list.first.id %>
+          <%# end %>
+          <%# if @matching_list[:side_one] != [] %>
+            <%#= hidden_field_tag :side_one, @matching_list[:side_one].first.id %>
+          <%# end %>
+          <%# if @matching_list[:side_two] != [] %>
+            <%#= hidden_field_tag :side_two, @matching_list[:side_two].first.id %>
+          <%# end %>
+          <%#= hidden_field_tag :total_price, params[:search_price] %>
           <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
         <% end %>
 
