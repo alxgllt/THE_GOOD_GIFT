@@ -4,42 +4,28 @@ class OrdersController < ApplicationController
   respond_to :js, :json, :html
 
   def new
-        @order = Order.find(params[:id])
+      @order = Order.find(params[:id])
   end
 
   def create
-    @order = Order.create(status: "pending", total_price: params[:total_price])
+    @cart = Cart.find(params[:cart_id])
 
-    if params[:big] != nil
-      order_item_big = OrderItem.new()
-      order_item_big.product = Product.find(params[:big])
-      order_item_big.price = Product.find(params[:big]).price
-      order_item_big.order = @order
-      order_item_big.save
+    @order = Order.new(
+      status: "pending",
+      total_price: @cart.price,
+      )
+    @order.cost = @cart.products.inject(0) {|sum,x| sum + (x.price_cents / 100) }
+    @order.save
+
+    @cart.products.each do |product|
+      order_item = OrderItem.new()
+      order_item.product = product
+      order_item.order = @order
+      order_item.price = product.price_cents / 100
+      order_item.save
     end
 
-    if params[:medium] != nil
-      order_item_medium = OrderItem.new()
-      order_item_medium.product = Product.find(params[:medium])
-      order_item_medium.price = Product.find(params[:medium]).price
-      order_item_medium.order = @order
-      order_item_medium.save
-    end
-
-    if params[:small] != nil
-      order_item_small = OrderItem.new()
-      order_item_small.product = Product.find(params[:small])
-      order_item_small.price = Product.find(params[:small]).price
-      order_item_small.order = @order
-      order_item_small.save
-    end
-
-    @order.cost = @order.products.inject(0) { |sum, product| sum + product.price }
-    if @order.save
-      redirect_to order_path(@order)
-    else
-      redirect_to root_path
-    end
+    redirect_to order_path(@order)
   end
 
   def show
