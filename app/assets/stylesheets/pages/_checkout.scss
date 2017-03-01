@@ -55,6 +55,11 @@
   top: 0;
 }
 
+.cards {
+  display: flex;
+  margin-top: 10px;
+}
+
   // handle masking effects
 
 #city-card-mask, #email-card-mask, #address-card-mask {
@@ -155,6 +160,57 @@
   margin-top: 5px;
   display: block;
   font-size: 12px;
+}
+
+.bag-gift_card-selection {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+}
+
+.icon-giftcard {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  height: 15px;
+  width: 15px;
+  background-image: "../assets/images/card_icon.png";
+}
+
+.checkbox {
+  float: right;
+}
+
+.radio_buttons.order_card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio, .checkbox {
+  display: block;
+  margin-top: 10px !important;
+  margin-bottom: 10px;
+}
+
+.radio label {
+  display: block;
+  text-align: center;
+}
+
+.giftcard-form img {
+  height: 60px;
+  width: 60px;
+  margin-left: -20px;
+  background-size: cover;
+}
+
+.giftcard-form input {
+  display: none;
+}
+
+#giftcard-message p {
+  color: green;
+
 }
 
 // Forms
