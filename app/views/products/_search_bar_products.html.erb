@@ -42,8 +42,7 @@
         <div class="cadeau-display">
           <%= @cart.gift_number %>
         </div>
-        <%= text_field_tag :gift_number, @cart.gift_number, :required => true, class: "form-control hidden", id:"gift-number" %>
-        <%#= select_tag :gift_number, options_for_select(@cart.gift_number_range, @cart.gift_number), placeholder: "#{@cart.gift_number}", class: "form-control" %>
+        <%= select_tag :gift_number, options_for_select(@cart.gift_number_range, @cart.gift_number), placeholder: "#{@cart.gift_number}", class: "form-control hidden" %>
         <div class="error-messages text-center">
         </div>
         <div class="text-center">
