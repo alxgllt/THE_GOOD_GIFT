@@ -34,6 +34,7 @@
             <span class="email-replay-data hidden" id="email-data" data-bind="email"></span>
             <button class="btn tertiary hidden" id='edit-email-btn'>MODIFIER</button>
             <%= simple_form_for(@order, html: {class: 'form-inline', id: 'email-input-field'}, remote: true) do |f| %>
+              <%= f.error_notification %>
               <%= f.input :email, label: false, id: 'email-field' %>
               <%= f.submit "Ajouter mon email", class: "btn secondary submit" %>
             <% end %>
@@ -134,7 +135,9 @@
 
             <div class="bag-gift_card-selection">
                 <p>Inclure une carte</p>
+
                 <input type="checkbox" class="checkbox" id="checkbox-card">
+                <label for="checkbox-card"></label>
             </div>
             <div class="giftcard-form hidden" id="giftcard-list">
               <%= simple_form_for @order, url: "/orders/#{@order[:id]}/select_gift_card", method: 'patch', remote: true do |f| %>
@@ -220,9 +223,9 @@
       });
       $(document).on('change', '.radio_buttons', function() {
         $('.radio_buttons:not(checked)').parent().css('border', '0px');
-        $('.radio_buttons:checked').parent().css('border', '2px solid green');
+        $('.radio_buttons:checked').parent().css('border', '2px solid black');
         $('#submit-giftcard').trigger('click');
-        setTimeout(function(){$('.giftcard-form, #giftcard-message').hide('slow')}, 2000);
+        setTimeout(function(){$('#giftcard-message').hide('slow')}, 2000);
       });
       $(document).on('change', '#checkbox-card', function() {
         $('.giftcard-form').show();

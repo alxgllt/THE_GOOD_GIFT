@@ -1,6 +1,7 @@
 
 .main-body {
   background: #F2F2F2;
+  min-height: 100vh;
 }
 
 .checkout-header {
@@ -209,7 +210,7 @@
 }
 
 #giftcard-message p {
-  color: green;
+  color: #93E1D8;
 
 }
 
@@ -387,6 +388,7 @@
 #payment-btn {
   width: 350px;
   margin-top: 20px;
+  border-radius: 1px;
 }
 
 #payment-btn[disabled] {
@@ -410,3 +412,38 @@
 
  // display:none !important;
   }
+
+
+
+
+#checkbox-card {
+  display: none;
+}
+
+#checkbox-card + label {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 2px;
+  position: relative;
+}
+
+// #checkbox-card + label:before {
+//   content: '';
+//   width: 18px;
+//   height: 18px;
+//   background-color: white;
+// }
+
+#checkbox-card:checked + label:after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background-color: black;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+
+}
+
+
