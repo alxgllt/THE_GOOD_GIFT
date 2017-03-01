@@ -1,17 +1,17 @@
 - id: "1"
-  title: "You're a star"
-  image_file_name: "card_1.png"
+  title: "Goodbye"
+  image_file_name: "card_1.jpg"
 
 - id: "2"
   title: "Good luck"
-  image_file_name: "card_2.png"
+  image_file_name: "card_2.jpg"
 
 
 - id: "3"
   title: "Keep Calm"
-  image_file_name: "card_3.png"
+  image_file_name: "card_3.jpg"
 
 
 - id: "4"
-  title: "Goodbye"
-  image_file_name: "card_4.png"
+  title: "You're a star"
+  image_file_name: "card_4.jpg"

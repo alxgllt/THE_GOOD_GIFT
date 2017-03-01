@@ -9,8 +9,8 @@ class Card
     @image_file_name = attributes[:image_file_name]
   end
 
-  def identifier
-    @title.underscore.gsub(/\s/, "_")
+  def id
+    @id
   end
 
   def to_hash

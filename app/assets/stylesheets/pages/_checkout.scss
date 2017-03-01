@@ -165,11 +165,7 @@
 .bag-gift_card-selection {
   display: flex;
   justify-content: space-between;
-}
-
-#giftcard-list {
-  display: flex;
-  justify-content: space-around;
+  vertical-align: middle;
 }
 
 .icon-giftcard {
@@ -183,6 +179,38 @@
 
 .checkbox {
   float: right;
+}
+
+.radio_buttons.order_card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio, .checkbox {
+  display: block;
+  margin-top: 10px !important;
+  margin-bottom: 10px;
+}
+
+.radio label {
+  display: block;
+  text-align: center;
+}
+
+.giftcard-form img {
+  height: 60px;
+  width: 60px;
+  margin-left: -20px;
+  background-size: cover;
+}
+
+.giftcard-form input {
+  display: none;
+}
+
+#giftcard-message p {
+  color: green;
+
 }
 
 // Forms

@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [ :show, :create, :update, :admin, :confirmation ]
+  skip_before_action :authenticate_user!, only: [ :show, :create, :update, :admin, :confirmation, :select_gift_card ]
   respond_to :js, :json, :html
 
   def new
@@ -50,9 +50,12 @@ class OrdersController < ApplicationController
 
   def select_gift_card
     @order = Order.find(params[:order_id])
-    @order.card = params[:id]
+    @order.card = params[:order][:card]
     @order.save
-    redirect_to order_path(@order)
+    respond_to do |format|
+      format.html { redirect_to order_path(@order) }
+      format.js
+    end
   end
 
   def update
@@ -62,6 +65,9 @@ class OrdersController < ApplicationController
       @email_changed = order_params[:email]
       @phone_changed = order_params[:phone]
       @address_changed = order_params[:address]
+      @first_name_changed = order_params[:first_name]
+      @last_name_changed = order_params[:last_name]
+      @company_changed = order_params[:company]
       respond_to do |format|
         format.html { redirect_to order_path }
         format.js
