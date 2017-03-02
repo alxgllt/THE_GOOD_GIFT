@@ -6,29 +6,30 @@
   <% else %>
 
   <!-- <div class="bundle"> -->
-  <% product = @matching_list.first%>
-  <div class="caroucard" data-id="<%= product.id %>" data-price="<%= product.price %>">
+  <% @matching_list.each do |product| %>
+    <div class="caroucard <%="active" if product == @matching_list.first %>" data-id="<%= product.id %>" data-price="<%= product.price %>" style='<%="display: none;" unless product == @matching_list.first %>'>
 
-    <div class="product-image">
-      <%= cl_image_tag product.image %>
-    </div>
-    <div class="product-infos">
-      <div class="product-name">
-        <%= product.name %>
-        <div class="product-brand">
-          <%= product.brand %>
+      <div class="product-image">
+        <%= cl_image_tag product.image %>
+      </div>
+      <div class="product-infos">
+        <div class="product-name">
+          <%= product.name %>
+          <div class="product-brand">
+            <%= product.brand %>
+          </div>
+        </div>
+        <div class="btn btn-show-bundle" data-toggle="modal" data-target="#modal-<%= product.id %>">
+          + DÉTAILS
         </div>
       </div>
-      <div class="btn btn-show-bundle" data-toggle="modal" data-target="#modal-<%= product.id %>">
-        + DÉTAILS
-      </div>
     </div>
-  </div>
+  <% end -%>
   <!-- </div> -->
 
   <!-- On enregistre le produit dans le panier -->
   <div class="flex-buttons">
-    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    <i class="fa fa-arrow-left swipe-left" aria-hidden="true"></i>
     <%= form_tag cart_cart_products_path(@cart), method: :post do %>
     <% if @matching_list != [] %>
     <%= hidden_field_tag :main_id, @matching_list.first.id %>
@@ -36,7 +37,7 @@
     <%= submit_tag 'Choisir', class: 'btn btn-primary choice-button btn-rounded' %>
     <% end %>
     <% end %>
-    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    <i class="fa fa-arrow-right swipe-right" aria-hidden="true"></i>
   </div>
 </div>
 

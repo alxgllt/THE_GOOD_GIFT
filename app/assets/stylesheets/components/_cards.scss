@@ -8,6 +8,7 @@
   justify-content: space-between;
   width: 60%;
   height: 320px;
+  margin-bottom: 25px;
   .product-image {
     display: flex;
     justify-content: center;
@@ -21,9 +22,7 @@
 }
 
 .product-infos {
-  height: 80%;
-  // flex-grow: 1;
-  max-width: 40%;
+  max-width: 50%;
   margin-left: 10px;
   padding: 10px;
   display: flex;

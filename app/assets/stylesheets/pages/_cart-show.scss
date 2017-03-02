@@ -8,28 +8,56 @@
   }
 }
 
- // animation de la fleche options
- @-webkit-keyframes arrow-bouncing {
-  0% { top: 0; left: 0; }
-  100%  { top: 5px; left: 5px; }
-}
-@-moz-keyframes arrow-bouncing {
-  0% { top: 0; left: 0; }
-  100%  { top: 0px; left: 5px; }
-}
-@-o-keyframes arrow-bouncing {
-  0% { top: 0; left: 0; }
-  100%  { top: 0px; left: 5px; }
-}
-@keyframes arrow-bouncing {
-  0% { top: 0; left: 0; }
-  100%  { top: 0px; left: 5px; }
-}
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
 
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+@keyframes move {
+  50% {
+   transform: translate(-5px, 0px);
+ }
+}
 
 .arrow-bounce {
-  -webkit-animation: arrow-bouncing 10s steps(10) infinite alternate;
-  -moz-animation:    arrow-bouncing 10s steps(10) infinite alternate;
-  -o-animation:      arrow-bouncing 10s steps(10) infinite alternate;
-  animation: arrow-bouncing 1s infinite alternate;
+  position: relative;
+  i {
+   position: absolute;
+   top: 0;
+   left: -5px;
+   animation: move 2.3s ease infinite;
+ }
 }
+.surprise-me {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  right: 125px;
+  p {
+    color: $peach;
+  }
+  img {
+    width: 67px;
+  }
+  &:hover {
+    cursor: pointer;
+    img {
+      animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both infinite;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+

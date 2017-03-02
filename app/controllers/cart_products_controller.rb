@@ -12,7 +12,6 @@ class CartProductsController < ApplicationController
     @cart_product = CartProduct.new()
     @cart_product.cart = @cart
     @cart_product.product = Product.find(params[:main_id])
-    # @cart_product.product = Product.find
     @cart_product.save
     redirect_to cart_path(@cart)
   end

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :order_items, only: [:create]
   resources :carts, only: [:new, :create, :edit, :update, :show] do
     resources :cart_products, only: [:new, :create]
+    patch :surprise_me
   end
 
   #Selecttag page flow n°2
