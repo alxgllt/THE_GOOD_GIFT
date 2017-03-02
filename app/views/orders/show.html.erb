@@ -36,7 +36,6 @@
               <button class="btn tertiary hidden" id='edit-email-btn'>MODIFIER</button>
               <%= simple_form_for(@order, html: {class: 'form-inline', id: 'email-input-field'}, remote: true) do |f| %>
                 <%= f.input :email, label: false, id: 'email-field' %>
-                  <%= f.error :email %>
                 <%= f.submit "Ajouter mon email", class: "btn secondary submit" %>
               <% end %>
             </div>
