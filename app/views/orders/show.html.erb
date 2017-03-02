@@ -65,7 +65,6 @@
               <br>
               <button class="btn tertiary" id='edit-address-btn'>MODIFIER</button>
             </div>
-
             <div id="address-form-fields">
               <%= simple_form_for(@order, html: { class: "form-horizontal"}, remote: true) do |f| %>
                 <%= f.input :first_name, label: "Votre prénom", label: false, required: true, placeholder: "Votre prénom" %>
@@ -93,8 +92,8 @@
                   data-name=" My Order N°<%= @order.id %>"
                   data-email="<%= @order.email %>"
                   data-total_price="<%= @order.total_price_cents %>"
-                  data-currency="<%= @order.total_price.currency %>">
-                  data-description="Payez <%= @order.total_price%> "
+                  data-currency="<%= @order.total_price.currency %>"
+                  data-amount=" Payez <%= @order.total_price%> ">
                 </script>
               <% end %>
             </div>
