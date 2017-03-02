@@ -20,6 +20,11 @@
 .Checkout.is-desktop .Fieldset {
   display:none;
 }
+
+.StaggerGroup-child {
+  display:none;
+}
+
 // Cards
 
 .checkout-card {
@@ -491,3 +496,6 @@
   border-color: red;
 }
 
+.Checkout.is-desktop .Fieldset {
+  display:none;
+}
