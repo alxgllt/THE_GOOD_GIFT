@@ -47,12 +47,12 @@
   p {
     color: $peach;
   }
-  img {
-    width: 67px;
+  input {
+    width: 135px;
   }
   &:hover {
     cursor: pointer;
-    img {
+    input {
       animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both infinite;
       transform: translate3d(0, 0, 0);
     }

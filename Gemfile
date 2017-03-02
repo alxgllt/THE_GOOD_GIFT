@@ -12,6 +12,7 @@ gem 'redis'
 gem 'coffee-script'
 gem 'stripe'
 gem 'money-rails', '~>1'
+gem "jquery-slick-rails"
 
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
