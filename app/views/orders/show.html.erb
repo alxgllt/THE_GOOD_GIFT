@@ -67,7 +67,7 @@
             <%= simple_form_for(@order, html: { class: "form-horizontal"}, remote: true) do |f| %>
               <%= f.input :first_name, label: "Votre prénom", label: false, required: true, placeholder: "Votre prénom" %>
               <%= f.input :last_name, label: "Votre nom", label: false, required: true, placeholder: "Votre nom" %>
-              <%= f.input :company, label: "Société", label: false, required: true, placeholder: "Société" %>
+              <%= f.input :company, label: "Société", label: false, required: false, placeholder: "Société" %>
               <%= f.input :address, label: "Adresse", label: false, required: true, placeholder: "Adresse" %>
               <%= f.input :phone, placeholder: 'Téléphone portable', label: false, id: 'phone-field' %>
               <%= f.submit "Valider l'adresse", class: "btn secondary submit", id: 'btn-address' %>
@@ -154,9 +154,7 @@
                <% end %>
             </div>
             <div id="giftcard-message"></div>
-
-            <hr>
-
+            <hr id="final-separator">
             <div class="bag-total">
               <p id="total-content">
                 TOTAL À RÉGLER
