@@ -67,7 +67,7 @@
             <%= simple_form_for(@order, html: { class: "form-horizontal"}, remote: true) do |f| %>
               <%= f.input :first_name, label: "Votre prénom", label: false, required: true, placeholder: "Votre prénom" %>
               <%= f.input :last_name, label: "Votre nom", label: false, required: true, placeholder: "Votre nom" %>
-              <%= f.input :company, label: "Société", label: false, required: true, placeholder: "Société" %>
+              <%= f.input :company, label: "Société", label: false, required: false, placeholder: "Société" %>
               <%= f.input :address, label: "Adresse", label: false, required: true, placeholder: "Adresse" %>
               <%= f.input :phone, placeholder: 'Téléphone portable', label: false, id: 'phone-field' %>
               <%= f.submit "Valider l'adresse", class: "btn secondary submit", id: 'btn-address' %>
@@ -77,16 +77,17 @@
 
 
         <div class="place-order">
-          <div class="text-center" style="margin-bottom: 20px;">
+          <div class="text-center" style="margin-bottom: 20px;" id="payment-section">
             <button class="btn btn-primary btn-rounded" disabled id="payment-btn">
                 Commander
             </button>
+            <%= image_tag "card_logos.png", class: "card_logos" %>
           </div>
           <div class="text-center hidden">
             <%= form_tag order_payments_path(@order) do %>
               <script src="https://checkout.stripe.com/checkout.js" id="btn-stripe" class="stripe-button btn btn-primary btn-rounded"
                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-name="My Order"
+                data-name=" My Order N°<%= @order.id %>"
                 data-email="<%= @order.email %>"
                 data-total_price="<%= @order.total_price_cents %>"
                 data-currency="<%= @order.total_price.currency %>">
@@ -134,8 +135,8 @@
             <hr>
 
             <div class="bag-gift_card-selection">
+                <%= image_tag "card_icon.png", id: "giftcard-icon"%>
                 <p>Inclure une carte</p>
-
                 <input type="checkbox" class="checkbox" id="checkbox-card">
                 <label for="checkbox-card"></label>
             </div>
@@ -154,9 +155,7 @@
                <% end %>
             </div>
             <div id="giftcard-message"></div>
-
-            <hr>
-
+            <hr id="final-separator">
             <div class="bag-total">
               <p id="total-content">
                 TOTAL À RÉGLER

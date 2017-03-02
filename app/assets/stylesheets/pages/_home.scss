@@ -47,8 +47,18 @@
   }
 }
 
+#demo-what-you-get {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #temoignages img {
 	margin-bottom: 10px;
+}
+
+#reassurance {
+  margin-bottom: 20px;
 }
 
 #reassurance {
@@ -142,4 +152,12 @@
   display: flex;
   text-align: center;
   align-items: center;
+}
+
+#main-cta {
+  background-color: #6BD6CA;
+  opacity: 1;
+  &:hover {
+    opacity: 0.8;
+  }
 }

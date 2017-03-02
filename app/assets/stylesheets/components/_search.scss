@@ -74,9 +74,9 @@
   height: 49px;
   width: 60px;
   background-color: $mint;
-  opacity: 0.3;
+  opacity: 0.6;
   &:hover {
-    background-color: $mint;
+    background-color: #6BD6CA;
     opacity: 0.8;
   }
 }
@@ -84,8 +84,8 @@
 .radio_div input:checked + label {
   height: 49px;
   width: 60px;
-  background-color: $mint;
-  opacity: 0.8;
+  background-color: #6BD6CA;
+  opacity: 1.0;
 }
 
 .radio_div input {
@@ -105,6 +105,6 @@
 .icon-home {
   height: 50px;
   font-size: 35px;
-  padding-top: 7px;
+  padding-top: 11px;
   cursor: pointer;
 }

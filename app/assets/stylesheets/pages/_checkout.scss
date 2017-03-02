@@ -1,7 +1,7 @@
 
 .main-body {
   background: #F2F2F2;
-  min-height: 100vh;
+  min-height: 1200px;
 }
 
 .checkout-header {
@@ -27,7 +27,6 @@
 
 .cart-card {
   width: 300px;
-  margin-top: 0;
 }
 
 .address-card {
@@ -226,6 +225,16 @@
 
 }
 
+#final-separator {
+  margin-top: 14px;
+}
+
+#giftcard-icon {
+  width: 18px;
+  height: 26px;
+  margin-right: -85px;
+}
+
 // Forms
 
 .form {
@@ -399,12 +408,26 @@
 
 #payment-btn {
   width: 350px;
+  height: 60px;
   margin-top: 20px;
   border-radius: 1px;
 }
 
 #payment-btn[disabled] {
   opacity: 0.35;
+}
+
+#mastercard_logo {
+  border: 1px solid;
+}
+
+#payment-section img {
+  display: block;
+  opacity: 0.6;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -10px;
 }
 
 // Other
