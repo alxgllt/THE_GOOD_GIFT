@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :show, :create, :update, :new, :admin ]
+  skip_before_action :authenticate_user!, only: [ :show, :create, :update, :new, :admin, :surprise_me ]
   respond_to :js, :json, :html
 
   def new
@@ -28,13 +28,7 @@ class CartsController < ApplicationController
     @order = Order.new()
 
     # on trie les produits
-    @products = Product.all
-    if @cart.tags != nil
-      @products = @products.where("tag_one IN (?) OR tag_two IN (?)", @cart.tags, @cart.tags)
-    end
-    if @cart.gender != nil
-      @products = @products.where(gender: [(@cart.gender == "Homme" ? "M" : "F"), "U"])
-    end
+    @products = products_filtered(@cart)
 
     #affichage bundle
     @matching_list = algo_matching(@products, @cart)
@@ -60,7 +54,33 @@ class CartsController < ApplicationController
     redirect_to cart_path(@cart)
   end
 
+  def surprise_me
+    cart = Cart.find(params[:cart_id])
+    cart.cart_products.destroy_all
+    products = products_filtered(cart)
+    cart.gift_number.times do
+      gift = algo_matching(products, cart).sample
+      cart_product = CartProduct.new()
+      cart_product.cart = cart
+      cart_product.product = gift
+      cart_product.save
+    end
+    redirect_to cart_path(cart)
+  end
+
+
   private
+
+  def products_filtered(cart)
+    products = Product.all
+    if cart.tags != nil
+      products = products.where("tag_one IN (?) OR tag_two IN (?)", cart.tags, cart.tags)
+    end
+    if cart.gender != nil
+      products = products.where(gender: [(cart.gender == "Homme" ? "M" : "F"), "U"])
+    end
+    return products
+  end
 
   def cart_params
     params.permit(:name, :price, :gender, :tags)

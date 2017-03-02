@@ -10,7 +10,18 @@
   <div id="page-content-wrapper">
     <a href="#menu-toggle" class="btn btn-options" id="menu-toggle">
       <span class="arrow-bounce"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
-      &nbsp;&nbsp;&nbsp;options</a>
+      &nbsp;&nbsp;&nbsp;options
+    </a>
+
+    <!-- surprime me -->
+    <div class="surprise-me btn-surprise">
+      <%= image_tag "surprise_me.svg" %>
+      <p>SURPRISE ME</p>
+      <%= form_tag cart_surprise_me_path(@cart), method: 'patch' do%>
+      <%= submit_tag 'surprise', class: 'btn btn-primary order-button btn-rounded' %>
+      <% end %>
+    </div>
+
       <!-- Checkout progress bar -->
       <div class="bar-container">
         <div class="progression-bar">
@@ -72,7 +83,7 @@
                 </div>
                 <!-- On affiche le panier -->
                 <div class="col-xs-3">
-                  <div class="cart-content">
+                  <div class="cart-cont ent">
                     <div class="checkout-card cart-card">
                       <div class="bag">
                         <div class="filter-title">
@@ -236,6 +247,56 @@
           });
         });
 
+        // swipe cards of gifts for choice
+        $(document).ready(function() {
+          $(".swipe-left").click(function(e) {
+            e.preventDefault();
+            var allProducts = $('.caroucard');
+            var currentProduct = $('.caroucard.active');
+            var newProduct = findPrevProduct(currentProduct, allProducts);
+            currentProduct.removeClass('active').slideUp();
+            newProduct.addClass('active').slideDown();
+            // $(".caroucard.active").slideDown();
+            // $(".caroucard.active").prev().slideUp();
+            // $(".caroucard.active").removeClass('active').prev().addClass('active');
+          });
+          $(".swipe-right").click(function(e) {
+            e.preventDefault();
+            var allProducts = $('.caroucard');
+            var currentProduct = $('.caroucard.active');
+            var newProduct = findNextProduct(currentProduct, allProducts);
+            currentProduct.removeClass('active').slideUp();
+            newProduct.addClass('active').slideDown();
+            // $(".caroucard.active").next().slideDown();
+            // $(".caroucard.active").removeClass('active').next().addClass('active');
+          });
+
+          function findNextProduct(currentProduct, allProducts){
+            var productCount = allProducts.length;
+            var index = allProducts.index(currentProduct);
+            // $.inArray(currentProduct, allProducts)
+            // debugger;
+            if(index == productCount - 1) {
+              var nextIndex = 0 ;
+            } else {
+              var nextIndex =  index + 1;
+            }
+            return $(allProducts[nextIndex]);
+          }
+
+          function findPrevProduct(currentProduct, allProducts){
+            var productCount = allProducts.length;
+            var index = allProducts.index(currentProduct);
+            // $.inArray(currentProduct, allProducts)
+            // debugger;
+            if(index == 0) {
+              var nextIndex = productCount - 1 ;
+            } else {
+              var nextIndex =  index - 1;
+            }
+            return $(allProducts[nextIndex]);
+          }
+        });
 
   // $(document).ready(function() {
     //   initializeAutocomplete('order_address');
