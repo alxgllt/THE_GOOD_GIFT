@@ -2,10 +2,11 @@
 .main-body {
   background: #F2F2F2;
   min-height: 1200px;
+  width: 100%;
 }
 
 .checkout-header {
-  width: 940px;
+  width: 100%;
 }
 
 .checkout-header h1 {
@@ -13,7 +14,7 @@
 }
 
 .checkout-body {
-  width: 940px;
+  width: 65%;
   border: black;
 }
 
@@ -47,6 +48,9 @@
   border: 1px solid #ddd;
   background: 0 0;
   color: #ddd;
+}
+
+#form-column {
 }
 
 .email-card {
@@ -201,6 +205,10 @@
   float: right;
 }
 
+#wrapper-checkout {
+  width: 100%;
+}
+
 .radio_buttons.order_card {
   display: flex;
   justify-content: space-between;
@@ -224,6 +232,10 @@
   background-size: cover;
 }
 
+.giftcard-form.unchecked img {
+  border: 2px solid transparent;
+}
+
 .giftcard-form input {
   display: none;
 }
@@ -235,6 +247,10 @@
 
 #final-separator {
   margin-top: 14px;
+}
+
+#separator {
+  margin-top: -5px;
 }
 
 #giftcard-icon {
