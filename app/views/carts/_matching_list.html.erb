@@ -7,38 +7,37 @@
 
     <div class="gift-carousel">
       <% @matching_list.each do |product| %>
-        <div class="caroucard <%="active" if product == @matching_list.first %>" data-id="<%= product.id %>" data-price="<%= product.price %>">
-          <div class="product-image">
-            <%= cl_image_tag product.image %>
-          </div>
-          <div class="product-infos">
-            <div class="product-name">
-              <%= product.name %>
-              <div class="product-brand">
-                <%= product.brand %>
-              </div>
+        <div class="<%="active" if product == @matching_list.first %>" data-id="<%= product.id %>" data-price="<%= product.price %>">
+          <div class="caroucard">
+            <div class="product-image">
+              <%= cl_image_tag product.image %>
             </div>
-            <div class="btn btn-show-bundle" data-toggle="modal" data-target="#modal-<%= product.id %>">
-              + DÉTAILS
+            <div class="product-infos">
+              <div class="product-name">
+                <%= product.name %>
+                <div class="product-brand">
+                  <%= product.brand %>
+                </div>
+              </div>
+              <div class="btn btn-show-bundle" data-toggle="modal" data-target="#modal-<%= product.id %>">
+                + DÉTAILS
+              </div>
             </div>
           </div>
         </div>
       <% end %>
     </div>
-
     <!-- On enregistre le produit dans le panier -->
-    <!-- <div class="flex-buttons">
-      <i class="fa fa-arrow-left swipe-left" aria-hidden="true"></i>
-      <%#= form_tag cart_cart_products_path(@cart), method: :post do %>
-      <%# if @matching_list != [] %>
-        <%#= hidden_field_tag :main_id, @matching_list.first.id %>
-      <%# end %>
-      <%#= submit_tag 'Choisir', class: 'btn btn-primary choice-button btn-rounded' %>
-      <%# end %>
-      <%# end %>
-      <i class="fa fa-arrow-right swipe-right" aria-hidden="true"></i>
-    </div> -->
-  <% end %>
+    <div class="text-center choice-form">
+      <%= form_tag cart_cart_products_path(@cart), method: :post do %>
+        <% if @matching_list != [] %>
+          <%= hidden_field_tag :main_id, @matching_list.first.id %>
+        <% end %>
+        <%= submit_tag 'Choisir', class: 'btn btn-primary choice-button btn-rounded' %>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>
 <!-- modal qui apparaît: -->
 <% unless @cart.products.count == @cart.gift_number %>

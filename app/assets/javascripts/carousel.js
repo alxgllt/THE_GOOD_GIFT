@@ -26,7 +26,5 @@
 //       });
 // }
 $(document).ready(function(){
-  $('.gift-carousel').slick({
-    dots: true
-  });
+  $('.gift-carousel').slick();
 });
