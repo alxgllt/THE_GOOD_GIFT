@@ -229,6 +229,12 @@
   margin-top: 14px;
 }
 
+#giftcard-icon {
+  width: 18px;
+  height: 26px;
+  margin-right: -85px;
+}
+
 // Forms
 
 .form {
@@ -409,6 +415,19 @@
 
 #payment-btn[disabled] {
   opacity: 0.35;
+}
+
+#mastercard_logo {
+  border: 1px solid;
+}
+
+#payment-section img {
+  display: block;
+  opacity: 0.6;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -10px;
 }
 
 // Other
