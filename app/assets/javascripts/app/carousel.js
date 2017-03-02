@@ -25,11 +25,11 @@ function Ordercount() {
 }
 
 function ProductChoice() {
-  $(".owl-carousel").on('changed.owl.carousel', function(event) {
+  $('.flex-buttons > i').click(function(event) {
         $(".choice-button").attr("disabled", true);
         setTimeout(function() {
-          var selection_1 = $('.owl-carousel.owl-big .owl-item.active').children().data('id');
-          $("#main_id").val(selection_1);
+          var selection = $('.caroucard.active').data('id');
+          $("#main_id").val(selection);
           $(".choice-button").removeAttr("disabled");
         }, 800);
       });

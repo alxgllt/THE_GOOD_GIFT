@@ -66,7 +66,7 @@
 
         <!-- bar price -->
         <div class="bar-price">
-          <div>Optimisation du budget:</div>
+          <h4 class='text-center'>Utilisation du budget:</h4>
           <div class="progress-wrap progress" data-progress-percent="<%= @cart.total %>" data-total='<%= @cart.total %>'>
             <div class="progress-bar progress"></div>
           </div>
@@ -78,7 +78,7 @@
           <div class="col-lg-12">
             <div class="row">
               <div class="flex-bundle">
-                <div class="col-xs-9 text-center">
+                <div class="col-xs-9 text-center matching-list-container">
                   <%= render "matching_list", matching_list: @matching_list %>
                 </div>
                 <!-- On affiche le panier -->
@@ -171,7 +171,7 @@
       $(window).resize(function() {
         moveProgressBar();
       });
-      $('.owl-nav > div').click(function(event){
+      $('.flex-buttons > i').click(function(event){
         moveProgressBar();
       });
     });
@@ -206,7 +206,7 @@
     // SIGNATURE PROGRESS
     function moveProgressBar() {
       var current_total = parseInt($('.progress-wrap').data('total'));
-      var current_product_price = parseInt($('.owl-item.active .caroucard').data('price'));
+      var current_product_price = parseInt($('.caroucard.active').data('price'));
       var new_total = current_total + current_product_price;
       var getPercent = (new_total / <%= @cart.price * 0.95 %>);
       var getProgressWrapWidth = $('.progress-wrap').width();
@@ -249,7 +249,7 @@
 
         // swipe cards of gifts for choice
         $(document).ready(function() {
-          $(".swipe-left").click(function(e) {
+          $(".matching-list-container").on( "click", ".swipe-left", function(e) {
             e.preventDefault();
             var allProducts = $('.caroucard');
             var currentProduct = $('.caroucard.active');
@@ -260,7 +260,7 @@
             // $(".caroucard.active").prev().slideUp();
             // $(".caroucard.active").removeClass('active').prev().addClass('active');
           });
-          $(".swipe-right").click(function(e) {
+          $(".matching-list-container").on( "click", ".swipe-right", function(e) {
             e.preventDefault();
             var allProducts = $('.caroucard');
             var currentProduct = $('.caroucard.active');
