@@ -39,8 +39,9 @@
   </div>
 </div>
 
-<div class="lil-padded text-center">
+<div class="lil-padded text-center" id="header-step-2">
   <h1>Quelles sont les passions de <strong class="minted"> <%= params[:search_name] %> </strong> ? </h1>
+  <h3>(3 minimum)</h3>
 </div>
 <div class="wrapper">
   <div class="container">
@@ -69,8 +70,8 @@
   <%= hidden_field_tag "gender", params[:search_gender]%>
   <%= hidden_field_tag "price", params[:search_price]%>
   <%#= hidden_field_tag "search_date", params[:search_date]%>
-  <div class="lil-padded text-center">
-    <%= submit_tag (value = "Je compose mon package"), class: "btn btn-primary btn-rounded" %>
+  <div class="text-center" id="cta-step-2" >
+    <%= submit_tag (value = "Je compose mon package"), class: "btn btn-primary btn-rounded"%>
   </div>
   <% end %>
 </div>

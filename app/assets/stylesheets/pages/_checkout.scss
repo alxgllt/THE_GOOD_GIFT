@@ -17,6 +17,9 @@
   border: black;
 }
 
+.Checkout.is-desktop .Fieldset {
+  display:none;
+}
 // Cards
 
 .checkout-card {
@@ -480,5 +483,7 @@
   left: 2px;
 
 }
-
+.red-error {
+  border-color: red;
+}
 
