@@ -34,13 +34,15 @@
             <span class="email-replay-data hidden" id="email-data" data-bind="email"></span>
             <button class="btn tertiary hidden" id='edit-email-btn'>MODIFIER</button>
             <%= simple_form_for(@order, html: {class: 'form-inline', id: 'email-input-field'}, remote: true) do |f| %>
-              <%= f.error_notification %>
               <%= f.input :email, label: false, id: 'email-field' %>
+                <%= f.error :email %>
               <%= f.submit "Ajouter mon email", class: "btn secondary submit" %>
             <% end %>
           </div>
         </div>
+              <div class="error-messages">
 
+              </div>
         <div class="checkout-card form-card address-card" id="address-card-inactive">
           <h3>Adresse de livraison</h3>
         </div>
