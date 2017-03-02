@@ -11,11 +11,11 @@
             <div class="radio_div">
               <%= radio_button_tag :search_gender, 'Homme', label: "Homme" %>
               <%= label_tag "search_gender_Homme" do %>
-                <p class="icon-home">H</p>
+                <p id="icon-home">H</p>
               <% end %>
               <%= radio_button_tag :search_gender, 'Femme', label: "Femme", id:"button-gender" %>
               <%= label_tag "search_gender_Femme" do %>
-                <p class="icon-home">F</p>
+                <p id="icon-home">F</p>
               <% end %>
             </div>
           <%#= select_tag :search_gender, options_for_select(["Homme", "Femme"], params[:search_gender]), prompt: "Genre", class: "form-control input-lg", id: "sexe" %>
