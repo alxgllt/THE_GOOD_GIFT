@@ -1,9 +1,12 @@
 <div class="">
   <% if @cart.gift_number == @cart.cart_products.count %>
-    <h1>PANIER PLEIN</h1>
+    <div class="checkmark"></div>
     <%= form_tag orders_path, method: 'post' do%>
       <%= hidden_field_tag "cart_id", params[:id] %>
-      <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
+      <%= button_tag(type: "submit", class: "btn btn-primary order-button btn-rounded") do %>
+        <span class="arrow-bounce"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+          &nbsp;&nbsp;&nbsp; Passer commande
+      <% end %>
     <% end %>
   <% elsif @matching_list.empty? %>
     <h3>Désolé, notre databse actuelle ne nous permet pas de satisfaire votre demande, merci d'élargir votre champ de recherche :)</h3>
@@ -21,7 +24,6 @@
                 <%= product.name %>
                 <div class="product-brand">
                   <%= product.brand %>
-                  <%= product.price %>
                 </div>
               </div>
               <div class="btn btn-show-bundle" data-toggle="modal" data-target="#modal-<%= product.id %>">

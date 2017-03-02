@@ -8,8 +8,8 @@
       <div class="col-xs-8">
 
         <!-- Checkout progress bar -->
-        <div class="bar-container">
-          <div class="progression-bar">
+        <div class="bar-container2">
+          <div class="progression-bar2">
             <div class="circle-1">
               <span class="fa-stack fa-4x">
                 <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
@@ -33,7 +33,7 @@
             </div>
           </div>
 
-          <div class="progression-bar-text">
+          <div class="progression-bar-text2">
             <div class="circle-1">
               <span>Welcome</span>
             </div>
@@ -73,41 +73,18 @@
 
     <!-- second row -->
     <div class="row">
+
       <!-- place pour la sidebar -->
       <div class="col-xs-3">
-        <!-- Sidebar toggle button-->
-        <a href="#menu-toggle" class="btn btn-options" id="menu-toggle">
-          <span class="arrow-bounce"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
-          &nbsp;&nbsp;&nbsp;options
-        </a>
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper" class="sidebar-unfixed">
-          <%= render 'products/search_bar_products' %>
-        </div>
+        <%= render 'products/search_bar_products' %>
       </div>
 
       <!-- place pour le carousel -->
       <div class="col-xs-6">
-        <div id="wrapper" class="toggled">
+        <div>
           <!-- Page Content -->
           <%= render "matching_list", matching_list: @matching_list %>
-        <!--   <div id="page-content-wrapper">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="row">
-                      <div class="flex-bundle">
-                        <div class="col-xs-9 text-center">
 
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
-              <!--   </div>
-              </div>
-            </div> -->
-            <!-- /#page-content-wrapper -->
 
           <!-- modal du cart -->
           <% @cart.products.each do |product| %>
@@ -191,10 +168,10 @@
       });
     });
 
-  $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  });
+  // $("#menu-toggle").click(function(e) {
+  //   e.preventDefault();
+  //   $("#wrapper").toggleClass("toggled");
+  // });
 
   $("#refresh-options").on("submit", function() {
     if ($(".checkboxes input[type=checkbox]:checked").length >= 3) {
@@ -205,18 +182,18 @@
     }
   });
 
-  $(document).ready(function() {
-    $(window).scroll(function(e){
-      if ($(this).scrollTop() > 70) {
-        $('#sidebar-wrapper').addClass('sidebar-fixed');
-        $('#sidebar-wrapper').removeClass('sidebar-unfixed');
-      }
-      else {
-        $('#sidebar-wrapper').addClass('sidebar-unfixed');
-        $('#sidebar-wrapper').removeClass('sidebar-fixed');
-      }
-    });
-  });
+  // $(document).ready(function() {
+  //   $(window).scroll(function(e){
+  //     if ($(this).scrollTop() > 70) {
+  //       $('#sidebar-wrapper').addClass('sidebar-fixed');
+  //       $('#sidebar-wrapper').removeClass('sidebar-unfixed');
+  //     }
+  //     else {
+  //       $('#sidebar-wrapper').addClass('sidebar-unfixed');
+  //       $('#sidebar-wrapper').removeClass('sidebar-fixed');
+  //     }
+  //   });
+  // });
 
     // SIGNATURE PROGRESS
     function moveProgressBar() {
