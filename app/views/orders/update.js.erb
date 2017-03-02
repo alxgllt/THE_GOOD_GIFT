@@ -23,7 +23,7 @@
   $('.address-card').css('height','250px');
   $('#city-card-mask').addClass('hidden');
   $('#email-card-mask').addClass('hidden');
-  if ($('#order_email').val() !== "" && $('#order_first_name').val() !== "" && $('#order_last_name').val() !== "" && $('#order_address').val() !== "" && $('#order_phone').val() !== "" && $('#order_company').val() !== "") {
+  if ($('#order_email').val() !== "" && $( '#order_first_name').val() !== "" && $('#order_last_name').val() !== "" && $('#order_address').val() !== "" && $('#order_phone').val() !== "" ) {
     $('#payment-btn').prop("disabled", false);
   };
 <% end %>
