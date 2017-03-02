@@ -1,6 +1,6 @@
 .banner {
   text-align: center;
-  height: 100vh;
+  height: 50vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
@@ -35,5 +35,8 @@ margin-top: 50px;
 }
 #contained {
   width: 600px;
+}
+.margined-bottom {
+  margin-bottom: 70px;
 }
 
