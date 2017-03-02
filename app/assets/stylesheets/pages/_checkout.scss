@@ -2,11 +2,10 @@
 .main-body {
   background: #F2F2F2;
   min-height: 1200px;
-  width: 100%;
 }
 
 .checkout-header {
-  width: 100%;
+  width: 940px;
 }
 
 .checkout-header h1 {
@@ -14,7 +13,7 @@
 }
 
 .checkout-body {
-  width: 65%;
+  width: 940px;
   border: black;
 }
 
@@ -48,9 +47,6 @@
   border: 1px solid #ddd;
   background: 0 0;
   color: #ddd;
-}
-
-#form-column {
 }
 
 .email-card {
