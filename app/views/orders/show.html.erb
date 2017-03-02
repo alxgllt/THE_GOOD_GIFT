@@ -77,10 +77,11 @@
 
 
         <div class="place-order">
-          <div class="text-center" style="margin-bottom: 20px;">
+          <div class="text-center" style="margin-bottom: 20px;" id="payment-section">
             <button class="btn btn-primary btn-rounded" disabled id="payment-btn">
                 Commander
             </button>
+            <%= image_tag "card_logos.png", class: "card_logos" %>
           </div>
           <div class="text-center hidden">
             <%= form_tag order_payments_path(@order) do %>
@@ -134,8 +135,8 @@
             <hr>
 
             <div class="bag-gift_card-selection">
+                <%= image_tag "card_icon.png", id: "giftcard-icon"%>
                 <p>Inclure une carte</p>
-
                 <input type="checkbox" class="checkbox" id="checkbox-card">
                 <label for="checkbox-card"></label>
             </div>
