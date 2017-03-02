@@ -66,7 +66,7 @@
 
         <!-- bar price -->
         <div class="bar-price">
-          <div>Optimisation du budget:</div>
+          <h4 class='text-center'>Optimisation du budget:</h4>
           <div class="progress-wrap progress" data-progress-percent="<%= @cart.total %>" data-total='<%= @cart.total %>'>
             <div class="progress-bar progress"></div>
           </div>
@@ -171,7 +171,7 @@
       $(window).resize(function() {
         moveProgressBar();
       });
-      $('.owl-nav > div').click(function(event){
+      $('.flex-buttons > i').click(function(event){
         moveProgressBar();
       });
     });
@@ -206,7 +206,7 @@
     // SIGNATURE PROGRESS
     function moveProgressBar() {
       var current_total = parseInt($('.progress-wrap').data('total'));
-      var current_product_price = parseInt($('.owl-item.active .caroucard').data('price'));
+      var current_product_price = parseInt($('.caroucard.active').data('price'));
       var new_total = current_total + current_product_price;
       var getPercent = (new_total / <%= @cart.price * 0.95 %>);
       var getProgressWrapWidth = $('.progress-wrap').width();

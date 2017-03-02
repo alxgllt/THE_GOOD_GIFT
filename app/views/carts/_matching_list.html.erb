@@ -17,6 +17,7 @@
           <%= product.name %>
           <div class="product-brand">
             <%= product.brand %>
+            <%= product.price %>
           </div>
         </div>
         <div class="btn btn-show-bundle" data-toggle="modal" data-target="#modal-<%= product.id %>">
@@ -32,7 +33,7 @@
     <i class="fa fa-arrow-left swipe-left" aria-hidden="true"></i>
     <%= form_tag cart_cart_products_path(@cart), method: :post do %>
     <% if @matching_list != [] %>
-    <%= hidden_field_tag :main_id, @matching_list.first.id %>
+      <%= hidden_field_tag :main_id, @matching_list.first.id %>
     <% end %>
     <%= submit_tag 'Choisir', class: 'btn btn-primary choice-button btn-rounded' %>
     <% end %>
