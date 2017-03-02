@@ -1,20 +1,19 @@
 .bar-price {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0 350px;
   margin-top: 55px;
 }
 
 .progress {
-  width: 350px;
+  width: 100%;
   height: 35px;
-  margin-bottom: 0;
 }
 .progress-wrap {
   background: $mint;
+  margin-bottom: 20px;
+  margin-top: 10px;
   overflow: hidden;
   position: relative;
-  border: 5px solid $lightgrey;
+  border: 5px #FAFAFA solid;
   border-radius: 50px;
   .progress-bar {
     background: #ddd;
@@ -23,5 +22,3 @@
     top: 0;
   }
 }
-
-
