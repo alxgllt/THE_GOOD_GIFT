@@ -25,10 +25,10 @@ function Ordercount() {
 }
 
 function ProductChoice() {
-  $('.flex-buttons > i').click(function(event) {
+  $('.slick-arrow').click(function(event) {
         $(".choice-button").attr("disabled", true);
         setTimeout(function() {
-          var selection = $('.caroucard.active').data('id');
+          var selection = $('.slick-current').data('id');
           $("#main_id").val(selection);
           $(".choice-button").removeAttr("disabled");
         }, 800);

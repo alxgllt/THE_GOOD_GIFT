@@ -1,5 +1,7 @@
 <div class="main-body" id="cart-page-body">
   <div class="container">
+
+    <!-- first row -->
     <div class="row" id="header-cart-page">
       <div class="col-xs-2">
       </div>
@@ -47,7 +49,6 @@
           </div>
         </div>
 
-
         <!-- bar price -->
         <div class="bar-price">
           <h4 class='text-center'>Utilisation du budget:</h4>
@@ -57,21 +58,24 @@
         </div>
 
       </div>
-      <div class="col-xs-2">
 
-        <!-- surprime me -->
+      <!-- surprime me -->
+      <div class="col-xs-2">
         <div class="surprise-me btn-surprise">
           <!-- <p>SURPRISE ME</p> -->
           <%= form_tag cart_surprise_me_path(@cart), method: 'patch' do%>
-            <%= image_submit_tag 'surprise_me2.svg' %>
+          <%= image_submit_tag 'surprise_me2.svg' %>
           <% end %>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-3">
+    <!-- end first row -->
 
-        <!-- Sidebar -->
+    <!-- second row -->
+    <div class="row">
+      <!-- place pour la sidebar -->
+      <div class="col-xs-3">
+        <!-- Sidebar toggle button-->
         <a href="#menu-toggle" class="btn btn-options" id="menu-toggle">
           <span class="arrow-bounce"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
           &nbsp;&nbsp;&nbsp;options
@@ -82,12 +86,13 @@
           <%= render 'products/search_bar_products' %>
         </div>
       </div>
-      <div class="col-xs-6">
 
+      <!-- place pour le carousel -->
+      <div class="col-xs-6">
         <div id="wrapper" class="toggled">
           <!-- Page Content -->
           <%= render "matching_list", matching_list: @matching_list %>
-<!--           <div id="page-content-wrapper">
+        <!--   <div id="page-content-wrapper">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-lg-12">
@@ -98,52 +103,42 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <%# if @cart.gift_number == @cart.cart_products.count %>
-                    <%#= form_tag orders_path, method: 'post' do%>
-                      <%#= hidden_field_tag "cart_id", params[:id] %>
-                    <%#= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
-                    <%# end %>
-                  <%# end %>
-                </div>
+                  </div> -->
+              <!--   </div>
               </div>
             </div> -->
             <!-- /#page-content-wrapper -->
 
-          </div>
-
-        <!-- modal du cart -->
-        <% @cart.products.each do |product| %>
-          <div class="modal fade" id="modal-<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
-                  <div class="product-brand">
-                    <%= product.brand %>
+          <!-- modal du cart -->
+          <% @cart.products.each do |product| %>
+            <div class="modal fade" id="modal-<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
+                    <div class="product-brand">
+                      <%= product.brand %>
+                    </div>
                   </div>
+                  <div class="modal-body text-center">
+                    <div class="modal-image text-center">
+                      <%= cl_image_tag product.image %>
+                    </div>
+                    <div>
+                      <h4>Description:</h4>
+                      <p><%= product.description %></p>
+                    </div>
+                    </div>
                 </div>
-                <div class="modal-body text-center">
-                  <div class="modal-image text-center">
-                    <%= cl_image_tag product.image %>
-                  </div>
-                  <div>
-                    <h4>Description:</h4>
-                    <p><%= product.description %></p>
-                  </div>
-                </div>
-                <!-- <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div> -->
               </div>
             </div>
-          </div>
-        <% end %>
-
+          <% end %>
+        </div>
       </div>
-      <!-- On affiche le panier -->
+
+      <!-- place pour le panier -->
+      <!-- place pour le panier -->
       <div class="col-xs-3">
         <div class="cart-cont ent">
           <div class="checkout-card cart-card">
@@ -175,57 +170,58 @@
         </div>
       </div>
     </div>
+    <!-- end second row -->
+
   </div>
 </div>
 
-
-  <% content_for(:after_js) do %>
-  <script>
-    $(document).ready(function() {
-      initCarousel();
-      Ordercount ();
-      ProductChoice ();
-      moveProgressBar();
+<% content_for(:after_js) do %>
+<script>
+  $(document).ready(function() {
+    initCarousel();
+    Ordercount ();
+    ProductChoice ();
+    moveProgressBar();
       // on browser resize...
       $(window).resize(function() {
         moveProgressBar();
       });
-      $('.flex-buttons > i').click(function(event){
+      $('.slick-arrow').click(function(event){
         moveProgressBar();
       });
     });
 
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
 
-    $("#refresh-options").on("submit", function() {
-      if ($(".checkboxes input[type=checkbox]:checked").length >= 3) {
-        return true;
-      } else {
-        $('.error-messages').html("Selectionnez au moins 3 univers");
-        return false;
+  $("#refresh-options").on("submit", function() {
+    if ($(".checkboxes input[type=checkbox]:checked").length >= 3) {
+      return true;
+    } else {
+      $('.error-messages').html("Selectionnez au moins 3 univers");
+      return false;
+    }
+  });
+
+  $(document).ready(function() {
+    $(window).scroll(function(e){
+      if ($(this).scrollTop() > 70) {
+        $('#sidebar-wrapper').addClass('sidebar-fixed');
+        $('#sidebar-wrapper').removeClass('sidebar-unfixed');
+      }
+      else {
+        $('#sidebar-wrapper').addClass('sidebar-unfixed');
+        $('#sidebar-wrapper').removeClass('sidebar-fixed');
       }
     });
-
-    $(document).ready(function() {
-      $(window).scroll(function(e){
-        if ($(this).scrollTop() > 70) {
-          $('#sidebar-wrapper').addClass('sidebar-fixed');
-          $('#sidebar-wrapper').removeClass('sidebar-unfixed');
-        }
-        else {
-          $('#sidebar-wrapper').addClass('sidebar-unfixed');
-          $('#sidebar-wrapper').removeClass('sidebar-fixed');
-        }
-      });
-    });
+  });
 
     // SIGNATURE PROGRESS
     function moveProgressBar() {
       var current_total = parseInt($('.progress-wrap').data('total'));
-      var current_product_price = parseInt($('.caroucard.active').data('price'));
+      var current_product_price = parseInt($('.slick-current').data('price'));
       var new_total = current_total + current_product_price;
       var getPercent = (new_total / <%= @cart.price * 0.95 %>);
       var getProgressWrapWidth = $('.progress-wrap').width();
@@ -266,30 +262,46 @@
           });
         });
 
-        // swipe cards of gifts for choice
-        $(document).ready(function() {
-          $(".matching-list-container").on( "click", ".swipe-left", function(e) {
-            e.preventDefault();
-            var allProducts = $('.caroucard');
-            var currentProduct = $('.caroucard.active');
-            var newProduct = findPrevProduct(currentProduct, allProducts);
-            currentProduct.removeClass('active').hide('blind',{direction:'left'},1000);
-            newProduct.addClass('active').slideDown();
-            // $(".caroucard.active").slideDown();
-            // $(".caroucard.active").prev().slideUp();
-            // $(".caroucard.active").removeClass('active').prev().addClass('active');
-          });
-          $(".matching-list-container").on( "click", ".swipe-right", function(e) {
-            e.preventDefault();
-            var allProducts = $('.caroucard');
-            var currentProduct = $('.caroucard.active');
-            var newProduct = findNextProduct(currentProduct, allProducts);
-            currentProduct.removeClass('active').slideUp();
-            newProduct.addClass('active').slideDown();
-            // $(".caroucard.active").next().slideDown();
-            // $(".caroucard.active").removeClass('active').next().addClass('active');
-          });
-        });
+        // swipe cards - change active class
+        // $(document).ready(function() {
+        //   $(".matching-list-container").on( "click", ".slick-prev.slick-arrow::before", function(e) {
+        //     e.preventDefault();
+        //     var allProducts = $('.caroucard');
+        //     var currentProduct = $('.caroucard.active');
+        //     var newProduct = findPrevProduct(currentProduct, allProducts);
+        //     currentProduct.removeClass('active');
+        //     newProduct.addClass('active');
+        //   });
+        //   $(".matching-list-container").on( "click", ".slick-next.slick-arrow::before", function(e) {
+        //     e.preventDefault();
+        //     var allProducts = $('.caroucard');
+        //     var currentProduct = $('.caroucard.active');
+        //     var newProduct = findNextProduct(currentProduct, allProducts);
+        //     currentProduct.removeClass('active');
+        //     newProduct.addClass('active');
+        //   });
+
+        //   function findNextProduct(currentProduct, allProducts){
+        //     var productCount = allProducts.length;
+        //     var index = allProducts.index(currentProduct);
+        //     if(index == productCount - 1) {
+        //       var nextIndex = 0 ;
+        //     } else {
+        //       var nextIndex =  index + 1;
+        //     }
+        //     return $(allProducts[nextIndex]);
+        //   }
+        //   function findPrevProduct(currentProduct, allProducts){
+        //     var productCount = allProducts.length;
+        //     var index = allProducts.index(currentProduct);
+        //     if(index == 0) {
+        //       var nextIndex = productCount - 1 ;
+        //     } else {
+        //       var nextIndex =  index - 1;
+        //     }
+        //     return $(allProducts[nextIndex]);
+        //   }
+        // });
 
   // $(document).ready(function() {
     //   initializeAutocomplete('order_address');
