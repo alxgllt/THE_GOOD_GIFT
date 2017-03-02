@@ -1,26 +1,8 @@
-<div id="wrapper" class="toggled">
-
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper" class="sidebar-unfixed">
-    <%= render 'products/search_bar_products' %>
-  </div>
-  <!-- /#sidebar-wrapper -->
-
-  <!-- Page Content -->
-  <div id="page-content-wrapper">
-    <a href="#menu-toggle" class="btn btn-options" id="menu-toggle">
-      <span class="arrow-bounce"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
-      &nbsp;&nbsp;&nbsp;options
-    </a>
-
-    <!-- surprime me -->
-    <div class="surprise-me btn-surprise">
-      <%= image_tag "surprise_me.svg" %>
-      <p>SURPRISE ME</p>
-      <%= form_tag cart_surprise_me_path(@cart), method: 'patch' do%>
-      <%= submit_tag 'surprise', class: 'btn btn-primary order-button btn-rounded' %>
-      <% end %>
+<div class="main-body" id="cart-page-body">
+  <div class="row" id="header-cart-page">
+    <div class="col-xs-2">
     </div>
+    <div class="col-xs-8">
 
       <!-- Checkout progress bar -->
       <div class="bar-container">
@@ -64,6 +46,7 @@
         </div>
       </div>
 
+
         <!-- bar price -->
         <div class="bar-price">
           <h4 class='text-center'>Utilisation du budget:</h4>
@@ -71,93 +54,128 @@
             <div class="progress-bar progress"></div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="col-xs-2">
 
+      <!-- surprime me -->
+      <div class="surprise-me btn-surprise hidden">
+        <%= image_tag "surprise_me.svg" %>
+        <p>SURPRISE ME</p>
+        <%= form_tag cart_surprise_me_path(@cart), method: 'patch' do%>
+        <%= submit_tag 'surprise', class: 'btn btn-primary order-button btn-rounded' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">
 
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="row">
-              <div class="flex-bundle">
-                <div class="col-xs-9 text-center matching-list-container">
-                  <%= render "matching_list", matching_list: @matching_list %>
-                </div>
-                <!-- On affiche le panier -->
-                <div class="col-xs-3">
-                  <div class="cart-cont ent">
-                    <div class="checkout-card cart-card">
-                      <div class="bag">
-                        <div class="filter-title">
-                          <div><span class="">Vos <%= @cart.gift_number %> cadeaux</span></div>
-                        </div>
-                        <div class="bag-item-list">
-                          <div class="bag-item-wrapper">
-                            <ul class="items">
-                              <% @cart.products.each do |product| %>
-                              <% unless product == @cart.products.last %>
-                              <% end %>
-                              <li class="item">
-                                <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
-                                <div>
-                                  <span class="item-name"> <%= product.name %> </span>
-                                  <span class="item-brand"> <%= product.brand %>  </span>
-                                  <span class="item-modal" data-toggle="modal" data-target="#modal-<%= product.id %>">> voir détails produit <</span>
+      <!-- Sidebar -->
+      <a href="#menu-toggle" class="btn btn-options" id="menu-toggle">
+        <span class="arrow-bounce"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
+        &nbsp;&nbsp;&nbsp;options
+      </a>
+
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper" class="sidebar-unfixed">
+        <%= render 'products/search_bar_products' %>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div id="wrapper" class="toggled">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="row">
+                    <div class="flex-bundle">
+                      <div class="col-xs-9 text-center">
+                        <%= render "matching_list", matching_list: @matching_list %>
+                      </div>
+                      <!-- On affiche le panier -->
+                      <div class="col-xs-3">
+                        <div class="cart-cont ent">
+                          <div class="checkout-card cart-card">
+                            <div class="bag">
+                              <div class="filter-title">
+                                <div><span class="">Vos <%= @cart.gift_number %> cadeaux</span></div>
+                              </div>
+                              <div class="bag-item-list">
+                                <div class="bag-item-wrapper">
+                                  <ul class="items">
+                                    <% @cart.products.each do |product| %>
+                                    <% unless product == @cart.products.last %>
+                                    <% end %>
+                                    <li class="item">
+                                      <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
+                                      <div>
+                                        <span class="item-name"> <%= product.name %> </span>
+                                        <span class="item-brand"> <%= product.brand %>  </span>
+                                        <span class="item-modal" data-toggle="modal" data-target="#modal-<%= product.id %>">> voir détails produit <</span>
+                                      </div>
+                                    </li>
+                                    <hr>
+                                    <% end %>
+                                  </ul>
                                 </div>
-                              </li>
-                              <hr>
-                              <% end %>
-                            </ul>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <% if @cart.gift_number == @cart.cart_products.count %>
+                  <%= form_tag orders_path, method: 'post' do%>
+                    <%= hidden_field_tag "cart_id", params[:id] %>
+                  <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
+                  <% end %>
+                <% end %>
               </div>
             </div>
           </div>
-          <% if @cart.gift_number == @cart.cart_products.count %>
-            <%= form_tag orders_path, method: 'post' do%>
-              <%= hidden_field_tag "cart_id", params[:id] %>
-            <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
-            <% end %>
-          <% end %>
+          <!-- /#page-content-wrapper -->
+
         </div>
 
-      </div>
+      <!-- modal du cart -->
+      <% @cart.products.each do |product| %>
+        <div class="modal fade" id="modal-<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
+                <div class="product-brand">
+                  <%= product.brand %>
+                </div>
+              </div>
+              <div class="modal-body text-center">
+                <div class="modal-image text-center">
+                  <%= cl_image_tag product.image %>
+                </div>
+                <div>
+                  <h4>Description:</h4>
+                  <p><%= product.description %></p>
+                </div>
+              </div>
+              <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      <% end %>
+
     </div>
-    <!-- /#page-content-wrapper -->
-
-  </div>
-
-<!-- modal du cart -->
-<% @cart.products.each do |product| %>
-  <div class="modal fade" id="modal-<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
-          <div class="product-brand">
-            <%= product.brand %>
-          </div>
-        </div>
-        <div class="modal-body text-center">
-          <div class="modal-image text-center">
-            <%= cl_image_tag product.image %>
-          </div>
-          <div>
-            <h4>Description:</h4>
-            <p><%= product.description %></p>
-          </div>
-        </div>
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div> -->
-      </div>
+    <div class="col-xs-3">
     </div>
   </div>
-<% end %>
+</div>
 
 
   <% content_for(:after_js) do %>
