@@ -77,7 +77,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="row">
-              <div class="flex-bundle">
+              <div class="">
                 <div class="col-xs-9 text-center matching-list-container">
                   <%= render "matching_list", matching_list: @matching_list %>
                 </div>
@@ -254,7 +254,7 @@
             var allProducts = $('.caroucard');
             var currentProduct = $('.caroucard.active');
             var newProduct = findPrevProduct(currentProduct, allProducts);
-            currentProduct.removeClass('active').slideUp();
+            currentProduct.removeClass('active').hide('blind',{direction:'left'},1000);
             newProduct.addClass('active').slideDown();
             // $(".caroucard.active").slideDown();
             // $(".caroucard.active").prev().slideUp();
