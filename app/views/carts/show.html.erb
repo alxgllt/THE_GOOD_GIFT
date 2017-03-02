@@ -46,11 +46,13 @@
         </div>
       </div>
 
-      <!-- bar price -->
-      <div class="bar-price">
-        <h4 class='text-center'>Optimisation du budget:</h4>
-        <div class="progress-wrap progress" data-progress-percent="<%= @cart.total %>" data-total='<%= @cart.total %>'>
-          <div class="progress-bar progress"></div>
+
+        <!-- bar price -->
+        <div class="bar-price">
+          <h4 class='text-center'>Utilisation du budget:</h4>
+          <div class="progress-wrap progress" data-progress-percent="<%= @cart.total %>" data-total='<%= @cart.total %>'>
+            <div class="progress-bar progress"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -64,7 +66,6 @@
         <%= submit_tag 'surprise', class: 'btn btn-primary order-button btn-rounded' %>
         <% end %>
       </div>
-
     </div>
   </div>
   <div class="row">
@@ -266,7 +267,7 @@
 
         // swipe cards of gifts for choice
         $(document).ready(function() {
-          $(".swipe-left").click(function(e) {
+          $(".matching-list-container").on( "click", ".swipe-left", function(e) {
             e.preventDefault();
             var allProducts = $('.caroucard');
             var currentProduct = $('.caroucard.active');
@@ -277,7 +278,7 @@
             // $(".caroucard.active").prev().slideUp();
             // $(".caroucard.active").removeClass('active').prev().addClass('active');
           });
-          $(".swipe-right").click(function(e) {
+          $(".matching-list-container").on( "click", ".swipe-right", function(e) {
             e.preventDefault();
             var allProducts = $('.caroucard');
             var currentProduct = $('.caroucard.active');

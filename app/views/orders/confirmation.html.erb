@@ -1,15 +1,18 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path('wood.png') %>);">
-  <div class="banner-content">
-    <h1><i class="fa fa-check" aria-hidden="true"></i> </h1>
-    <h1>Votre commande s'est bien deroulée!</h1>
+
+  <div class="banner-content text-center margined-bottom">
+    <h3><i class="fa fa-check" aria-hidden="true"></i> </h3>
+    <h3>Votre commande s'est bien deroulée !</h3>
     <p> Merci d'avoir choisi The Good Gift. Vous devriez recevoir un email de confirmation rapidement.</p>
   </div>
-</div>
+
+
 
 <div class="container" id="contained">
 
-<div class="text-center">
-  <h3>Numéro de commande : <%= @order.id %></h3>
+<div class="text-center margin-top">
+  <h4>Rappel de votre commande </h4>
+    <hr>
+  <h5>Numéro de commande : <%= @order.id %></h5>
   <hr>
 </div>
 
@@ -33,7 +36,7 @@
  <%= link_to "Faites un nouveau cadeau ! ", root_path %>
 
 </div>
-<div class="text-center ">
+<div class="text-center margined-bottom">
    <%= link_to "Un problème? Contactez nous ! ", root_path %>
 </div>
 
