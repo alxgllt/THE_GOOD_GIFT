@@ -20,6 +20,9 @@
                 <span class="item-name"> <%= product.name %> </span>
                 <span class="item-brand"> <%= product.brand %>  </span>
                 <span class="item-modal" data-toggle="modal" data-target="#modal-<%= product.id %>">> voir détails produit <</span>
+                <%= form_tag cart_cart_product_path(cart), method: :post, remote: true do%>
+                  <%= submit_tag "> supprimer <", class: "delete-prod-link" %>
+                <% end %>
               </div>
             </li>
             <hr>
