@@ -42,6 +42,7 @@
   background: white;
   padding: 10px;
   width: 300px;
+  margin-bottom: 25px;
 }
 
 .address-card {
@@ -145,8 +146,6 @@
 
 .item>div {
   color: #666;
-  padding-left: 15px;
-  padding-top: 15px;
   font-size: 14px;
 }
 
@@ -528,4 +527,7 @@
 
 .Checkout.is-desktop .Fieldset {
   display:none;
+}
+#first-separator {
+  margin: 0;
 }
