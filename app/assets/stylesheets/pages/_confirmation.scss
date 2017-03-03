@@ -25,7 +25,7 @@ margin-top: 50px;
   width: 800px;
   background: white;
   margin-top: 20px;
-  box-shadow: 1px 1px 2px grey;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 .margined-bottom {
   margin-bottom: 70px;
@@ -42,13 +42,12 @@ margin-top: 50px;
   background: white;
     padding-bottom: 14px;
     width: 1130px;
-    box-shadow: 1px 1px 2px grey;
-
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 .maine-body {
       background: #F2F2F2;
     min-height: 820px;
-    box-shadow: 1px 1px 2px grey;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 .linktohome {
   padding-bottom: 20px;
