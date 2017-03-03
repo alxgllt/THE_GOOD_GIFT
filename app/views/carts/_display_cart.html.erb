@@ -19,12 +19,18 @@
               <%= cl_image_tag cart_product.product.image %>
               </div>
               <div class="cart-infos">
-                <span class="item-name"> <%= cart_product.product.name %> </span>
-                <span class="item-brand"> <%= cart_product.product.brand %>  </span>
-                <span class="item-modal" data-toggle="modal" data-target="#modal-<%= cart_product.product.id %>">> voir détails produit <</span>
-                <%= form_tag cart_cart_product_path(cart, cart_product), method: :delete, remote: true do%>
-                  <%= submit_tag "> supprimer <", class: "delete-prod-link" %>
-                <% end %>
+                <span class="cart-name"> <%= cart_product.product.name %> </span>
+                <span class="cart-brand"> <%= cart_product.product.brand %>  </span>
+                <div class="cart-control">
+                  <div>
+                    <span class="item-modal" data-toggle="modal" data-target="#modal-<%= cart_product.product.id %>">> voir détails produit <</span>
+                  </div>
+                  <div>
+                    <%= form_tag cart_cart_product_path(cart, cart_product), method: :delete, remote: true do%>
+                      <%= submit_tag "> supprimer <", class: "delete-prod-link" %>
+                    <% end %>
+                  </div>
+                </div>
               </div>
             </li>
             <hr>
