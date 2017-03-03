@@ -149,7 +149,7 @@
     width: 60px;
 }
 
-.reinitialize_cart form {
+.reinitialize_cart {
   text-align: right;
 }
 .reinitialize-link {
@@ -159,6 +159,19 @@
     font-size: 12px;
     &:hover {
       font-style: italic;
+    }
+    &:focus {
+      outline: none;
+    }
+}
+
+.delete-prod-link {
+    border: 0;
+    color: #666;
+    background: 0;
+    font-size: 12px;
+    &:hover {
+      color: $black;
     }
     &:focus {
       outline: none;

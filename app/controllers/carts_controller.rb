@@ -53,9 +53,8 @@ class CartsController < ApplicationController
   def surprise_me
     cart = Cart.find(params[:cart_id])
     cart.cart_products.destroy_all
-    products = products_filtered(cart)
     cart.gift_number.times do
-      gift = algo_matching(products, cart).sample
+      gift = GiftSelectionService.new(cart).call.sample
       cart_product = CartProduct.new()
       cart_product.cart = cart
       cart_product.product = gift
