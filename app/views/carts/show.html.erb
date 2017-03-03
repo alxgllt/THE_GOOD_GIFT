@@ -52,14 +52,16 @@
         <!-- bar price -->
         <div class="bar-price">
           <h4 class='text-center'>Utilisation du budget:</h4>
-          <div class="progress-wrap progress" data-total='<%= @cart.total %>'>
+          <div class="flex-price">
+          <div class="progress-wrap progress flex-item-progress" data-total='<%= @cart.total %>'>
             <div class="progress-bar progress"></div>
+          </div>
+            <div class="progress-price flex-item-price">
+            <p> <%= @cart.price %> €</p>
+            </div>
           </div>
         </div>
       </div>
-            <div class="progress-price">
-            <p> <%= @cart.price %> €</p>
-            </div>
 
       <!-- surprime me -->
       <div class="col-xs-2">
