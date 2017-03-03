@@ -1,0 +1,25 @@
+<!-- modal du cart -->
+<% @cart.products.each do |product| %>
+  <div class="modal fade" id="modal-<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
+          <div class="product-brand">
+            <%= product.brand %>
+          </div>
+        </div>
+        <div class="modal-body text-center">
+          <div class="modal-image text-center">
+            <%= cl_image_tag product.image %>
+          </div>
+          <div>
+            <h4>Description:</h4>
+            <p><%= product.description_short %></p>
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
+<% end %>

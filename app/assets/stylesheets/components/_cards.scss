@@ -96,6 +96,39 @@
   }
   }
 }
+
+.cart-product-2 {
+  width: 100%;
+  display: flex;
+  align-items: strech;
+  justify-content: space-between;
+  .cart-image-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 40%;
+    img {
+      max-width: 100%;
+      max-height: 100px;
+    }
+  }
+  .cart-infos-2 {
+  flex: 0 0 59%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .cart-name-2 {
+    font-size: 16px;
+  }
+  .cart-brand-2 {
+    font-size: 14px;
+    font-style: italic;
+  }
+  }
+}
+
+
 .card-passer-commande {
   background: white;
   border-radius: 2px;
