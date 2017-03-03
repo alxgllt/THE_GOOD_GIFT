@@ -1,5 +1,10 @@
 <div class="checkout-card cart-card">
   <div class="bag">
+    <div class="reinitialize-cart">
+      <%= form_tag cart_reinitialize_cart_path(@cart), method: 'patch' do%>
+        <%= submit_tag "Réinitialiser mon panier", class: "reinitialize-link" %>
+      <% end %>
+    </div>
     <div class="filter-title">
     <div><span class="">Vos <%= cart.gift_number %> cadeaux</span></div>
     </div>
