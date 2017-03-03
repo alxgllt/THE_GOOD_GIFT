@@ -25,7 +25,7 @@ function Ordercount() {
 }
 
 function ProductChoice() {
-  $('.slick-arrow').click(function(event) {
+  $('.matching-list-container').on('click', '.slick-arrow', function(event) {
         $(".choice-button").attr("disabled", true);
         setTimeout(function() {
           var selection = $('.slick-current').data('id');
