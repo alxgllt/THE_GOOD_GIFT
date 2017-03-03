@@ -64,7 +64,7 @@
         <div class="surprise-me btn-surprise">
           <!-- <p>SURPRISE ME</p> -->
           <%= form_tag cart_surprise_me_path(@cart), method: 'patch' do%>
-          <%= image_submit_tag 'surprise_me2.svg' %>
+          <%= image_submit_tag 'surprise_me2.png' %>
           <% end %>
         </div>
       </div>
@@ -106,10 +106,6 @@
     initCarousel();
     Ordercount ();
     ProductChoice ();
-    // setTimeout(function() {
-    //       moveProgressBar();
-    //     }, 300);
-      // on browser resize...
       $(window).resize(function() {
         moveProgressBar();
       });
