@@ -79,7 +79,6 @@
         </div>
 
 
-
         <!-- Section CTA / Stripe -->
         <div class="place-order">
           <div class="text-center" style="margin-bottom: 20px;" id="payment-section">
@@ -90,26 +89,8 @@
           </div>
           <div class="text-center hidden stripe-container">
             <!-- DO NOT REMOVE ME -->
-          <div class="place-order">
-            <div class="text-center" style="margin-bottom: 20px;" id="payment-section">
-              <button class="btn btn-primary btn-rounded" disabled id="payment-btn">
-                  Commander
-              </button>
-              <%= image_tag "card_logos.png", class: "card_logos" %>
-            </div>
-            <div class="text-center hidden">
-              <%= form_tag order_payments_path(@order) do %>
-                <script src="https://checkout.stripe.com/checkout.js" id="btn-stripe" class="stripe-button btn btn-primary btn-rounded"
-                 data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                  data-name=" My Order N°<%= @order.id %>"
-                  data-email="<%= @order.email %>"
-                  data-total_price="<%= @order.total_price_cents %>"
-                  data-currency="<%= @order.total_price.currency %>"
-                  data-amount=" Payez <%= @order.total_price%> ">
-                </script>
-              <% end %>
-            </div>
-            <span class="tandc">En passant votre commande, vous acceptez nos conditions générales d'utilisation ainsi que notre politique de confidentialité. Vous consentez à ce que certaines de vos données soient enregistrées par The Good Gift©.
+          </div>
+          <span class="tandc">En passant votre commande, vous acceptez nos conditions générales d'utilisation ainsi que notre politique de confidentialité. Vous consentez à ce que certaines de vos données soient enregistrées par The Good Gift©.
           </span>
         </div>
       </div>
