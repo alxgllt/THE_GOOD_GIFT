@@ -88,8 +88,20 @@
 }
 
 .progress-price {
-  position: absolute;
-  top: 206px;
-  right: 369px;
   font-size: 15px;
 }
+
+.flex-price {
+  display:flex;
+  align-items: center;
+}
+
+.flex-item-price {
+  flex: 0 0 10%;
+  margin-left: 10px
+}
+
+.flex-item-progress {
+  flex: 1 0 auto;
+}
+
