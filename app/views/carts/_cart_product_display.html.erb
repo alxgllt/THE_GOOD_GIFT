@@ -1,0 +1,22 @@
+<li id='cart-product-<%= cart_product.id %>' style="display:none;">
+  <div class="cart-product">
+    <div class="cart-image">
+      <%= cl_image_tag cart_product.product.image %>
+    </div>
+    <div class="cart-infos">
+      <span class="cart-name"> <%= cart_product.product.name %> </span>
+      <span class="cart-brand"> <%= cart_product.product.brand %>  </span>
+      <div class="cart-control">
+        <div>
+          <span class="item-modal" data-toggle="modal" data-target="#modal-<%= cart_product.product.id %>">> voir détails produit <</span>
+        </div>
+        <div>
+          <%= form_tag cart_cart_product_path(cart_product.cart, cart_product), method: :delete, remote: true do%>
+          <%= submit_tag "> supprimer <", class: "delete-prod-link" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+</li>
