@@ -27,11 +27,13 @@ class CartsController < ApplicationController
     # business intelligence
     @order = Order.new()
 
-    # on trie les produits
-    @products = products_filtered(@cart)
+    # # on trie les produits
+    # @products = products_filtered(@cart)
 
-    #affichage bundle
-    @matching_list = algo_matching(@products, @cart)
+    # #affichage bundle
+    # @matching_list = algo_matching(@products, @cart)
+
+    @matching_list = GiftSelectionService.new(@cart).call
   end
 
   def edit
@@ -71,69 +73,69 @@ class CartsController < ApplicationController
 
   private
 
-  def products_filtered(cart)
-    products = Product.all
-    if cart.tags != nil
-      products = products.where("tag_one IN (?) OR tag_two IN (?)", cart.tags, cart.tags)
-    end
-    if cart.gender != nil
-      products = products.where(gender: [(cart.gender == "Homme" ? "M" : "F"), "U"])
-    end
-    return products
-  end
+  # def products_filtered(cart)
+  #   products = Product.all
+  #   if cart.tags != nil
+  #     products = products.where("tag_one IN (?) OR tag_two IN (?)", cart.tags, cart.tags)
+  #   end
+  #   if cart.gender != nil
+  #     products = products.where(gender: [(cart.gender == "Homme" ? "M" : "F"), "U"])
+  #   end
+  #   return products
+  # end
 
   def cart_params
     params.permit(:name, :price, :gender, :tags)
   end
 
-  def algo_matching(products, cart)
-    unless cart.gift_number == cart.cart_products.count
-      products_updated = remove_cart_products(products, cart)
-      available_cash = calc_available_cash(cart)
-      default_bundle_config = default_bundle_configuration(available_cash, cart)
-      product_list = list_format(products_updated, available_cash, default_bundle_config)
-      sorting_matching_list(product_list)
-    end
-  end
+  # def algo_matching(products, cart)
+  #   unless cart.gift_number == cart.cart_products.count
+  #     products_updated = remove_cart_products(products, cart)
+  #     available_cash = calc_available_cash(cart)
+  #     default_bundle_config = default_bundle_configuration(available_cash, cart)
+  #     product_list = list_format(products_updated, available_cash, default_bundle_config)
+  #     sorting_matching_list(product_list)
+  #   end
+  # end
 
-  def remove_cart_products(products, cart)
-    products.select { |product| !cart.include?(product) }
-  end
+  # def remove_cart_products(products, cart)
+  #   products.select { |product| !cart.include?(product) }
+  # end
 
-  def calc_available_cash(cart)
-    if cart.products.empty?
-      cart.price * 100 * 0.95
-    else
-      cart.price * 100 - ( cart.products.inject(0) { |sum, product| sum + product.price_cents } )
-    end
-  end
+  # def calc_available_cash(cart)
+  #   if cart.products.empty?
+  #     cart.price * 100 * 0.95
+  #   else
+  #     cart.price * 100 - ( cart.products.inject(0) { |sum, product| sum + product.price_cents } )
+  #   end
+  # end
 
-  def default_bundle_configuration(available_cash, cart)
-    default_bundle_config = {
-      gift_number: cart.gift_number,
-      min_proportion: 0.4,
-      max_proportion: 0.7
-    }
-    if cart.products.count == cart.gift_number - 1
-      default_bundle_config[:min_proportion] = 0.8
-      default_bundle_config[:max_proportion] = 1
-    end
-    default_bundle_config
-  end
+  # def default_bundle_configuration(available_cash, cart)
+  #   default_bundle_config = {
+  #     gift_number: cart.gift_number,
+  #     min_proportion: 0.4,
+  #     max_proportion: 0.7
+  #   }
+  #   if cart.products.count == cart.gift_number - 1
+  #     default_bundle_config[:min_proportion] = 0.8
+  #     default_bundle_config[:max_proportion] = 1
+  #   end
+  #   default_bundle_config
+  # end
 
-  def list_format(products, available_cash, default_bundle_config)
-    product_list = []
-    products.each do |product|
-      if product.price_cents >= default_bundle_config[:min_proportion] * available_cash &&
-          product.price_cents <= default_bundle_config[:max_proportion] * available_cash
-        product_list << product
-      end
-    end
-    return product_list
-  end
+  # def list_format(products, available_cash, default_bundle_config)
+  #   product_list = []
+  #   products.each do |product|
+  #     if product.price_cents >= default_bundle_config[:min_proportion] * available_cash &&
+  #         product.price_cents <= default_bundle_config[:max_proportion] * available_cash
+  #       product_list << product
+  #     end
+  #   end
+  #   return product_list
+  # end
 
-  def sorting_matching_list(product_list)
-    product_list.sort_by! { |product| product[:sell_priority].to_i }
-    product_list
-  end
+  # def sorting_matching_list(product_list)
+  #   product_list.sort_by! { |product| product[:sell_priority].to_i }
+  #   product_list
+  # end
 end
