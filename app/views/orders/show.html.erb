@@ -90,8 +90,6 @@
           <div class="text-center hidden stripe-container">
             <!-- DO NOT REMOVE ME -->
           </div>
-          <span class="tandc">En passant votre commande, vous acceptez nos conditions générales d'utilisation ainsi que notre politique de confidentialité. Vous consentez à ce que certaines de vos données soient enregistrées par The Good Gift©.
-          </span>
         </div>
       </div>
 
@@ -99,7 +97,7 @@
       <!-- Shopping bag -->
       <div class="col-xs-1 col-sm-4" id="cart-column">
         <div id="sticky-anchor"></div>
-        <div class="checkout-card cart-card">
+        <div class="checkout-card cart-card-2">
           <div class="bag">
             <div class="bag-header">
               <p>
@@ -186,9 +184,9 @@
         var window_top = $(window).scrollTop();
         var div_top = $('#sticky-anchor').offset().top;
         if (window_top > div_top)
-            $('.cart-card').addClass('sticky');
+            $('.cart-card-2').addClass('sticky');
         else
-            $('.cart-card').removeClass('sticky');
+            $('.cart-card-2').removeClass('sticky');
       }
       $(function(){
           $(window).scroll(sticky_relocate);
