@@ -152,3 +152,37 @@
   flex-direction: column;
   align-items: center;
 }
+
+.cart-confirmation {
+  width: 100%;
+  display: flex;
+  align-items: strech;
+  justify-content: space-between;
+  padding: 15px;
+  text-align: left;
+  .cart-confirmation-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 40%;
+    img {
+      max-width: 100%;
+      max-height: 100px;
+    }
+  }
+  .cart-confirmation-infos {
+  flex: 0 0 59%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  .cart-name-2 {
+    font-size: 16px;
+  }
+  .cart-brand-2 {
+    font-size: 14px;
+    font-style: italic;
+  }
+  }
+}
