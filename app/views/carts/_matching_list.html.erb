@@ -1,17 +1,20 @@
 <div class="">
-  <% if @cart.gift_number == @cart.cart_products.count %>
-    <h1>PANIER PLEIN</h1>
+  <% if cart.gift_number == cart.cart_products.count %>
+    <div class="checkmark"></div>
     <%= form_tag orders_path, method: 'post' do%>
       <%= hidden_field_tag "cart_id", params[:id] %>
-      <%= submit_tag 'Passer commande', class: 'btn btn-primary order-button btn-rounded' %>
+      <%= button_tag(type: "submit", class: "btn btn-primary order-button btn-rounded") do %>
+        <span class="arrow-bounce"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+          &nbsp;&nbsp;&nbsp; Passer commande
+      <% end %>
     <% end %>
-  <% elsif @matching_list.empty? %>
+  <% elsif matching_list.empty? %>
     <h3>Désolé, notre databse actuelle ne nous permet pas de satisfaire votre demande, merci d'élargir votre champ de recherche :)</h3>
   <% else %>
 
     <div class="gift-carousel">
-      <% @matching_list.each do |product| %>
-        <div class="<%= 'active' if product == @matching_list.first %>" data-id="<%= product.id %>" data-price="<%= product.price %>">
+      <% matching_list.each do |product| %>
+        <div class="<%= 'active' if product == matching_list.first %>" data-id="<%= product.id %>" data-price="<%= product.price %>">
           <div class="caroucard">
             <div class="product-image">
               <%= cl_image_tag product.image %>
@@ -34,9 +37,9 @@
     </div>
     <!-- On enregistre le produit dans le panier -->
     <div class="text-center choice-form">
-      <%= form_tag cart_cart_products_path(@cart), method: :post do %>
-        <% if @matching_list != [] %>
-          <%= hidden_field_tag :main_id, @matching_list.first.id %>
+      <%= form_tag cart_cart_products_path(cart), method: :post, remote: true do %>
+        <% if matching_list != [] %>
+          <%= hidden_field_tag :main_id, matching_list.first.id %>
         <% end %>
         <%= submit_tag 'Choisir', class: 'btn btn-primary choice-button btn-rounded' %>
       <% end %>
@@ -45,8 +48,8 @@
 
 </div>
 <!-- modal qui apparaît: -->
-<% unless @cart.products.count == @cart.gift_number %>
-  <% @matching_list.each do |product| %>
+<% unless cart.products.count == cart.gift_number %>
+  <% matching_list.each do |product| %>
     <div class="modal fade" id="modal-<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

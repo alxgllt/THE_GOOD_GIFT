@@ -9,13 +9,46 @@
 margin-top: 50px;
 }
 
+.maine-body hr {
+    margin-top: 7px;
+    margin-bottom: 22px;
+    border: 0;
+    border-top: 1px solid #93e1d8;
+    width: 252px;
+}
+
 #reminder {
   text-align: center;
+  width: 800px;
 }
 #contained {
-  width: 600px;
+  width: 800px;
+  background: white;
+  margin-top: 20px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 .margined-bottom {
   margin-bottom: 70px;
 }
 
+.recap-card {
+    background: white;
+    border-bottom-color: grey;
+    width: 900px;
+    display: flex;
+   justify-content: space-between;
+}
+.marginedtop {
+  background: white;
+    padding-bottom: 14px;
+    width: 1130px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.maine-body {
+      background: #F2F2F2;
+    min-height: 820px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.linktohome {
+  padding-bottom: 20px;
+}

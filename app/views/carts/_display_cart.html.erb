@@ -1,0 +1,52 @@
+<div class="checkout-card cart-card">
+  <div class="bag">
+    <div class="filter-title">
+    <div><span class="">Vos <%= cart.gift_number %> cadeaux</span></div>
+    </div>
+    <div class="bag-item-list">
+      <div class="bag-item-wrapper">
+        <ul class="items">
+        <% cart.products.each do |product| %>
+            <% unless product == cart.products.last %>
+            <% end %>
+            <li class="item">
+              <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
+              <div>
+                <span class="item-name"> <%= product.name %> </span>
+                <span class="item-brand"> <%= product.brand %>  </span>
+                <span class="item-modal" data-toggle="modal" data-target="#modal-<%= product.id %>">> voir détails produit <</span>
+              </div>
+            </li>
+            <hr>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal du cart -->
+<% @cart.products.each do |product| %>
+  <div class="modal fade" id="modal-<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
+          <div class="product-brand">
+            <%= product.brand %>
+          </div>
+        </div>
+        <div class="modal-body text-center">
+          <div class="modal-image text-center">
+            <%= cl_image_tag product.image %>
+          </div>
+          <div>
+            <h4>Description:</h4>
+            <p><%= product.description %></p>
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
+<% end %>

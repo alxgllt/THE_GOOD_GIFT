@@ -19,13 +19,7 @@
 .check-card {
   color: $black;
   background: $grey;
-  padding: 20px 10px;
-  // &:first-child {
-  //   border-radius: 10px 0 0 10px;
-  // }
-  // &:last-child {
-  //   border-radius: 0 10px 10px 0;
-  // }
+  padding: 15px 10px;
   opacity: 0.4;
   &:hover {
     opacity: 1;

@@ -1,6 +1,5 @@
 .bar-price {
   margin-top: 70px;
-  display: flex;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
@@ -8,18 +7,19 @@
 
 .progress {
   width: 100%;
-  height: 35px;
+  height: 25px;
 }
 .progress-wrap {
-  background: $mint;
+  background: linear-gradient(to right, rgba(239,247,246,1) 0%, rgba(239,247,246,1) 2%, rgba(147,225,216,1) 53%, rgba(147,225,216,1) 100%);
   margin-bottom: 20px;
   margin-top: 10px;
   overflow: hidden;
   position: relative;
-  border: 5px #F2F2F2 solid;
+  box-shadow: -2px 4px 3px rgba(215, 215, 215, 0.4);
+  border: 1px $mint solid;
   border-radius: 50px;
   .progress-bar {
-    background: #ddd;
+    background: #FAFAFA;
     left: 0;
     position: absolute;
     top: 0;

@@ -9,10 +9,16 @@ class CartProductsController < ApplicationController
 
   def create
     @cart = Cart.find(params[:cart_id])
-    @cart_product = CartProduct.new()
+    @cart_product = CartProduct.new
     @cart_product.cart = @cart
     @cart_product.product = Product.find(params[:main_id])
     @cart_product.save
-    redirect_to cart_path(@cart)
+
+    @matching_list = GiftSelectionService.new(@cart).call
+
+    respond_to do |format|
+      format.html { redirect_to cart_path(@cart) }
+      format.js
+    end
   end
 end

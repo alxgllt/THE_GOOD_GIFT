@@ -8,8 +8,8 @@
       <div class="col-xs-8">
 
         <!-- Checkout progress bar -->
-        <div class="bar-container">
-          <div class="progression-bar">
+        <div class="bar-container2">
+          <div class="progression-bar2">
             <div class="circle-1">
               <span class="fa-stack fa-4x">
                 <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
@@ -33,7 +33,7 @@
             </div>
           </div>
 
-          <div class="progression-bar-text">
+          <div class="progression-bar-text2">
             <div class="circle-1">
               <span>Welcome</span>
             </div>
@@ -52,7 +52,7 @@
         <!-- bar price -->
         <div class="bar-price">
           <h4 class='text-center'>Utilisation du budget:</h4>
-          <div class="progress-wrap progress" data-progress-percent="<%= @cart.total %>" data-total='<%= @cart.total %>'>
+          <div class="progress-wrap progress" data-total='<%= @cart.total %>'>
             <div class="progress-bar progress"></div>
           </div>
         </div>
@@ -75,98 +75,23 @@
     <div class="row">
       <!-- place pour la sidebar -->
       <div class="col-xs-3">
-        <!-- Sidebar toggle button-->
-        <a href="#menu-toggle" class="btn btn-options" id="menu-toggle">
-          <span class="arrow-bounce"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
-          &nbsp;&nbsp;&nbsp;options
-        </a>
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper" class="sidebar-unfixed">
-          <%= render 'products/search_bar_products' %>
-        </div>
+        <%= render 'products/search_bar_products' %>
       </div>
 
       <!-- place pour le carousel -->
       <div class="col-xs-6">
-        <div id="wrapper" class="toggled">
+        <div>
           <!-- Page Content -->
-          <%= render "matching_list", matching_list: @matching_list %>
-        <!--   <div id="page-content-wrapper">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="row">
-                      <div class="flex-bundle">
-                        <div class="col-xs-9 text-center">
-
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
-              <!--   </div>
-              </div>
-            </div> -->
-            <!-- /#page-content-wrapper -->
-
-          <!-- modal du cart -->
-          <% @cart.products.each do |product| %>
-            <div class="modal fade" id="modal-<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
-                    <div class="product-brand">
-                      <%= product.brand %>
-                    </div>
-                  </div>
-                  <div class="modal-body text-center">
-                    <div class="modal-image text-center">
-                      <%= cl_image_tag product.image %>
-                    </div>
-                    <div>
-                      <h4>Description:</h4>
-                      <p><%= product.description %></p>
-                    </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          <div class="matching-list-container"><%# DO NOT REMOVE ME: for js purposes %>
+            <%= render "matching_list", matching_list: @matching_list, cart: @cart %>
+          </div>
         </div>
       </div>
 
       <!-- place pour le panier -->
-      <!-- place pour le panier -->
       <div class="col-xs-3">
-        <div class="cart-cont ent">
-          <div class="checkout-card cart-card">
-            <div class="bag">
-              <div class="filter-title">
-                <div><span class="">Vos <%= @cart.gift_number %> cadeaux</span></div>
-              </div>
-              <div class="bag-item-list">
-                <div class="bag-item-wrapper">
-                  <ul class="items">
-                    <% @cart.products.each do |product| %>
-                    <% unless product == @cart.products.last %>
-                    <% end %>
-                    <li class="item">
-                      <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
-                      <div>
-                        <span class="item-name"> <%= product.name %> </span>
-                        <span class="item-brand"> <%= product.brand %>  </span>
-                        <span class="item-modal" data-toggle="modal" data-target="#modal-<%= product.id %>">> voir détails produit <</span>
-                      </div>
-                    </li>
-                    <hr>
-                    <% end %>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="cart-content">
+          <%= render 'display_cart', cart: @cart %>
         </div>
       </div>
     </div>
@@ -181,20 +106,17 @@
     initCarousel();
     Ordercount ();
     ProductChoice ();
-    moveProgressBar();
+    // setTimeout(function() {
+    //       moveProgressBar();
+    //     }, 300);
       // on browser resize...
       $(window).resize(function() {
         moveProgressBar();
       });
-      $('.slick-arrow').click(function(event){
+      $('.matching-list-container').on('click', '.slick-arrow', function(event){
         moveProgressBar();
       });
     });
-
-  $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  });
 
   $("#refresh-options").on("submit", function() {
     if ($(".checkboxes input[type=checkbox]:checked").length >= 3) {
@@ -203,19 +125,6 @@
       $('.error-messages').html("Selectionnez au moins 3 univers");
       return false;
     }
-  });
-
-  $(document).ready(function() {
-    $(window).scroll(function(e){
-      if ($(this).scrollTop() > 70) {
-        $('#sidebar-wrapper').addClass('sidebar-fixed');
-        $('#sidebar-wrapper').removeClass('sidebar-unfixed');
-      }
-      else {
-        $('#sidebar-wrapper').addClass('sidebar-unfixed');
-        $('#sidebar-wrapper').removeClass('sidebar-fixed');
-      }
-    });
   });
 
     // SIGNATURE PROGRESS
@@ -227,8 +136,7 @@
       var getProgressWrapWidth = $('.progress-wrap').width();
       var progressTotal = getPercent * getProgressWrapWidth;
       var animationLength = 900;
-      $('.progress-wrap').data('progress-percent', new_total);
-      console.log($('.progress-wrap').data('progress-percent'));
+
         // on page load, animate percentage bar to data percentage length
         // .stop() used to prevent animation queueing
         $('.progress-bar').stop().animate({
@@ -261,73 +169,6 @@
 
           });
         });
-
-        // swipe cards - change active class
-        // $(document).ready(function() {
-        //   $(".matching-list-container").on( "click", ".slick-prev.slick-arrow::before", function(e) {
-        //     e.preventDefault();
-        //     var allProducts = $('.caroucard');
-        //     var currentProduct = $('.caroucard.active');
-        //     var newProduct = findPrevProduct(currentProduct, allProducts);
-        //     currentProduct.removeClass('active');
-        //     newProduct.addClass('active');
-        //   });
-        //   $(".matching-list-container").on( "click", ".slick-next.slick-arrow::before", function(e) {
-        //     e.preventDefault();
-        //     var allProducts = $('.caroucard');
-        //     var currentProduct = $('.caroucard.active');
-        //     var newProduct = findNextProduct(currentProduct, allProducts);
-        //     currentProduct.removeClass('active');
-        //     newProduct.addClass('active');
-        //   });
-
-        //   function findNextProduct(currentProduct, allProducts){
-        //     var productCount = allProducts.length;
-        //     var index = allProducts.index(currentProduct);
-        //     if(index == productCount - 1) {
-        //       var nextIndex = 0 ;
-        //     } else {
-        //       var nextIndex =  index + 1;
-        //     }
-        //     return $(allProducts[nextIndex]);
-        //   }
-        //   function findPrevProduct(currentProduct, allProducts){
-        //     var productCount = allProducts.length;
-        //     var index = allProducts.index(currentProduct);
-        //     if(index == 0) {
-        //       var nextIndex = productCount - 1 ;
-        //     } else {
-        //       var nextIndex =  index - 1;
-        //     }
-        //     return $(allProducts[nextIndex]);
-        //   }
-        // });
-
-  // $(document).ready(function() {
-    //   initializeAutocomplete('order_address');
-    //   function sticky_relocate() {
-    //     var window_top = $(window).scrollTop();
-    //     var div_top = $('#sticky-anchor').offset().top;
-    //     if (window_top > div_top)
-    //         $('.sidebar-filters').addClass('sticking');
-    //     else
-    //         $('.sidebar-filters').removeClass('sticking');
-    //   }
-    //   $(function(){
-    //       $(window).scroll(sticky_relocate);
-    //       sticky_relocate();
-    //     });
-    // });
-    // $(document).ready(function() {
-    //   $(window).scroll(function(e){
-    //     if ($(this).scrollTop() > 70) {
-    //       $('.bar-container').addClass('progress-bar-fixed');
-    //     }
-    //     else {
-    //       $('.bar-container').removeClass('progress-bar-fixed');
-    //     }
-    //   });
-    // });
   </script>
   <% end %>
 
