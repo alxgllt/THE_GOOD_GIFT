@@ -25,11 +25,14 @@
   <% order = @order.products.sort_by {|product| product.price}.reverse %>
   <% order.each do |product| %>
   <li class="item">
-    <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
-    <div>
-      <span class="item-name"> <%= product.name %> </span>
-      <span class="item-brand"> <%= product.brand %>  </span>
-      <span class="item-desc"></span>
+    <div class="cart-confirmation">
+      <div class="cart-confirmation-image">
+        <%= cl_image_tag product.image %>
+      </div>
+      <div class="cart-confirmation-infos">
+        <span class="cart-name"> <%= product.name %> </span>
+        <span class="cart-brand"> <%= product.brand %>  </span>
+      </div>
     </div>
   </li>
   <% end %>
