@@ -1,4 +1,4 @@
-<div class="checkout-card cart-card">
+<div class="cart-card">
   <div class="bag">
     <div class="reinitialize-cart">
       <%= form_tag cart_reinitialize_cart_path(@cart), method: 'patch' do%>
@@ -11,16 +11,18 @@
     <div class="bag-item-list">
       <div class="bag-item-wrapper">
         <ul class="items">
-        <% cart.products.each do |product| %>
-            <% unless product == cart.products.last %>
+        <% cart.cart_products.each do |cart_product| %>
+            <% unless cart_product.product == cart.products.last %>
             <% end %>
-            <li class="item">
-              <%= cl_image_tag product.image, height: 300, width: 400, crop: :fit %>
-              <div>
-                <span class="item-name"> <%= product.name %> </span>
-                <span class="item-brand"> <%= product.brand %>  </span>
-                <span class="item-modal" data-toggle="modal" data-target="#modal-<%= product.id %>">> voir détails produit <</span>
-                <%= form_tag cart_cart_product_path(cart), method: :post, remote: true do%>
+            <li class="cart-product">
+              <div class="cart-image">
+              <%= cl_image_tag cart_product.product.image %>
+              </div>
+              <div class="cart-infos">
+                <span class="item-name"> <%= cart_product.product.name %> </span>
+                <span class="item-brand"> <%= cart_product.product.brand %>  </span>
+                <span class="item-modal" data-toggle="modal" data-target="#modal-<%= cart_product.product.id %>">> voir détails produit <</span>
+                <%= form_tag cart_cart_product_path(cart, cart_product), method: :delete, remote: true do%>
                   <%= submit_tag "> supprimer <", class: "delete-prod-link" %>
                 <% end %>
               </div>

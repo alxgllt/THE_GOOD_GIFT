@@ -24,7 +24,7 @@ class CartProductsController < ApplicationController
 
   def destroy
     @cart = Cart.find(params[:cart_id])
-    @cart_product = CartProduct.where(product_id: product.id)
+    @cart_product = CartProduct.find(params[:id])
     @cart_product.destroy
 
     @matching_list = GiftSelectionService.new(@cart).call
