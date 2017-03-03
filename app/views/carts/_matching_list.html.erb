@@ -8,6 +8,9 @@
           &nbsp;&nbsp;&nbsp; Passer commande
       <% end %>
     <% end %>
+    <%= form_tag cart_reinitialize_cart_path(@cart), method: 'patch' do%>
+      <%= submit_tag "Réinitialiser mon panier", class: "reinitialize-link" %>
+    <% end %>
   <% elsif matching_list.empty? %>
     <h3>Désolé, notre databse actuelle ne nous permet pas de satisfaire votre demande, merci d'élargir votre champ de recherche :)</h3>
   <% else %>
