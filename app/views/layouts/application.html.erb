@@ -45,11 +45,14 @@
 
     <!-- <div id="footer-down"> -->
       <%= yield %>
+    <% if controller.controller_name == "orders" && action_name == "show" %>
+        <%= javascript_include_tag 'application' %>
+        <%= yield(:after_js) %>
+    <% else %>
+      <%= render 'shared/footer' %>
+      <%= javascript_include_tag 'application' %>
+      <%= yield(:after_js) %>
+    <% end %>
     <!-- </div> -->
-
-    <%= render 'shared/footer' %>
-
-    <%= javascript_include_tag 'application' %>
-    <%= yield(:after_js) %>
   </body>
 </html>
