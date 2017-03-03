@@ -1,17 +1,23 @@
 require 'csv'
 require 'open-uri'
 
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'products.csv'))
-csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+errors    = []
+csv_text  = File.read(Rails.root.join('lib', 'seeds', 'products.csv'))
+csv       = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+
 csv.each do |row|
   attributes = row.to_hash
-  url = attributes["remote_images_urls"]
-  puts url
+  url        = attributes["remote_images_urls"]
   attributes.delete("remote_images_urls")
-  # p attributes
+
   product = Product.new(attributes)
   product.remote_image_url = url
-  product.save!
+
+  begin
+    product.save!
+  rescue Cloudinary::CarrierWave::UploadError
+    errors << product
+  end
 end
 
 User.create!(email:"alex@tgg.com", password:"123456", admin:true)
@@ -20,7 +26,14 @@ User.create!(email:"eytan@tgg.com", password:"123456", admin:true)
 User.create!(email:"gauthier@tgg.com", password:"123456", admin:true)
 User.create!(email:"new@tgg.com", password:"123456", admin:true)
 
+if errors.present?
+  puts "[ERROR] #{errors.size} products in failure"
 
+  errors.each do |error|
+    puts error.attributes
+    puts "---"
+  end
+end
 # csv.each do |row|
 #   Product.create!
 #     name: row['name']
