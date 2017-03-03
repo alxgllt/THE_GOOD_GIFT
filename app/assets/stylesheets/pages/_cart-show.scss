@@ -48,7 +48,7 @@
     color: $peach;
   }
   input {
-    width: 135px;
+    width: 115px;
   }
   &:hover {
     cursor: pointer;
@@ -147,4 +147,20 @@
     position: absolute;
     top: 100px;
     width: 60px;
+}
+
+.reinitialize_cart form {
+  text-align: right;
+}
+.reinitialize-link {
+    border: 0;
+    background: 0;
+    color: $mint;
+    font-size: 12px;
+    &:hover {
+      font-style: italic;
+    }
+    &:focus {
+      outline: none;
+    }
 }

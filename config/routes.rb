@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:new, :create, :edit, :update, :show] do
     resources :cart_products, only: [:new, :create]
     patch :surprise_me
+    patch :reinitialize_cart
   end
 
   #Selecttag page flow n°2
