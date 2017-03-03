@@ -1,0 +1,11 @@
+<%= form_tag order_payments_path(order) do %>
+  <script src="https://checkout.stripe.com/checkout.js" id="btn-stripe"  class="stripe-button btn btn-primary btn-rounded"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-name=" Votre Good Gift"
+    data-description="<%= order.total_price %> <%= order.total_price.currency %>"
+    data-email="<%= order.email %>"
+    data-amount="<%= order.total_price_cents %>"
+    data-currency="<%= order.total_price.currency %>"
+    data-locale="fr">
+  </script>
+<% end %>
