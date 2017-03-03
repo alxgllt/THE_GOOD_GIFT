@@ -1,16 +1,25 @@
 <div class="">
   <% if cart.gift_number == cart.cart_products.count %>
-    <div class="checkmark"></div>
-    <%= form_tag orders_path, method: 'post' do%>
-      <%= hidden_field_tag "cart_id", cart.id %>
-      <%= button_tag(type: "submit", class: "btn btn-primary order-button btn-rounded") do %>
-        <span class="arrow-bounce"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-          &nbsp;&nbsp;&nbsp; Passer commande
-      <% end %>
-    <% end %>
-    <%= form_tag cart_reinitialize_cart_path(@cart), method: 'patch' do%>
-      <%= submit_tag "Réinitialiser mon panier", class: "reinitialize-link" %>
-    <% end %>
+    <div class="card-passer-commande">
+      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+      <p>Votre sélection est terminée !</p>
+    </div>
+    <div class="passer-commande">
+      <div>
+        <%= form_tag orders_path, method: 'post' do%>
+          <%= hidden_field_tag "cart_id", cart.id %>
+          <%= button_tag(type: "submit", class: "btn btn-primary order-button btn-rounded") do %>
+            <span class="arrow-bounce"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+              &nbsp;&nbsp;&nbsp; Passer commande
+          <% end %>
+        <% end %>
+      </div>
+      <div>
+        <%= form_tag cart_reinitialize_cart_path(@cart), method: 'patch' do%>
+          <%= submit_tag "Réinitialiser mon panier", class: "reinitialize-link" %>
+        <% end %>
+      </div>
+    </div>
   <% elsif matching_list.empty? %>
     <h3>Désolé, notre databse actuelle ne nous permet pas de satisfaire votre demande, merci d'élargir votre champ de recherche :)</h3>
   <% else %>

@@ -2,6 +2,7 @@ console.log("test")
 
 // 1. refaire le matching et rafficher le carousel
 $(".matching-list-container").html("<%= j render 'carts/matching_list', matching_list: @matching_list, cart: @cart %>");
+
 // 2. mettre a jour le cart
 $(".cart-content").html("<%= j render 'carts/display_cart', cart: @cart %>");
 

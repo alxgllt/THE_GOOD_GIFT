@@ -96,3 +96,26 @@
   }
   }
 }
+.card-passer-commande {
+  background: white;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  height: 320px;
+  margin-bottom: 25px;
+  i {
+    color: #B7B7B7;
+    font-size: 180px;
+  }
+  p {
+  font-size: 30px;
+  }
+}
+.passer-commande {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
