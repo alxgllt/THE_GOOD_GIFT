@@ -1,20 +1,24 @@
 
-  <div class="banner-content text-center margined-bottom">
-    <h3><i class="fa fa-check" aria-hidden="true"></i> </h3>
-    <h3>Votre commande s'est bien deroulée !</h3>
+
+<div class="wrapper maine-body">
+<div class="container" id="recap-card">
+
+
+  <div class="text-center marginedtop">
+    <h2><i class="fa fa-check" aria-hidden="true"></i> </h2>
+    <h4>Votre commande s'est bien deroulée !</h4>
     <p> Merci d'avoir choisi The Good Gift. Vous devriez recevoir un email de confirmation rapidement.</p>
-     <strong><p> Vous serez livré dans les deux heures par un de nos coursiers.</p> </strong>
+     <p> Vous serez livré dans les deux heures par un de nos coursiers.</p>
   </div>
 
 
 
 <div class="container" id="contained">
 
-<div class="text-center margin-top">
-  <h4>Rappel de votre commande </h4>
-    <hr>
+<div class="text-center ">
+  <h4>Rappel de votre commande: </h4> <hr>
   <h5>Numéro de commande : <%= @order.id %></h5>
-  <hr>
+  <h5 id="total-price"> Prix total : <%= @order.total_price %> € </h5>
 </div>
 
 <div class="container" id="reminder">
@@ -31,16 +35,15 @@
   <% end %>
 
 </div>
-<div class="text-center">
- <h5 id="total-price"> <%= @order.total_price %> € </h5>
+<div class="text-center linktohome">
               <hr>
- <%= link_to "Faites un nouveau cadeau ! ", root_path %>
-
-</div>
-<div class="text-center margined-bottom">
-   <%= link_to "Un problème? Contactez nous ! ", root_path %>
+ <%= link_to "Faites un nouveau cadeau ! ", root_path %> <br>
+  <%= link_to "Un problème? Contactez nous ! ", root_path %>
 </div>
 
-</div>
 
+</div>
+</div>
+</div>
+</div>
 

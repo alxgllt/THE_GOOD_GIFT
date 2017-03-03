@@ -73,7 +73,6 @@
 
     <!-- second row -->
     <div class="row">
-
       <!-- place pour la sidebar -->
       <div class="col-xs-3">
         <%= render 'products/search_bar_products' %>
@@ -84,8 +83,6 @@
         <div>
           <!-- Page Content -->
           <%= render "matching_list", matching_list: @matching_list %>
-
-
           <!-- modal du cart -->
           <% @cart.products.each do |product| %>
             <div class="modal fade" id="modal-<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -172,7 +169,7 @@
   //   e.preventDefault();
   //   $("#wrapper").toggleClass("toggled");
   // });
-
+  
   $("#refresh-options").on("submit", function() {
     if ($(".checkboxes input[type=checkbox]:checked").length >= 3) {
       return true;
