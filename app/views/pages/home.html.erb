@@ -1,181 +1,34 @@
+<%# Bannière = Back photo + Search Bar %>
+
 <div class="banner">
 	<div class="banner-content text-center">
 		<h1>Offrir un cadeau à plusieurs n’a jamais été aussi simple</h1>
     <br><br><br><br>
-    <%= render 'pages/search_bar_home' %>
+    <%= render 'pages/home_search_bar' %>
   </div>
 </div>
 
-<div class="container text-center" id="how-it-works">
-	<div class="big-title padded">
-		<div><span class="">COMMENT ÇA MARCHE ?</span></div>
-	</div>
-	<!-- <div class="title-description">
-		<div>Proposer la meilleure expérience d’achat de cadeaux communs pour que vos farewell parties soient toujours des moments de plaisir partagé.</div>
-	</div> -->
-	<br>
-	<div class="row">
-		<div class="col-xs-12 col-sm-4">
-			<%= image_tag "enveloppe.png" %>
-			<p>Indiquez le montant de votre budget ainsi que les centres d'intérêt de votre ami/collègue</p>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			<%= image_tag "pick_gift.png" %>
-			<p>Choisissez un ensemble de cadeaux parmi la sélection personnalisée réalisée par nos experts</p>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			<%= image_tag "delivery.png" %>
-			<p>Recevez vos achats au bureau dans les 3 heures, joliment emballés, avec une carte</p>
-		</div>
-	</div>
-</div>
+<%# Comment ça marche ? %>
 
-<div class="container" id="our-ideas">
-	<div class="big-title padded">
-		<div><span class="">NOS DERNIERS GOOD GIFTS</span></div>
-	</div>
-	<div class="row package-home">
-		<div class="col-xs-12 col-sm-offset-1 col-sm-5">
-      <h2 class="title-alternate">POUR LE COLLÈGUE RAFFINÉ</h2>
-      <p>Une enceinte vintage aux qualités sonores exceptionnelles, une bouteille de whisky japonnais (pour refaire le monde), et une montre sobre et élégante pour couronner le tout...</p>
-      <p>Le collègue est parti satisfait nous dit-on :)</p>
-    </div>
-    <div class="col-xs-12 col-sm-5">
-      <%= image_tag "bundle_style.png" %>
-    </div>
-  </div>
-  <div class="row package-home">
-    <div class="col-xs-12 col-sm-offset-1 col-sm-5">
-      <%= image_tag "bundle_techos.png" %>
-    </div>
-    <div class="col-xs-12 col-sm-5">
-      <h2 class="title-alternate">POUR L'AMI CONNECTÉ</h2>
-      <p>Un drone de pro, pour frimer en vacances auprès des copains </p>
-      <p>Un tracker d'activité.</p>
-      <p>La petite touch en plus ? Un gadget pour localiser ses clés. Parce que c'est stylé.</p>
-    </div>
-    </div>
-    <div class="row package-home">
-      <div class="col-xs-12 col-sm-offset-1 col-sm-5">
-        <h2 class="title-alternate">POUR LA PARISIENNE BRANCHÉE</h2>
-      <p>Un appareil photo Lomo Instant (pour instagramer comme une artiste)</p>
-      <p>Un jolie pendentif.</p>
-      <p>Une boîe de macarons de chez Pierre Hermé.</p>
-      </div>
-      <div class="col-xs-12 col-sm-5">
-        <%= image_tag "bundle_parisienne.png" %>
-      </div>
-    </div>
-  </div>
+<%= render 'pages/home_comment_ca_marche' %>
 
-<div id="last-gifts">
-  <div class="container">
-    <div class="big-title padded">
-      <div><span class="">CE QUE VOUS RECEVREZ</span></div>
-    </div>
-  </div>
-  <div class="wrapper-wood">
-    <div class="container">
-      <div class="row">
-      <div class="col-xs-6">
-          <div class="box" id="demo-what-you-get">
-            <h3 class="title-box">UN ENSEMBLE DE CADEAUX</h3>
-            <p>Recevez les cadeaux joliment emballés, prêts à être offerts.</p>
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <div class="box" id="demo-what-you-get">
-            <h3 class="title-box">UNE JOLIE CARTE</h3>
-            <p>Pour que votre collègue conserve précieusement tous vos messages d’amours.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%# Nos derniers packages %>
 
-<div class="container text-center" id="temoignages">
- <div class="big-title padded">
-    <div><span class="">VOS TÉMOIGNAGES</span></div>
-  </div>
-  <div class="">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-4">
-         <%= image_tag "philibert.jpg", class: "avatar-large" %>
-         <p>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          </p>
-         <p>“Avant The Good Gift, le "chargé de cadeau” perdait systématiquement 2 heures dans l’après-midi pour aller faire le tour des boutiques du quartier. Maintenant, c’est réglé en 2 minutes. Résultat top !”</p>
-         <p><strong>Philibert L.</strong></p>
-         </div>
-         <div class="col-xs-12 col-sm-4">
-           <%= image_tag "julie.jpg", class: "avatar-large" %>
-           <p>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            </p>
-           <p>“À chaque farewell, on achète des cadeaux vraiment sympas sans avoir à sortir nos calculatrices pour rester dans la budget. Nos neuronnes disent merci à The Good Gift”</p>
-           <p><strong>Julie E.</strong></p>
-         </div>
-         <div class="col-xs-12 col-sm-4">
-           <%= image_tag "nicolas.jpg", class: "avatar-large" %>
-           <p>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            </p>
-           <p>"Moi j'aime beaucoup mes collègues, c'est toujours dur de dire au revoir. Mais depuis TGG, en fait, j’ai plus trop de problème à m’occuper de leur départ... Sans rancune et bon vent les gars !"</p>
-           <p><strong>Nicolas F.</strong></p>
-         </div>
-      </div>
-    </div>
-  </div>
+<%= render 'pages/home_derniers_packages' %>
 
+<%# Ce que vous recevrez %>
 
-</div>
+<%= render 'pages/home_ce_que_vous_recevrez' %>
 
-<div class="container text-center" id="reassurance">
-	<div class="big-title padded">
-		<div><span class="">NOS GARANTIES</span></div>
-	</div>
-	<div class="row">
+<%# Vos témoignages %>
 
-	</div>
+<%= render 'pages/home_temoignages' %>
 
-	<div class="row">
-		<div class="col-xs-6 col-sm-3">
-			<%= image_tag "lock.png" %>
-			<p>PAIEMENT SÉCURISÉ</p>
-			<span class="text-small">Payez en toute sécurité par Stripe</span>
-		</div>
-		<div class="col-xs-6 col-sm-3">
-			<%= image_tag "delivery.png" %>
-			<p>LIVRAISONS OFFERTES</p>
-			<span class="text-small">Livraison par coursier en 3 heures sur Paris</span>
-		</div>
-		<div class="col-xs-6 col-sm-3">
-			<%= image_tag "exchange.png" %>
-			<p>ÉCHANGES GRATUITS</p>
-			<span class="text-small">L’heureux destinataire peut échanger ses cadeaux sous 14 jours</span>
-		</div>
-		<div class="col-xs-6 col-sm-3">
-			<%= image_tag "customer_service.png" %>
-			<p>SERVICE CLIENT</p>
-			<span class="text-small">À votre écoute toute la journée par téléphone ou par email thegoodgift.info@gmail.com
-      </span>
-    </div>
-  </div>
-</div>
+<%# Nos garanties %>
+
+<%= render 'pages/home_garanties' %>
+
+<%# JS %>
 
 <% content_for(:after_js) do %>
 <script>
