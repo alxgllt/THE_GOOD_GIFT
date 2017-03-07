@@ -1,5 +1,8 @@
 <div class="wrapper">
   <div class="container">
+
+    <%# Selection des univers avec checkbox %>
+
     <div class="row">
       <%= form_tag carts_path, method: :post, id: "select-universe" do %>
         <% @tags_as_objects.each do |tag| %>
