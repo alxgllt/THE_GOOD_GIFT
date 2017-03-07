@@ -6,67 +6,16 @@
       <div class="col-xs-2">
       </div>
       <div class="col-xs-8">
+        <%# E-commerce progress bar %>
+        <%= render 'carts/cart_progress_bar' %>
 
-        <!-- Checkout progress bar -->
-        <div class="bar-container2">
-          <div class="progression-bar2">
-            <div class="circle-1">
-              <span class="fa-stack fa-4x">
-                <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
-                <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-              </span>
-            </div>
-            <div class="circle-2">
-              <span class="fa-stack fa-4x">
-                <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
-                <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-              </span>
-            </div>
-            <div class="circle-3">
-              <i class="fa fa-circle" aria-hidden="true"></i>
-            </div>
-            <div class="circle-4">
-              <span class="fa-stack fa-4x">
-                <i id="white-circle" class="fa fa-circle fa-stack-2x icon-background4"></i>
-                <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-              </span>
-            </div>
-          </div>
-
-          <div class="progression-bar-text2">
-            <div class="circle-1">
-              <span>Welcome</span>
-            </div>
-            <div class="circle-2">
-              <span>Sélection des univers</span>
-            </div>
-            <div class="circle-3">
-              <span><strong>Sélection des cadeaux</strong></span>
-            </div>
-            <div class="circle-4">
-              <span>Checkout</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- bar price -->
-        <div class="bar-price">
-          <h4 class='text-center'>Utilisation du budget:</h4>
-          <div class="flex-price">
-          <div class="progress-wrap progress flex-item-progress" data-total='<%= @cart.total %>'>
-            <div class="progress-bar progress"></div>
-          </div>
-            <div class="progress-price flex-item-price">
-            <p> <%= @cart.price %> €</p>
-            </div>
-          </div>
-        </div>
+        <%# Moving price bar %>
+        <%= render 'carts/cart_price_bar' %>
       </div>
 
-      <!-- surprime me -->
+      <%# Surprise Me Section %>
       <div class="col-xs-2 text-center">
         <div class="surprise-me btn-surprise">
-          <!-- <p>SURPRISE ME</p> -->
           <%= form_tag cart_surprise_me_path(@cart), method: 'patch' do%>
           <%= image_submit_tag 'surprise_me2.png' %>
           <% end %>
@@ -77,22 +26,22 @@
 
     <!-- second row -->
     <div class="row">
-      <!-- place pour la sidebar -->
+
+      <%# Search Bar on the left side %>
       <div class="col-xs-3">
         <%= render 'carts/cart_search_bar' %>
       </div>
 
-      <!-- place pour le carousel -->
+      <%# Carousel Section %>
       <div class="col-xs-6">
         <div>
-          <!-- Page Content -->
           <div class="matching-list-container"><%# DO NOT REMOVE ME: for js purposes %>
             <%= render "matching_list", matching_list: @matching_list, cart: @cart %>
           </div>
         </div>
       </div>
 
-      <!-- place pour le panier -->
+      <%# Panier on the right side%>
       <div class="col-xs-3">
         <div class="cart-content">
             <%= render 'display_cart', cart: @cart %>
@@ -103,6 +52,8 @@
 
   </div>
 </div>
+
+<%# JS%>
 
 <% content_for(:after_js) do %>
 <script>
@@ -171,17 +122,3 @@
         });
   </script>
   <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

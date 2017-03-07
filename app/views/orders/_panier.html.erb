@@ -1,0 +1,73 @@
+<div class="col-xs-1 col-sm-4" id="cart-column">
+  <div id="sticky-anchor"></div>
+  <div class="checkout-card cart-card-2">
+    <div class="bag">
+      <div class="bag-header">
+        <p>
+          <%= @order.products.size %> CADEAUX
+        </p>
+        <%= link_to "Modifier", :back %>
+      </div>
+
+      <hr id="first-separator">
+
+      <!-- List of items -->
+      <div class="bag-item-list">
+        <div class="bag-item-wrapper">
+          <ul class="items">
+            <% order = @order.products.sort_by {|product| product.price}.reverse %>
+            <% order.each do |product| %>
+              <li class="item">
+                <div class="cart-product-2">
+                  <div class="cart-image-2">
+                    <%= cl_image_tag product.image %>
+                  </div>
+                  <div class="cart-infos-2">
+                    <span class="cart-name-2"> <%= product.name %> </span>
+                    <span class="cart-brand-2"> <%= product.brand %>  </span>
+                  </div>
+                </div>
+              </li>
+              <% if product != order.last %>
+                <div class="light-separator"></div>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div class="bag-gift_card-selection">
+        <%= image_tag "card_icon.png", id: "giftcard-icon"%>
+        <p>Inclure une carte (gratuit)</p>
+        <input type="checkbox" class="checkbox" id="checkbox-card">
+        <label for="checkbox-card"></label>
+      </div>
+      <div class="giftcard-form unchecked hidden" id="giftcard-list">
+        <%= simple_form_for @order, url: "/orders/#{@order[:id]}/select_gift_card", method: 'patch', remote: true do |f| %>
+          <%= f.input :card,
+          as: :radio_buttons,
+          checked: @order[:card],
+          label: false,
+          collection: [
+            ["#{ image_tag @cards_as_objects[0].to_hash[:image_file_name]}".html_safe, @cards_as_objects[0].id],
+            ["#{ image_tag @cards_as_objects[1].to_hash[:image_file_name]}".html_safe, @cards_as_objects[1].id],
+            ["#{ image_tag @cards_as_objects[2].to_hash[:image_file_name]}".html_safe, @cards_as_objects[2].id]
+            ] %>
+            <%= f.submit class: "btn hidden", id: "submit-giftcard" %>
+          <% end %>
+      </div>
+      <div id="giftcard-message"></div>
+
+      <hr id="final-separator">
+
+      <div class="bag-total">
+        <p id="total-content">
+          TOTAL À RÉGLER
+        </p>
+        <p id="total-price">
+          <%= @order.total_price %> €
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
