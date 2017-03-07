@@ -1,85 +1,27 @@
 <div class="main-body" >
+
+  <%# Page title %>
   <div class="container checkout-header">
     <h1>
       Paiement
     </h1>
   </div>
 
+  <%# Page content %>
   <div class="container checkout-body">
-
     <div class="row">
-
       <div class="col-xs-1 col-sm-8" id="form-column">
 
-        <!-- City delivery form -->
-        <div class="checkout-card form-card city-delivery">
-          <div class='hidden' id="city-card-mask"></div>
-          <h3>Ville de livraison</h3>
-          <div class="field-city">
-            <div class="select">
-              <div>
-                <div class="input-field">
-                  <div class="city-image">
-                    <%= cl_image_tag("eiffel-tower_cwdq2n",
-                    width: 30, height: 45) %>
-                  </div>
-                  <%= select_tag "city", "<option>Paris</option><option>Lyon (bientôt dispo !)</option>".html_safe %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%# city form %>
+        <%= render 'orders/city_form' %>
 
-        <!-- Email form -->
-        <div class="checkout-card form-card email-card">
-          <div class='hidden' id="email-card-mask"></div>
-          <h3>Mon adresse e-mail</h3>
-          <div class="flex-form">
-            <span class="email-replay-data hidden" id="email-data" data-bind="email"></span>
-            <button class="btn tertiary hidden" id='edit-email-btn'>MODIFIER</button>
-            <%= simple_form_for(@order, html: {class: 'form-inline', id: 'email-input-field'}, remote: true) do |f| %>
-              <%= f.input :email, label: false, id: 'email-field' %>
-              <%= f.submit "Ajouter mon email", class: "btn secondary submit" %>
-            <% end %>
-          </div>
-        </div>
-        <div class="error-messages"></div>
+        <%# email form %>
+        <%= render 'orders/email_form' %>
 
-        <!-- Address form -->
-        <div class="checkout-card form-card address-card" id="address-card-inactive">
-          <h3>Adresse de livraison</h3>
-        </div>
-        <div class="checkout-card form-card address-card hidden" id="address-card-active">
-          <div class='hidden' id="address-card-mask"></div>
-          <h3>Adresse de livraison</h3>
-          <div class="replay-address-data hidden" id="address-data-div">
-            <span class="replay-data" id="first_name-data" data-bind="first_name"></span>
-            <br>
-            <span class="replay-data" id="last_name-data" data-bind="last_name"></span>
-            <br>
-            <span class="replay-data" id="company-data" data-bind="company"></span>
-            <br>
-            <span class="replay-data" id="address-data" data-bind="address"></span>
-            <br>
-            <span class="-replay-data" id="phone-data" data-bind="phone"></span>
-            <br>
-            <button class="btn tertiary" id='edit-address-btn'>MODIFIER</button>
-          </div>
+        <%# address form %>
+        <%= render 'orders/address_form' %>
 
-          <div id="address-form-fields">
-            <%= simple_form_for(@order, html: { class: "form-horizontal"}, remote: true) do |f| %>
-              <%= f.input :first_name, label: "Votre prénom", label: false, required: true, placeholder: "Votre prénom" %>
-              <%= f.input :last_name, label: "Votre nom", label: false, required: true, placeholder: "Votre nom" %>
-              <%= f.input :company, label: "Société", label: false, required: false, placeholder: "Société" %>
-              <%= f.input :address, label: "Adresse", label: false, required: true, placeholder: "Adresse" %>
-              <%= f.input :phone, placeholder: 'Téléphone portable', label: false, id: 'phone-field' %>
-              <%= f.submit "Valider l'adresse", class: "btn secondary submit", id: 'btn-address' %>
-            <% end %>
-          </div>
-        </div>
-
-
-        <!-- Section CTA / Stripe -->
+        <%# Stripe / CTA Section %>
         <div class="place-order">
           <div class="text-center" style="margin-bottom: 20px;" id="payment-section">
             <button class="btn btn-primary btn-rounded" disabled id="payment-btn">
@@ -93,90 +35,14 @@
         </div>
       </div>
 
-
-      <!-- Shopping bag -->
-      <div class="col-xs-1 col-sm-4" id="cart-column">
-        <div id="sticky-anchor"></div>
-        <div class="checkout-card cart-card-2">
-          <div class="bag">
-            <div class="bag-header">
-              <p>
-                <%= @order.products.size %> CADEAUX
-              </p>
-              <%= link_to "Modifier", :back %>
-            </div>
-
-            <hr id="first-separator">
-
-            <!-- List of items -->
-            <div class="bag-item-list">
-              <div class="bag-item-wrapper">
-                <ul class="items">
-                  <% order = @order.products.sort_by {|product| product.price}.reverse %>
-                  <% order.each do |product| %>
-                    <li class="item">
-                      <div class="cart-product-2">
-                        <div class="cart-image-2">
-                          <%= cl_image_tag product.image %>
-                        </div>
-                        <div class="cart-infos-2">
-                          <span class="cart-name-2"> <%= product.name %> </span>
-                          <span class="cart-brand-2"> <%= product.brand %>  </span>
-                        </div>
-                      </div>
-                    </li>
-                    <% if product != order.last %>
-                      <div class="light-separator"></div>
-                    <% end %>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-            <hr>
-            <div class="bag-gift_card-selection">
-              <%= image_tag "card_icon.png", id: "giftcard-icon"%>
-              <p>Inclure une carte (gratuit)</p>
-              <input type="checkbox" class="checkbox" id="checkbox-card">
-              <label for="checkbox-card"></label>
-            </div>
-            <div class="giftcard-form unchecked hidden" id="giftcard-list">
-              <%= simple_form_for @order, url: "/orders/#{@order[:id]}/select_gift_card", method: 'patch', remote: true do |f| %>
-                <%= f.input :card,
-                as: :radio_buttons,
-                checked: @order[:card],
-                label: false,
-                collection: [
-                  ["#{ image_tag @cards_as_objects[0].to_hash[:image_file_name]}".html_safe, @cards_as_objects[0].id],
-                  ["#{ image_tag @cards_as_objects[1].to_hash[:image_file_name]}".html_safe, @cards_as_objects[1].id],
-                  ["#{ image_tag @cards_as_objects[2].to_hash[:image_file_name]}".html_safe, @cards_as_objects[2].id]
-                  ] %>
-                  <%= f.submit class: "btn hidden", id: "submit-giftcard" %>
-                <% end %>
-              </div>
-              <div id="giftcard-message"></div>
-
-              <hr id="final-separator">
-
-              <div class="bag-total">
-                <p id="total-content">
-                  TOTAL À RÉGLER
-                </p>
-                <p id="total-price">
-                  <%= @order.total_price %> €
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
+      <%# Panier on the right side %>
+      <%= render 'orders/panier' %>
     </div>
   </div>
+
 </div>
 
-
-
-
+<%# JS %>
 
 <% content_for(:after_js) do %>
   <script>

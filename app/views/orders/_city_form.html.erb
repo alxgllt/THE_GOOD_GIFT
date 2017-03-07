@@ -1,0 +1,17 @@
+<div class="checkout-card form-card city-delivery">
+  <div class='hidden' id="city-card-mask"></div>
+  <h3>Ville de livraison</h3>
+  <div class="field-city">
+    <div class="select">
+      <div>
+        <div class="input-field">
+          <div class="city-image">
+            <%= cl_image_tag("eiffel-tower_cwdq2n",
+            width: 30, height: 45) %>
+          </div>
+          <%= select_tag "city", "<option>Paris</option><option>Lyon (bientôt dispo !)</option>".html_safe %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

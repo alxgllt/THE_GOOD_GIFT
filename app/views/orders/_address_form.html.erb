@@ -1,0 +1,32 @@
+<div class="checkout-card form-card address-card" id="address-card-inactive">
+  <h3>Adresse de livraison</h3>
+</div>
+
+<div class="checkout-card form-card address-card hidden" id="address-card-active">
+  <div class='hidden' id="address-card-mask"></div>
+  <h3>Adresse de livraison</h3>
+  <div class="replay-address-data hidden" id="address-data-div">
+    <span class="replay-data" id="first_name-data" data-bind="first_name"></span>
+    <br>
+    <span class="replay-data" id="last_name-data" data-bind="last_name"></span>
+    <br>
+    <span class="replay-data" id="company-data" data-bind="company"></span>
+    <br>
+    <span class="replay-data" id="address-data" data-bind="address"></span>
+    <br>
+    <span class="-replay-data" id="phone-data" data-bind="phone"></span>
+    <br>
+    <button class="btn tertiary" id='edit-address-btn'>MODIFIER</button>
+  </div>
+
+  <div id="address-form-fields">
+    <%= simple_form_for(@order, html: { class: "form-horizontal"}, remote: true) do |f| %>
+      <%= f.input :first_name, label: "Votre prénom", label: false, required: true, placeholder: "Votre prénom" %>
+      <%= f.input :last_name, label: "Votre nom", label: false, required: true, placeholder: "Votre nom" %>
+      <%= f.input :company, label: "Société", label: false, required: false, placeholder: "Société" %>
+      <%= f.input :address, label: "Adresse", label: false, required: true, placeholder: "Adresse" %>
+      <%= f.input :phone, placeholder: 'Téléphone portable', label: false, id: 'phone-field' %>
+      <%= f.submit "Valider l'adresse", class: "btn secondary submit", id: 'btn-address' %>
+    <% end %>
+  </div>
+</div>
