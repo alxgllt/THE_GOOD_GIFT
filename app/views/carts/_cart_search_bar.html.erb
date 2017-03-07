@@ -1,0 +1,62 @@
+<div id="wrapper">
+
+  <%# Section budget + input budget + params cachés  %>
+
+  <div class="filter-title">
+    <div><span class="">Votre budget</span></div>
+  </div>
+  <div class="margined">
+    <%= form_tag cart_path(@cart), method: :put, id: "refresh-options" do %>
+      <%= text_field_tag :name, @cart.name, placeholder: "Prénom", :required => true, class: "form-control hidden"%>
+      <%= select_tag :gender, options_for_select(["Homme", "Femme"], @cart.gender), placeholder: "Sexe", :required => true, class: "form-control hidden" %>
+      <div class="input-group">
+        <%= text_field_tag :price, @cart.price, placeholder: "Budget", :required => true, class: "form-control"%>
+        <div class="input-group-addon">€</div>
+      </div>
+  </div>
+
+  <%# Selections des univers %>
+
+  <div class="filter-title">
+    <div><span class="">Ses goûts</span></div>
+  </div>
+  <div class="container-checkbox">
+    <% @tags_as_objects.each do |tag| %>
+    <label class="checkboxes" for="<%= tag.identifier %>">
+      <%= check_box_tag "tags[]", tag.title, @cart[:tags].include?(tag.title), id: tag.identifier, style: "display: none;" %>
+      <div class="check-card" data-tag-title="<%= tag.title %>">
+        <div class="check-title">
+          <%= tag.title %>
+          <i class="fa fa-check"></i>
+        </div>
+      </div>
+    </label>
+    <% end %>
+  </div>
+
+  <%# Selection du nombre de cadeaux  %>
+
+  <div class="filter-title">
+    <div><span class="">Cadeaux</span></div>
+  </div>
+  <div class="cadeaux">
+    <i class="fa fa-minus" aria-hidden="true"></i>
+    <%= image_tag "gift.svg" %>
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </div>
+  <div class="cadeau-display">
+    <%= @cart.gift_number %>
+  </div>
+  <%= select_tag :gift_number, options_for_select(@cart.gift_number_range, @cart.gift_number), placeholder: "#{@cart.gift_number}", class: "form-control hidden" %>
+
+
+  <%# CALL TO ACTION  %>
+  <div class="text-center">
+    <%= submit_tag (value = "Actualiser"), class: "btn btn-primary btn-rounded" %>
+  </div>
+  <% end %>
+
+  <div class="error-messages text-center">
+  </div>
+
+</div>

@@ -1,0 +1,64 @@
+<div class="error-messages">
+</div>
+
+<%# Search bar de la Home page %>
+
+<div class="form-inline text-search-home">
+  <div class="form-search">
+
+    <%# Pour qui ? Input name + Input Homme / Femme %>
+
+    <div class="form-item-home">
+      <h3>Pour qui ?</h3> <br>
+      <%= form_tag(select_tags_path, :method => "get", id: "select-genre") do %>
+        <%= text_field_tag :search_name, params[:search_name], :required => true, placeholder: "Son prénom", class: "form-control input-lg input-group"%>
+        <div class="radio_div">
+          <%= radio_button_tag :search_gender, 'Homme', label: "Homme" %>
+          <%= label_tag "search_gender_Homme" do %>
+            <p id="icon-home">H</p>
+          <% end %>
+          <%= radio_button_tag :search_gender, 'Femme', label: "Femme", id:"button-gender" %>
+          <%= label_tag "search_gender_Femme" do %>
+            <p id="icon-home">F</p>
+          <% end %>
+        </div>
+    </div>
+
+    <%# Quel budget ? Input budget %>
+
+    <div class="form-item-home">
+      <h3>Votre budget ?</h3> <br>
+      <div class="input-group">
+        <%= text_field_tag :search_price, params[:search_price], :required => true, placeholder: "Montant  ", class: "form-control input-lg price-input"%>
+        <div class="input-group-addon input-lg">€</div>
+      </div>
+    </div>
+
+    <%# CALL TO ACTION = LANCER LA RECHERCHE %>
+
+    <div class="form-item-home">
+      <%= submit_tag "Je lui fais plaisir", class: "btn btn-primary btn-home input-lg", id: "main-cta"%>
+    </div>
+    <% end %>
+
+  </div>
+</div>
+
+<%# JS %>
+
+<% content_for(:after_js) do %>
+  <script>
+    $("#select-genre").on("submit", function() {
+      if (parseInt($(".price-input").val()) >= 100) {
+        return true;
+      } else {
+        $('.error-messages').html("Votre budget doit dépasser 100 euros");
+          return false;
+        }
+      });
+  </script>
+<% end %>
+
+
+
+

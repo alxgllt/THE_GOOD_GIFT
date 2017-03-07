@@ -1,0 +1,41 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <%= form_tag carts_path, method: :post, id: "select-universe" do %>
+        <% @tags_as_objects.each do |tag| %>
+          <label class="select-tag-container" for="<%= tag.identifier %>">
+            <%= check_box_tag "tags[]", tag.title, false, id: tag.identifier, style: "display: none;" %>
+            <div class=" col-xs-6 col-sm-3 select-tag margined" data-tag-title="<%= tag.title %>">
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path(tag.image_file_name) %>);">
+                <div class="card-category text-center">
+                  <%= tag.title %>
+                </div>
+                <div class="checked-sym">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+                <div class="card-description">
+                  <p> <%= tag.description %> </p>
+                </div>
+              </div>
+            </div>
+          </label>
+        <% end %>
+    </div>
+
+    <%# Params cachés  %>
+
+    <%= hidden_field_tag "name", params[:search_name]%>
+    <%= hidden_field_tag "gender", params[:search_gender]%>
+    <%= hidden_field_tag "price", params[:search_price]%>
+
+    <%# CALL TO ACTION = CONTINUER LA RECHERCHE  %>
+
+    <div class="text-center" id="cta-step-2" >
+    <%= submit_tag (value = "Je compose mon package"), class: "btn btn-primary btn-rounded"%>
+    </div>
+
+    <% end %>
+  </div>
+  <div class="error-messages text-center">
+  </div>
+</div>
