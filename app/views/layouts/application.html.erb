@@ -33,7 +33,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
-    
+
     <!-- Analytics -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -47,7 +47,8 @@
     </script>
   </head>
   <body>
-   <% if current_page?(root_path) %>
+    <%= render 'shared/bandeau' %>
+    <% if current_page?(root_path) %>
       <%= render 'shared/navbar-home' %>
       <%= render 'shared/flashes' %>
     <% else %>
@@ -57,14 +58,14 @@
 
     <!-- <div id="footer-down"> -->
       <%= yield %>
-    <% if controller.controller_name == "orders" && action_name == "show" %>
+      <% if controller.controller_name == "orders" && action_name == "show" %>
+          <%= javascript_include_tag 'application' %>
+          <%= yield(:after_js) %>
+      <% else %>
+        <%= render 'shared/footer' %>
         <%= javascript_include_tag 'application' %>
         <%= yield(:after_js) %>
-    <% else %>
-      <%= render 'shared/footer' %>
-      <%= javascript_include_tag 'application' %>
-      <%= yield(:after_js) %>
-    <% end %>
+      <% end %>
     <!-- </div> -->
   </body>
 </html>

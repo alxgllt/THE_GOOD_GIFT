@@ -1,4 +1,4 @@
-  <div class="navbar-home navbar-wagon-fixed">
+  <div class="navbar-home">
     <!-- Logo -->
     <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
@@ -68,8 +68,9 @@
   <%= javascript_tag do %>
   $(document).ready(function() {
     $(window).scroll(function(e){
-      if ($(this).scrollTop() > 10) {
+      if ($(this).scrollTop() > 30) {
         $('.navbar-home').addClass('navbar-wagon');
+        $('.navbar-home').addClass('navbar-wagon-fixed');
         $('.navbar-wagon').removeClass('navbar-home');
         $('.navbar-white-link').addClass('navbar-black-link');
         $('.navbar-black-link').removeClass('navbar-white-link');
@@ -77,6 +78,7 @@
       else {
         $('.navbar-wagon').addClass('navbar-home');
         $('.navbar-home').removeClass('navbar-wagon');
+        $('.navbar-home').removeClass('navbar-wagon-fixed');
         $('.navbar-black-link').addClass('navbar-white-link');
         $('.navbar-white-link').removeClass('navbar-black-link');
       }
